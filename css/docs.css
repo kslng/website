@@ -1,0 +1,49 @@
+html, body {
+	height: 100%;
+}
+
+body {
+	display: flex;
+	justify-content: left;
+}
+
+.sub {
+	padding-left: 15px;
+}
+
+i {
+	color: #555555;
+}
+
+#nav {
+	width: 15%;
+	height: 100%;
+	font-size: 18px;
+	max-width: 200px;
+	margin-left: 20px;
+}
+
+#nav a {
+	margin: 2px;
+	display: block;
+	text-decoration: none;
+}
+
+#content {
+	height: 100%;
+	flex-grow: 1;
+	font-size: 18px;
+	overflow-y: auto;
+	padding-top: 5px;
+	margin-left: 50px;
+	line-height: 140%;
+	padding-bottom: 50px;
+}
+
+#spacer {
+	max-width: 750px;
+}
+
+pre {
+	padding: 5px;
+}

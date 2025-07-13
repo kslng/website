@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>KSL Docs | Functions</title>
+		<link rel="stylesheet" href="../css/root.css">
+		<link rel="stylesheet" href="../css/docs.css">
+	</head>
+	<body>
+		<div id="nav">
+			<h2>Pages</h2>
+			<a href="./home">Docs Home</a>
+			<a href="./intro">Introduction</a>
+			<a href="./types">Types</a>
+			<a class="sub" href="./placeholder">int</a>
+			<a class="sub" href="./placeholder">bool</a>
+			<a class="sub" href="./placeholder">float</a>
+			<a class="sub" href="./placeholder">null</a>
+			<a href="./functions">Functions</a>
+			<a href="./attributes">Attributes</a>
+			<a class="sub" href="./attributes-nofail">nofail</a>
+		</div>
+		<div id="content">
+			<div id="spacer">
+				<h1>KSL Functions</h1>
+				<div>
+					Functions aren't particularly interesting. Mostly
+					just the same old-same old from other languages.
+					Here's a function that returns nothing:
+					<pre><code>function main() -> null {
+	return;
+}</code></pre>
+					Here's a function that returns an integer:
+					<pre><code>function main() -> int {
+	return 1;
+}</code></pre>
+					Here's a function that takes an integer and returns it:
+					<pre><code>function main(int a) -> int {
+	return a;
+}</code></pre>
+					Finally, here's a function that uses the
+					<code>nofail</code> attribute so that it won't
+					crash the program if something inside of it breaks.
+					Think of it like a big try-catch block for the entire
+					function.
+					<pre><code>@[nofail]
+function api_divide_by_zero(int a) -> int {
+	return a / 0;
+}</code></pre>
+					Since you can't divide by zero the function will
+					fail, but because of the nofail attribute, it won't
+					crash your entire program.
+					<br><br>
+					For exact details on how the <code>nofail</code>
+					attribute works, please see <a href="./attributes-nofail">nofail</a>.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
