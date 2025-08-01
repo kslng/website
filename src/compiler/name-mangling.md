@@ -51,6 +51,6 @@ std__io__writeln____f32__i64
 ```
 
 You'll also see that the type keyword `int` turns into `i64`.
-This is because, as explained in [variables](src\variable\readme.md),
+This is because, as explained in [variables](../variable/readme.md),
 `int` and `float` are just aliases for `i64` and `f64` respectively.
 Reasoning for this choice are explained there.
