@@ -1,7 +1,7 @@
 # Hello World in KSL
 
 Ah yes, the traditional "hello world" program. Luckily for you, my
-dear programmer, we have a fun little cheat for the worlds most basic
+dear programmer, we have a fun little cheat for the world's most basic
 program. The hello world program seems to be something that a lot of
 developers end up building, and KSL wants to make everything easier.
 

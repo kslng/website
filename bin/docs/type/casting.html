@@ -258,13 +258,19 @@ int x = int'(1.0 + 1.0);
 <pre><code class="language-c">// This is turned into 1 + 1 then turned into 2.
 int x = int'1.0 + 1;
 </code></pre>
-<div class="mdbook-alerts mdbook-alerts-note">
-<p class="mdbook-alerts-title">
-  <span class="mdbook-alerts-icon"></span>
-  note
-</p>
-<p>Since the casting syntax uses an apostrophe, string and char support in the future might be a little wonky, haha.</p>
-</div>
+<p>A quick note on casting to booleans:</p>
+<p>In some languages casting integers or floats to a boolean may be different.
+In KSL all integers other than <code>0</code> are cast to <code>true</code>. Similarly, all floats
+other than <code>0.0</code> are cast to <code>true</code>:</p>
+<pre><code class="language-c">bool'1;         // true
+bool'0;         // false
+bool'252466642; // true
+bool'-35;       // true
+
+bool'0.0;       // false
+bool'135.03111; // true
+bool'-135.77;   // true
+</code></pre>
 <div class="mdbook-alerts mdbook-alerts-warning">
 <p class="mdbook-alerts-title">
   <span class="mdbook-alerts-icon"></span>

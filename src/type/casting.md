@@ -25,8 +25,22 @@ Example where only the first number value is cast:
 int x = int'1.0 + 1;
 ```
 
-> [!NOTE]
-> Since the casting syntax uses an apostrophe, string and char support in the future might be a little wonky, haha.
+A quick note on casting to booleans:
+
+In some languages casting integers or floats to a boolean may be different.
+In KSL all integers other than `0` are cast to `true`. Similarly, all floats
+other than `0.0` are cast to `true`:
+
+```c
+bool'1;         // true
+bool'0;         // false
+bool'252466642; // true
+bool'-35;       // true
+
+bool'0.0;       // false
+bool'135.03111; // true
+bool'-135.77;   // true
+```
 
 > [!WARNING]
 > Documentation incomplete, pulled from unfinished ksl/ksl_syntax.md file.

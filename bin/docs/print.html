@@ -590,7 +590,7 @@
 </style>
 <h1 id="hello-world-in-ksl"><a class="header" href="#hello-world-in-ksl">Hello World in KSL</a></h1>
 <p>Ah yes, the traditional "hello world" program. Luckily for you, my
-dear programmer, we have a fun little cheat for the worlds most basic
+dear programmer, we have a fun little cheat for the world's most basic
 program. The hello world program seems to be something that a lot of
 developers end up building, and KSL wants to make everything easier.</p>
 <p>So we decided to make a standard library module for the hello world program!</p>
@@ -963,6 +963,34 @@ function main() -&gt; void {
 
 </style>
 <h1 id="comments"><a class="header" href="#comments">Comments</a></h1>
+<p>Comments in KSL are similar to any other modern language.
+For a single line comment you can do <code>//</code> and for a multi-
+line comment, the usual <code>/*</code> <code>*/</code> syntax.</p>
+<pre><code class="language-c">// Below is a function, and this is a comment!
+function main() -&gt; void {
+	return;
+}
+</code></pre>
+<pre><code class="language-c">/*
+ Below is a function that returns void,
+ and this is a multi-line comment!
+*/
+function main() -&gt; void {
+	return;
+}
+</code></pre>
+<p>You can even use this inline! (If you're crazy...)</p>
+<pre><code class="language-c">function /* create a function */ main /* call it `main` */ () /* no args */ -&gt; void /* return nothing */ {
+	return /* see, nothing! */;
+}
+</code></pre>
+<div class="mdbook-alerts mdbook-alerts-note">
+<p class="mdbook-alerts-title">
+  <span class="mdbook-alerts-icon"></span>
+  note
+</p>
+<p>Due to some current limitations, KSL has a hard time handling nested multi-line comments.</p>
+</div>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -2275,6 +2303,24 @@ algebraic operations as well.</p>
 
 </style>
 <h1 id="while"><a class="header" href="#while">While</a></h1>
+<p>The syntax for while loops is absurdly easy. All you need is the
+<code>while</code> keyword with some parenthesis and an expression.</p>
+<pre><code class="language-c">while (&lt;expression&gt;) {
+	// Do something? Maybe?
+}
+</code></pre>
+<p>The only real requirement is that the expression type is a
+boolean. KSL will give you a nice error if you don't. If this
+is a problem, you can always cast to a boolean.</p>
+<pre><code class="language-c">while (bool'127) {
+	// Do something? Probably?
+}
+</code></pre>
+<p>For those of you focused on performance, look, I get it. You want
+the fastest loop option, for loop or while loop? Which is it?</p>
+<p>Well, the answer is pretty simple. Both the for loop and while loop
+are compiled down to the exact same code. So the speed of your
+program mostly lies with the quality of the code.</p>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -2360,13 +2406,19 @@ int x = int'(1.0 + 1.0);
 <pre><code class="language-c">// This is turned into 1 + 1 then turned into 2.
 int x = int'1.0 + 1;
 </code></pre>
-<div class="mdbook-alerts mdbook-alerts-note">
-<p class="mdbook-alerts-title">
-  <span class="mdbook-alerts-icon"></span>
-  note
-</p>
-<p>Since the casting syntax uses an apostrophe, string and char support in the future might be a little wonky, haha.</p>
-</div>
+<p>A quick note on casting to booleans:</p>
+<p>In some languages casting integers or floats to a boolean may be different.
+In KSL all integers other than <code>0</code> are cast to <code>true</code>. Similarly, all floats
+other than <code>0.0</code> are cast to <code>true</code>:</p>
+<pre><code class="language-c">bool'1;         // true
+bool'0;         // false
+bool'252466642; // true
+bool'-35;       // true
+
+bool'0.0;       // false
+bool'135.03111; // true
+bool'-135.77;   // true
+</code></pre>
 <div class="mdbook-alerts mdbook-alerts-warning">
 <p class="mdbook-alerts-title">
   <span class="mdbook-alerts-icon"></span>
@@ -3292,6 +3344,60 @@ then you probably don't want to worry about anything here.</p>
 
 </style>
 <h1 id="compiling-the-compiler"><a class="header" href="#compiling-the-compiler">Compiling the Compiler</a></h1>
+<h2 id="on-windows"><a class="header" href="#on-windows">On Windows</a></h2>
+<p>Requirements:</p>
+<ul>
+<li>KSL Source Code</li>
+<li>Rust 1.87^: Download <a href="https://www.rust-lang.org/tools/install">Rust</a></li>
+<li>LLVM 18.1.x: Download <a href="https://github.com/llvm/llvm-project/releases/tag/llvmorg-18.1.8">LLVM</a></li>
+<li>The <code>libxml2</code> requirement for LLVM seems to be missing on Windows, luckily you can download it with <code>vcpkg install libxml2:x64-windows</code>. Once it's downloaded, rename the file from <code>libxml2</code> to <code>libxml2s</code> and put it in your <code>llvm/lib</code> folder.
+<ul>
+<li>If you need <code>vcpkg</code> click <a href="https://learn.microsoft.com/en-us/vcpkg/get_started/get-started?pivots=shell-powershell#1---set-up-vcpkg">here</a>.</li>
+</ul>
+</li>
+</ul>
+<p>You'll want to make sure Rust is installed fully. I've found that
+installing it globally just takes care of a lot of potential issues.
+Make sure the <code>LLVM/bin</code> folder is added to your path as well.
+On top of that, you'll want to make a new system variable:</p>
+<div class="table-wrapper"><table><thead><tr><th>Variable</th><th>Value</th></tr></thead><tbody>
+<tr><td>LLVM_SYS_180_PREFIX</td><td>&lt;your_llvm_root_directory&gt;</td></tr>
+</tbody></table>
+</div>
+<p>Once you have Rust and LLVM set up you shouldn't really need anything
+else! Just navigate to the ksl source code root directory and run
+<code>cargo build</code> or <code>cargo build --release</code>.</p>
+<p>It sounds pretty simple but some of the config stuff can take a while
+to figure out, I'd say this process could take anywhere between 30 minutes
+and few hours, depending on your technical skills. Don't get discouraged
+if it takes a while.</p>
+<h2 id="on-linux"><a class="header" href="#on-linux">On Linux</a></h2>
+<div class="mdbook-alerts mdbook-alerts-note">
+<p class="mdbook-alerts-title">
+  <span class="mdbook-alerts-icon"></span>
+  note
+</p>
+<p>Documentation help wanted! The Linux build instructions are not finalized and may depend on distro, any contributions would be great!</p>
+</div>
+<p>Requirements:</p>
+<ul>
+<li>KSL Source Code</li>
+<li>Rust 1.87^: Download <a href="https://www.rust-lang.org/tools/install">Rust</a></li>
+<li>LLVM 18.1.x: Download <a href="https://github.com/llvm/llvm-project/releases/tag/llvmorg-18.1.8">LLVM</a></li>
+</ul>
+<h2 id="on-macos"><a class="header" href="#on-macos">On MacOS</a></h2>
+<div class="mdbook-alerts mdbook-alerts-note">
+<p class="mdbook-alerts-title">
+  <span class="mdbook-alerts-icon"></span>
+  note
+</p>
+<p>Documentation help wanted! The MacOS build instructions are not finalized. Any contributions toward this section would be super helpful!</p>
+</div>
+<ul>
+<li>KSL Source Code</li>
+<li>Rust 1.87^: Download <a href="https://www.rust-lang.org/tools/install">Rust</a></li>
+<li>LLVM 18.1.x: Download <a href="https://github.com/llvm/llvm-project/releases/tag/llvmorg-18.1.8">LLVM</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;

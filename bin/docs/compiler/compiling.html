@@ -241,6 +241,60 @@
 
 </style>
 <h1 id="compiling-the-compiler"><a class="header" href="#compiling-the-compiler">Compiling the Compiler</a></h1>
+<h2 id="on-windows"><a class="header" href="#on-windows">On Windows</a></h2>
+<p>Requirements:</p>
+<ul>
+<li>KSL Source Code</li>
+<li>Rust 1.87^: Download <a href="https://www.rust-lang.org/tools/install">Rust</a></li>
+<li>LLVM 18.1.x: Download <a href="https://github.com/llvm/llvm-project/releases/tag/llvmorg-18.1.8">LLVM</a></li>
+<li>The <code>libxml2</code> requirement for LLVM seems to be missing on Windows, luckily you can download it with <code>vcpkg install libxml2:x64-windows</code>. Once it's downloaded, rename the file from <code>libxml2</code> to <code>libxml2s</code> and put it in your <code>llvm/lib</code> folder.
+<ul>
+<li>If you need <code>vcpkg</code> click <a href="https://learn.microsoft.com/en-us/vcpkg/get_started/get-started?pivots=shell-powershell#1---set-up-vcpkg">here</a>.</li>
+</ul>
+</li>
+</ul>
+<p>You'll want to make sure Rust is installed fully. I've found that
+installing it globally just takes care of a lot of potential issues.
+Make sure the <code>LLVM/bin</code> folder is added to your path as well.
+On top of that, you'll want to make a new system variable:</p>
+<div class="table-wrapper"><table><thead><tr><th>Variable</th><th>Value</th></tr></thead><tbody>
+<tr><td>LLVM_SYS_180_PREFIX</td><td>&lt;your_llvm_root_directory&gt;</td></tr>
+</tbody></table>
+</div>
+<p>Once you have Rust and LLVM set up you shouldn't really need anything
+else! Just navigate to the ksl source code root directory and run
+<code>cargo build</code> or <code>cargo build --release</code>.</p>
+<p>It sounds pretty simple but some of the config stuff can take a while
+to figure out, I'd say this process could take anywhere between 30 minutes
+and few hours, depending on your technical skills. Don't get discouraged
+if it takes a while.</p>
+<h2 id="on-linux"><a class="header" href="#on-linux">On Linux</a></h2>
+<div class="mdbook-alerts mdbook-alerts-note">
+<p class="mdbook-alerts-title">
+  <span class="mdbook-alerts-icon"></span>
+  note
+</p>
+<p>Documentation help wanted! The Linux build instructions are not finalized and may depend on distro, any contributions would be great!</p>
+</div>
+<p>Requirements:</p>
+<ul>
+<li>KSL Source Code</li>
+<li>Rust 1.87^: Download <a href="https://www.rust-lang.org/tools/install">Rust</a></li>
+<li>LLVM 18.1.x: Download <a href="https://github.com/llvm/llvm-project/releases/tag/llvmorg-18.1.8">LLVM</a></li>
+</ul>
+<h2 id="on-macos"><a class="header" href="#on-macos">On MacOS</a></h2>
+<div class="mdbook-alerts mdbook-alerts-note">
+<p class="mdbook-alerts-title">
+  <span class="mdbook-alerts-icon"></span>
+  note
+</p>
+<p>Documentation help wanted! The MacOS build instructions are not finalized. Any contributions toward this section would be super helpful!</p>
+</div>
+<ul>
+<li>KSL Source Code</li>
+<li>Rust 1.87^: Download <a href="https://www.rust-lang.org/tools/install">Rust</a></li>
+<li>LLVM 18.1.x: Download <a href="https://github.com/llvm/llvm-project/releases/tag/llvmorg-18.1.8">LLVM</a></li>
+</ul>
 
                     </main>
 

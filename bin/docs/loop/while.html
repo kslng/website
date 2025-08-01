@@ -241,6 +241,24 @@
 
 </style>
 <h1 id="while"><a class="header" href="#while">While</a></h1>
+<p>The syntax for while loops is absurdly easy. All you need is the
+<code>while</code> keyword with some parenthesis and an expression.</p>
+<pre><code class="language-c">while (&lt;expression&gt;) {
+	// Do something? Maybe?
+}
+</code></pre>
+<p>The only real requirement is that the expression type is a
+boolean. KSL will give you a nice error if you don't. If this
+is a problem, you can always cast to a boolean.</p>
+<pre><code class="language-c">while (bool'127) {
+	// Do something? Probably?
+}
+</code></pre>
+<p>For those of you focused on performance, look, I get it. You want
+the fastest loop option, for loop or while loop? Which is it?</p>
+<p>Well, the answer is pretty simple. Both the for loop and while loop
+are compiled down to the exact same code. So the speed of your
+program mostly lies with the quality of the code.</p>
 
                     </main>
 
