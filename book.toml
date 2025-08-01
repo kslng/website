@@ -1,0 +1,9 @@
+[book]
+title = "KSL Documentation"
+language = "en"
+
+[build]
+build-dir = "bin/docs"
+
+[output.html.search]
+limit-results = 15
