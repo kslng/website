@@ -1,6 +1,10 @@
 [book]
 title = "KSL Documentation"
+authors = ["kgsensei"]
 language = "en"
+src = "src"
+
+[preprocessor.alerts]
 
 [build]
 build-dir = "bin/docs"
