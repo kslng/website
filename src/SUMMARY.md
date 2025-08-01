@@ -54,4 +54,6 @@
 ---
 
 - [Compiler Internals](compiler/readme.md)
+  - [Compiling the Compiler](compiler/compiling.md)
+  - [Compiling KSL-STDLIB](compiler/compile-stdlib.md)
   - [Name Mangling Convention](compiler/name-mangling.md)
