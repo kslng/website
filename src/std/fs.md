@@ -3,6 +3,10 @@
 > [!WARNING]
 > The STD-FS module is not stable and/or partially implemented.
 
+```c
+using std.fs;
+```
+
 ### read
 
 Parameters:  

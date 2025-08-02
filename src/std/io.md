@@ -1,7 +1,11 @@
 # IO
 
 > [!WARNING]
-> The STD-ENV module is not stable and/or partially implemented.
+> The STD-IO module is not stable and/or partially implemented.
+
+```c
+using std.io;
+```
 
 ### writeln
 

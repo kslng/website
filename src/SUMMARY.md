@@ -43,6 +43,7 @@
   - [Import](using/import.md)
   - [Links](using/links.md)
 - [Namespaces](namespace/readme.md)
+- [FFI Concepts](ffi/readme.md)
 
 ---
 

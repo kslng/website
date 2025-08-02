@@ -3,6 +3,10 @@
 > [!WARNING]
 > The STD-ENV module is not stable and/or partially implemented.
 
+```c
+using std.env;
+```
+
 ### get
 
 Parameters:  
