@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>ENV - KSL Documentation</title>
+        <title>Expression Semantics - KSL Documentation</title>
 
 
         <!-- Custom HTML head -->
@@ -240,35 +240,36 @@
 }
 
 </style>
-<h1 id="env"><a class="header" href="#env">ENV</a></h1>
-<div class="mdbook-alerts mdbook-alerts-warning">
-<p class="mdbook-alerts-title">
-  <span class="mdbook-alerts-icon"></span>
-  warning
-</p>
-<p>The STD-ENV module is not stable and/or partially implemented.</p>
-</div>
-<h3 id="get"><a class="header" href="#get">get</a></h3>
-<p>Parameters:<br />
-1 = string | environment variable name</p>
-<p>Returns:<br />
-string | contents of environment variable</p>
-<h3 id="args"><a class="header" href="#args">args</a></h3>
-<p>Parameters:</p>
-<p>Returns:<br />
-string[] | command line parameters on launch</p>
+<h1 id="expression-semantics"><a class="header" href="#expression-semantics">Expression Semantics</a></h1>
+<p>This page will go over how semantic analysis handles expressions.
+It will cover the technical details behind return type prediction
+in <a href="../function/inline-calls.html">inline calls</a> and type promotion.</p>
+<p>Currently, KSL will travel the expression in the AST and determine
+the smallest possible type for all literals and the types defined
+for each variable. It will then cross reference these anywhere there
+is an operation between them. It will pick the larger type of the
+two and "promote" the entire expression to that type. This way we
+can calculate expressions for differing types without losing data
+from downcasts.</p>
+<hr />
+<p>In the future, we're likely to change this system so that the entire
+expression recieves a type hint ahead of time. It will attempt to
+convert all literals (and potentially variables) to this type. If
+the expression ends up with a larger type than the hint it will simply
+throw an error.</p>
+<p>Additionally, if there is a type that doesn't match the rest that
+cannot be implicitly changed it will throw a warning or error to
+the programmer explaining that in order to "do this operation" they
+must cast to an acceptable type.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../std/fs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../compiler/fractstrike-gc.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../compiler/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -276,13 +277,10 @@ string[] | command line parameters on launch</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../std/fs.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../compiler/fractstrike-gc.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../compiler/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>

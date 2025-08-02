@@ -57,3 +57,5 @@
   - [Compiling the Compiler](compiler/compiling.md)
   - [Compiling KSL-STDLIB](compiler/compile-stdlib.md)
   - [Name Mangling Convention](compiler/name-mangling.md)
+  - [What is fractstrike](compiler/fractstrike-gc.md)
+  - [Expression Semantics](compiler/expr-semantics.md)
