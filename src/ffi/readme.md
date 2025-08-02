@@ -1,6 +1,6 @@
 # FFI Concepts
 
-Currently we're discussing adding a no mangle [attribute](../attribute/readme.md).
+Currently we're discussing adding a no mangle [attribute](../attribute/).
 This would do exactly what it sounds like, it would maintain it's function name
 regardless of the name mangling schema.
 
@@ -16,3 +16,14 @@ This is still pretty close to KSL syntax and it's relatively intuitive so it's l
 This would enable developers to call functions in non-officially supported linked object
 files while maintaining the type and memory safety of KSL (assuming they don't get type
 translations wrong.)
+
+Additionally, for declaring multiple external functions at once, there could be
+an optional block inside.
+
+```c
+extern {
+	function func_in_another_lang_zero(int) -> void;
+	function func_in_another_lang_one(float) -> int;
+	function func_in_another_lang_two(int) -> float;
+}
+```

@@ -3000,7 +3000,7 @@ using std.env; // Links the standard environment library.
 
 </style>
 <h1 id="ffi-concepts"><a class="header" href="#ffi-concepts">FFI Concepts</a></h1>
-<p>Currently we're discussing adding a no mangle <a href="ffi/../attribute/readme.html">attribute</a>.
+<p>Currently we're discussing adding a no mangle <a href="ffi/../attribute/">attribute</a>.
 This would do exactly what it sounds like, it would maintain it's function name
 regardless of the name mangling schema.</p>
 <p>We're also thinking about adding some kind of syntax that would allow raw/manual
@@ -3011,6 +3011,14 @@ forward declarations without KSL doing any kind of type predictions.</p>
 <p>This would enable developers to call functions in non-officially supported linked object
 files while maintaining the type and memory safety of KSL (assuming they don't get type
 translations wrong.)</p>
+<p>Additionally, for declaring multiple external functions at once, there could be
+an optional block inside.</p>
+<pre><code class="language-c">extern {
+	function func_in_another_lang_zero(int) -&gt; void;
+	function func_in_another_lang_one(float) -&gt; int;
+	function func_in_another_lang_two(int) -&gt; float;
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
