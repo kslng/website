@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Expression Semantics - KSL Documentation</title>
+        <title>Error Codes - KSL Documentation</title>
 
 
         <!-- Custom HTML head -->
@@ -240,39 +240,47 @@
 }
 
 </style>
-<h1 id="expression-semantics"><a class="header" href="#expression-semantics">Expression Semantics</a></h1>
-<p>This page will go over how semantic analysis handles expressions.
-It will cover the technical details behind return type prediction
-in <a href="../function/inline-calls.html">inline calls</a> and type promotion.</p>
-<p>Currently, KSL will travel the expression in the AST and determine
-the smallest possible type for all literals and the types defined
-for each variable. It will then cross reference these anywhere there
-is an operation between them. It will pick the larger type of the
-two and "promote" the entire expression to that type. This way we
-can calculate expressions for differing types without losing data
-from downcasts.</p>
+<h1 id="error-codes"><a class="header" href="#error-codes">Error Codes</a></h1>
+<p>A list of error codes in the KSL compiler, where the originate, why they were triggered, etc.</p>
 <hr />
-<p>In the future, we're likely to change this system so that the entire
-expression recieves a type hint ahead of time. It will attempt to
-convert all literals (and potentially variables) to this type. If
-the expression ends up with a larger type than the hint it will simply
-throw an error.</p>
-<p>Additionally, if there is a type that doesn't match the rest that
-cannot be implicitly changed it will throw a warning or error to
-the programmer explaining that in order to "do this operation" they
-must cast to an acceptable type.</p>
+<p>ES-CTO = Error [Semantics]: Cannot use &lt;type&gt; in the context of &lt;type&lt; (attempted literal upcast)</p>
+<p>ES-CTS = Error [Semantics]: Cannot use &lt;type&gt; in the context of &lt;type&gt; (attempted type conversion)</p>
+<p>ES-CID = Error [Semantics]: Cannot implicitly convert &lt;type&gt; to &lt;type&gt; (would lose fractional data)</p>
+<p>ES-CIC = Error [Semantics]: Cannot implicity convert &lt;type&gt; to &lt;type&gt;</p>
+<p>ES-PAI = Error [Semantics]: Expected &lt;literal&gt; to be Parsed as an Integer</p>
+<p>ES-PAF = Error [Semantics]: Expected &lt;literal&gt; to be Parsed as a Float</p>
+<p>ES-TCB = Error [Semantics]: Expected variable &lt;name&gt; to be &lt;type&gt; but it's &lt;type&gt;, maybe cast?</p>
+<p>ES-RUV = Error [Semantics]: Reference to undefined variable &lt;name&gt;</p>
+<p>ES-IBT = Error [Semantics]: Invalid Binary Operation Types, Cannot use &lt;type&gt; With &lt;type&gt;, Consider Casting</p>
+<p>ES-CTH = Error [Semantics]: Inline Function Call with Type Hint Doesn't Match Function Return Type (Hint: &lt;type&gt;, Returns &lt;type&gt;)</p>
+<p>ES-UNP = Error [Semantics]: Unexpected Number of Parameters to Function &lt;name&gt;, Expected &lt;value&gt; but got &lt;value&gt;</p>
+<p>ES-ATM = Error [Semantics]: Type mismatch passed to function &lt;name&gt; in arg slot &lt;value&gt;, expected &lt;type&gt; but got &lt;type&gt;</p>
+<p>ES-DTM = Error [Semantics]: Different types passed to forward declared function &lt;name&gt; in arg slot &lt;value&gt;, previously used &lt;type&gt; but &lt;type&gt; was passed, verify this is correct</p>
+<p>ES-VTM = Error [Semantics]: Type mismatch in variable declaration &lt;name&gt;, expected &lt;type&gt; but got &lt;type&gt;</p>
+<p>ES-RTM = Error [Semantics]: Type mismatch in variable reassignment &lt;name&gt;, expected &lt;type&gt; but got &lt;type&gt;</p>
+<p>ES-VNA = Error [Semantics]: Attempted to reassign variable that does not exist &lt;name&gt;</p>
+<p>ES-RTM = Error [Semantics]: Type mismatch in function return, expected &lt;type&gt; but got &lt;type&gt;</p>
+<p>ES-FBT = Error [Semantics]: Condition in if statement must be of type Boolean, got &lt;type&gt;</p>
+<p>ES-WBT = Error [Semantics]: Condition in while statement must be of type Boolean, got &lt;type&gt;</p>
+<p>ES-OBT = Error [Semantics]: Condition in for statement must be of type Boolean, got &lt;type&gt;</p>
+<p>EP-LIX = Error [Parser]: Expected Literal in Expression, Found &lt;token&gt;</p>
+<p>EP-UTE = Error [Parser]: Unexpected Token in Expression, Found &lt;token&gt;</p>
+<p>EP-NSN = Error [Parser]: Namespace Declaration without a Name</p>
+<p>EP-FIT = Error [Parser]: Function &lt;name&gt; must derive valid type, currently &lt;invalid type name&gt;</p>
+<p>EP-FPT = Error [Parser]: Function &lt;name&gt; parameter &lt;param name&gt; must be a valid type, currently &lt;invalid type name&gt;</p>
+<p>EP-BOF = Error [Parser]: Unexpected end-of-file while parsing block</p>
+<p>EP-UIE = Error [Parser [Qden]]: Expected identifier, found &lt;token&gt;</p>
+<p>EP-UIX = Error [Parser [Iden]]: Expected identifier, found &lt;token&gt;</p>
+<p>EP-EUX = Error [Parser]: Expected &lt;token&gt; but got &lt;token&gt;</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../compiler/fractstrike-gc.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../compiler/expr-semantics.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../compiler/error-codes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -280,13 +288,10 @@ must cast to an acceptable type.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../compiler/fractstrike-gc.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../compiler/expr-semantics.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../compiler/error-codes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>

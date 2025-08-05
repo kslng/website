@@ -60,3 +60,4 @@
   - [Name Mangling Convention](compiler/name-mangling.md)
   - [What is fractstrike](compiler/fractstrike-gc.md)
   - [Expression Semantics](compiler/expr-semantics.md)
+  - [Error Codes](compiler/error-codes.md)
