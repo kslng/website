@@ -10,13 +10,19 @@ body {
 	display: flex;
 	max-width: 900px;
 	margin-top: 80px;
+	text-align: center;
 	flex-direction: column;
+}
+
+#welcome h1 {
+	font-size: 1.75rem;
 }
 
 #main_logo {
 	width: 50%;
 	margin: auto;
 	max-width: 380px;
+	margin-bottom: 30px;
 }
 
 #main_text {
@@ -27,26 +33,17 @@ body {
 
 #main_action_bar {
 	display: flex;
+	font-size: 20px;
 	margin: 40px auto;
 }
 
 #main_action_bar a {
-	margin: 15px;
-	font-size: 20px;
 	cursor: pointer;
-	border-width: 1px;
-	padding: 10px 30px;
-	border-radius: 7px;
-	border-style: solid;
-	text-decoration: none;
-	transition: background-color 200ms, border 200ms;
+	padding: 0px 30px;
 }
 
-.low_prot_a {
-	border-color: #3436b9;
-}
-
-.low_prot_a:hover {
-	border-color: #00000000;
-	background-color: #a6b3ff;
+#main_action_bar span {
+	font-size: 30px;
+	color: #6e6e6e;
+	transform: translateY(-4px);
 }
