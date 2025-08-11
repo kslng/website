@@ -246,7 +246,7 @@ This would do exactly what it sounds like, it would maintain it's function name
 regardless of the name mangling schema.</p>
 <p>We're also thinking about adding some kind of syntax that would allow raw/manual
 forward declarations without KSL doing any kind of type predictions.</p>
-<pre><code class="language-c">extern function func_in_another_language(int, float, float) -&gt; void;
+<pre><code class="language-c">extern fn func_in_another_language(int, float, float) -&gt; void;
 </code></pre>
 <p>This is still pretty close to KSL syntax and it's relatively intuitive so it's likely.</p>
 <p>This would enable developers to call functions in non-officially supported linked object
@@ -255,9 +255,9 @@ translations wrong.)</p>
 <p>Additionally, for declaring multiple external functions at once, there could be
 an optional block inside.</p>
 <pre><code class="language-c">extern {
-	function func_in_another_lang_zero(int) -&gt; void;
-	function func_in_another_lang_one(float) -&gt; int;
-	function func_in_another_lang_two(int) -&gt; float;
+	fn func_in_another_lang_zero(int) -&gt; void;
+	fn func_in_another_lang_one(float) -&gt; int;
+	fn func_in_another_lang_two(int) -&gt; float;
 }
 </code></pre>
 

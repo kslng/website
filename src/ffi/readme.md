@@ -8,7 +8,7 @@ We're also thinking about adding some kind of syntax that would allow raw/manual
 forward declarations without KSL doing any kind of type predictions.
 
 ```c
-extern function func_in_another_language(int, float, float) -> void;
+extern fn func_in_another_language(int, float, float) -> void;
 ```
 
 This is still pretty close to KSL syntax and it's relatively intuitive so it's likely.
@@ -22,8 +22,8 @@ an optional block inside.
 
 ```c
 extern {
-	function func_in_another_lang_zero(int) -> void;
-	function func_in_another_lang_one(float) -> int;
-	function func_in_another_lang_two(int) -> float;
+	fn func_in_another_lang_zero(int) -> void;
+	fn func_in_another_lang_one(float) -> int;
+	fn func_in_another_lang_two(int) -> float;
 }
 ```

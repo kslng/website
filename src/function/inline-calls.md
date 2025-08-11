@@ -19,6 +19,12 @@ Example of inline call w/ type hint:
 int x = add(1, 3) -> int + 5;
 ```
 
+Sometimes it can be easier to read if you move the type hint to
+right after the funciton:
+```c
+int x = add(1, 3)->int + 5;
+```
+
 > [!IMPORTANT]
 > You cannot use this syntax to change the function return type. If you wish to use a different type (post-return) then look into type casting. This is only to hint to the compiler what the expected return type is.
 

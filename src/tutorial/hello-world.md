@@ -10,7 +10,7 @@ So we decided to make a standard library module for the hello world program!
 ```c
 using std.t;
 
-function main() -> void {
+fn main() -> void {
 	std.t.hw();
 	return;
 }
@@ -29,7 +29,7 @@ Let's do it!
 
 So first, we're going to need a main function, our entry point.
 ```c
-function main() -> void {}
+fn main() -> void {}
 ```
 
 Since we don't need this function to return anything we can just set
@@ -44,7 +44,7 @@ finish off your "World, Hello?" program.
 ```c
 using std.io;
 
-function main() -> void {
+fn main() -> void {
 	std.io.writeln("World, Hello?");
 	return;
 }

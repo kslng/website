@@ -248,7 +248,7 @@ developers end up building, and KSL wants to make everything easier.</p>
 <p>So we decided to make a standard library module for the hello world program!</p>
 <pre><code class="language-c">using std.t;
 
-function main() -&gt; void {
+fn main() -&gt; void {
 	std.t.hw();
 	return;
 }
@@ -260,7 +260,7 @@ function main() -&gt; void {
 incredible things in the future, that's truly some outside the box thinking!</p>
 <p>Let's do it!</p>
 <p>So first, we're going to need a main function, our entry point.</p>
-<pre><code class="language-c">function main() -&gt; void {}
+<pre><code class="language-c">fn main() -&gt; void {}
 </code></pre>
 <p>Since we don't need this function to return anything we can just set
 the return type to void.</p>
@@ -270,7 +270,7 @@ standard io module. Go ahead and add it with: <code>using std.io;</code></p>
 finish off your "World, Hello?" program.</p>
 <pre><code class="language-c">using std.io;
 
-function main() -&gt; void {
+fn main() -&gt; void {
 	std.io.writeln("World, Hello?");
 	return;
 }
