@@ -241,6 +241,129 @@
 
 </style>
 <h1 id="for-loops"><a class="header" href="#for-loops">For Loops</a></h1>
+<p>If you're here you probably want to learn how to make a for loop in KSL.
+If that's the case, welcome! Otherwise, uh, leave?</p>
+<p>So, we want to make something interesting that expresses how KSL works.
+A great idea for that would be to make a simple program that generates
+a random decimal value, we'll then round that and count the number of 1's
+and 0's in a sample number!</p>
+<p>The first thing we need to do, is consider our requirements. We need to
+generate a random number, round it, and we'll want to display the results
+at the end. So we need <code>std.random</code>, <code>std.math</code>, and <code>std.io</code>.</p>
+<p>Let's start our new file, you can call it whatever you want but I'll call
+mine <code>super_epic_for_loop_example_for_the_ksl_docs_tutorial.k</code>! Without
+further adieu, let's begin.</p>
+<pre><code class="language-c#">using std.io;
+using std.math;
+using std.random;
+</code></pre>
+<p>This should get all our needs taken care of in regards to the standard
+library modules! Now we need to define our entry point.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() -&gt; int {
+	return 0;
+}</code></pre></pre>
+<p>As covered in some other tutorials (hopefully) the <code>main</code> function is
+the entry point and the <code>-&gt; int</code> defines the function derivative
+(basically the expected function return type, but KSL has to be
+<em>sooooo</em> special.)</p>
+<p>Now let's define our zero and one counts. By default all variables in KSL
+are mutable, this is great news for us because that means we don't have
+to do any extra work to update these values!</p>
+<pre><code class="language-c#">fn main() -&gt; int {
+	int zeros = 0;
+	int ones = 0;
+	return 0;
+}
+</code></pre>
+<p>We've made so much progress so far! Go ahead and get a drink of water,
+because this is where it gets real.</p>
+<p>We need to add the famed for loop now.</p>
+<pre><code class="language-c#">fn main() -&gt; int {
+	int zeros = 0;
+	int ones = 0;
+	for (int i = 0; i &lt; 100; i++;) {
+
+	}
+	return 0;
+}
+</code></pre>
+<p>So, let's disect this a little bit. The first statement is our initializer,
+we're setting the i variable to an integer with a value of 0. The next is an
+expression, it's expected to be a boolean. If the value is true then it will
+run again, otherwise it will move on in the program. Finally, we have the
+iterative statement, the i++, which is just a shorthand to increase the variable
+i by 1 in this case.</p>
+<p>Great, that was a lot, but it only gets better from here! Let's add the random
+number generation function!</p>
+<pre><code class="language-c#">fn main() -&gt; int {
+	int zeros = 0;
+	int ones = 0;
+	for (int i = 0; i &lt; 100; i++;) {
+		f64 random_float = random.rand() -&gt; f64;
+	}
+	return 0;
+}
+</code></pre>
+<p>This line of code actually covers a lot of topics in KSL, for now most of them
+aren't super necessary to know. If you want to read more later check out
+<a href="../function/inline-calls.html">inline function calls</a>, specifically inline hints.
+All you need to know for this tutorial is that this is getting a random number
+and saving it to the <code>random_float</code> variable, which we have set to a <code>f64</code>.</p>
+<p>Now we need to round this value to figure out if it will be a <code>1</code> or a <code>0</code>!</p>
+<p>We can do this with the following code, go ahead and add it after the
+<code>random_float</code> variable line.</p>
+<pre><code class="language-c">int random_rounded = math.round(random_float) -&gt; int;
+</code></pre>
+<p>If you've figured that out we can move on to the if statement, which will be
+the part of our program that actually tells us which variable to increment
+(ones or zeros, if you've already forgotten.)</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>if (random_rounded == 1) {
+	ones++;
+} else {
+	zeros++;
+}
+<span class="boring">}</span></code></pre></pre>
+<p>What this is doing is checking if the <code>random_rounded</code> variable is equal to
+<code>1</code>, if it is, then we increment the <code>ones</code> variable (remember that shorthand
+from earlier?) Otherwise, we add <code>1</code> to the <code>zeros</code> variable. Luckily, since
+the result of our random number rounding can only be <code>1</code> or <code>0</code> in this situation,
+we don't have to add any other logic for counting!</p>
+<p>If you ran this code right now it would work! But you wouldn't be able to see the
+results :( and that's kind of the point of this whole thing. So, let's use our
+awesome <code>io</code> module from the standard library to show our counts!</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>io.writeln(zeros);
+io.writeln(ones);
+<span class="boring">}</span></code></pre></pre>
+<p>Great, now it will print our counts to the console!</p>
+<p>For those of you that don't care about learning the language and just want to
+make something quickly without thinking of the potential consequences, here is
+the full code:</p>
+<pre><code class="language-c#">using std.io;
+using std.math;
+using std.random;
+
+fn main() -&gt; int {
+	int zeros = 0;
+	int ones = 0;
+	for (int i = 0; i &lt; 100; i++;) {
+		f64 random_float = random.rand() -&gt; f64;
+		int random_rounded = math.round(random_float) -&gt; int;
+		if (random_rounded == 1) {
+			ones++;
+		} else {
+			zeros++;
+		}
+	}
+	io.writeln(zeros);
+	io.writeln(ones);
+	return 0;
+}
+</code></pre>
+<p>Oh yeah, if you wanted to check your work that's also good, no hate on that.</p>
 
                     </main>
 

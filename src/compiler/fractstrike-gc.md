@@ -1,3 +1,3 @@
 # fractstrike
 
-fractstrike is ksl's runtime garbage collector.
+fractstrike is ksl's runtime garbage collector [in development].

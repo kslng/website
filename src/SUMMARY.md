@@ -51,6 +51,8 @@
   - [IO](std/io.md)
   - [FS](std/fs.md)
   - [ENV](std/env.md)
+  - [MATH](std/math.md)
+  - [RANDOM](std/random.md)
 
 ---
 
