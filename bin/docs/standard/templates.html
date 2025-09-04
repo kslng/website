@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>RANDOM - KSL Documentation</title>
+        <title>templates - KSL Documentation</title>
 
 
         <!-- Custom HTML head -->
@@ -240,17 +240,60 @@
 }
 
 </style>
-<h1 id="random"><a class="header" href="#random">Random</a></h1>
+<h1 id="templates"><a class="header" href="#templates">Templates</a></h1>
+<p>04 / 09 / 25</p>
+<h2 id="objective"><a class="header" href="#objective">Objective</a></h2>
+<p>The objective of templates is to achieve an effect similar to polymorphism.
+For example, defining baseline logic (the template) without static types, then
+during compile time a clone of the template with static types is generated
+for each unique call.</p>
+<h2 id="dictionary"><a class="header" href="#dictionary">Dictionary</a></h2>
+<p><code>template</code> - A keyword denoting the definition of a template function.<br />
+<code>$[a-zA-Z]</code> - Syntax denoting the use of an unknown type, single letters only.</p>
+<h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
+<p>In the example below you can see a template add function, it takes two parameters
+of unknown types. The parameter names are <code>x</code> and <code>y</code> with types <code>$A</code> and <code>$B</code>,
+respectively. Templates must return/derive a single type.</p>
+<pre><code class="language-cpp">template add($A x, $B y) -&gt; int {
+	return int'(x + y);
+}
+</code></pre>
+<p>If this template was called here is an example generated function:</p>
+<pre><code class="language-cpp">fn add(float x, int y) -&gt; int {
+	return int'(x + y);
+}
+
+add(10.0, 5);
+</code></pre>
+<p>Notice how in this example the template call (<code>add(10.0, 5)</code>) uses a float and an
+integer? This will dictate how to template generates the function. A template can
+also be used for multiple function calls with multiple dynamic types, ex:</p>
+<pre><code class="language-cpp">fn add(float x, int y) -&gt; int {
+	return int'(x + y);
+}
+
+fn add(float x, float y) -&gt; int {
+	return int'(x + y);
+}
+</code></pre>
+<p>Templates can also reference the dynamic types multiple times in it's function
+body as long as the result/derivitive of the function remains constant, ex:</p>
+<pre><code class="language-cpp">template multiply($A x) -&gt; int {
+	$A amount = 2;
+	$A result = x * amount;
+	return int'result;
+}
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../std/math.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../standard/for.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../standard/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../standard/functions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -260,11 +303,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../std/math.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../standard/for.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../standard/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../standard/functions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

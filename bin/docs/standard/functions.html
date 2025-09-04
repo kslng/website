@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>RANDOM - KSL Documentation</title>
+        <title>function - KSL Documentation</title>
 
 
         <!-- Custom HTML head -->
@@ -240,17 +240,45 @@
 }
 
 </style>
-<h1 id="random"><a class="header" href="#random">Random</a></h1>
+<h1 id="the-fn----return-keywords"><a class="header" href="#the-fn----return-keywords">The <code>fn</code>, <code>-&gt;</code>, &amp; <code>return</code> Keywords</a></h1>
+<p>04 / 09 / 25</p>
+<h2 id="objective"><a class="header" href="#objective">Objective</a></h2>
+<p>The objectives of the fn, -&gt;, and return keywords are to add rich function support
+to KSL.</p>
+<h2 id="dictionary"><a class="header" href="#dictionary">Dictionary</a></h2>
+<p><code>fn</code> - Keyword used to denote the start of a function.<br />
+<code>-&gt;</code> - Keyword used to denote the return type/derivative of a function.<br />
+<code>return</code> - Keyword used to return a value from a function.</p>
+<h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
+<p>The fn keyword followed by a single identifier and parenthesis defines a basic
+function. Functions also need a defined return type, which can be set using the
+derive keyword (<code>-&gt;</code>.) Once you're done in your function body you can include
+a <code>return</code> keyword to return a value. It's expected that the returned value
+matches the type defined after <code>derive</code>. Technically speaking, the return keyword
+is optional, KSL will insert one for you automatically if it doesn't see one.</p>
+<pre><code class="language-cpp">fn main(int a) -&gt; float {
+	return 10.0;
+}
+</code></pre>
+<p>In the example above we can see a function defined, this function has the name
+<code>main</code>, it takes one integer parameter called <code>a</code>, and it returns a float. This
+function has the <code>return</code> statement defined in it's function body.</p>
+<p>Functions can have multiple parameters separated by a comma. They cannot have
+multiple return types though.</p>
+<pre><code class="language-cpp">fn main(int a, int b) -&gt; int {
+	return a + b;
+}
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../std/math.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../standard/templates.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../standard/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../standard/casts.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -260,11 +288,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../std/math.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../standard/templates.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../standard/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../standard/casts.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

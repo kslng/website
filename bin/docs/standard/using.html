@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>RANDOM - KSL Documentation</title>
+        <title>using - KSL Documentation</title>
 
 
         <!-- Custom HTML head -->
@@ -240,17 +240,50 @@
 }
 
 </style>
-<h1 id="random"><a class="header" href="#random">Random</a></h1>
+<h1 id="the-using-keyword"><a class="header" href="#the-using-keyword">The <code>using</code> Keyword</a></h1>
+<p>04 / 09 / 25</p>
+<h2 id="objective"><a class="header" href="#objective">Objective</a></h2>
+<p>The objective of the using keyword is to enable multi-file projects to be compiled
+without manually defining all included files from the command line, it also serves
+as a way to disclose which existing object files should be linked after codegen.</p>
+<h2 id="dictionary"><a class="header" href="#dictionary">Dictionary</a></h2>
+<p><code>using</code> - The using keyword</p>
+<h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
+<p>The using keyword can change it's meaning depending on the syntax that follows.
+Following a using keyword with a string will tell the compiler to include another
+source file at the path provided, relative paths are preferred, example:</p>
+<pre><code class="language-cpp">/* file: main.k */
+using "./api/weather.k";
+</code></pre>
+<p>This syntax will include the source of <code>./api/weather.k</code> in the compiler. It's
+worth noting that each source file is compiled individually using a shared symbol
+table. The resulting object files for each individual source file are then linked
+together to produce the final executable.</p>
+<p>The second way to use the using keyword is with identifiers. This syntax will tell
+the compiler to link an object file following the path of the identifier. For
+example:</p>
+<pre><code class="language-cpp">/* file: main.k */
+using std.io;
+</code></pre>
+<p>This example will tell the compiler to link <code>std/io.o</code> with the resulting object
+files at the end of compilation. By default the compiler will search it's own
+working directory for object files to link, however if it does not find any then
+it will switch to the project working directory. Periods in the syntax will denote
+folders, for example:</p>
+<pre><code class="language-cpp">/* file: main.k */
+using os.api.platform;
+</code></pre>
+<p>This example will attempt to link <code>os/api/platform.o</code> with your KSL code.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../std/math.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../standard/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../standard/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../standard/conditionals.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -260,11 +293,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../std/math.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../standard/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../standard/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../standard/conditionals.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

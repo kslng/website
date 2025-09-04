@@ -56,6 +56,17 @@
 
 ---
 
+- [KSL Language Standard](standard/readme.md)
+  - [using](standard/using.md)
+  - [if/else if/else](standard/conditionals.md)
+  - [while](standard/while.md)
+  - [for](standard/for.md)
+  - [templates](standard/templates.md)
+  - [function](standard/functions.md)
+  - [casting](standard/casts.md)
+
+---
+
 - [Compiler Internals](compiler/readme.md)
   - [Compiling the Compiler](compiler/compiling.md)
   - [Compiling KSL-STDLIB](compiler/compile-stdlib.md)
