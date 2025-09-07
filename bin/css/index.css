@@ -40,6 +40,7 @@ body {
 #main_action_bar a {
 	cursor: pointer;
 	padding: 0px 30px;
+	text-decoration: none;
 }
 
 #main_action_bar span {

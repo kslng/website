@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<style>
+			:root {
+				--color: hsl(0, 0%, 95%);
+				--background: hsl(225, 40%, 4%);
+				--background-secondary: hsl(225, 20%, 6%);
+				--lighter-background: hsl(0, 0%, 30%);
+				--font: Arial, sans-serif;
+				--normal-font-size: 16px;
+				--border-radius: 4px;
+				--spacing: 16px;
+				--primary: hsl(220, 50%, 40%);
+				--primary-trans: hsla(220, 50%, 40%, 0.33);
+				--danger: hsl(0, 75%, 35%);
+				--danger-trans: hsla(0, 75%, 35%, 0.33);
+				--warning: hsl(30, 70%, 40%);
+				--warning-trans: hsla(30, 70%, 40%, 0.33);
+				--success: hsl(150, 80%, 30%);
+				--success-trans: hsla(150, 80%, 30%, 0.33);
+				--tint: hsl(220, 50%, 20%);
+				--tint-trans: hsla(220, 50%, 20%, 0.33);
+				--h1-size: 26px;
+				--h2-size: 24px;
+				--h3-size: 22px;
+				--h4-size: 20px;
+				--h5-size: 18px;
+				--h6-size: 16px;
+			}
+
+			*, *::before, *::after {
+				box-sizing: border-box;
+			}
+
+			html {
+				height: 100%;
+			}
+
+			body {
+				background-color: var(--background);
+				font-family: var(--font);
+				color: var(--color);
+				text-align: center;
+				display: flex;
+				height: 100%;
+				width: 100%;
+				padding: 0;
+				margin: 0;
+			}
+
+			.btn {
+				background-color: var(--tc);
+				border-radius: var(--border-radius);
+				padding: calc(var(--spacing) / 3) var(--spacing);
+				color: var(--color);
+				cursor: pointer;
+				border: none;
+			}
+
+			.bold { font-weight: bold; }
+			.font { font-family: var(--font); }
+			.normal { font-size: var(--normal-font-size); }
+			.danger { --tc: var(--danger); --tb: var(--danger-trans); }
+			.warning { --tc: var(--warning); --tb: var(--warning-trans); }
+			.success { --tc: var(--success); --tb: var(--success-trans); }
+			.primary { --tc: var(--primary); --tb: var(--primary-trans); }
+			.accent { --tc: var(--accent); --tb: var(--accent-trans); }
+
+			#syntax_container {
+				display: flex;
+				flex-wrap: wrap;
+				margin-top: 1rem;
+				position: relative;
+				justify-content: space-between;
+				max-width: 1200px;
+				min-height: 200px;
+				max-height: 800px;
+			}
+
+			#syntax_container img {
+				margin: auto;
+				display: block;
+				max-width: 45%;
+				min-width: 350px;
+				cursor: pointer;
+			}
+
+			code { word-break: break-all; }
+
+			.w-100 { width: 100%; }
+			.m-auto { margin: auto; }
+
+			.h1, .h2, .h3, .h4, .h5, .h6 { margin: 0; }
+			.h1 { font-size: var(--h1-size); }
+			.h2 { font-size: var(--h2-size); }
+			.h3 { font-size: var(--h3-size); }
+			.h4 { font-size: var(--h4-size); }
+			.h5 { font-size: var(--h5-size); }
+			.h6 { font-size: var(--h6-size); }
+		</style>
+		<script src="https://cdn.jsdelivr.net/gh/kgsensei/devtools@1.2/simple.min.js"></script>
+	</head>
+	<body>
+		<div class="m-auto">
+			<h1 class="h1">Select Which Syntax Looks Better</h1>
+			<div id="syntax_container">
+				<img id="a" onclick="setPreference('a')" src="./img/ab/arr_a.png">
+				<img id="b" onclick="setPreference('b')" src="./img/ab/arr_b.png">
+			</div>
+		</div>
+		<script>
+			const tests = {
+				"array_definition_syntax": ["arr_a.png", "arr_b.png"],
+				"cast_syntax": ["cast_a.png", "cast_b.png"],
+				"else_vs_elif_syntax": ["else_a.png", "else_b.png"],
+				"extern_definition_syntax": ["extern_a.png", "extern_b.png"],
+				"function_definition_syntax": ["fn_a.png", "fn_b.png"],
+				"for_loop_syntax": ["for_a.png", "for_b.png"],
+				"if_condition_syntax": ["if_a.png", "if_b.png"],
+				"type_method_syntax_test_1": ["method_a.png", "method_b.png"],
+				"type_method_syntax_test_2": ["method_a_1.png", "method_b_1.png"],
+				"namespace_accessor_syntax": ["ns_a.png", "ns_b.png"],
+				"namespace_definition_syntax": ["ns_def_a.png", "ns_def_b.png"],
+				"return_syntax": ["return_a.png", "return_b.png"],
+				"string_definition_syntax": ["str_a.png", "str_b.png"],
+				"template_defintion_syntax": ["template_a.png", "template_b.png"]
+			}
+
+			let index = 0;
+			let latest = Date.now();
+			let state = Object.keys(tests)[index];
+
+			let preferences = {};
+
+			function setPreference(type) {
+				let now = Date.now();
+				if (now - latest < 750) { return; }
+				preferences[state] = type;
+				nextTest();
+			}
+
+			function nextTest() {
+				index++;
+				const keys = Object.keys(tests);
+				if (keys.length == index) {
+					gid("syntax_container").setHTML(`<h1 class='h1 w-100'>Thank You!</h1><code>${JSON.stringify(preferences)}</code>`)
+					return;
+				}
+				const key = keys[index];
+				state = key;
+				latest = Date.now();
+				if (simple.randint(0, 1)) {
+					gid("a").setAttr("onclick", "setPreference('a')");
+					gid("a").setAttr("src", `./img/ab/${tests[key][0]}`);
+					gid("b").setAttr("onclick", "setPreference('b')");
+					gid("b").setAttr("src", `./img/ab/${tests[key][1]}`);
+				} else {
+					gid("a").setAttr("onclick", "setPreference('b')");
+					gid("a").setAttr("src", `./img/ab/${tests[key][1]}`);
+					gid("b").setAttr("onclick", "setPreference('a')");
+					gid("b").setAttr("src", `./img/ab/${tests[key][0]}`);
+				}
+			}
+		</script>
+	</body>
+</html>
