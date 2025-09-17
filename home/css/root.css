@@ -1,6 +1,9 @@
 :root {
 	--color: #ffffff;
-	--bg-color: hsl(228, 10%, 10%);
+	--color-dark: hsl(228, 10%, 75%);
+	--bg-light: hsl(228, 10%, 35%);
+	--bg-darkish: hsl(228, 10%, 22%);
+	--bg-color: hsl(228, 10%, 11%);
 	--font: Arial, Helvetica, sans-serif;
 }
 

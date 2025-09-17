@@ -3,21 +3,93 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>KSL | A Strongly Typed, AOT-Compiled, and Memory Safe Language</title>
+		<title>KSL; An experimental programming language</title>
+		
+		<meta name="description" content="KSL is an experimental programming language.">
+		<meta name="keywords" content="ksl, programming, language, compiler, kgsensei, documentation">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="kgsensei">
+		<meta name="url" content="https://kslng.org">
+		<meta name="copyright" content="kgsensei">
+		<meta name="og:url" content="https://kslng.org">
+		<meta name="og:title" content="kslng.org">
+		<meta name="og:site_name" content="kslng.org">
+		<meta name="og:description" content="KSL is an experimental programming language.">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="robots" content="index, follow">
+		<meta name="theme-color" content="#17181C">
+
 		<link rel="stylesheet" href="./css/root.css">
 		<link rel="stylesheet" href="./css/index.css">
 	</head>
 	<body>
+		<div id="nav">
+			<a href="./docs">Docs</a>
+			<a href="https://github.com/kslng/ksl/releases/latest" target="_blank">Download</a>
+			<a href="https://github.com/kslng" target="_blank">GitHub</a>
+		</div>
 		<div id="welcome">
+			<h1 class="hidden">KSL</h1>
 			<img id="main_logo" src="./img/ksl-light.svg" alt="KSL Language Logo">
-			<h1>The KSL Programming Language</h1>
-			<div id="main_action_bar">
-				<a href="https://github.com/kslng/ksl/releases/latest">Download</a>
-				<span>/</span>
-				<a href="https://github.com/kslng/ksl">Contribute</a>
-				<span>/</span>
-				<a href="./docs">Docs</a>
+			<p class="hidden">KSL is an experimental programming language built by kgsensei.</p>
+		</div>
+		<div id="quick">
+			<div>
+				<a class="btn" href="./docs/setup">
+					<span>Get Started</span>
+					<svg width="13px" height="10px" viewBox="0 0 13 10">
+						<path d="M1,5 L11,5"></path>
+						<polyline points="8 1 12 5 8 9"></polyline>
+					</svg>
+				</a>
+				<a class="btn" href="https://github.com/kslng/ksl/releases/latest" target="_blank">
+					<span>Download</span>
+					<svg width="13px" height="10px" viewBox="0 0 13 10">
+						<path d="M1,5 L11,5"></path>
+						<polyline points="8 1 12 5 8 9"></polyline>
+					</svg>
+				</a>
 			</div>
 		</div>
+		<div id="next">
+			<div id="next_content">
+				<h2 class="nt">So why KSL?</h2>
+				<div class="case">
+					<h2>Speed</h2>
+					<p>
+						KSL uses LLVM internally, which is the same backend
+						as the clang and rustc compilers. It's astonishingly
+						fast.
+					</p>
+				</div>
+				<div class="case">
+					<h2>Syntax</h2>
+					<p>
+						KSL has been extensively tested to provide one of the
+						best developer experiences possible. It has a syntax
+						that feels good to use and is easy to understand for
+						any seasoned developer.
+					</p>
+				</div>
+				<div class="case">
+					<h2>Safety</h2>
+					<p>
+						Before compiling, KSL runs extensive tests to make
+						sure your code won't break under pressure.
+					</p>
+				</div>
+				<h2 class="nt">And Other Reasons...</h2>
+				<div class="others">
+					<span>Memory Safety</span>
+					<span>Module Support</span>
+					<span>Namespace Support</span>
+					<span>Strong Type System</span>
+					<span>Object File Linking</span>
+					<span>Function Overloading</span>
+					<span>Generics &amp; Polymorphism</span>
+				</div>
+			</div>
+		</div>
+		<div id="final">KSL is a <a href="https://kgsensei.dev" target="_blank">kgsensei</a> project</div>
 	</body>
 </html>
