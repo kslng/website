@@ -15,15 +15,16 @@
         <!-- Custom HTML head -->
         {{> head}}
 
-        <meta name="description" content="{{ description }}">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff">
+		<meta name="description" content="{{ description }}; {{ title }}">
+		<meta name="keywords" content="ksl, programming, language, compiler, kgsensei, documentation">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="theme-color" content="#17181C">
+		<meta name="og:title" content="KSL Language Documentation">
+		<meta name="og:description" content="{{ description }}; {{ title }}">
+		<meta name="robots" content="index, follow">
 
         {{#if favicon_svg}}
         <link rel="icon" href="{{ resource "favicon.svg" }}">
-        {{/if}}
-        {{#if favicon_png}}
-        <link rel="shortcut icon" href="{{ resource "favicon.png" }}">
         {{/if}}
         <link rel="stylesheet" href="{{ resource "css/variables.css" }}">
         <link rel="stylesheet" href="{{ resource "css/general.css" }}">
