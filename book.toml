@@ -1,6 +1,7 @@
 [book]
 title = "KSL Documentation"
 authors = ["kgsensei"]
+description = "KSL Programming Language Documentation"
 language = "en"
 src = "src"
 
