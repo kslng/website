@@ -18,10 +18,3 @@ while (bool'127) {
 	// Do something? Probably?
 }
 ```
-
-For those of you focused on performance, look, I get it. You want
-the fastest loop option, for loop or while loop? Which is it?
-
-Well, the answer is pretty simple. Both the for loop and while loop
-are compiled down to the exact same code. So the speed of your
-program mostly lies with the quality of the code.
