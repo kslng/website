@@ -4,6 +4,10 @@ A list of error codes in the KSL compiler, where the originate, why they were tr
 
 ---
 
+EC0000 = Error \[Compiler Driver\]: Failed to read source file `{}`: `{}`
+
+---
+
 EL0000 = Error \[Lexer\]: Unexpected End-of-File Immediately After Comment Opening
 
 EL0001 = Error \[Lexer\]: Unexpected End-of-File While Lexing Comment
@@ -51,6 +55,8 @@ EP0009 = Error \[Parser\]: Expected identifier or string after using but got &lt
 EP0010 = Error \[Parser\]: Unexpected Token in Expression, Found &lt;token&gt;
 
 EP0011 = Error \[Parser\]: Expected Literal in Expression, Found &lt;token&gt;
+
+EP0012 = Error \[Parser\]: Struct appears to have more fields in literal than in definition
 
 ---
 
@@ -104,24 +110,58 @@ ES0023 = Error \[Semantics\]: Condition in while statement must be of type Boole
 
 ES0024 = Error \[Semantics\]: Condition in for statement must be of type Boolean, got &lt;type&gt;
 
+ES0025 = Error \[Semantics\]: Attempted a method call on a non-existant symbol &lt;name&gt;
+
+ES0026 = Error \[Semantics\]: Attempted to access array that doesn't exist &lt;name&gt;
+
+ES0027 = Error \[Semantics\]: Number of struct literal fields (&lt;count&gt;) do not match the number of fields in struct definition (&lt;count&gt;)
+
+ES0028 = Error \[Semantics\]: Struct field &lt;name&gt; expected type &lt;type&gt; but recieved &lt;type&gt;
+
+ES0029 = Error \[Semantics\]: Struct definition does not have expected field name &lt;name&gt;
+
+ES0030 = Error \[Semantics\]: Expected struct field &lt;name&gt; to be &lt;type&gt; but it's &lt;type&gt;, maybe cast?
+
+ES0031 = Error \[Semantics\]: Attempted to access struct field &lt;name&gt; but struct &lt;name&gt; doesn't have it
+
+ES0032 = Error \[Semantics\]: Attempted to access struct that doesn't exist &lt;name&gt;
+
+ES9000 = Warning \[Semantics\]: Break statement outside of loop will be ignored
+
+ES9001 = Warning \[Semantics\]: Continue statement outside of loop will be ignored
+
 ---
 
-ET0000 = Error \[Symbols\]: Scope &lt;scope_name&gt; not found in path
+ET0000 = Error \[Symbols\]: Path segment `{}` exists but is not a block or namespace and cannot be traversed
 
-ET0001 = Error \[Symbols\]: Symbol &lt;name&gt; already exists in current scope
+ET0001 = Error \[Symbols\]: Path segment `{}` does not exist in the current path
 
-ET0002 = Error \[Symbols\]: Symbol &lt;name&gt; exists and is not a scope
+ET0002 = Error \[Symbols\]: Overload index `{}` for function `{}` is out of bounds
 
-ET0003 = Error \[Symbols\]: Symbol &lt;name&gt; already exists in specified scope
+ET0003 = Error \[Symbols\]: Path segment `{}` exists but is not a function or function group and cannot be traversed
 
-ET0004 = Error \[Symbols\]: Invalid scope in path &lt;scope_name&gt;
+ET0004 = Error \[Symbols\]: Symbol `{}` not found while traversing path segments
 
-ET0005 = Error \[Symbols\]: Cannot enter scope &lt;scope_name&gt; because it's occupied by a non-scope-containing symbol
+ET0005 = Error \[Symbols\]: Unexpected symbol type when attempting to overload function `{}`
+
+ET0006 = Error \[Symbols\]: Cannot insert non-function symbol into FunctionGroup `{}`
+
+ET0007 = Error \[Symbols\]: Symbol `{}` already exists and is not overloadable
+
+ET0008 = Error \[Symbols\]: Cannot traverse into FunctionGroup segment `{}` under the current context
+
+ET0009 = Error \[Symbols\]: Scope segment `{}` exists but cannot be traversed
+
+ET0010 = Error \[Symbols\]: No overload of function `{}` matches the provided parameters `{}`
 
 ---
 
-EN0000 = Error \[Linker\]: KSL requires &lt;os_linker&gt; for linking, install it or add it to path
+ENL001 = Error \[Linker-Linux\]: Looks Like `gcc` Doesn't Exist or Isn't in Path. KSL Requires it to Build Binaries on Linux
 
-EN0001 = Error \[Linker\]: Failed to run linker: &lt;linker_error&gt;
+ENL001 = Error \[Linker-Linux\]: Linker failed with status code `{}`
 
-EN0002 = Error \[Linker\]: Linker failed with status code &lt;linker_status&gt;&lt;linker_error&gt;
+ENW000 = Error \[Linker-Windows\]: Linker failed with status code `{}`
+
+ENW001 = Error \[Linker-Windows\]: Expected Linker to be part of MSVC on Windows
+
+ENW002 = Error \[Linker-Windows\]: Unable to find Linker Resources for `{}`, Is MSVC Installed?
