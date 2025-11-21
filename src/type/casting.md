@@ -41,5 +41,7 @@ bool'135.03111; // true
 bool'-135.77;   // true
 ```
 
+For more information on the boolean type in KSL check out [this page](./booleans.md).
+
 > [!IMPORTANT]
 > Casting cannot be done on arrays or structs, you'll have to manually cast the elements or fields. Casting is not a custom method you can implement for a type.
