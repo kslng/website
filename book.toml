@@ -5,8 +5,6 @@ description = "KSL Programming Language Documentation"
 language = "en"
 src = "src"
 
-[preprocessor.alerts]
-
 [build]
 build-dir = "bin/docs"
 
