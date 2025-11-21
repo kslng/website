@@ -1,6 +1,6 @@
 # Entry
 
-## Usage:
+## Usage
 
 ```ksl
 @inline

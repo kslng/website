@@ -1,6 +1,6 @@
 # No Fail
 
-## Usage:
+## Usage
 
 ```ksl
 @no_fail
@@ -28,7 +28,7 @@ In this new example the `@no_fail` function attribute has a value assigned to it
 (`-1`), so when this function fails due to the aforementioned "divide by 0"
 error, it will instead return `-1`.
 
-## Purpose:
+## Purpose
 
 The purpose of the `@no_fail` function attribute is to provide a better error
 catching system that doesn't rely on large code blocks. Additionally, by using
