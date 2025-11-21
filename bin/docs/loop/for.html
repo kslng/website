@@ -245,6 +245,19 @@
 
 </style>
 <h1 id="for"><a class="header" href="#for">For</a></h1>
+<p>The syntax for <code>for</code> loops is pretty simple. Just like in most languages with a
+<code>for</code> loop actually.</p>
+<p>You'll need an initialization statement (which is run once at the beginning), an
+expression to check if the <code>for</code> loop should continue, and finally an iterative
+expression (which is run at the end of every iteration.)</p>
+<pre><code class="language-ksl">//       +------------------ Initial Statement
+//       |        +--------- Check/Continue(?) Expression
+//       |        |      +-- Iterative Expression
+//       |        |      |
+for (int i = 0; i &lt; 30; i++) {
+	io.writeln(i);
+}
+</code></pre>
 
                     </main>
 

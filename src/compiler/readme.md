@@ -6,7 +6,7 @@ actively working on the KSL compiler or building a KSL module
 then you probably don't want to worry about anything here.
 
 - [Compiling the Compiler](compiling.md)
-- [Compiling KSL-STDLIB](compile-stdlib.md)
+- [Compiling the Standard Library](compile-stdlib.md)
 - [Name Mangling Convention](name-mangling.md)
-- [What is fractstrike](fractstrike-gc.md)
-- [Expression Semantics](expr-semantics.md)
+- [Expression Type Semantics](expr-semantics.md)
+- [KSL Compiler Error Codes](error-codes.md)

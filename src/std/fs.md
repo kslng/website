@@ -3,7 +3,7 @@
 > [!WARNING]
 > The STD-FS module is not stable and/or partially implemented.
 
-```c
+```ksl
 using std.fs;
 ```
 

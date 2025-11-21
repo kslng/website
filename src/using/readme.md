@@ -23,6 +23,3 @@ using std.env; // Links the standard environment library.
 
 > [!NOTE]
 > The biggest difference is that imports (using "") are .k or .ksl files, most likely part of your own codebase. Links, on the other hand (using &lt;iden&gt;) link object files to your final executable. These object files are expected to be in the same directory as the compiler itself, but project-specific support may be added in the future. Each period represents a directory. So `std.io` would link the `std/io.o` object file into the final executable.
-
-> [!WARNING]
-> Documentation incomplete, pulled from unfinished ksl/ksl_syntax.md file.

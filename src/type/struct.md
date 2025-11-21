@@ -1,3 +1,3 @@
-# Booleans
+# Structs
 
 *Docs Coming Soon*

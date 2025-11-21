@@ -245,20 +245,21 @@
 
 </style>
 <h1 id="ffi-concepts"><a class="header" href="#ffi-concepts">FFI Concepts</a></h1>
-<p>Currently we're discussing adding a no mangle <a href="../attribute/">attribute</a>.
+<p>Currently we're discussing adding a <code>@no_mangle</code> <a href="../attribute/">attribute</a>.
 This would do exactly what it sounds like, it would maintain it's function name
 regardless of the name mangling schema.</p>
 <p>We're also thinking about adding some kind of syntax that would allow raw/manual
 forward declarations without KSL doing any kind of type predictions.</p>
-<pre><code class="language-c">extern fn func_in_another_language(int, float, float) -&gt; void;
+<pre><code class="language-ksl">extern fn func_in_another_language(int, float, float) -&gt; void;
 </code></pre>
-<p>This is still pretty close to KSL syntax and it's relatively intuitive so it's likely.</p>
-<p>This would enable developers to call functions in non-officially supported linked object
-files while maintaining the type and memory safety of KSL (assuming they don't get type
-translations wrong.)</p>
+<p>This is still pretty close to KSL syntax and it's relatively intuitive so it's
+likely.</p>
+<p>This would enable developers to call functions in non-officially supported
+linked object files while maintaining the type and memory safety of KSL
+(assuming they don't get type translations wrong.)</p>
 <p>Additionally, for declaring multiple external functions at once, there could be
 an optional block inside.</p>
-<pre><code class="language-c">extern {
+<pre><code class="language-ksl">extern {
 	fn func_in_another_lang_zero(int) -&gt; void;
 	fn func_in_another_lang_one(float) -&gt; int;
 	fn func_in_another_lang_two(int) -&gt; float;

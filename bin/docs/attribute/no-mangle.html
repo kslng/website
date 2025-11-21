@@ -3,18 +3,18 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>While Loops - KSL Documentation</title>
+        <title>No Mangle - KSL Documentation</title>
 
 
         <!-- Custom HTML head -->
 
-		<meta name="description" content="KSL Programming Language Documentation; While Loops - KSL Documentation">
+		<meta name="description" content="KSL Programming Language Documentation; No Mangle - KSL Documentation">
 		<meta name="keywords" content="ksl, programming, language, compiler, kgsensei, documentation">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#17181C">
 		<meta name="og:site_name" content="kslng.org">
 		<meta name="og:title" content="KSL Language Documentation">
-		<meta name="og:description" content="KSL Programming Language Documentation; While Loops - KSL Documentation">
+		<meta name="og:description" content="KSL Programming Language Documentation; No Mangle - KSL Documentation">
 		<meta name="robots" content="index, follow">
 
         <link rel="icon" href="../favicon.svg">
@@ -244,17 +244,27 @@
 }
 
 </style>
-<h1 id="while-loops"><a class="header" href="#while-loops">While Loops</a></h1>
+<h1 id="no-mangle"><a class="header" href="#no-mangle">No Mangle</a></h1>
+<h2 id="usage"><a class="header" href="#usage">Usage:</a></h2>
+<pre><code class="language-ksl">@no_mangle
+fn non_mangled_function() -&gt; void {}
+
+fn mangled_function() -&gt; void {}
+</code></pre>
+<h2 id="purpose"><a class="header" href="#purpose">Purpose:</a></h2>
+<p>The purpose of the <code>@no_mangle</code> function attribute is to prevent function names
+from becoming mangled in a binary/object file outputted by KSL. This supports
+better cross-language development efforts.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../tutorial/for-loop.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../attribute/no-fail.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../tutorial/rock-paper-scissors.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../using/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -264,11 +274,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../tutorial/for-loop.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../attribute/no-fail.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../tutorial/rock-paper-scissors.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../using/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

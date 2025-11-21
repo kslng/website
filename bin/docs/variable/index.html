@@ -245,9 +245,9 @@
 
 </style>
 <h1 id="variables"><a class="header" href="#variables">Variables</a></h1>
-<p>Variable declarations are extremely simple. Simply pick a variable
-type and identifier, then set it to a value.</p>
-<pre><code class="language-c">int x = 20;
+<p>Variable declarations are extremely simple. Simply pick a variable type and
+identifier, then set it to a value.</p>
+<pre><code class="language-ksl">int x = 20;
 </code></pre>
 <div class="mdbook-alerts mdbook-alerts-important">
 <p class="mdbook-alerts-title">
@@ -275,19 +275,26 @@ type and identifier, then set it to a value.</p>
 </p>
 <p>KSL is designed for programmers of all skill levels. Some programmers might not care (or know) about int's of different sizes, so <code>int</code> and <code>float</code> are aliases for the largest supported int and float types. It makes it easier for beginners to understand and it's more readable for simple projects that don't need to worry about tight memory constraints.</p>
 </div>
-<div class="mdbook-alerts mdbook-alerts-warning">
+<div class="mdbook-alerts mdbook-alerts-note">
 <p class="mdbook-alerts-title">
   <span class="mdbook-alerts-icon"></span>
-  warning
+  note
 </p>
-<p>Documentation incomplete, pulled from unfinished ksl/ksl_syntax.md file.</p>
+<p>You can make virtually any type an array by adding <code>[]</code> to the initialization type (e.g. <code>int[]</code> will create an int array.)</p>
+</div>
+<div class="mdbook-alerts mdbook-alerts-note">
+<p class="mdbook-alerts-title">
+  <span class="mdbook-alerts-icon"></span>
+  note
+</p>
+<p>Defining structs via the <code>struct</code> keyword will register an entierly new type to the type system, it can be treated like most other types, which means you can also make an array of structs using the struct name (e.g. <code>my_struct[]</code> will create an array of <code>my_struct</code> structs.)</p>
 </div>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../type/more.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../type/struct.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
@@ -301,7 +308,7 @@ type and identifier, then set it to a value.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../type/more.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../type/struct.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 

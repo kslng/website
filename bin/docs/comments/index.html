@@ -245,15 +245,14 @@
 
 </style>
 <h1 id="comments"><a class="header" href="#comments">Comments</a></h1>
-<p>Comments in KSL are similar to any other modern language.
-For a single line comment you can do <code>//</code> and for a multi-
-line comment, the usual <code>/*</code> <code>*/</code> syntax.</p>
-<pre><code class="language-c">// Below is a function, and this is a comment!
+<p>Comments in KSL are similar to any other modern language. For a single line
+comment you can do <code>//</code> and for a multi-line comment, the usual <code>/*</code> <code>*/</code> syntax.</p>
+<pre><code class="language-ksl">// Below is a function, and this is a comment!
 fn main() -&gt; void {
 	return;
 }
 </code></pre>
-<pre><code class="language-c">/*
+<pre><code class="language-ksl">/*
  Below is a function that returns void,
  and this is a multi-line comment!
 */
@@ -262,17 +261,10 @@ fn main() -&gt; void {
 }
 </code></pre>
 <p>You can even use this inline! (If you're crazy...)</p>
-<pre><code class="language-c">fn /* create a function */ main /* call it `main` */ () /* no args */ -&gt; void /* return nothing */ {
+<pre><code class="language-ksl">fn /* create a function */ main /* call it `main` */ () /* no args */ -&gt; void /* return nothing */ {
 	return /* see, nothing! */;
 }
 </code></pre>
-<div class="mdbook-alerts mdbook-alerts-note">
-<p class="mdbook-alerts-title">
-  <span class="mdbook-alerts-icon"></span>
-  note
-</p>
-<p>Due to some current limitations, KSL has a hard time handling nested multi-line comments.</p>
-</div>
 
                     </main>
 

@@ -1,3 +1,3 @@
-# Booleans
+# Strings
 
 *Docs Coming Soon*

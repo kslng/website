@@ -249,10 +249,13 @@
 <p>Higher precedences are executed first.</p>
 <p>Supported Binary Operations (and Precedence):</p>
 <div class="table-wrapper"><table><thead><tr><th>Operation</th><th>Symbol</th><th>Precedence</th></tr></thead><tbody>
-<tr><td>Multiply</td><td>*</td><td>80</td></tr>
-<tr><td>Divide</td><td>/</td><td>80</td></tr>
-<tr><td>Add</td><td>+</td><td>70</td></tr>
-<tr><td>Subtract</td><td>-</td><td>70</td></tr>
+<tr><td>Modulus</td><td>%</td><td>100</td></tr>
+<tr><td>Multiply</td><td>*</td><td>90</td></tr>
+<tr><td>Divide</td><td>/</td><td>90</td></tr>
+<tr><td>Add</td><td>+</td><td>80</td></tr>
+<tr><td>Subtract</td><td>-</td><td>80</td></tr>
+<tr><td>Left Shift</td><td>&lt;&lt;</td><td>70</td></tr>
+<tr><td>Right Shift</td><td>&gt;&gt;</td><td>70</td></tr>
 <tr><td>Less or Equal</td><td>&lt;=</td><td>60</td></tr>
 <tr><td>Greater or Equal</td><td>&gt;=</td><td>60</td></tr>
 <tr><td>Less Than</td><td>&lt;</td><td>50</td></tr>
@@ -271,42 +274,6 @@
 <tr><td>Cast</td><td>&lt;type&gt;'&lt;expr&gt;</td></tr>
 </tbody></table>
 </div>
-<p>Operations are only allowed between supported types. KSL may
-automatically promote expressions (ex. 12 + 300 will turn into
-i16) but it will not demote them, in order to set a variable
-to a value smaller than the type size in the resulting expression
-please downcast.</p>
-<p>Other examples of expression promotion:</p>
-<pre><code class="language-c">// Since we're working with an integer
-// and a float, we promote to a float
-float x = 10.0 + 5;
-</code></pre>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>// Since we're working with an i8 (10)
-// and an i16 (400) the expression is
-// promoted to an i16, we can still assign
-// the expression result to an i32 though
-// because the variable storage type is
-// larger. If `x` was an i8 it would cause
-// an error.
-i32 x = 10 + 400;
-<span class="boring">}</span></code></pre></pre>
-<div class="mdbook-alerts mdbook-alerts-warning">
-<p class="mdbook-alerts-title">
-  <span class="mdbook-alerts-icon"></span>
-  warning
-</p>
-<p>Information and methodology about expression promotion is subject to change as we evaluate other type safety and memory safety strategies.</p>
-</div>
-<div class="mdbook-alerts mdbook-alerts-warning">
-<p class="mdbook-alerts-title">
-  <span class="mdbook-alerts-icon"></span>
-  warning
-</p>
-<p>Documentation incomplete, pulled from unfinished ksl/ksl_syntax.md file.</p>
-</div>
-
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

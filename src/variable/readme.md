@@ -1,9 +1,9 @@
 # Variables
 
-Variable declarations are extremely simple. Simply pick a variable
-type and identifier, then set it to a value.
+Variable declarations are extremely simple. Simply pick a variable type and
+identifier, then set it to a value.
 
-```c
+```ksl
 int x = 20;
 ```
 
@@ -27,5 +27,8 @@ void    | `void`             | N\|A
 > [!NOTE]
 > KSL is designed for programmers of all skill levels. Some programmers might not care (or know) about int's of different sizes, so `int` and `float` are aliases for the largest supported int and float types. It makes it easier for beginners to understand and it's more readable for simple projects that don't need to worry about tight memory constraints.
 
-> [!WARNING]
-> Documentation incomplete, pulled from unfinished ksl/ksl_syntax.md file.
+> [!NOTE]
+> You can make virtually any type an array by adding `[]` to the initialization type (e.g. `int[]` will create an int array.)
+
+> [!NOTE]
+> Defining structs via the `struct` keyword will register an entierly new type to the type system, it can be treated like most other types, which means you can also make an array of structs using the struct name (e.g. `my_struct[]` will create an array of `my_struct` structs.)

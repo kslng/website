@@ -42,6 +42,7 @@ Requirements:
 > [!NOTE]
 > Documentation help wanted! The MacOS build instructions are not finalized. Any contributions toward this section would be super helpful!
 
+Requirements:
 - KSL Source Code
 - Rust 1.87^: Download [Rust](https://www.rust-lang.org/tools/install)
 - LLVM 18.1.x: Download [LLVM](https://github.com/llvm/llvm-project/releases/tag/llvmorg-18.1.8)

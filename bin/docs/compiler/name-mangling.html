@@ -245,56 +245,93 @@
 
 </style>
 <h1 id="name-mangling-convention"><a class="header" href="#name-mangling-convention">Name Mangling Convention</a></h1>
-<p>The KSL name mangling convention is designed to prevent
-any kind of type confusion. That includes the return type.</p>
-<p>This also means that you can provide function overloading
-in KSL modules and external object files. The main reason
-for the return type being included is so that there can be
-functions that serve the same purpose but the KSL return type
+<p>The KSL name mangling convention is designed to prevent any kind of type
+confusion. That includes the return type.</p>
+<p>This also means that you can provide function overloading in KSL modules and
+external object files. The main reason for the return type being included is so
+that there can be functions that serve the same purpose but the KSL return type
 predictor doesn't get too broken.</p>
-<p>So, for example, at the time of writing both of these
-functions exist in the <code>std.io</code> module:</p>
-<pre><code class="language-c">// std.io.writeln(int _) -&gt; int
-int std__io__writeln____int_int(int num) {
-	printf("%d", num);
-	return 0;
-}
-
-// std.io.writeln(int _) -&gt; null
-void std__io__writeln____int_null(int num) {
-	printf("%d", num);
-	return;
-}
-</code></pre>
-<p>Functionally they're the exact same, but one returns an
-integer and one returns void ("null" in KSL at the time
-of writing.)</p>
-<div class="mdbook-alerts mdbook-alerts-note">
-<p class="mdbook-alerts-title">
-  <span class="mdbook-alerts-icon"></span>
-  note
-</p>
-<p><code>void</code> is likely going to be added in the near future.</p>
-</div>
-<p>The convention for name mangling in KSL is as follows:</p>
+<p>The general rules for name mangling in KSL are as follows:</p>
 <ol>
 <li>Periods in identifiers are translated to two underscores.</li>
 <li>Space between the function name and types are four underscores.</li>
-<li>The rest of the name will have all parameter types and the return type all separated by one underscore.</li>
+<li>The rest of the name will have all parameter types and the return type all
+separated by one underscore.</li>
 </ol>
-<p>So:</p>
-<pre><code class="language-c">std.io.writeln(int num) -&gt; null
-// Becomes
-std__io__writeln____i64__null
-
-std.io.writeln(f32 x) -&gt; int
-// Becomes
-std__io__writeln____f32__i64
+<p>You'll also see that the type keyword <code>int</code> turns into <code>i64</code>. This is because,
+as explained in <a href="../variable/">variables</a>, <code>int</code> and <code>float</code> are just aliases
+for <code>i64</code> and <code>f64</code> respectively. Reasoning for this choice are explained there.</p>
+<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
+<pre><code class="language-ksl">fn main(i64 a, i64 b) -&gt; i64 {}
+//  ^    ^      ^         ^
+//  |    |      |         |
+//  |    |      |         +---- Return Type
+//  |    |      +-------------- Parameter Type
+//  |    +--------------------- Parameter Type
+//  +-------------------------- Function Name
 </code></pre>
-<p>You'll also see that the type keyword <code>int</code> turns into <code>i64</code>.
-This is because, as explained in <a href="../variable/">variables</a>,
-<code>int</code> and <code>float</code> are just aliases for <code>i64</code> and <code>f64</code> respectively.
-Reasoning for this choice are explained there.</p>
+<p><code>&lt;namespace&gt;__&lt;function_name&gt;____&lt;parameter_types&gt;_&lt;return_type&gt;</code></p>
+<p>Where:</p>
+<ul>
+<li><code>namespace</code> is the current namespace of the function</li>
+<li><code>function_name</code> is the name of the function</li>
+<li><code>parameter_types</code> are the type identifiers of all parameters concatenated with
+a <code>_</code></li>
+<li><code>return_type</code> is the function return type</li>
+</ul>
+<p>So:</p>
+<pre><code class="language-ksl">fn main(i64 a, i64 b) -&gt; i64  // Becomes: __main____i64_i64_i64
+
+namespace "api";
+fn add(f64 a, f64 b) -&gt; f64   // Becomes: api__add____f64_f64_f64
+fn getFloat() -&gt; f64          // Becomes: api__getFloat_____f64
+
+namespace "ipa";
+fn not(bool val) -&gt; bool      // Becomes: ipa__not____bool_bool
+fn testing() -&gt; void          // Becomes: ipa__testing_____null
+</code></pre>
+<h2 id="methods"><a class="header" href="#methods">Methods</a></h2>
+<div class="mdbook-alerts mdbook-alerts-warning">
+<p class="mdbook-alerts-title">
+  <span class="mdbook-alerts-icon"></span>
+  warning
+</p>
+<p>As of writing, the official conventions for methods have not been finalized.</p>
+</div>
+<pre><code class="language-ksl">    i64[] a = [10, 20];
+    a.push(30);
+//  ^  ^   ^
+//  |  |   |
+//  |  |   +----------- Parameter
+//  |  +--------------- Method Name
+//  +------------------ Variable Name
+</code></pre>
+<p><code>t&lt;variable_type&gt;_method_&lt;method_name&gt;____&lt;parameter_types&gt;</code></p>
+<p>Where:</p>
+<ul>
+<li><code>variable_type</code> is the type (int, float, arr) of the variable being operated on</li>
+<li><code>method_name</code> is the name of the method</li>
+<li><code>parameter_types</code> are the type identifiers of all parameters concatenated with
+a <code>_</code></li>
+</ul>
+<p>Since methods do not have a return type and are expected to always mutate a
+variable directly, there is no need for there to be a return type in the mangled
+name.</p>
+<p>So:</p>
+<pre><code class="language-ksl">str a = "Hello, ";
+a.join("World!");   // Becomes: tstr_method_join____str
+
+i64[] b = [10, 20];
+b.push(30);         // Becomes: tarr_method_push____i64
+</code></pre>
+<h2 id="variables"><a class="header" href="#variables">Variables</a></h2>
+<div class="mdbook-alerts mdbook-alerts-warning">
+<p class="mdbook-alerts-title">
+  <span class="mdbook-alerts-icon"></span>
+  warning
+</p>
+<p>As of writing, the official conventions for variables have not been decided.</p>
+</div>
 
                     </main>
 
@@ -304,7 +341,7 @@ Reasoning for this choice are explained there.</p>
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../compiler/fractstrike-gc.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../compiler/expr-semantics.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -318,7 +355,7 @@ Reasoning for this choice are explained there.</p>
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../compiler/fractstrike-gc.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../compiler/expr-semantics.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

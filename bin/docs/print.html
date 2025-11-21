@@ -246,13 +246,29 @@
 
 </style>
 <h1 id="welcome-to-the-ksl-docs"><a class="header" href="#welcome-to-the-ksl-docs">Welcome to the KSL Docs!</a></h1>
-<p>Hopefully you learn something useful about KSL!</p>
-<p>Think something is missing or could be improved?
-<a href="https://github.com/kslng/website">Contribute Now</a>!</p>
-<p>Here by accident?
-<a href="https://ksl.kgsensei.dev/">KSL Hopepage</a>.</p>
+<p>Hopefully you learn something useful about KSL! You can access all the pages in
+the navigation menu (left side on desktop and hamburger menu icon on mobile.)</p>
+<p>If you're just getting started, check out the <a href="./setup/">Setup Guide</a>!</p>
+<p>Here by accident? <a href="https://kslng.org">KSL Hopepage</a>.</p>
 <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
-<p>KSL is a language designed to be strongly typed, aot-compiled, and memory safe. Along with some other neat features like <a href="function/attributes.html">function attributes</a> and pretty much whatever else seems worthy of having.</p>
+<p>KSL is a language designed to be strongly typed, aot-compiled, fast, and memory
+safe. Along with some other neat features like <a href="./attribute/">function attributes</a>
+and pretty much whatever else seems worthy of having.</p>
+<p>So why should I pick KSL over another language?</p>
+<ul>
+<li>KSL is statically typed, although that can make development less fun at times,
+it catches a lot of possible runtime bugs allowing you to write safer code.</li>
+<li>KSL is <em>fast</em>, it uses the same compiler backend as C, C++, and Rust. In early
+testing it was slightly slower than C and faster than Rust.</li>
+<li>KSL is memory safe, although not as much as Rust might be, KSL does include a
+reference counting system which will take care of memory management for you!</li>
+<li>KSL was designed with developer experience in mind, with a beautiful and
+understandable syntax, fast compile times, rich documentation, and various
+other language features, I can say this is the best language I've ever
+developed in (with that being said I'm very baised.)</li>
+</ul>
+<hr />
+<p>Think something is missing or could be improved? <a href="https://github.com/kslng/ksl/blob/main/CONTRIBUTING.md">Contribute Now</a>!</p>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -321,6 +337,16 @@
 
 </style>
 <h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
+<p>Let's get KSL working on your device!</p>
+<ul>
+<li><a href="setup/./installing.html">Installing KSL</a></li>
+<li><a href="setup/./configure.html">Configuring KSL</a></li>
+</ul>
+<p>Once you get KSL installed and working, try learning about some of the language!</p>
+<ul>
+<li><a href="setup/../loop/">Loops!</a></li>
+<li><a href="setup/../function/">Functions!</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -525,6 +551,10 @@
 
 </style>
 <h1 id="tutorials"><a class="header" href="#tutorials">Tutorials</a></h1>
+<ul>
+<li><a href="tutorial/./hello-world.html">Hello World!</a></li>
+<li><a href="tutorial/./rock-paper-scissors.html">Rock, Paper, Scissors</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -593,108 +623,30 @@
 
 </style>
 <h1 id="hello-world-in-ksl"><a class="header" href="#hello-world-in-ksl">Hello World in KSL</a></h1>
-<p>Ah yes, the traditional "hello world" program. Luckily for you, my
-dear programmer, we have a fun little cheat for the world's most basic
-program. The hello world program seems to be something that a lot of
-developers end up building, and KSL wants to make everything easier.</p>
-<p>So we decided to make a standard library module for the hello world program!</p>
-<pre><code class="language-c">using std.t;
-
-fn main() -&gt; void {
-	std.t.hw();
-	return;
-}
-</code></pre>
-<p>And that's it. The <code>hw()</code> function will print "Hello, World!"</p>
-<hr />
-<p>Ok, but what if I want to actually say "World, Hello?"</p>
-<p>Now there we have some innovation! Some progress! You're going to do
-incredible things in the future, that's truly some outside the box thinking!</p>
-<p>Let's do it!</p>
+<p>Ah yes, the traditional "hello world" program. The hello world program seems to
+be something that a lot of developers end up building, how strange, this should
+be investigated...</p>
+<p>Let's build it!</p>
 <p>So first, we're going to need a main function, our entry point.</p>
-<pre><code class="language-c">fn main() -&gt; void {}
+<pre><code class="language-ksl">fn main() -&gt; void {}
 </code></pre>
-<p>Since we don't need this function to return anything we can just set
-the return type to void.</p>
-<p>We're also writing to the console, so we're going to need our good old
-standard io module. Go ahead and add it with: <code>using std.io;</code></p>
-<p>That should give us access to the <code>writeln</code> function, so let's finally
-finish off your "World, Hello?" program.</p>
-<pre><code class="language-c">using std.io;
+<p>Since we don't need our <code>main</code> function to return anything we can just set the
+return type to <code>void</code> (notice the <code>-&gt;</code> after the parenthesis and before <code>void</code>?)</p>
+<p>We're also writing to the console, so we're going to need our good old standard
+io module. Go ahead and add it with: <code>using std.io;</code> You really should do this
+at the top of the file (it's best practice,) but really anywhere works.</p>
+<p>That should give us access to the <code>writeln</code> function, so let's finish off your
+"World, Hello?" program.</p>
+<pre><code class="language-ksl">using std.io;
 
 fn main() -&gt; void {
-	std.io.writeln("World, Hello?");
+	io.writeln("World, Hello?");
 	return;
 }
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><style>
-.mdbook-alerts {
-  padding: 8px 16px;
-  margin-bottom: 16px;
-  border-left: 0.25em solid var(--mdbook-alerts-color);
-}
-
-.mdbook-alerts > *:first-child {
-  margin-top: 0;
-}
-
-.mdbook-alerts > *:last-child {
-  margin-bottom: 0;
-}
-
-.mdbook-alerts-title {
-  display: flex;
-  font-weight: 600;
-  align-items: center;
-  line-height: 1;
-  color: var(--mdbook-alerts-color);
-  text-transform: capitalize;
-}
-
-.mdbook-alerts-icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  margin-right: 0.2em;
-  background-color: currentColor;
-  -webkit-mask: no-repeat center / 100%;
-  mask: no-repeat center / 100%;
-  -webkit-mask-image: var(--mdbook-alerts-icon);
-  mask-image: var(--mdbook-alerts-icon);
-}
-
-.mdbook-alerts-note {
-  --mdbook-alerts-color: rgb(9, 105, 218);
-  /* https://icon-sets.iconify.design/material-symbols/info-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16v-4q0-.425-.288-.712T12 11q-.425 0-.712.288T11 12v4q0 .425.288.713T12 17m0-8q.425 0 .713-.288T13 8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8q0 .425.288.713T12 9m0 13q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-3.35-2.325-5.675T12 4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20m0-8"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-tip {
-  --mdbook-alerts-color: rgb(26, 127, 55);
-  /* https://icon-sets.iconify.design/material-symbols/lightbulb-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 22q-.825 0-1.412-.587T10 20h4q0 .825-.587 1.413T12 22m-3-3q-.425 0-.712-.288T8 18q0-.425.288-.712T9 17h6q.425 0 .713.288T16 18q0 .425-.288.713T15 19zm-.75-3q-1.725-1.025-2.738-2.75T4.5 9.5q0-3.125 2.188-5.312T12 2q3.125 0 5.313 2.188T19.5 9.5q0 2.025-1.012 3.75T15.75 16zm.6-2h6.3q1.125-.8 1.738-1.975T17.5 9.5q0-2.3-1.6-3.9T12 4Q9.7 4 8.1 5.6T6.5 9.5q0 1.35.613 2.525T8.85 14M12 14"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-important {
-  --mdbook-alerts-color: rgb(130, 80, 223);
-  /* https://icon-sets.iconify.design/material-symbols/chat-info-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 7q.425 0 .713-.288T13 6q0-.425-.288-.712T12 5q-.425 0-.712.288T11 6q0 .425.288.713T12 7m0 8q.425 0 .713-.288T13 14v-4q0-.425-.288-.712T12 9q-.425 0-.712.288T11 10v4q0 .425.288.713T12 15m-6 3l-2.3 2.3q-.475.475-1.088.213T2 19.575V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18zm-.85-2H20V4H4v13.125zM4 16V4z"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-warning {
-  --mdbook-alerts-color: rgb(154, 103, 0);
-  /* https://icon-sets.iconify.design/material-symbols/warning-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M2.725 21q-.275 0-.5-.137t-.35-.363q-.125-.225-.137-.488t.137-.512l9.25-16q.15-.25.388-.375T12 3q.25 0 .488.125t.387.375l9.25 16q.15.25.138.513t-.138.487q-.125.225-.35.363t-.5.137zm1.725-2h15.1L12 6zM12 18q.425 0 .713-.288T13 17q0-.425-.288-.712T12 16q-.425 0-.712.288T11 17q0 .425.288.713T12 18m0-3q.425 0 .713-.288T13 14v-3q0-.425-.288-.712T12 10q-.425 0-.712.288T11 11v3q0 .425.288.713T12 15m0-2.5"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-caution {
-  --mdbook-alerts-color: rgb(207, 34, 46);
-  /* https://icon-sets.iconify.design/material-symbols/brightness-alert-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16q0-.425-.288-.712T12 15q-.425 0-.712.288T11 16q0 .425.288.713T12 17m0-4q.425 0 .713-.288T13 12V8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8v4q0 .425.288.713T12 13m-3.35 7H6q-.825 0-1.412-.587T4 18v-2.65L2.075 13.4q-.275-.3-.425-.662T1.5 12q0-.375.15-.737t.425-.663L4 8.65V6q0-.825.588-1.412T6 4h2.65l1.95-1.925q.3-.275.663-.425T12 1.5q.375 0 .738.15t.662.425L15.35 4H18q.825 0 1.413.588T20 6v2.65l1.925 1.95q.275.3.425.663t.15.737q0 .375-.15.738t-.425.662L20 15.35V18q0 .825-.587 1.413T18 20h-2.65l-1.95 1.925q-.3.275-.662.425T12 22.5q-.375 0-.737-.15t-.663-.425zm.85-2l2.5 2.5l2.5-2.5H18v-3.5l2.5-2.5L18 9.5V6h-3.5L12 3.5L9.5 6H6v3.5L3.5 12L6 14.5V18zm2.5-6"%2F%3E%3C%2Fsvg%3E');
-}
-
-</style>
-<h1 id="if-statement"><a class="header" href="#if-statement">If Statement</a></h1>
+<p>Isn't that awesome!! If this wasn't torture then you should check out some other
+tutorials and learn some more about KSL! It might take some time but don't give
+up!!!</p>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -763,47 +715,48 @@ fn main() -&gt; void {
 
 </style>
 <h1 id="for-loops"><a class="header" href="#for-loops">For Loops</a></h1>
-<p>If you're here you probably want to learn how to make a for loop in KSL.
-If that's the case, welcome! Otherwise, uh, leave?</p>
-<p>So, we want to make something interesting that expresses how KSL works.
-A great idea for that would be to make a simple program that generates
-a random decimal value, we'll then round that and count the number of 1's
-and 0's in a sample number!</p>
-<p>The first thing we need to do, is consider our requirements. We need to
-generate a random number, round it, and we'll want to display the results
-at the end. So we need <code>std.random</code>, <code>std.math</code>, and <code>std.io</code>.</p>
-<p>Let's start our new file, you can call it whatever you want but I'll call
-mine <code>super_epic_for_loop_example_for_the_ksl_docs_tutorial.k</code>! Without
-further adieu, let's begin.</p>
-<pre><code class="language-c#">using std.io;
+<p>If you're here you probably want to learn how to make a for loop in KSL. If
+that's the case, welcome! Otherwise, uh, <a href="tutorial/../compiler/name-mangling.html">check this out</a>??</p>
+<p>So, we want to make something interesting that expresses how KSL works. A great
+idea for that would be to make a simple program that generates a random decimal
+value, we'll then round that and count the number of 1's and 0's in a sample
+number!</p>
+<p>The first thing we need to do, is consider our requirements. We need to generate
+a random number, round it, and we'll want to display the results at the end. So
+we need <code>std.random</code>, <code>std.math</code>, and <code>std.io</code>.</p>
+<p>Let's start our new file, you can call it whatever you want but I'll call mine
+<code>super_awesome_epic_for_loop_example_4_the_ksl_docs_tutorial.k</code>! Without further
+adieu, let's begin.</p>
+<pre><code class="language-ksl">using std.io;
 using std.math;
 using std.random;
 </code></pre>
-<p>This should get all our needs taken care of in regards to the standard
-library modules! Now we need to define our entry point.</p>
-<pre><pre class="playground"><code class="language-rust">fn main() -&gt; int {
+<p>This should get all our needs taken care of in regards to the standard library
+modules! Now we need to define our entry point.</p>
+<pre><code class="language-ksl">fn main() -&gt; int {
 	return 0;
-}</code></pre></pre>
-<p>As covered in some other tutorials (hopefully) the <code>main</code> function is
-the entry point and the <code>-&gt; int</code> defines the function derivative
-(basically the expected function return type, but KSL has to be
-<em>sooooo</em> special.)</p>
-<p>Now let's define our zero and one counts. By default all variables in KSL
-are mutable, this is great news for us because that means we don't have
-to do any extra work to update these values!</p>
-<pre><code class="language-c#">fn main() -&gt; int {
+}
+</code></pre>
+<p>As covered in some other tutorials (hopefully) the <code>main</code> function is the entry
+point and the <code>-&gt; int</code> defines the function derivative (basically the expected
+function return type, but KSL has to be <em>sooooo</em> special and call it something
+<em>different</em> because it wants to be like the cool kids.)</p>
+<p>Now let's define our zero and one counts. By default all variables in KSL are
+mutable, this is great news for us because that means we don't have to do any
+extra work to update these values!</p>
+<pre><code class="language-ksl">fn main() -&gt; int {
 	int zeros = 0;
 	int ones = 0;
 	return 0;
 }
 </code></pre>
-<p>We've made so much progress so far! Go ahead and get a drink of water,
-because this is where it gets real.</p>
+<p>We've made so much progress so far! Go ahead and get a drink of water, because
+this is where it gets real.</p>
 <p>We need to add the famed for loop now.</p>
-<pre><code class="language-c#">fn main() -&gt; int {
+<pre><code class="language-ksl">fn main() -&gt; int {
 	int zeros = 0;
 	int ones = 0;
-	for (int i = 0; i &lt; 100; i++;) {
+	for (int i = 0; i &lt; 100; i++) {
 
 	}
 	return 0;
@@ -817,11 +770,11 @@ iterative statement, the i++, which is just a shorthand to increase the variable
 i by 1 in this case.</p>
 <p>Great, that was a lot, but it only gets better from here! Let's add the random
 number generation function!</p>
-<pre><code class="language-c#">fn main() -&gt; int {
+<pre><code class="language-ksl">fn main() -&gt; int {
 	int zeros = 0;
 	int ones = 0;
-	for (int i = 0; i &lt; 100; i++;) {
-		f64 random_float = random.rand() -&gt; f64;
+	for (int i = 0; i &lt; 100; i++) {
+		f64 random_float = random.rand()-&gt;f64;
 	}
 	return 0;
 }
@@ -834,46 +787,42 @@ and saving it to the <code>random_float</code> variable, which we have set to a 
 <p>Now we need to round this value to figure out if it will be a <code>1</code> or a <code>0</code>!</p>
 <p>We can do this with the following code, go ahead and add it after the
 <code>random_float</code> variable line.</p>
-<pre><code class="language-c">int random_rounded = math.round(random_float) -&gt; int;
+<pre><code class="language-ksl">int random_rounded = math.round(random_float)-&gt;int;
 </code></pre>
-<p>If you've figured that out we can move on to the if statement, which will be
-the part of our program that actually tells us which variable to increment
-(ones or zeros, if you've already forgotten.)</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>if (random_rounded == 1) {
+<p>If you've figured that out we can move on to the if statement, which will be the
+part of our program that actually tells us which variable to increment (ones or
+zeros, if you've already forgotten.)</p>
+<pre><code class="language-ksl">if (random_rounded == 1) {
 	ones++;
 } else {
 	zeros++;
 }
-<span class="boring">}</span></code></pre></pre>
-<p>What this is doing is checking if the <code>random_rounded</code> variable is equal to
-<code>1</code>, if it is, then we increment the <code>ones</code> variable (remember that shorthand
-from earlier?) Otherwise, we add <code>1</code> to the <code>zeros</code> variable. Luckily, since
-the result of our random number rounding can only be <code>1</code> or <code>0</code> in this situation,
+</code></pre>
+<p>What this is doing is checking if the <code>random_rounded</code> variable is equal to <code>1</code>,
+if it is, then we increment the <code>ones</code> variable (remember that shorthand from
+earlier?) Otherwise, we add <code>1</code> to the <code>zeros</code> variable. Luckily, since the
+result of our random number rounding can only be <code>1</code> or <code>0</code> in this situation,
 we don't have to add any other logic for counting!</p>
-<p>If you ran this code right now it would work! But you wouldn't be able to see the
-results :( and that's kind of the point of this whole thing. So, let's use our
-awesome <code>io</code> module from the standard library to show our counts!</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>io.writeln(zeros);
+<p>If you ran this code right now it would work! But you wouldn't be able to see
+the results :( and that's kind of the point of this whole thing. So, let's use
+our awesome <code>io</code> module from the standard library to show our counts!</p>
+<pre><code class="language-ksl">io.writeln(zeros);
 io.writeln(ones);
-<span class="boring">}</span></code></pre></pre>
+</code></pre>
 <p>Great, now it will print our counts to the console!</p>
 <p>For those of you that don't care about learning the language and just want to
 make something quickly without thinking of the potential consequences, here is
 the full code:</p>
-<pre><code class="language-c#">using std.io;
+<pre><code class="language-ksl">using std.io;
 using std.math;
 using std.random;
 
 fn main() -&gt; int {
 	int zeros = 0;
 	int ones = 0;
-	for (int i = 0; i &lt; 100; i++;) {
-		f64 random_float = random.rand() -&gt; f64;
-		int random_rounded = math.round(random_float) -&gt; int;
+	for (int i = 0; i &lt; 100; i++) {
+		f64 random_float = random.rand()-&gt;f64;
+		int random_rounded = math.round(random_float)-&gt;int;
 		if (random_rounded == 1) {
 			ones++;
 		} else {
@@ -953,75 +902,10 @@ fn main() -&gt; int {
 }
 
 </style>
-<h1 id="while-loops"><a class="header" href="#while-loops">While Loops</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><style>
-.mdbook-alerts {
-  padding: 8px 16px;
-  margin-bottom: 16px;
-  border-left: 0.25em solid var(--mdbook-alerts-color);
-}
-
-.mdbook-alerts > *:first-child {
-  margin-top: 0;
-}
-
-.mdbook-alerts > *:last-child {
-  margin-bottom: 0;
-}
-
-.mdbook-alerts-title {
-  display: flex;
-  font-weight: 600;
-  align-items: center;
-  line-height: 1;
-  color: var(--mdbook-alerts-color);
-  text-transform: capitalize;
-}
-
-.mdbook-alerts-icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  margin-right: 0.2em;
-  background-color: currentColor;
-  -webkit-mask: no-repeat center / 100%;
-  mask: no-repeat center / 100%;
-  -webkit-mask-image: var(--mdbook-alerts-icon);
-  mask-image: var(--mdbook-alerts-icon);
-}
-
-.mdbook-alerts-note {
-  --mdbook-alerts-color: rgb(9, 105, 218);
-  /* https://icon-sets.iconify.design/material-symbols/info-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16v-4q0-.425-.288-.712T12 11q-.425 0-.712.288T11 12v4q0 .425.288.713T12 17m0-8q.425 0 .713-.288T13 8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8q0 .425.288.713T12 9m0 13q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-3.35-2.325-5.675T12 4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20m0-8"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-tip {
-  --mdbook-alerts-color: rgb(26, 127, 55);
-  /* https://icon-sets.iconify.design/material-symbols/lightbulb-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 22q-.825 0-1.412-.587T10 20h4q0 .825-.587 1.413T12 22m-3-3q-.425 0-.712-.288T8 18q0-.425.288-.712T9 17h6q.425 0 .713.288T16 18q0 .425-.288.713T15 19zm-.75-3q-1.725-1.025-2.738-2.75T4.5 9.5q0-3.125 2.188-5.312T12 2q3.125 0 5.313 2.188T19.5 9.5q0 2.025-1.012 3.75T15.75 16zm.6-2h6.3q1.125-.8 1.738-1.975T17.5 9.5q0-2.3-1.6-3.9T12 4Q9.7 4 8.1 5.6T6.5 9.5q0 1.35.613 2.525T8.85 14M12 14"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-important {
-  --mdbook-alerts-color: rgb(130, 80, 223);
-  /* https://icon-sets.iconify.design/material-symbols/chat-info-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 7q.425 0 .713-.288T13 6q0-.425-.288-.712T12 5q-.425 0-.712.288T11 6q0 .425.288.713T12 7m0 8q.425 0 .713-.288T13 14v-4q0-.425-.288-.712T12 9q-.425 0-.712.288T11 10v4q0 .425.288.713T12 15m-6 3l-2.3 2.3q-.475.475-1.088.213T2 19.575V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18zm-.85-2H20V4H4v13.125zM4 16V4z"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-warning {
-  --mdbook-alerts-color: rgb(154, 103, 0);
-  /* https://icon-sets.iconify.design/material-symbols/warning-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M2.725 21q-.275 0-.5-.137t-.35-.363q-.125-.225-.137-.488t.137-.512l9.25-16q.15-.25.388-.375T12 3q.25 0 .488.125t.387.375l9.25 16q.15.25.138.513t-.138.487q-.125.225-.35.363t-.5.137zm1.725-2h15.1L12 6zM12 18q.425 0 .713-.288T13 17q0-.425-.288-.712T12 16q-.425 0-.712.288T11 17q0 .425.288.713T12 18m0-3q.425 0 .713-.288T13 14v-3q0-.425-.288-.712T12 10q-.425 0-.712.288T11 11v3q0 .425.288.713T12 15m0-2.5"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-caution {
-  --mdbook-alerts-color: rgb(207, 34, 46);
-  /* https://icon-sets.iconify.design/material-symbols/brightness-alert-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16q0-.425-.288-.712T12 15q-.425 0-.712.288T11 16q0 .425.288.713T12 17m0-4q.425 0 .713-.288T13 12V8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8v4q0 .425.288.713T12 13m-3.35 7H6q-.825 0-1.412-.587T4 18v-2.65L2.075 13.4q-.275-.3-.425-.662T1.5 12q0-.375.15-.737t.425-.663L4 8.65V6q0-.825.588-1.412T6 4h2.65l1.95-1.925q.3-.275.663-.425T12 1.5q.375 0 .738.15t.662.425L15.35 4H18q.825 0 1.413.588T20 6v2.65l1.925 1.95q.275.3.425.663t.15.737q0 .375-.15.738t-.425.662L20 15.35V18q0 .825-.587 1.413T18 20h-2.65l-1.95 1.925q-.3.275-.662.425T12 22.5q-.375 0-.737-.15t-.663-.425zm.85-2l2.5 2.5l2.5-2.5H18v-3.5l2.5-2.5L18 9.5V6h-3.5L12 3.5L9.5 6H6v3.5L3.5 12L6 14.5V18zm2.5-6"%2F%3E%3C%2Fsvg%3E');
-}
-
-</style>
 <h1 id="rock-paper-scissors"><a class="header" href="#rock-paper-scissors">Rock, Paper, Scissors</a></h1>
+<p><em>Docs Coming Soon</em></p>
+<p>Technically we have everything you'd need to write it, I just don't feel like
+doing more documentation work right now.</p>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -1090,15 +974,14 @@ fn main() -&gt; int {
 
 </style>
 <h1 id="comments"><a class="header" href="#comments">Comments</a></h1>
-<p>Comments in KSL are similar to any other modern language.
-For a single line comment you can do <code>//</code> and for a multi-
-line comment, the usual <code>/*</code> <code>*/</code> syntax.</p>
-<pre><code class="language-c">// Below is a function, and this is a comment!
+<p>Comments in KSL are similar to any other modern language. For a single line
+comment you can do <code>//</code> and for a multi-line comment, the usual <code>/*</code> <code>*/</code> syntax.</p>
+<pre><code class="language-ksl">// Below is a function, and this is a comment!
 fn main() -&gt; void {
 	return;
 }
 </code></pre>
-<pre><code class="language-c">/*
+<pre><code class="language-ksl">/*
  Below is a function that returns void,
  and this is a multi-line comment!
 */
@@ -1107,17 +990,10 @@ fn main() -&gt; void {
 }
 </code></pre>
 <p>You can even use this inline! (If you're crazy...)</p>
-<pre><code class="language-c">fn /* create a function */ main /* call it `main` */ () /* no args */ -&gt; void /* return nothing */ {
+<pre><code class="language-ksl">fn /* create a function */ main /* call it `main` */ () /* no args */ -&gt; void /* return nothing */ {
 	return /* see, nothing! */;
 }
 </code></pre>
-<div class="mdbook-alerts mdbook-alerts-note">
-<p class="mdbook-alerts-title">
-  <span class="mdbook-alerts-icon"></span>
-  note
-</p>
-<p>Due to some current limitations, KSL has a hard time handling nested multi-line comments.</p>
-</div>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -1186,6 +1062,21 @@ fn main() -&gt; void {
 
 </style>
 <h1 id="understanding-types"><a class="header" href="#understanding-types">Understanding Types</a></h1>
+<p>Before you learn about specific types and their implementations, you should get
+a hold on the casting system. It's different from some other languages so it's
+important you understand it.</p>
+<ul>
+<li><a href="type/./casting.html">Type Casting</a></li>
+</ul>
+<p>Type specific details / implementations:</p>
+<ul>
+<li><a href="type/./integers.html">Integers</a></li>
+<li><a href="type/./floats.html">Floats</a></li>
+<li><a href="type/./booleans.html">Booleans</a></li>
+<li><a href="type/./string.html">Strings</a></li>
+<li><a href="type/./array.html">Arrays</a></li>
+<li><a href="type/./struct.html">Structs</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -1254,6 +1145,7 @@ fn main() -&gt; void {
 
 </style>
 <h1 id="integers"><a class="header" href="#integers">Integers</a></h1>
+<p><em>Docs Coming Soon</em></p>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -1322,6 +1214,7 @@ fn main() -&gt; void {
 
 </style>
 <h1 id="floats"><a class="header" href="#floats">Floats</a></h1>
+<p><em>Docs Coming Soon</em></p>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -1390,6 +1283,7 @@ fn main() -&gt; void {
 
 </style>
 <h1 id="booleans"><a class="header" href="#booleans">Booleans</a></h1>
+<p><em>Docs Coming Soon</em></p>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -1457,7 +1351,8 @@ fn main() -&gt; void {
 }
 
 </style>
-<h1 id="references"><a class="header" href="#references">References</a></h1>
+<h1 id="strings"><a class="header" href="#strings">Strings</a></h1>
+<p><em>Docs Coming Soon</em></p>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -1525,7 +1420,77 @@ fn main() -&gt; void {
 }
 
 </style>
-<h1 id="others"><a class="header" href="#others">Others</a></h1>
+<h1 id="arrays"><a class="header" href="#arrays">Arrays</a></h1>
+<p><em>Docs Coming Soon</em></p>
+<div style="break-before: page; page-break-before: always;"></div><style>
+.mdbook-alerts {
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  border-left: 0.25em solid var(--mdbook-alerts-color);
+}
+
+.mdbook-alerts > *:first-child {
+  margin-top: 0;
+}
+
+.mdbook-alerts > *:last-child {
+  margin-bottom: 0;
+}
+
+.mdbook-alerts-title {
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+  line-height: 1;
+  color: var(--mdbook-alerts-color);
+  text-transform: capitalize;
+}
+
+.mdbook-alerts-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.2em;
+  background-color: currentColor;
+  -webkit-mask: no-repeat center / 100%;
+  mask: no-repeat center / 100%;
+  -webkit-mask-image: var(--mdbook-alerts-icon);
+  mask-image: var(--mdbook-alerts-icon);
+}
+
+.mdbook-alerts-note {
+  --mdbook-alerts-color: rgb(9, 105, 218);
+  /* https://icon-sets.iconify.design/material-symbols/info-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16v-4q0-.425-.288-.712T12 11q-.425 0-.712.288T11 12v4q0 .425.288.713T12 17m0-8q.425 0 .713-.288T13 8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8q0 .425.288.713T12 9m0 13q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-3.35-2.325-5.675T12 4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20m0-8"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-tip {
+  --mdbook-alerts-color: rgb(26, 127, 55);
+  /* https://icon-sets.iconify.design/material-symbols/lightbulb-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 22q-.825 0-1.412-.587T10 20h4q0 .825-.587 1.413T12 22m-3-3q-.425 0-.712-.288T8 18q0-.425.288-.712T9 17h6q.425 0 .713.288T16 18q0 .425-.288.713T15 19zm-.75-3q-1.725-1.025-2.738-2.75T4.5 9.5q0-3.125 2.188-5.312T12 2q3.125 0 5.313 2.188T19.5 9.5q0 2.025-1.012 3.75T15.75 16zm.6-2h6.3q1.125-.8 1.738-1.975T17.5 9.5q0-2.3-1.6-3.9T12 4Q9.7 4 8.1 5.6T6.5 9.5q0 1.35.613 2.525T8.85 14M12 14"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-important {
+  --mdbook-alerts-color: rgb(130, 80, 223);
+  /* https://icon-sets.iconify.design/material-symbols/chat-info-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 7q.425 0 .713-.288T13 6q0-.425-.288-.712T12 5q-.425 0-.712.288T11 6q0 .425.288.713T12 7m0 8q.425 0 .713-.288T13 14v-4q0-.425-.288-.712T12 9q-.425 0-.712.288T11 10v4q0 .425.288.713T12 15m-6 3l-2.3 2.3q-.475.475-1.088.213T2 19.575V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18zm-.85-2H20V4H4v13.125zM4 16V4z"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-warning {
+  --mdbook-alerts-color: rgb(154, 103, 0);
+  /* https://icon-sets.iconify.design/material-symbols/warning-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M2.725 21q-.275 0-.5-.137t-.35-.363q-.125-.225-.137-.488t.137-.512l9.25-16q.15-.25.388-.375T12 3q.25 0 .488.125t.387.375l9.25 16q.15.25.138.513t-.138.487q-.125.225-.35.363t-.5.137zm1.725-2h15.1L12 6zM12 18q.425 0 .713-.288T13 17q0-.425-.288-.712T12 16q-.425 0-.712.288T11 17q0 .425.288.713T12 18m0-3q.425 0 .713-.288T13 14v-3q0-.425-.288-.712T12 10q-.425 0-.712.288T11 11v3q0 .425.288.713T12 15m0-2.5"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-caution {
+  --mdbook-alerts-color: rgb(207, 34, 46);
+  /* https://icon-sets.iconify.design/material-symbols/brightness-alert-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16q0-.425-.288-.712T12 15q-.425 0-.712.288T11 16q0 .425.288.713T12 17m0-4q.425 0 .713-.288T13 12V8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8v4q0 .425.288.713T12 13m-3.35 7H6q-.825 0-1.412-.587T4 18v-2.65L2.075 13.4q-.275-.3-.425-.662T1.5 12q0-.375.15-.737t.425-.663L4 8.65V6q0-.825.588-1.412T6 4h2.65l1.95-1.925q.3-.275.663-.425T12 1.5q.375 0 .738.15t.662.425L15.35 4H18q.825 0 1.413.588T20 6v2.65l1.925 1.95q.275.3.425.663t.15.737q0 .375-.15.738t-.425.662L20 15.35V18q0 .825-.587 1.413T18 20h-2.65l-1.95 1.925q-.3.275-.662.425T12 22.5q-.375 0-.737-.15t-.663-.425zm.85-2l2.5 2.5l2.5-2.5H18v-3.5l2.5-2.5L18 9.5V6h-3.5L12 3.5L9.5 6H6v3.5L3.5 12L6 14.5V18zm2.5-6"%2F%3E%3C%2Fsvg%3E');
+}
+
+</style>
+<h1 id="structs"><a class="header" href="#structs">Structs</a></h1>
+<p><em>Docs Coming Soon</em></p>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -1594,9 +1559,9 @@ fn main() -&gt; void {
 
 </style>
 <h1 id="variables"><a class="header" href="#variables">Variables</a></h1>
-<p>Variable declarations are extremely simple. Simply pick a variable
-type and identifier, then set it to a value.</p>
-<pre><code class="language-c">int x = 20;
+<p>Variable declarations are extremely simple. Simply pick a variable type and
+identifier, then set it to a value.</p>
+<pre><code class="language-ksl">int x = 20;
 </code></pre>
 <div class="mdbook-alerts mdbook-alerts-important">
 <p class="mdbook-alerts-title">
@@ -1624,12 +1589,19 @@ type and identifier, then set it to a value.</p>
 </p>
 <p>KSL is designed for programmers of all skill levels. Some programmers might not care (or know) about int's of different sizes, so <code>int</code> and <code>float</code> are aliases for the largest supported int and float types. It makes it easier for beginners to understand and it's more readable for simple projects that don't need to worry about tight memory constraints.</p>
 </div>
-<div class="mdbook-alerts mdbook-alerts-warning">
+<div class="mdbook-alerts mdbook-alerts-note">
 <p class="mdbook-alerts-title">
   <span class="mdbook-alerts-icon"></span>
-  warning
+  note
 </p>
-<p>Documentation incomplete, pulled from unfinished ksl/ksl_syntax.md file.</p>
+<p>You can make virtually any type an array by adding <code>[]</code> to the initialization type (e.g. <code>int[]</code> will create an int array.)</p>
+</div>
+<div class="mdbook-alerts mdbook-alerts-note">
+<p class="mdbook-alerts-title">
+  <span class="mdbook-alerts-icon"></span>
+  note
+</p>
+<p>Defining structs via the <code>struct</code> keyword will register an entierly new type to the type system, it can be treated like most other types, which means you can also make an array of structs using the struct name (e.g. <code>my_struct[]</code> will create an array of <code>my_struct</code> structs.)</p>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
@@ -1703,10 +1675,13 @@ type and identifier, then set it to a value.</p>
 <p>Higher precedences are executed first.</p>
 <p>Supported Binary Operations (and Precedence):</p>
 <div class="table-wrapper"><table><thead><tr><th>Operation</th><th>Symbol</th><th>Precedence</th></tr></thead><tbody>
-<tr><td>Multiply</td><td>*</td><td>80</td></tr>
-<tr><td>Divide</td><td>/</td><td>80</td></tr>
-<tr><td>Add</td><td>+</td><td>70</td></tr>
-<tr><td>Subtract</td><td>-</td><td>70</td></tr>
+<tr><td>Modulus</td><td>%</td><td>100</td></tr>
+<tr><td>Multiply</td><td>*</td><td>90</td></tr>
+<tr><td>Divide</td><td>/</td><td>90</td></tr>
+<tr><td>Add</td><td>+</td><td>80</td></tr>
+<tr><td>Subtract</td><td>-</td><td>80</td></tr>
+<tr><td>Left Shift</td><td>&lt;&lt;</td><td>70</td></tr>
+<tr><td>Right Shift</td><td>&gt;&gt;</td><td>70</td></tr>
 <tr><td>Less or Equal</td><td>&lt;=</td><td>60</td></tr>
 <tr><td>Greater or Equal</td><td>&gt;=</td><td>60</td></tr>
 <tr><td>Less Than</td><td>&lt;</td><td>50</td></tr>
@@ -1724,43 +1699,7 @@ type and identifier, then set it to a value.</p>
 <tr><td>Not</td><td>!&lt;bool&gt;</td></tr>
 <tr><td>Cast</td><td>&lt;type&gt;'&lt;expr&gt;</td></tr>
 </tbody></table>
-</div>
-<p>Operations are only allowed between supported types. KSL may
-automatically promote expressions (ex. 12 + 300 will turn into
-i16) but it will not demote them, in order to set a variable
-to a value smaller than the type size in the resulting expression
-please downcast.</p>
-<p>Other examples of expression promotion:</p>
-<pre><code class="language-c">// Since we're working with an integer
-// and a float, we promote to a float
-float x = 10.0 + 5;
-</code></pre>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>// Since we're working with an i8 (10)
-// and an i16 (400) the expression is
-// promoted to an i16, we can still assign
-// the expression result to an i32 though
-// because the variable storage type is
-// larger. If `x` was an i8 it would cause
-// an error.
-i32 x = 10 + 400;
-<span class="boring">}</span></code></pre></pre>
-<div class="mdbook-alerts mdbook-alerts-warning">
-<p class="mdbook-alerts-title">
-  <span class="mdbook-alerts-icon"></span>
-  warning
-</p>
-<p>Information and methodology about expression promotion is subject to change as we evaluate other type safety and memory safety strategies.</p>
-</div>
-<div class="mdbook-alerts mdbook-alerts-warning">
-<p class="mdbook-alerts-title">
-  <span class="mdbook-alerts-icon"></span>
-  warning
-</p>
-<p>Documentation incomplete, pulled from unfinished ksl/ksl_syntax.md file.</p>
-</div>
-<div style="break-before: page; page-break-before: always;"></div><style>
+</div><div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
   margin-bottom: 16px;
@@ -1828,6 +1767,12 @@ i32 x = 10 + 400;
 
 </style>
 <h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
+<ul>
+<li><a href="function/./define.html">Define a Function</a></li>
+<li><a href="function/./return.html">Return From a Function</a></li>
+<li><a href="function/./inline-calls.html">Inline Calls to Functions</a></li>
+<li><a href="function/../attribute/">Function Attributes</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -1895,23 +1840,16 @@ i32 x = 10 + 400;
 }
 
 </style>
-<h1 id="definition"><a class="header" href="#definition">Definition</a></h1>
-<p>For now, functions will be defined with the <code>fn</code> keyword,
-then comes the function identifier and typed parameters (inside
-parenthesis). As KSL is a strongly typed language, you will also
-need to define the function return type (or function derivative.)
-This can be done with <code>-&gt;</code> and then the type identifier.</p>
-<pre><code class="language-c">fn main(int a) -&gt; int {
+<h1 id="function-definition"><a class="header" href="#function-definition">Function Definition</a></h1>
+<p>For now, functions will be defined with the <code>fn</code> keyword, then comes the
+function identifier and typed parameters (inside parenthesis). As KSL is a
+strongly typed language, you will also need to define the function return type
+(or function derivative.) This can be done with <code>-&gt;</code> and then the type
+identifier.</p>
+<pre><code class="language-ksl">fn main(int a) -&gt; int {
 	return a;
 }
 </code></pre>
-<div class="mdbook-alerts mdbook-alerts-warning">
-<p class="mdbook-alerts-title">
-  <span class="mdbook-alerts-icon"></span>
-  warning
-</p>
-<p>Documentation incomplete, pulled from unfinished ksl/ksl_syntax.md file.</p>
-</div>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -1979,7 +1917,28 @@ This can be done with <code>-&gt;</code> and then the type identifier.</p>
 }
 
 </style>
-<h1 id="returns"><a class="header" href="#returns">Returns</a></h1>
+<h1 id="function-returns"><a class="header" href="#function-returns">Function Returns</a></h1>
+<p>In KSL return statements are technically optional for functions that return
+primitive types. If a return statement isn't detected it will insert one with a
+default value matching the type (e.g. if the return type is an <code>int</code> it will
+use <code>0</code> as the return placeholder.)</p>
+<p>This can be really nice for defining void functions, see below:</p>
+<pre><code class="language-ksl">// This function doesn't need to have a return statement because it has a
+// primitive return type and we don't care what the return value is.
+fn main() -&gt; void {
+	// Do something
+};
+</code></pre>
+<p>You can, of course, still manually define a return statement with <code>return</code>. For
+some types (e.g. arrays and structs) you will still have to define a return
+statement no matter what.</p>
+<pre><code class="language-ksl">// This function must have a return statement because KSL doesn't know what a
+// default integer array should be by default.
+fn arr() -&gt; int[] {
+	int[] my_array = [ 1, 2, 3 ];
+	return my_array;
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -2047,92 +2006,23 @@ This can be done with <code>-&gt;</code> and then the type identifier.</p>
 }
 
 </style>
-<h1 id="attributes"><a class="header" href="#attributes">Attributes</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><style>
-.mdbook-alerts {
-  padding: 8px 16px;
-  margin-bottom: 16px;
-  border-left: 0.25em solid var(--mdbook-alerts-color);
-}
-
-.mdbook-alerts > *:first-child {
-  margin-top: 0;
-}
-
-.mdbook-alerts > *:last-child {
-  margin-bottom: 0;
-}
-
-.mdbook-alerts-title {
-  display: flex;
-  font-weight: 600;
-  align-items: center;
-  line-height: 1;
-  color: var(--mdbook-alerts-color);
-  text-transform: capitalize;
-}
-
-.mdbook-alerts-icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  margin-right: 0.2em;
-  background-color: currentColor;
-  -webkit-mask: no-repeat center / 100%;
-  mask: no-repeat center / 100%;
-  -webkit-mask-image: var(--mdbook-alerts-icon);
-  mask-image: var(--mdbook-alerts-icon);
-}
-
-.mdbook-alerts-note {
-  --mdbook-alerts-color: rgb(9, 105, 218);
-  /* https://icon-sets.iconify.design/material-symbols/info-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16v-4q0-.425-.288-.712T12 11q-.425 0-.712.288T11 12v4q0 .425.288.713T12 17m0-8q.425 0 .713-.288T13 8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8q0 .425.288.713T12 9m0 13q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-3.35-2.325-5.675T12 4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20m0-8"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-tip {
-  --mdbook-alerts-color: rgb(26, 127, 55);
-  /* https://icon-sets.iconify.design/material-symbols/lightbulb-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 22q-.825 0-1.412-.587T10 20h4q0 .825-.587 1.413T12 22m-3-3q-.425 0-.712-.288T8 18q0-.425.288-.712T9 17h6q.425 0 .713.288T16 18q0 .425-.288.713T15 19zm-.75-3q-1.725-1.025-2.738-2.75T4.5 9.5q0-3.125 2.188-5.312T12 2q3.125 0 5.313 2.188T19.5 9.5q0 2.025-1.012 3.75T15.75 16zm.6-2h6.3q1.125-.8 1.738-1.975T17.5 9.5q0-2.3-1.6-3.9T12 4Q9.7 4 8.1 5.6T6.5 9.5q0 1.35.613 2.525T8.85 14M12 14"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-important {
-  --mdbook-alerts-color: rgb(130, 80, 223);
-  /* https://icon-sets.iconify.design/material-symbols/chat-info-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 7q.425 0 .713-.288T13 6q0-.425-.288-.712T12 5q-.425 0-.712.288T11 6q0 .425.288.713T12 7m0 8q.425 0 .713-.288T13 14v-4q0-.425-.288-.712T12 9q-.425 0-.712.288T11 10v4q0 .425.288.713T12 15m-6 3l-2.3 2.3q-.475.475-1.088.213T2 19.575V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18zm-.85-2H20V4H4v13.125zM4 16V4z"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-warning {
-  --mdbook-alerts-color: rgb(154, 103, 0);
-  /* https://icon-sets.iconify.design/material-symbols/warning-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M2.725 21q-.275 0-.5-.137t-.35-.363q-.125-.225-.137-.488t.137-.512l9.25-16q.15-.25.388-.375T12 3q.25 0 .488.125t.387.375l9.25 16q.15.25.138.513t-.138.487q-.125.225-.35.363t-.5.137zm1.725-2h15.1L12 6zM12 18q.425 0 .713-.288T13 17q0-.425-.288-.712T12 16q-.425 0-.712.288T11 17q0 .425.288.713T12 18m0-3q.425 0 .713-.288T13 14v-3q0-.425-.288-.712T12 10q-.425 0-.712.288T11 11v3q0 .425.288.713T12 15m0-2.5"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-caution {
-  --mdbook-alerts-color: rgb(207, 34, 46);
-  /* https://icon-sets.iconify.design/material-symbols/brightness-alert-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16q0-.425-.288-.712T12 15q-.425 0-.712.288T11 16q0 .425.288.713T12 17m0-4q.425 0 .713-.288T13 12V8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8v4q0 .425.288.713T12 13m-3.35 7H6q-.825 0-1.412-.587T4 18v-2.65L2.075 13.4q-.275-.3-.425-.662T1.5 12q0-.375.15-.737t.425-.663L4 8.65V6q0-.825.588-1.412T6 4h2.65l1.95-1.925q.3-.275.663-.425T12 1.5q.375 0 .738.15t.662.425L15.35 4H18q.825 0 1.413.588T20 6v2.65l1.925 1.95q.275.3.425.663t.15.737q0 .375-.15.738t-.425.662L20 15.35V18q0 .825-.587 1.413T18 20h-2.65l-1.95 1.925q-.3.275-.662.425T12 22.5q-.375 0-.737-.15t-.663-.425zm.85-2l2.5 2.5l2.5-2.5H18v-3.5l2.5-2.5L18 9.5V6h-3.5L12 3.5L9.5 6H6v3.5L3.5 12L6 14.5V18zm2.5-6"%2F%3E%3C%2Fsvg%3E');
-}
-
-</style>
-<h1 id="inline-calls"><a class="header" href="#inline-calls">Inline Calls</a></h1>
-<p>Currently, functions in KSL are defined internally in two ways,
-by the function body declaration or a forward declaration. In the
-case of a forward declaration, KSL will attempt to interpret the
-most likely return type. For example, if a function is called inside
-of an integer operation then it's likely to be an integer. In order
-to override this behavior and define a return type for an inline
-function call you can use the derive keyword (<code>-&gt;</code>) on the function
-call. See below:</p>
+<h1 id="inline-function-calls"><a class="header" href="#inline-function-calls">Inline Function Calls</a></h1>
+<p>Currently, functions in KSL are defined internally in two ways, by the function
+body declaration or a forward declaration. In the case of a forward declaration,
+KSL will attempt to interpret the most likely return type. For example, if a
+function is called inside of an integer operation then it's likely to be an
+integer. In order to override this behavior and define a return type for an
+inline function call you can use the derive keyword (<code>-&gt;</code>) on the function call.
+See below:</p>
 <p>Example of inline call:</p>
-<pre><code class="language-c">int x = add(1, 3) + 5;
+<pre><code class="language-ksl">int x = add(1, 3) + 5;
 </code></pre>
 <p>Example of inline call w/ type hint:</p>
-<pre><code class="language-c">int x = add(1, 3) -&gt; int + 5;
+<pre><code class="language-ksl">int x = add(1, 3) -&gt; int + 5;
 </code></pre>
-<p>Sometimes it can be easier to read if you move the type hint to
-right after the funciton:</p>
-<pre><code class="language-c">int x = add(1, 3)-&gt;int + 5;
+<p>Sometimes it can be easier to read if you move the type hint to right after the
+function:</p>
+<pre><code class="language-ksl">int x = add(1, 3)-&gt;int + 5;
 </code></pre>
 <div class="mdbook-alerts mdbook-alerts-important">
 <p class="mdbook-alerts-title">
@@ -2141,27 +2031,19 @@ right after the funciton:</p>
 </p>
 <p>You cannot use this syntax to change the function return type. If you wish to use a different type (post-return) then look into type casting. This is only to hint to the compiler what the expected return type is.</p>
 </div>
-<div class="mdbook-alerts mdbook-alerts-caution">
+<div class="mdbook-alerts mdbook-alerts-important">
 <p class="mdbook-alerts-title">
   <span class="mdbook-alerts-icon"></span>
-  caution
+  important
 </p>
 <p>Using this syntax to claim a function returns <code>void</code> for a function that returns an <code>int</code> will result in an unresolved symbol. The same applies for other type differences as well.</p>
 </div>
-<p>Similarly, if a function call doesn't appear to have any context
-then KSL might assume it returns nothing (<code>void</code> or <code>null</code>.) This
-might cause an error so you can use the type hint syntax outside of
-algebraic operations as well.</p>
+<p>Similarly, if a function call doesn't appear to have any context then KSL might
+assume it returns nothing (<code>void</code>.) This might cause an error so you can use the
+type hint syntax outside of algebraic operations as well.</p>
 <p>Example:</p>
-<pre><code class="language-c">add(1, 3) -&gt; int;
+<pre><code class="language-ksl">add(1, 3) -&gt; int;
 </code></pre>
-<div class="mdbook-alerts mdbook-alerts-warning">
-<p class="mdbook-alerts-title">
-  <span class="mdbook-alerts-icon"></span>
-  warning
-</p>
-<p>Documentation incomplete, pulled from unfinished ksl/ksl_syntax.md file.</p>
-</div>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -2230,6 +2112,17 @@ algebraic operations as well.</p>
 
 </style>
 <h1 id="conditionals"><a class="header" href="#conditionals">Conditionals</a></h1>
+<p>Currently if/if else/else statements are supported. Expressions must be
+surrounded by parenthesis and return a boolean type.</p>
+<pre><code class="language-ksl">if (&lt;expression_one&gt;) {
+	io.writeln("Do Something");
+} else if (&lt;expression_two&gt;) {
+	io.writeln("Do Something Else");
+} else {
+	io.writeln("Neither Condition Was Met");
+}
+</code></pre>
+<p>You can chain as many <code>else if</code>'s as you want.</p>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -2298,6 +2191,16 @@ algebraic operations as well.</p>
 
 </style>
 <h1 id="loops"><a class="header" href="#loops">Loops</a></h1>
+<ul>
+<li><a href="loop/./while.html">While Loops</a></li>
+<li><a href="loop/./for.html">For Loops</a></li>
+</ul>
+<p>A note on for loops: KSL does not have a <code>for item in array</code> loop, or a
+<code>for i in 0..n</code> loop. Both of these are cool abstractions, but totally
+unnecessary. It's unlikely that KSL will ever have these.</p>
+<p>Also, for technically minded people. The <code>for</code> loop does have more instructions
+than the while loop (assuming you aren't using the optimization flag via <code>-op</code>,
+with the optimization flag they're virtually the same.)</p>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -2366,6 +2269,19 @@ algebraic operations as well.</p>
 
 </style>
 <h1 id="for"><a class="header" href="#for">For</a></h1>
+<p>The syntax for <code>for</code> loops is pretty simple. Just like in most languages with a
+<code>for</code> loop actually.</p>
+<p>You'll need an initialization statement (which is run once at the beginning), an
+expression to check if the <code>for</code> loop should continue, and finally an iterative
+expression (which is run at the end of every iteration.)</p>
+<pre><code class="language-ksl">//       +------------------ Initial Statement
+//       |        +--------- Check/Continue(?) Expression
+//       |        |      +-- Iterative Expression
+//       |        |      |
+for (int i = 0; i &lt; 30; i++) {
+	io.writeln(i);
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -2434,24 +2350,19 @@ algebraic operations as well.</p>
 
 </style>
 <h1 id="while"><a class="header" href="#while">While</a></h1>
-<p>The syntax for while loops is absurdly easy. All you need is the
-<code>while</code> keyword with some parenthesis and an expression.</p>
-<pre><code class="language-c">while (&lt;expression&gt;) {
-	// Do something? Maybe?
+<p>The syntax for <code>while</code> loops is absurdly easy. All you need is the <code>while</code>
+keyword with some parenthesis and an expression.</p>
+<pre><code class="language-ksl">while (&lt;expression&gt;) {
+	// Do something? Maybe? If you want, I guess?
 }
 </code></pre>
-<p>The only real requirement is that the expression type is a
-boolean. KSL will give you a nice error if you don't. If this
-is a problem, you can always cast to a boolean.</p>
-<pre><code class="language-c">while (bool'127) {
+<p>The only real requirement is that the expression type is a boolean. KSL will
+give you a nice error if you don't. If this is a problem, you can always cast to
+a boolean.</p>
+<pre><code class="language-ksl">while (bool'127) {
 	// Do something? Probably?
 }
 </code></pre>
-<p>For those of you focused on performance, look, I get it. You want
-the fastest loop option, for loop or while loop? Which is it?</p>
-<p>Well, the answer is pretty simple. Both the for loop and while loop
-are compiled down to the exact same code. So the speed of your
-program mostly lies with the quality of the code.</p>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -2520,28 +2431,27 @@ program mostly lies with the quality of the code.</p>
 
 </style>
 <h1 id="type-casting"><a class="header" href="#type-casting">Type Casting</a></h1>
-<p>KSL has a potentially unintuitive type casting syntax. Just use a
-type identifier followed by an apostrophe:</p>
-<pre><code class="language-c">float x = 10.0;
+<p>KSL has a potentially unintuitive type casting syntax. Just use a type
+identifier followed by an apostrophe:</p>
+<pre><code class="language-ksl">float x = 10.0;
 int y = int'x;
 </code></pre>
-<p>There are some type casts that will result in errors, for example,
-casting to null or void. But why do that anyway? It should be noted
-that casting only works for the term immediately right to the cast.
-See below:</p>
+<p>There are some type casts that will result in errors, for example, casting to
+null or void. But why do that anyway? It should be noted that casting only works
+for the term immediately right to the cast, see below:</p>
 <p>Example where the entire expression is calcuated <em>then</em> cast:</p>
-<pre><code class="language-c">// This turns into 2.0 and is then turned into 2.
+<pre><code class="language-ksl">// This turns into 2.0 and is then turned into 2.
 int x = int'(1.0 + 1.0);
 </code></pre>
 <p>Example where only the first number value is cast:</p>
-<pre><code class="language-c">// This is turned into 1 + 1 then turned into 2.
+<pre><code class="language-ksl">// This is turned into 1 + 1 then turned into 2.
 int x = int'1.0 + 1;
 </code></pre>
 <p>A quick note on casting to booleans:</p>
-<p>In some languages casting integers or floats to a boolean may be different.
-In KSL all integers other than <code>0</code> are cast to <code>true</code>. Similarly, all floats
-other than <code>0.0</code> are cast to <code>true</code>:</p>
-<pre><code class="language-c">bool'1;         // true
+<p>In some languages casting integers or floats to a boolean may be different. In
+KSL all integers other than <code>0</code> are cast to <code>true</code>. Similarly, all floats other
+than <code>0.0</code> are cast to <code>true</code>:</p>
+<pre><code class="language-ksl">bool'1;         // true
 bool'0;         // false
 bool'252466642; // true
 bool'-35;       // true
@@ -2550,12 +2460,12 @@ bool'0.0;       // false
 bool'135.03111; // true
 bool'-135.77;   // true
 </code></pre>
-<div class="mdbook-alerts mdbook-alerts-warning">
+<div class="mdbook-alerts mdbook-alerts-important">
 <p class="mdbook-alerts-title">
   <span class="mdbook-alerts-icon"></span>
-  warning
+  important
 </p>
-<p>Documentation incomplete, pulled from unfinished ksl/ksl_syntax.md file.</p>
+<p>Casting cannot be done on arrays or structs, you'll have to manually cast the elements or fields. Casting is not a custom method you can implement for a type.</p>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
@@ -2625,6 +2535,11 @@ bool'-135.77;   // true
 
 </style>
 <h1 id="function-attributes"><a class="header" href="#function-attributes">Function Attributes</a></h1>
+<ul>
+<li><a href="attribute/./entry.html">Entry</a></li>
+<li><a href="attribute/./no-fail.html">No Fail</a></li>
+<li><a href="attribute/./no-mangle.html">No Mangle</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -2693,6 +2608,18 @@ bool'-135.77;   // true
 
 </style>
 <h1 id="entry"><a class="header" href="#entry">Entry</a></h1>
+<h2 id="usage"><a class="header" href="#usage">Usage:</a></h2>
+<pre><code class="language-ksl">@entry
+fn new_main_function() -&gt; void {}
+
+fn main() -&gt; void {}
+</code></pre>
+<h2 id="purpose"><a class="header" href="#purpose">Purpose</a></h2>
+<p>The purpose of the <code>@entry</code> function attribute is to override the binary entry
+point. The primary usage for this would be customization of the code base,
+however, in the future there are likely going to be "groups," where you can
+define a custom entry point from the command line via compiler arguments. This
+would be helpful for setting a custom entry point for testing vs. debug/release.</p>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -2761,6 +2688,109 @@ bool'-135.77;   // true
 
 </style>
 <h1 id="no-fail"><a class="header" href="#no-fail">No Fail</a></h1>
+<h2 id="usage-1"><a class="header" href="#usage-1">Usage:</a></h2>
+<pre><code class="language-ksl">@no_fail
+fn function_that_cannot_fail() -&gt; int {
+	return 20 / 0;
+}
+</code></pre>
+<p>In the example above, the function will throw a "cannot divide by 0" error,
+however, because we have the <code>@no_fail</code> attribute it will catch the error and
+return a default constant based on the defined return type of the function. For
+integers the default constant is <code>0</code> so this function will return <code>0</code>, even
+though technically it failed.</p>
+<p>You can also define custom return values via <code>@no_fail=&lt;value&gt;</code>, for example:</p>
+<pre><code class="language-ksl">@no_fail=-1
+fn function_that_cannot_fail() -&gt; int {
+	return 40 / 0;
+}
+</code></pre>
+<p>In this new example the <code>@no_fail</code> function attribute has a value assigned to it
+(<code>-1</code>), so when this function fails due to the aforementioned "divide by 0"
+error, it will instead return <code>-1</code>.</p>
+<h2 id="purpose-1"><a class="header" href="#purpose-1">Purpose:</a></h2>
+<p>The purpose of the <code>@no_fail</code> function attribute is to provide a better error
+catching system that doesn't rely on large code blocks. Additionally, by using
+the <code>@no_fail</code> function you can prevent potentially fatal crashes while
+minimizing undefined behavior.</p>
+<div style="break-before: page; page-break-before: always;"></div><style>
+.mdbook-alerts {
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  border-left: 0.25em solid var(--mdbook-alerts-color);
+}
+
+.mdbook-alerts > *:first-child {
+  margin-top: 0;
+}
+
+.mdbook-alerts > *:last-child {
+  margin-bottom: 0;
+}
+
+.mdbook-alerts-title {
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+  line-height: 1;
+  color: var(--mdbook-alerts-color);
+  text-transform: capitalize;
+}
+
+.mdbook-alerts-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.2em;
+  background-color: currentColor;
+  -webkit-mask: no-repeat center / 100%;
+  mask: no-repeat center / 100%;
+  -webkit-mask-image: var(--mdbook-alerts-icon);
+  mask-image: var(--mdbook-alerts-icon);
+}
+
+.mdbook-alerts-note {
+  --mdbook-alerts-color: rgb(9, 105, 218);
+  /* https://icon-sets.iconify.design/material-symbols/info-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16v-4q0-.425-.288-.712T12 11q-.425 0-.712.288T11 12v4q0 .425.288.713T12 17m0-8q.425 0 .713-.288T13 8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8q0 .425.288.713T12 9m0 13q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-3.35-2.325-5.675T12 4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20m0-8"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-tip {
+  --mdbook-alerts-color: rgb(26, 127, 55);
+  /* https://icon-sets.iconify.design/material-symbols/lightbulb-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 22q-.825 0-1.412-.587T10 20h4q0 .825-.587 1.413T12 22m-3-3q-.425 0-.712-.288T8 18q0-.425.288-.712T9 17h6q.425 0 .713.288T16 18q0 .425-.288.713T15 19zm-.75-3q-1.725-1.025-2.738-2.75T4.5 9.5q0-3.125 2.188-5.312T12 2q3.125 0 5.313 2.188T19.5 9.5q0 2.025-1.012 3.75T15.75 16zm.6-2h6.3q1.125-.8 1.738-1.975T17.5 9.5q0-2.3-1.6-3.9T12 4Q9.7 4 8.1 5.6T6.5 9.5q0 1.35.613 2.525T8.85 14M12 14"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-important {
+  --mdbook-alerts-color: rgb(130, 80, 223);
+  /* https://icon-sets.iconify.design/material-symbols/chat-info-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 7q.425 0 .713-.288T13 6q0-.425-.288-.712T12 5q-.425 0-.712.288T11 6q0 .425.288.713T12 7m0 8q.425 0 .713-.288T13 14v-4q0-.425-.288-.712T12 9q-.425 0-.712.288T11 10v4q0 .425.288.713T12 15m-6 3l-2.3 2.3q-.475.475-1.088.213T2 19.575V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18zm-.85-2H20V4H4v13.125zM4 16V4z"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-warning {
+  --mdbook-alerts-color: rgb(154, 103, 0);
+  /* https://icon-sets.iconify.design/material-symbols/warning-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M2.725 21q-.275 0-.5-.137t-.35-.363q-.125-.225-.137-.488t.137-.512l9.25-16q.15-.25.388-.375T12 3q.25 0 .488.125t.387.375l9.25 16q.15.25.138.513t-.138.487q-.125.225-.35.363t-.5.137zm1.725-2h15.1L12 6zM12 18q.425 0 .713-.288T13 17q0-.425-.288-.712T12 16q-.425 0-.712.288T11 17q0 .425.288.713T12 18m0-3q.425 0 .713-.288T13 14v-3q0-.425-.288-.712T12 10q-.425 0-.712.288T11 11v3q0 .425.288.713T12 15m0-2.5"%2F%3E%3C%2Fsvg%3E');
+}
+
+.mdbook-alerts-caution {
+  --mdbook-alerts-color: rgb(207, 34, 46);
+  /* https://icon-sets.iconify.design/material-symbols/brightness-alert-outline-rounded/ */
+  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16q0-.425-.288-.712T12 15q-.425 0-.712.288T11 16q0 .425.288.713T12 17m0-4q.425 0 .713-.288T13 12V8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8v4q0 .425.288.713T12 13m-3.35 7H6q-.825 0-1.412-.587T4 18v-2.65L2.075 13.4q-.275-.3-.425-.662T1.5 12q0-.375.15-.737t.425-.663L4 8.65V6q0-.825.588-1.412T6 4h2.65l1.95-1.925q.3-.275.663-.425T12 1.5q.375 0 .738.15t.662.425L15.35 4H18q.825 0 1.413.588T20 6v2.65l1.925 1.95q.275.3.425.663t.15.737q0 .375-.15.738t-.425.662L20 15.35V18q0 .825-.587 1.413T18 20h-2.65l-1.95 1.925q-.3.275-.662.425T12 22.5q-.375 0-.737-.15t-.663-.425zm.85-2l2.5 2.5l2.5-2.5H18v-3.5l2.5-2.5L18 9.5V6h-3.5L12 3.5L9.5 6H6v3.5L3.5 12L6 14.5V18zm2.5-6"%2F%3E%3C%2Fsvg%3E');
+}
+
+</style>
+<h1 id="no-mangle"><a class="header" href="#no-mangle">No Mangle</a></h1>
+<h2 id="usage-2"><a class="header" href="#usage-2">Usage:</a></h2>
+<pre><code class="language-ksl">@no_mangle
+fn non_mangled_function() -&gt; void {}
+
+fn mangled_function() -&gt; void {}
+</code></pre>
+<h2 id="purpose-2"><a class="header" href="#purpose-2">Purpose:</a></h2>
+<p>The purpose of the <code>@no_mangle</code> function attribute is to prevent function names
+from becoming mangled in a binary/object file outputted by KSL. This supports
+better cross-language development efforts.</p>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -2852,149 +2882,6 @@ using std.env; // Links the standard environment library.
 </p>
 <p>The biggest difference is that imports (using "") are .k or .ksl files, most likely part of your own codebase. Links, on the other hand (using &lt;iden&gt;) link object files to your final executable. These object files are expected to be in the same directory as the compiler itself, but project-specific support may be added in the future. Each period represents a directory. So <code>std.io</code> would link the <code>std/io.o</code> object file into the final executable.</p>
 </div>
-<div class="mdbook-alerts mdbook-alerts-warning">
-<p class="mdbook-alerts-title">
-  <span class="mdbook-alerts-icon"></span>
-  warning
-</p>
-<p>Documentation incomplete, pulled from unfinished ksl/ksl_syntax.md file.</p>
-</div>
-<div style="break-before: page; page-break-before: always;"></div><style>
-.mdbook-alerts {
-  padding: 8px 16px;
-  margin-bottom: 16px;
-  border-left: 0.25em solid var(--mdbook-alerts-color);
-}
-
-.mdbook-alerts > *:first-child {
-  margin-top: 0;
-}
-
-.mdbook-alerts > *:last-child {
-  margin-bottom: 0;
-}
-
-.mdbook-alerts-title {
-  display: flex;
-  font-weight: 600;
-  align-items: center;
-  line-height: 1;
-  color: var(--mdbook-alerts-color);
-  text-transform: capitalize;
-}
-
-.mdbook-alerts-icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  margin-right: 0.2em;
-  background-color: currentColor;
-  -webkit-mask: no-repeat center / 100%;
-  mask: no-repeat center / 100%;
-  -webkit-mask-image: var(--mdbook-alerts-icon);
-  mask-image: var(--mdbook-alerts-icon);
-}
-
-.mdbook-alerts-note {
-  --mdbook-alerts-color: rgb(9, 105, 218);
-  /* https://icon-sets.iconify.design/material-symbols/info-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16v-4q0-.425-.288-.712T12 11q-.425 0-.712.288T11 12v4q0 .425.288.713T12 17m0-8q.425 0 .713-.288T13 8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8q0 .425.288.713T12 9m0 13q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-3.35-2.325-5.675T12 4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20m0-8"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-tip {
-  --mdbook-alerts-color: rgb(26, 127, 55);
-  /* https://icon-sets.iconify.design/material-symbols/lightbulb-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 22q-.825 0-1.412-.587T10 20h4q0 .825-.587 1.413T12 22m-3-3q-.425 0-.712-.288T8 18q0-.425.288-.712T9 17h6q.425 0 .713.288T16 18q0 .425-.288.713T15 19zm-.75-3q-1.725-1.025-2.738-2.75T4.5 9.5q0-3.125 2.188-5.312T12 2q3.125 0 5.313 2.188T19.5 9.5q0 2.025-1.012 3.75T15.75 16zm.6-2h6.3q1.125-.8 1.738-1.975T17.5 9.5q0-2.3-1.6-3.9T12 4Q9.7 4 8.1 5.6T6.5 9.5q0 1.35.613 2.525T8.85 14M12 14"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-important {
-  --mdbook-alerts-color: rgb(130, 80, 223);
-  /* https://icon-sets.iconify.design/material-symbols/chat-info-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 7q.425 0 .713-.288T13 6q0-.425-.288-.712T12 5q-.425 0-.712.288T11 6q0 .425.288.713T12 7m0 8q.425 0 .713-.288T13 14v-4q0-.425-.288-.712T12 9q-.425 0-.712.288T11 10v4q0 .425.288.713T12 15m-6 3l-2.3 2.3q-.475.475-1.088.213T2 19.575V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18zm-.85-2H20V4H4v13.125zM4 16V4z"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-warning {
-  --mdbook-alerts-color: rgb(154, 103, 0);
-  /* https://icon-sets.iconify.design/material-symbols/warning-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M2.725 21q-.275 0-.5-.137t-.35-.363q-.125-.225-.137-.488t.137-.512l9.25-16q.15-.25.388-.375T12 3q.25 0 .488.125t.387.375l9.25 16q.15.25.138.513t-.138.487q-.125.225-.35.363t-.5.137zm1.725-2h15.1L12 6zM12 18q.425 0 .713-.288T13 17q0-.425-.288-.712T12 16q-.425 0-.712.288T11 17q0 .425.288.713T12 18m0-3q.425 0 .713-.288T13 14v-3q0-.425-.288-.712T12 10q-.425 0-.712.288T11 11v3q0 .425.288.713T12 15m0-2.5"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-caution {
-  --mdbook-alerts-color: rgb(207, 34, 46);
-  /* https://icon-sets.iconify.design/material-symbols/brightness-alert-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16q0-.425-.288-.712T12 15q-.425 0-.712.288T11 16q0 .425.288.713T12 17m0-4q.425 0 .713-.288T13 12V8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8v4q0 .425.288.713T12 13m-3.35 7H6q-.825 0-1.412-.587T4 18v-2.65L2.075 13.4q-.275-.3-.425-.662T1.5 12q0-.375.15-.737t.425-.663L4 8.65V6q0-.825.588-1.412T6 4h2.65l1.95-1.925q.3-.275.663-.425T12 1.5q.375 0 .738.15t.662.425L15.35 4H18q.825 0 1.413.588T20 6v2.65l1.925 1.95q.275.3.425.663t.15.737q0 .375-.15.738t-.425.662L20 15.35V18q0 .825-.587 1.413T18 20h-2.65l-1.95 1.925q-.3.275-.662.425T12 22.5q-.375 0-.737-.15t-.663-.425zm.85-2l2.5 2.5l2.5-2.5H18v-3.5l2.5-2.5L18 9.5V6h-3.5L12 3.5L9.5 6H6v3.5L3.5 12L6 14.5V18zm2.5-6"%2F%3E%3C%2Fsvg%3E');
-}
-
-</style>
-<h1 id="import"><a class="header" href="#import">Import</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><style>
-.mdbook-alerts {
-  padding: 8px 16px;
-  margin-bottom: 16px;
-  border-left: 0.25em solid var(--mdbook-alerts-color);
-}
-
-.mdbook-alerts > *:first-child {
-  margin-top: 0;
-}
-
-.mdbook-alerts > *:last-child {
-  margin-bottom: 0;
-}
-
-.mdbook-alerts-title {
-  display: flex;
-  font-weight: 600;
-  align-items: center;
-  line-height: 1;
-  color: var(--mdbook-alerts-color);
-  text-transform: capitalize;
-}
-
-.mdbook-alerts-icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  margin-right: 0.2em;
-  background-color: currentColor;
-  -webkit-mask: no-repeat center / 100%;
-  mask: no-repeat center / 100%;
-  -webkit-mask-image: var(--mdbook-alerts-icon);
-  mask-image: var(--mdbook-alerts-icon);
-}
-
-.mdbook-alerts-note {
-  --mdbook-alerts-color: rgb(9, 105, 218);
-  /* https://icon-sets.iconify.design/material-symbols/info-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16v-4q0-.425-.288-.712T12 11q-.425 0-.712.288T11 12v4q0 .425.288.713T12 17m0-8q.425 0 .713-.288T13 8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8q0 .425.288.713T12 9m0 13q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-3.35-2.325-5.675T12 4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20m0-8"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-tip {
-  --mdbook-alerts-color: rgb(26, 127, 55);
-  /* https://icon-sets.iconify.design/material-symbols/lightbulb-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 22q-.825 0-1.412-.587T10 20h4q0 .825-.587 1.413T12 22m-3-3q-.425 0-.712-.288T8 18q0-.425.288-.712T9 17h6q.425 0 .713.288T16 18q0 .425-.288.713T15 19zm-.75-3q-1.725-1.025-2.738-2.75T4.5 9.5q0-3.125 2.188-5.312T12 2q3.125 0 5.313 2.188T19.5 9.5q0 2.025-1.012 3.75T15.75 16zm.6-2h6.3q1.125-.8 1.738-1.975T17.5 9.5q0-2.3-1.6-3.9T12 4Q9.7 4 8.1 5.6T6.5 9.5q0 1.35.613 2.525T8.85 14M12 14"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-important {
-  --mdbook-alerts-color: rgb(130, 80, 223);
-  /* https://icon-sets.iconify.design/material-symbols/chat-info-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 7q.425 0 .713-.288T13 6q0-.425-.288-.712T12 5q-.425 0-.712.288T11 6q0 .425.288.713T12 7m0 8q.425 0 .713-.288T13 14v-4q0-.425-.288-.712T12 9q-.425 0-.712.288T11 10v4q0 .425.288.713T12 15m-6 3l-2.3 2.3q-.475.475-1.088.213T2 19.575V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18zm-.85-2H20V4H4v13.125zM4 16V4z"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-warning {
-  --mdbook-alerts-color: rgb(154, 103, 0);
-  /* https://icon-sets.iconify.design/material-symbols/warning-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M2.725 21q-.275 0-.5-.137t-.35-.363q-.125-.225-.137-.488t.137-.512l9.25-16q.15-.25.388-.375T12 3q.25 0 .488.125t.387.375l9.25 16q.15.25.138.513t-.138.487q-.125.225-.35.363t-.5.137zm1.725-2h15.1L12 6zM12 18q.425 0 .713-.288T13 17q0-.425-.288-.712T12 16q-.425 0-.712.288T11 17q0 .425.288.713T12 18m0-3q.425 0 .713-.288T13 14v-3q0-.425-.288-.712T12 10q-.425 0-.712.288T11 11v3q0 .425.288.713T12 15m0-2.5"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-caution {
-  --mdbook-alerts-color: rgb(207, 34, 46);
-  /* https://icon-sets.iconify.design/material-symbols/brightness-alert-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16q0-.425-.288-.712T12 15q-.425 0-.712.288T11 16q0 .425.288.713T12 17m0-4q.425 0 .713-.288T13 12V8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8v4q0 .425.288.713T12 13m-3.35 7H6q-.825 0-1.412-.587T4 18v-2.65L2.075 13.4q-.275-.3-.425-.662T1.5 12q0-.375.15-.737t.425-.663L4 8.65V6q0-.825.588-1.412T6 4h2.65l1.95-1.925q.3-.275.663-.425T12 1.5q.375 0 .738.15t.662.425L15.35 4H18q.825 0 1.413.588T20 6v2.65l1.925 1.95q.275.3.425.663t.15.737q0 .375-.15.738t-.425.662L20 15.35V18q0 .825-.587 1.413T18 20h-2.65l-1.95 1.925q-.3.275-.662.425T12 22.5q-.375 0-.737-.15t-.663-.425zm.85-2l2.5 2.5l2.5-2.5H18v-3.5l2.5-2.5L18 9.5V6h-3.5L12 3.5L9.5 6H6v3.5L3.5 12L6 14.5V18zm2.5-6"%2F%3E%3C%2Fsvg%3E');
-}
-
-</style>
-<h1 id="links"><a class="header" href="#links">Links</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -3063,6 +2950,18 @@ using std.env; // Links the standard environment library.
 
 </style>
 <h1 id="namespaces"><a class="header" href="#namespaces">Namespaces</a></h1>
+<p>Namespaces are defined on a per-file basis. Or they should be at least. They do
+not have braces, just define the namespace and put the functions after it, for
+example:</p>
+<pre><code class="language-ksl">namespace "food";
+
+fn pizza() -&gt; void {}
+fn sauce() -&gt; void {}
+fn tacos() -&gt; void {}
+</code></pre>
+<p>All of these can then be accessed with <code>food.&lt;function_name&gt;</code> (<code>food.pizza</code>,
+<code>food.sauce</code>, etc.) If you're working within the namespace then the <code>food.</code> part
+is not required.</p>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -3131,20 +3030,21 @@ using std.env; // Links the standard environment library.
 
 </style>
 <h1 id="ffi-concepts"><a class="header" href="#ffi-concepts">FFI Concepts</a></h1>
-<p>Currently we're discussing adding a no mangle <a href="ffi/../attribute/">attribute</a>.
+<p>Currently we're discussing adding a <code>@no_mangle</code> <a href="ffi/../attribute/">attribute</a>.
 This would do exactly what it sounds like, it would maintain it's function name
 regardless of the name mangling schema.</p>
 <p>We're also thinking about adding some kind of syntax that would allow raw/manual
 forward declarations without KSL doing any kind of type predictions.</p>
-<pre><code class="language-c">extern fn func_in_another_language(int, float, float) -&gt; void;
+<pre><code class="language-ksl">extern fn func_in_another_language(int, float, float) -&gt; void;
 </code></pre>
-<p>This is still pretty close to KSL syntax and it's relatively intuitive so it's likely.</p>
-<p>This would enable developers to call functions in non-officially supported linked object
-files while maintaining the type and memory safety of KSL (assuming they don't get type
-translations wrong.)</p>
+<p>This is still pretty close to KSL syntax and it's relatively intuitive so it's
+likely.</p>
+<p>This would enable developers to call functions in non-officially supported
+linked object files while maintaining the type and memory safety of KSL
+(assuming they don't get type translations wrong.)</p>
 <p>Additionally, for declaring multiple external functions at once, there could be
 an optional block inside.</p>
-<pre><code class="language-c">extern {
+<pre><code class="language-ksl">extern {
 	fn func_in_another_lang_zero(int) -&gt; void;
 	fn func_in_another_lang_one(float) -&gt; int;
 	fn func_in_another_lang_two(int) -&gt; float;
@@ -3555,6 +3455,13 @@ string[] | command line parameters on launch</p>
 
 </style>
 <h1 id="math"><a class="header" href="#math">Math</a></h1>
+<div class="mdbook-alerts mdbook-alerts-warning">
+<p class="mdbook-alerts-title">
+  <span class="mdbook-alerts-icon"></span>
+  warning
+</p>
+<p>The STD-MATH module is not stable and/or partially implemented.</p>
+</div>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -3623,6 +3530,13 @@ string[] | command line parameters on launch</p>
 
 </style>
 <h1 id="random"><a class="header" href="#random">Random</a></h1>
+<div class="mdbook-alerts mdbook-alerts-warning">
+<p class="mdbook-alerts-title">
+  <span class="mdbook-alerts-icon"></span>
+  warning
+</p>
+<p>The STD-RANDOM module is not stable and/or partially implemented.</p>
+</div>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -3691,9 +3605,9 @@ string[] | command line parameters on launch</p>
 
 </style>
 <h1 id="the-ksl-standard"><a class="header" href="#the-ksl-standard">The KSL Standard</a></h1>
-<p>A standard for KSL features and language implementation. In the future
-all new features and language components will need to be submitted for
-review and added to the standard before being included in the compiler.</p>
+<p>A standard for KSL features and language implementation. In the future all new
+features and language components will need to be submitted for review and added
+to the standard before being included in the compiler.</p>
 <ul>
 <li><a href="standard/using.html">using</a></li>
 <li><a href="standard/conditionals.html">if/else if/else</a></li>
@@ -4361,10 +4275,10 @@ actively working on the KSL compiler or building a KSL module
 then you probably don't want to worry about anything here.</p>
 <ul>
 <li><a href="compiler/compiling.html">Compiling the Compiler</a></li>
-<li><a href="compiler/compile-stdlib.html">Compiling KSL-STDLIB</a></li>
+<li><a href="compiler/compile-stdlib.html">Compiling the Standard Library</a></li>
 <li><a href="compiler/name-mangling.html">Name Mangling Convention</a></li>
-<li><a href="compiler/fractstrike-gc.html">What is fractstrike</a></li>
-<li><a href="compiler/expr-semantics.html">Expression Semantics</a></li>
+<li><a href="compiler/expr-semantics.html">Expression Type Semantics</a></li>
+<li><a href="compiler/error-codes.html">KSL Compiler Error Codes</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
@@ -4483,6 +4397,7 @@ if it takes a while.</p>
 </p>
 <p>Documentation help wanted! The MacOS build instructions are not finalized. Any contributions toward this section would be super helpful!</p>
 </div>
+<p>Requirements:</p>
 <ul>
 <li>KSL Source Code</li>
 <li>Rust 1.87^: Download <a href="https://www.rust-lang.org/tools/install">Rust</a></li>
@@ -4556,7 +4471,22 @@ if it takes a while.</p>
 
 </style>
 <h1 id="compiling-ksl-stdlib"><a class="header" href="#compiling-ksl-stdlib">Compiling KSL-STDLIB</a></h1>
-<p>yeah good luck lol</p>
+<p>To compile the standard library:<br />
+Requirements:</p>
+<ul>
+<li>KSL Source Code</li>
+<li>Clang (for windows)</li>
+<li>GCC (for linux)</li>
+</ul>
+<p>Steps:</p>
+<ol>
+<li>Navigate to the <code>/std/</code> folder</li>
+<li>Run the <code>build.cmd</code> (windows) or <code>build.sh</code> (linux)</li>
+</ol>
+<ul>
+<li>(Optionally) run <code>build.cmd debug</code> to enable debug messages in runtime
+libraries (<code>build.sh debug</code> for linux)</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -4625,125 +4555,93 @@ if it takes a while.</p>
 
 </style>
 <h1 id="name-mangling-convention"><a class="header" href="#name-mangling-convention">Name Mangling Convention</a></h1>
-<p>The KSL name mangling convention is designed to prevent
-any kind of type confusion. That includes the return type.</p>
-<p>This also means that you can provide function overloading
-in KSL modules and external object files. The main reason
-for the return type being included is so that there can be
-functions that serve the same purpose but the KSL return type
+<p>The KSL name mangling convention is designed to prevent any kind of type
+confusion. That includes the return type.</p>
+<p>This also means that you can provide function overloading in KSL modules and
+external object files. The main reason for the return type being included is so
+that there can be functions that serve the same purpose but the KSL return type
 predictor doesn't get too broken.</p>
-<p>So, for example, at the time of writing both of these
-functions exist in the <code>std.io</code> module:</p>
-<pre><code class="language-c">// std.io.writeln(int _) -&gt; int
-int std__io__writeln____int_int(int num) {
-	printf("%d", num);
-	return 0;
-}
-
-// std.io.writeln(int _) -&gt; null
-void std__io__writeln____int_null(int num) {
-	printf("%d", num);
-	return;
-}
-</code></pre>
-<p>Functionally they're the exact same, but one returns an
-integer and one returns void ("null" in KSL at the time
-of writing.)</p>
-<div class="mdbook-alerts mdbook-alerts-note">
-<p class="mdbook-alerts-title">
-  <span class="mdbook-alerts-icon"></span>
-  note
-</p>
-<p><code>void</code> is likely going to be added in the near future.</p>
-</div>
-<p>The convention for name mangling in KSL is as follows:</p>
+<p>The general rules for name mangling in KSL are as follows:</p>
 <ol>
 <li>Periods in identifiers are translated to two underscores.</li>
 <li>Space between the function name and types are four underscores.</li>
-<li>The rest of the name will have all parameter types and the return type all separated by one underscore.</li>
+<li>The rest of the name will have all parameter types and the return type all
+separated by one underscore.</li>
 </ol>
-<p>So:</p>
-<pre><code class="language-c">std.io.writeln(int num) -&gt; null
-// Becomes
-std__io__writeln____i64__null
-
-std.io.writeln(f32 x) -&gt; int
-// Becomes
-std__io__writeln____f32__i64
+<p>You'll also see that the type keyword <code>int</code> turns into <code>i64</code>. This is because,
+as explained in <a href="compiler/../variable/">variables</a>, <code>int</code> and <code>float</code> are just aliases
+for <code>i64</code> and <code>f64</code> respectively. Reasoning for this choice are explained there.</p>
+<h2 id="functions-1"><a class="header" href="#functions-1">Functions</a></h2>
+<pre><code class="language-ksl">fn main(i64 a, i64 b) -&gt; i64 {}
+//  ^    ^      ^         ^
+//  |    |      |         |
+//  |    |      |         +---- Return Type
+//  |    |      +-------------- Parameter Type
+//  |    +--------------------- Parameter Type
+//  +-------------------------- Function Name
 </code></pre>
-<p>You'll also see that the type keyword <code>int</code> turns into <code>i64</code>.
-This is because, as explained in <a href="compiler/../variable/">variables</a>,
-<code>int</code> and <code>float</code> are just aliases for <code>i64</code> and <code>f64</code> respectively.
-Reasoning for this choice are explained there.</p>
-<div style="break-before: page; page-break-before: always;"></div><style>
-.mdbook-alerts {
-  padding: 8px 16px;
-  margin-bottom: 16px;
-  border-left: 0.25em solid var(--mdbook-alerts-color);
-}
+<p><code>&lt;namespace&gt;__&lt;function_name&gt;____&lt;parameter_types&gt;_&lt;return_type&gt;</code></p>
+<p>Where:</p>
+<ul>
+<li><code>namespace</code> is the current namespace of the function</li>
+<li><code>function_name</code> is the name of the function</li>
+<li><code>parameter_types</code> are the type identifiers of all parameters concatenated with
+a <code>_</code></li>
+<li><code>return_type</code> is the function return type</li>
+</ul>
+<p>So:</p>
+<pre><code class="language-ksl">fn main(i64 a, i64 b) -&gt; i64  // Becomes: __main____i64_i64_i64
 
-.mdbook-alerts > *:first-child {
-  margin-top: 0;
-}
+namespace "api";
+fn add(f64 a, f64 b) -&gt; f64   // Becomes: api__add____f64_f64_f64
+fn getFloat() -&gt; f64          // Becomes: api__getFloat_____f64
 
-.mdbook-alerts > *:last-child {
-  margin-bottom: 0;
-}
+namespace "ipa";
+fn not(bool val) -&gt; bool      // Becomes: ipa__not____bool_bool
+fn testing() -&gt; void          // Becomes: ipa__testing_____null
+</code></pre>
+<h2 id="methods"><a class="header" href="#methods">Methods</a></h2>
+<div class="mdbook-alerts mdbook-alerts-warning">
+<p class="mdbook-alerts-title">
+  <span class="mdbook-alerts-icon"></span>
+  warning
+</p>
+<p>As of writing, the official conventions for methods have not been finalized.</p>
+</div>
+<pre><code class="language-ksl">    i64[] a = [10, 20];
+    a.push(30);
+//  ^  ^   ^
+//  |  |   |
+//  |  |   +----------- Parameter
+//  |  +--------------- Method Name
+//  +------------------ Variable Name
+</code></pre>
+<p><code>t&lt;variable_type&gt;_method_&lt;method_name&gt;____&lt;parameter_types&gt;</code></p>
+<p>Where:</p>
+<ul>
+<li><code>variable_type</code> is the type (int, float, arr) of the variable being operated on</li>
+<li><code>method_name</code> is the name of the method</li>
+<li><code>parameter_types</code> are the type identifiers of all parameters concatenated with
+a <code>_</code></li>
+</ul>
+<p>Since methods do not have a return type and are expected to always mutate a
+variable directly, there is no need for there to be a return type in the mangled
+name.</p>
+<p>So:</p>
+<pre><code class="language-ksl">str a = "Hello, ";
+a.join("World!");   // Becomes: tstr_method_join____str
 
-.mdbook-alerts-title {
-  display: flex;
-  font-weight: 600;
-  align-items: center;
-  line-height: 1;
-  color: var(--mdbook-alerts-color);
-  text-transform: capitalize;
-}
-
-.mdbook-alerts-icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  margin-right: 0.2em;
-  background-color: currentColor;
-  -webkit-mask: no-repeat center / 100%;
-  mask: no-repeat center / 100%;
-  -webkit-mask-image: var(--mdbook-alerts-icon);
-  mask-image: var(--mdbook-alerts-icon);
-}
-
-.mdbook-alerts-note {
-  --mdbook-alerts-color: rgb(9, 105, 218);
-  /* https://icon-sets.iconify.design/material-symbols/info-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16v-4q0-.425-.288-.712T12 11q-.425 0-.712.288T11 12v4q0 .425.288.713T12 17m0-8q.425 0 .713-.288T13 8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8q0 .425.288.713T12 9m0 13q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-3.35-2.325-5.675T12 4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20m0-8"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-tip {
-  --mdbook-alerts-color: rgb(26, 127, 55);
-  /* https://icon-sets.iconify.design/material-symbols/lightbulb-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 22q-.825 0-1.412-.587T10 20h4q0 .825-.587 1.413T12 22m-3-3q-.425 0-.712-.288T8 18q0-.425.288-.712T9 17h6q.425 0 .713.288T16 18q0 .425-.288.713T15 19zm-.75-3q-1.725-1.025-2.738-2.75T4.5 9.5q0-3.125 2.188-5.312T12 2q3.125 0 5.313 2.188T19.5 9.5q0 2.025-1.012 3.75T15.75 16zm.6-2h6.3q1.125-.8 1.738-1.975T17.5 9.5q0-2.3-1.6-3.9T12 4Q9.7 4 8.1 5.6T6.5 9.5q0 1.35.613 2.525T8.85 14M12 14"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-important {
-  --mdbook-alerts-color: rgb(130, 80, 223);
-  /* https://icon-sets.iconify.design/material-symbols/chat-info-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 7q.425 0 .713-.288T13 6q0-.425-.288-.712T12 5q-.425 0-.712.288T11 6q0 .425.288.713T12 7m0 8q.425 0 .713-.288T13 14v-4q0-.425-.288-.712T12 9q-.425 0-.712.288T11 10v4q0 .425.288.713T12 15m-6 3l-2.3 2.3q-.475.475-1.088.213T2 19.575V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18zm-.85-2H20V4H4v13.125zM4 16V4z"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-warning {
-  --mdbook-alerts-color: rgb(154, 103, 0);
-  /* https://icon-sets.iconify.design/material-symbols/warning-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M2.725 21q-.275 0-.5-.137t-.35-.363q-.125-.225-.137-.488t.137-.512l9.25-16q.15-.25.388-.375T12 3q.25 0 .488.125t.387.375l9.25 16q.15.25.138.513t-.138.487q-.125.225-.35.363t-.5.137zm1.725-2h15.1L12 6zM12 18q.425 0 .713-.288T13 17q0-.425-.288-.712T12 16q-.425 0-.712.288T11 17q0 .425.288.713T12 18m0-3q.425 0 .713-.288T13 14v-3q0-.425-.288-.712T12 10q-.425 0-.712.288T11 11v3q0 .425.288.713T12 15m0-2.5"%2F%3E%3C%2Fsvg%3E');
-}
-
-.mdbook-alerts-caution {
-  --mdbook-alerts-color: rgb(207, 34, 46);
-  /* https://icon-sets.iconify.design/material-symbols/brightness-alert-outline-rounded/ */
-  --mdbook-alerts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16q0-.425-.288-.712T12 15q-.425 0-.712.288T11 16q0 .425.288.713T12 17m0-4q.425 0 .713-.288T13 12V8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8v4q0 .425.288.713T12 13m-3.35 7H6q-.825 0-1.412-.587T4 18v-2.65L2.075 13.4q-.275-.3-.425-.662T1.5 12q0-.375.15-.737t.425-.663L4 8.65V6q0-.825.588-1.412T6 4h2.65l1.95-1.925q.3-.275.663-.425T12 1.5q.375 0 .738.15t.662.425L15.35 4H18q.825 0 1.413.588T20 6v2.65l1.925 1.95q.275.3.425.663t.15.737q0 .375-.15.738t-.425.662L20 15.35V18q0 .825-.587 1.413T18 20h-2.65l-1.95 1.925q-.3.275-.662.425T12 22.5q-.375 0-.737-.15t-.663-.425zm.85-2l2.5 2.5l2.5-2.5H18v-3.5l2.5-2.5L18 9.5V6h-3.5L12 3.5L9.5 6H6v3.5L3.5 12L6 14.5V18zm2.5-6"%2F%3E%3C%2Fsvg%3E');
-}
-
-</style>
-<h1 id="fractstrike"><a class="header" href="#fractstrike">fractstrike</a></h1>
-<p>fractstrike is ksl's runtime garbage collector [in development].</p>
+i64[] b = [10, 20];
+b.push(30);         // Becomes: tarr_method_push____i64
+</code></pre>
+<h2 id="variables-1"><a class="header" href="#variables-1">Variables</a></h2>
+<div class="mdbook-alerts mdbook-alerts-warning">
+<p class="mdbook-alerts-title">
+  <span class="mdbook-alerts-icon"></span>
+  warning
+</p>
+<p>As of writing, the official conventions for variables have not been decided.</p>
+</div>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -4812,26 +4710,24 @@ Reasoning for this choice are explained there.</p>
 
 </style>
 <h1 id="expression-semantics"><a class="header" href="#expression-semantics">Expression Semantics</a></h1>
-<p>This page will go over how semantic analysis handles expressions.
-It will cover the technical details behind return type prediction
-in <a href="compiler/../function/inline-calls.html">inline calls</a> and type promotion.</p>
-<p>Currently, KSL will travel the expression in the AST and determine
-the smallest possible type for all literals and the types defined
-for each variable. It will then cross reference these anywhere there
-is an operation between them. It will pick the larger type of the
-two and "promote" the entire expression to that type. This way we
-can calculate expressions for differing types without losing data
-from downcasts.</p>
-<hr />
-<p>In the future, we're likely to change this system so that the entire
-expression recieves a type hint ahead of time. It will attempt to
-convert all literals (and potentially variables) to this type. If
-the expression ends up with a larger type than the hint it will simply
-throw an error.</p>
-<p>Additionally, if there is a type that doesn't match the rest that
-cannot be implicitly changed it will throw a warning or error to
-the programmer explaining that in order to "do this operation" they
-must cast to an acceptable type.</p>
+<div class="mdbook-alerts mdbook-alerts-warning">
+<p class="mdbook-alerts-title">
+  <span class="mdbook-alerts-icon"></span>
+  warning
+</p>
+<p>The methodology explained below is technically accurate but fails to mention all the details.</p>
+</div>
+<p>This page will go over how semantic analysis handles expressions. It will cover
+the technical details behind return type prediction in <a href="compiler/../function/inline-calls.html">inline calls</a>
+and type promotion.</p>
+<p>Currently, the entire expression recieves a type hint ahead of time. It will
+attempt to convert all literals (and potentially variables) to this type. If the
+expression ends up with a larger type than the hint it will simply throw an
+error.</p>
+<p>Additionally, if there is a type that doesn't match the rest that cannot be
+implicitly changed, it will throw a warning or error to the programmer
+explaining that in order to "do this operation" they must cast to an acceptable
+type.</p>
 <div style="break-before: page; page-break-before: always;"></div><style>
 .mdbook-alerts {
   padding: 8px 16px;
@@ -4900,7 +4796,15 @@ must cast to an acceptable type.</p>
 
 </style>
 <h1 id="error-codes"><a class="header" href="#error-codes">Error Codes</a></h1>
-<p>A list of error codes in the KSL compiler, where the originate, why they were triggered, etc.</p>
+<p>A list of error codes in the KSL compiler, where the originate, why they were
+triggered, etc. In the future this list will include examples and remediations.</p>
+<div class="mdbook-alerts mdbook-alerts-warning">
+<p class="mdbook-alerts-title">
+  <span class="mdbook-alerts-icon"></span>
+  warning
+</p>
+<p>The current error code list is incomplete, a more comprehensive list will be made when the compiler is closer to a stable release.</p>
+</div>
 <hr />
 <p>EL0000 = Error [Lexer]: Unexpected End-of-File Immediately After Comment Opening</p>
 <p>EL0001 = Error [Lexer]: Unexpected End-of-File While Lexing Comment</p>

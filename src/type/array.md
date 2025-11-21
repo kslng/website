@@ -1,3 +1,3 @@
-# Booleans
+# Arrays
 
 *Docs Coming Soon*

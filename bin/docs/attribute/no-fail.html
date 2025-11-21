@@ -245,6 +245,31 @@
 
 </style>
 <h1 id="no-fail"><a class="header" href="#no-fail">No Fail</a></h1>
+<h2 id="usage"><a class="header" href="#usage">Usage:</a></h2>
+<pre><code class="language-ksl">@no_fail
+fn function_that_cannot_fail() -&gt; int {
+	return 20 / 0;
+}
+</code></pre>
+<p>In the example above, the function will throw a "cannot divide by 0" error,
+however, because we have the <code>@no_fail</code> attribute it will catch the error and
+return a default constant based on the defined return type of the function. For
+integers the default constant is <code>0</code> so this function will return <code>0</code>, even
+though technically it failed.</p>
+<p>You can also define custom return values via <code>@no_fail=&lt;value&gt;</code>, for example:</p>
+<pre><code class="language-ksl">@no_fail=-1
+fn function_that_cannot_fail() -&gt; int {
+	return 40 / 0;
+}
+</code></pre>
+<p>In this new example the <code>@no_fail</code> function attribute has a value assigned to it
+(<code>-1</code>), so when this function fails due to the aforementioned "divide by 0"
+error, it will instead return <code>-1</code>.</p>
+<h2 id="purpose"><a class="header" href="#purpose">Purpose:</a></h2>
+<p>The purpose of the <code>@no_fail</code> function attribute is to provide a better error
+catching system that doesn't rely on large code blocks. Additionally, by using
+the <code>@no_fail</code> function you can prevent potentially fatal crashes while
+minimizing undefined behavior.</p>
 
                     </main>
 
@@ -254,7 +279,7 @@
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../using/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../attribute/no-mangle.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -268,7 +293,7 @@
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../using/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../attribute/no-mangle.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

@@ -245,40 +245,30 @@
 
 </style>
 <h1 id="hello-world-in-ksl"><a class="header" href="#hello-world-in-ksl">Hello World in KSL</a></h1>
-<p>Ah yes, the traditional "hello world" program. Luckily for you, my
-dear programmer, we have a fun little cheat for the world's most basic
-program. The hello world program seems to be something that a lot of
-developers end up building, and KSL wants to make everything easier.</p>
-<p>So we decided to make a standard library module for the hello world program!</p>
-<pre><code class="language-c">using std.t;
-
-fn main() -&gt; void {
-	std.t.hw();
-	return;
-}
-</code></pre>
-<p>And that's it. The <code>hw()</code> function will print "Hello, World!"</p>
-<hr />
-<p>Ok, but what if I want to actually say "World, Hello?"</p>
-<p>Now there we have some innovation! Some progress! You're going to do
-incredible things in the future, that's truly some outside the box thinking!</p>
-<p>Let's do it!</p>
+<p>Ah yes, the traditional "hello world" program. The hello world program seems to
+be something that a lot of developers end up building, how strange, this should
+be investigated...</p>
+<p>Let's build it!</p>
 <p>So first, we're going to need a main function, our entry point.</p>
-<pre><code class="language-c">fn main() -&gt; void {}
+<pre><code class="language-ksl">fn main() -&gt; void {}
 </code></pre>
-<p>Since we don't need this function to return anything we can just set
-the return type to void.</p>
-<p>We're also writing to the console, so we're going to need our good old
-standard io module. Go ahead and add it with: <code>using std.io;</code></p>
-<p>That should give us access to the <code>writeln</code> function, so let's finally
-finish off your "World, Hello?" program.</p>
-<pre><code class="language-c">using std.io;
+<p>Since we don't need our <code>main</code> function to return anything we can just set the
+return type to <code>void</code> (notice the <code>-&gt;</code> after the parenthesis and before <code>void</code>?)</p>
+<p>We're also writing to the console, so we're going to need our good old standard
+io module. Go ahead and add it with: <code>using std.io;</code> You really should do this
+at the top of the file (it's best practice,) but really anywhere works.</p>
+<p>That should give us access to the <code>writeln</code> function, so let's finish off your
+"World, Hello?" program.</p>
+<pre><code class="language-ksl">using std.io;
 
 fn main() -&gt; void {
-	std.io.writeln("World, Hello?");
+	io.writeln("World, Hello?");
 	return;
 }
 </code></pre>
+<p>Isn't that awesome!! If this wasn't torture then you should check out some other
+tutorials and learn some more about KSL! It might take some time but don't give
+up!!!</p>
 
                     </main>
 
@@ -288,7 +278,7 @@ fn main() -&gt; void {
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../tutorial/if-statement.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../tutorial/for-loop.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -302,7 +292,7 @@ fn main() -&gt; void {
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../tutorial/if-statement.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../tutorial/for-loop.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

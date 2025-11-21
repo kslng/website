@@ -244,24 +244,23 @@
 }
 
 </style>
-<h1 id="inline-calls"><a class="header" href="#inline-calls">Inline Calls</a></h1>
-<p>Currently, functions in KSL are defined internally in two ways,
-by the function body declaration or a forward declaration. In the
-case of a forward declaration, KSL will attempt to interpret the
-most likely return type. For example, if a function is called inside
-of an integer operation then it's likely to be an integer. In order
-to override this behavior and define a return type for an inline
-function call you can use the derive keyword (<code>-&gt;</code>) on the function
-call. See below:</p>
+<h1 id="inline-function-calls"><a class="header" href="#inline-function-calls">Inline Function Calls</a></h1>
+<p>Currently, functions in KSL are defined internally in two ways, by the function
+body declaration or a forward declaration. In the case of a forward declaration,
+KSL will attempt to interpret the most likely return type. For example, if a
+function is called inside of an integer operation then it's likely to be an
+integer. In order to override this behavior and define a return type for an
+inline function call you can use the derive keyword (<code>-&gt;</code>) on the function call.
+See below:</p>
 <p>Example of inline call:</p>
-<pre><code class="language-c">int x = add(1, 3) + 5;
+<pre><code class="language-ksl">int x = add(1, 3) + 5;
 </code></pre>
 <p>Example of inline call w/ type hint:</p>
-<pre><code class="language-c">int x = add(1, 3) -&gt; int + 5;
+<pre><code class="language-ksl">int x = add(1, 3) -&gt; int + 5;
 </code></pre>
-<p>Sometimes it can be easier to read if you move the type hint to
-right after the funciton:</p>
-<pre><code class="language-c">int x = add(1, 3)-&gt;int + 5;
+<p>Sometimes it can be easier to read if you move the type hint to right after the
+function:</p>
+<pre><code class="language-ksl">int x = add(1, 3)-&gt;int + 5;
 </code></pre>
 <div class="mdbook-alerts mdbook-alerts-important">
 <p class="mdbook-alerts-title">
@@ -270,33 +269,25 @@ right after the funciton:</p>
 </p>
 <p>You cannot use this syntax to change the function return type. If you wish to use a different type (post-return) then look into type casting. This is only to hint to the compiler what the expected return type is.</p>
 </div>
-<div class="mdbook-alerts mdbook-alerts-caution">
+<div class="mdbook-alerts mdbook-alerts-important">
 <p class="mdbook-alerts-title">
   <span class="mdbook-alerts-icon"></span>
-  caution
+  important
 </p>
 <p>Using this syntax to claim a function returns <code>void</code> for a function that returns an <code>int</code> will result in an unresolved symbol. The same applies for other type differences as well.</p>
 </div>
-<p>Similarly, if a function call doesn't appear to have any context
-then KSL might assume it returns nothing (<code>void</code> or <code>null</code>.) This
-might cause an error so you can use the type hint syntax outside of
-algebraic operations as well.</p>
+<p>Similarly, if a function call doesn't appear to have any context then KSL might
+assume it returns nothing (<code>void</code>.) This might cause an error so you can use the
+type hint syntax outside of algebraic operations as well.</p>
 <p>Example:</p>
-<pre><code class="language-c">add(1, 3) -&gt; int;
+<pre><code class="language-ksl">add(1, 3) -&gt; int;
 </code></pre>
-<div class="mdbook-alerts mdbook-alerts-warning">
-<p class="mdbook-alerts-title">
-  <span class="mdbook-alerts-icon"></span>
-  warning
-</p>
-<p>Documentation incomplete, pulled from unfinished ksl/ksl_syntax.md file.</p>
-</div>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../function/attributes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../function/return.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
@@ -310,7 +301,7 @@ algebraic operations as well.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../function/attributes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../function/return.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 

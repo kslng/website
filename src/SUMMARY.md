@@ -10,10 +10,8 @@
 
 - [Tutorials](tutorial/readme.md)
   - [Hello World in KSL](tutorial/hello-world.md)
-  - [If Statement](tutorial/if-statement.md)
-  - [For Loops](tutorial/for-loop.md)
-  - [While Loops](tutorial/while-loop.md)
-  - [Rock, Paper, Scissors](tutorial/rock-paper-scissors.md)
+  - [For Loops in KSL](tutorial/for-loop.md)
+  - [Rock, Paper, Scissors in KSL](tutorial/rock-paper-scissors.md)
 
 ---
 
@@ -22,14 +20,14 @@
   - [Integers](type/integers.md)
   - [Floats](type/floats.md)
   - [Booleans](type/booleans.md)
-  - [References](type/references.md)
-  - [Others](type/more.md)
+  - [Strings](type/string.md)
+  - [Arrays](type/array.md)
+  - [Struct](type/struct.md)
 - [Variables](variable/readme.md)
 - [Expressions](expression/readme.md)
 - [Functions](function/readme.md)
   - [Definition](function/define.md)
   - [Returns](function/return.md)
-  - [Attributes](function/attributes.md)
   - [Inline Calls](function/inline-calls.md)
 - [Conditionals](conditional/readme.md)
 - [Loops](loop/readme.md)
@@ -39,9 +37,8 @@
 - [Function Attributes](attribute/readme.md)
   - [Entry](attribute/entry.md)
   - [No Fail](attribute/no-fail.md)
+  - [No Mangle](attribute/no-mangle.md)
 - [Libraries](using/readme.md)
-  - [Import](using/import.md)
-  - [Links](using/links.md)
 - [Namespaces](namespace/readme.md)
 - [FFI Concepts](ffi/readme.md)
 
@@ -69,8 +66,7 @@
 
 - [Compiler Internals](compiler/readme.md)
   - [Compiling the Compiler](compiler/compiling.md)
-  - [Compiling KSL-STDLIB](compiler/compile-stdlib.md)
+  - [Compiling the Standard Library](compiler/compile-stdlib.md)
   - [Name Mangling Convention](compiler/name-mangling.md)
-  - [What is fractstrike](compiler/fractstrike-gc.md)
   - [Expression Semantics](compiler/expr-semantics.md)
-  - [Error Codes](compiler/error-codes.md)
+  - [KSL Compiler Error Codes](compiler/error-codes.md)

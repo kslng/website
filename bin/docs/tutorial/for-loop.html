@@ -3,18 +3,18 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>For Loops - KSL Documentation</title>
+        <title>For Loops in KSL - KSL Documentation</title>
 
 
         <!-- Custom HTML head -->
 
-		<meta name="description" content="KSL Programming Language Documentation; For Loops - KSL Documentation">
+		<meta name="description" content="KSL Programming Language Documentation; For Loops in KSL - KSL Documentation">
 		<meta name="keywords" content="ksl, programming, language, compiler, kgsensei, documentation">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#17181C">
 		<meta name="og:site_name" content="kslng.org">
 		<meta name="og:title" content="KSL Language Documentation">
-		<meta name="og:description" content="KSL Programming Language Documentation; For Loops - KSL Documentation">
+		<meta name="og:description" content="KSL Programming Language Documentation; For Loops in KSL - KSL Documentation">
 		<meta name="robots" content="index, follow">
 
         <link rel="icon" href="../favicon.svg">
@@ -245,47 +245,48 @@
 
 </style>
 <h1 id="for-loops"><a class="header" href="#for-loops">For Loops</a></h1>
-<p>If you're here you probably want to learn how to make a for loop in KSL.
-If that's the case, welcome! Otherwise, uh, leave?</p>
-<p>So, we want to make something interesting that expresses how KSL works.
-A great idea for that would be to make a simple program that generates
-a random decimal value, we'll then round that and count the number of 1's
-and 0's in a sample number!</p>
-<p>The first thing we need to do, is consider our requirements. We need to
-generate a random number, round it, and we'll want to display the results
-at the end. So we need <code>std.random</code>, <code>std.math</code>, and <code>std.io</code>.</p>
-<p>Let's start our new file, you can call it whatever you want but I'll call
-mine <code>super_epic_for_loop_example_for_the_ksl_docs_tutorial.k</code>! Without
-further adieu, let's begin.</p>
-<pre><code class="language-c#">using std.io;
+<p>If you're here you probably want to learn how to make a for loop in KSL. If
+that's the case, welcome! Otherwise, uh, <a href="../compiler/name-mangling.html">check this out</a>??</p>
+<p>So, we want to make something interesting that expresses how KSL works. A great
+idea for that would be to make a simple program that generates a random decimal
+value, we'll then round that and count the number of 1's and 0's in a sample
+number!</p>
+<p>The first thing we need to do, is consider our requirements. We need to generate
+a random number, round it, and we'll want to display the results at the end. So
+we need <code>std.random</code>, <code>std.math</code>, and <code>std.io</code>.</p>
+<p>Let's start our new file, you can call it whatever you want but I'll call mine
+<code>super_awesome_epic_for_loop_example_4_the_ksl_docs_tutorial.k</code>! Without further
+adieu, let's begin.</p>
+<pre><code class="language-ksl">using std.io;
 using std.math;
 using std.random;
 </code></pre>
-<p>This should get all our needs taken care of in regards to the standard
-library modules! Now we need to define our entry point.</p>
-<pre><pre class="playground"><code class="language-rust">fn main() -&gt; int {
+<p>This should get all our needs taken care of in regards to the standard library
+modules! Now we need to define our entry point.</p>
+<pre><code class="language-ksl">fn main() -&gt; int {
 	return 0;
-}</code></pre></pre>
-<p>As covered in some other tutorials (hopefully) the <code>main</code> function is
-the entry point and the <code>-&gt; int</code> defines the function derivative
-(basically the expected function return type, but KSL has to be
-<em>sooooo</em> special.)</p>
-<p>Now let's define our zero and one counts. By default all variables in KSL
-are mutable, this is great news for us because that means we don't have
-to do any extra work to update these values!</p>
-<pre><code class="language-c#">fn main() -&gt; int {
+}
+</code></pre>
+<p>As covered in some other tutorials (hopefully) the <code>main</code> function is the entry
+point and the <code>-&gt; int</code> defines the function derivative (basically the expected
+function return type, but KSL has to be <em>sooooo</em> special and call it something
+<em>different</em> because it wants to be like the cool kids.)</p>
+<p>Now let's define our zero and one counts. By default all variables in KSL are
+mutable, this is great news for us because that means we don't have to do any
+extra work to update these values!</p>
+<pre><code class="language-ksl">fn main() -&gt; int {
 	int zeros = 0;
 	int ones = 0;
 	return 0;
 }
 </code></pre>
-<p>We've made so much progress so far! Go ahead and get a drink of water,
-because this is where it gets real.</p>
+<p>We've made so much progress so far! Go ahead and get a drink of water, because
+this is where it gets real.</p>
 <p>We need to add the famed for loop now.</p>
-<pre><code class="language-c#">fn main() -&gt; int {
+<pre><code class="language-ksl">fn main() -&gt; int {
 	int zeros = 0;
 	int ones = 0;
-	for (int i = 0; i &lt; 100; i++;) {
+	for (int i = 0; i &lt; 100; i++) {
 
 	}
 	return 0;
@@ -299,11 +300,11 @@ iterative statement, the i++, which is just a shorthand to increase the variable
 i by 1 in this case.</p>
 <p>Great, that was a lot, but it only gets better from here! Let's add the random
 number generation function!</p>
-<pre><code class="language-c#">fn main() -&gt; int {
+<pre><code class="language-ksl">fn main() -&gt; int {
 	int zeros = 0;
 	int ones = 0;
-	for (int i = 0; i &lt; 100; i++;) {
-		f64 random_float = random.rand() -&gt; f64;
+	for (int i = 0; i &lt; 100; i++) {
+		f64 random_float = random.rand()-&gt;f64;
 	}
 	return 0;
 }
@@ -316,46 +317,42 @@ and saving it to the <code>random_float</code> variable, which we have set to a 
 <p>Now we need to round this value to figure out if it will be a <code>1</code> or a <code>0</code>!</p>
 <p>We can do this with the following code, go ahead and add it after the
 <code>random_float</code> variable line.</p>
-<pre><code class="language-c">int random_rounded = math.round(random_float) -&gt; int;
+<pre><code class="language-ksl">int random_rounded = math.round(random_float)-&gt;int;
 </code></pre>
-<p>If you've figured that out we can move on to the if statement, which will be
-the part of our program that actually tells us which variable to increment
-(ones or zeros, if you've already forgotten.)</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>if (random_rounded == 1) {
+<p>If you've figured that out we can move on to the if statement, which will be the
+part of our program that actually tells us which variable to increment (ones or
+zeros, if you've already forgotten.)</p>
+<pre><code class="language-ksl">if (random_rounded == 1) {
 	ones++;
 } else {
 	zeros++;
 }
-<span class="boring">}</span></code></pre></pre>
-<p>What this is doing is checking if the <code>random_rounded</code> variable is equal to
-<code>1</code>, if it is, then we increment the <code>ones</code> variable (remember that shorthand
-from earlier?) Otherwise, we add <code>1</code> to the <code>zeros</code> variable. Luckily, since
-the result of our random number rounding can only be <code>1</code> or <code>0</code> in this situation,
+</code></pre>
+<p>What this is doing is checking if the <code>random_rounded</code> variable is equal to <code>1</code>,
+if it is, then we increment the <code>ones</code> variable (remember that shorthand from
+earlier?) Otherwise, we add <code>1</code> to the <code>zeros</code> variable. Luckily, since the
+result of our random number rounding can only be <code>1</code> or <code>0</code> in this situation,
 we don't have to add any other logic for counting!</p>
-<p>If you ran this code right now it would work! But you wouldn't be able to see the
-results :( and that's kind of the point of this whole thing. So, let's use our
-awesome <code>io</code> module from the standard library to show our counts!</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>io.writeln(zeros);
+<p>If you ran this code right now it would work! But you wouldn't be able to see
+the results :( and that's kind of the point of this whole thing. So, let's use
+our awesome <code>io</code> module from the standard library to show our counts!</p>
+<pre><code class="language-ksl">io.writeln(zeros);
 io.writeln(ones);
-<span class="boring">}</span></code></pre></pre>
+</code></pre>
 <p>Great, now it will print our counts to the console!</p>
 <p>For those of you that don't care about learning the language and just want to
 make something quickly without thinking of the potential consequences, here is
 the full code:</p>
-<pre><code class="language-c#">using std.io;
+<pre><code class="language-ksl">using std.io;
 using std.math;
 using std.random;
 
 fn main() -&gt; int {
 	int zeros = 0;
 	int ones = 0;
-	for (int i = 0; i &lt; 100; i++;) {
-		f64 random_float = random.rand() -&gt; f64;
-		int random_rounded = math.round(random_float) -&gt; int;
+	for (int i = 0; i &lt; 100; i++) {
+		f64 random_float = random.rand()-&gt;f64;
+		int random_rounded = math.round(random_float)-&gt;int;
 		if (random_rounded == 1) {
 			ones++;
 		} else {
@@ -373,11 +370,11 @@ fn main() -&gt; int {
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../tutorial/if-statement.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../tutorial/hello-world.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../tutorial/while-loop.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../tutorial/rock-paper-scissors.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -387,11 +384,11 @@ fn main() -&gt; int {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../tutorial/if-statement.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../tutorial/hello-world.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../tutorial/while-loop.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../tutorial/rock-paper-scissors.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

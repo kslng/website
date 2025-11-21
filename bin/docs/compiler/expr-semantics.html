@@ -245,32 +245,30 @@
 
 </style>
 <h1 id="expression-semantics"><a class="header" href="#expression-semantics">Expression Semantics</a></h1>
-<p>This page will go over how semantic analysis handles expressions.
-It will cover the technical details behind return type prediction
-in <a href="../function/inline-calls.html">inline calls</a> and type promotion.</p>
-<p>Currently, KSL will travel the expression in the AST and determine
-the smallest possible type for all literals and the types defined
-for each variable. It will then cross reference these anywhere there
-is an operation between them. It will pick the larger type of the
-two and "promote" the entire expression to that type. This way we
-can calculate expressions for differing types without losing data
-from downcasts.</p>
-<hr />
-<p>In the future, we're likely to change this system so that the entire
-expression recieves a type hint ahead of time. It will attempt to
-convert all literals (and potentially variables) to this type. If
-the expression ends up with a larger type than the hint it will simply
-throw an error.</p>
-<p>Additionally, if there is a type that doesn't match the rest that
-cannot be implicitly changed it will throw a warning or error to
-the programmer explaining that in order to "do this operation" they
-must cast to an acceptable type.</p>
+<div class="mdbook-alerts mdbook-alerts-warning">
+<p class="mdbook-alerts-title">
+  <span class="mdbook-alerts-icon"></span>
+  warning
+</p>
+<p>The methodology explained below is technically accurate but fails to mention all the details.</p>
+</div>
+<p>This page will go over how semantic analysis handles expressions. It will cover
+the technical details behind return type prediction in <a href="../function/inline-calls.html">inline calls</a>
+and type promotion.</p>
+<p>Currently, the entire expression recieves a type hint ahead of time. It will
+attempt to convert all literals (and potentially variables) to this type. If the
+expression ends up with a larger type than the hint it will simply throw an
+error.</p>
+<p>Additionally, if there is a type that doesn't match the rest that cannot be
+implicitly changed, it will throw a warning or error to the programmer
+explaining that in order to "do this operation" they must cast to an acceptable
+type.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../compiler/fractstrike-gc.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../compiler/name-mangling.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
@@ -284,7 +282,7 @@ must cast to an acceptable type.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../compiler/fractstrike-gc.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../compiler/name-mangling.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 

@@ -245,12 +245,24 @@
 
 </style>
 <h1 id="namespaces"><a class="header" href="#namespaces">Namespaces</a></h1>
+<p>Namespaces are defined on a per-file basis. Or they should be at least. They do
+not have braces, just define the namespace and put the functions after it, for
+example:</p>
+<pre><code class="language-ksl">namespace "food";
+
+fn pizza() -&gt; void {}
+fn sauce() -&gt; void {}
+fn tacos() -&gt; void {}
+</code></pre>
+<p>All of these can then be accessed with <code>food.&lt;function_name&gt;</code> (<code>food.pizza</code>,
+<code>food.sauce</code>, etc.) If you're working within the namespace then the <code>food.</code> part
+is not required.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../using/links.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../using/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
@@ -264,7 +276,7 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../using/links.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../using/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 

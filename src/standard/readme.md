@@ -1,8 +1,8 @@
 # The KSL Standard
 
-A standard for KSL features and language implementation. In the future
-all new features and language components will need to be submitted for
-review and added to the standard before being included in the compiler.
+A standard for KSL features and language implementation. In the future all new
+features and language components will need to be submitted for review and added
+to the standard before being included in the compiler.
 
 - [using](using.md)
 - [if/else if/else](conditionals.md)

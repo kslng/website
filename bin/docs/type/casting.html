@@ -245,28 +245,27 @@
 
 </style>
 <h1 id="type-casting"><a class="header" href="#type-casting">Type Casting</a></h1>
-<p>KSL has a potentially unintuitive type casting syntax. Just use a
-type identifier followed by an apostrophe:</p>
-<pre><code class="language-c">float x = 10.0;
+<p>KSL has a potentially unintuitive type casting syntax. Just use a type
+identifier followed by an apostrophe:</p>
+<pre><code class="language-ksl">float x = 10.0;
 int y = int'x;
 </code></pre>
-<p>There are some type casts that will result in errors, for example,
-casting to null or void. But why do that anyway? It should be noted
-that casting only works for the term immediately right to the cast.
-See below:</p>
+<p>There are some type casts that will result in errors, for example, casting to
+null or void. But why do that anyway? It should be noted that casting only works
+for the term immediately right to the cast, see below:</p>
 <p>Example where the entire expression is calcuated <em>then</em> cast:</p>
-<pre><code class="language-c">// This turns into 2.0 and is then turned into 2.
+<pre><code class="language-ksl">// This turns into 2.0 and is then turned into 2.
 int x = int'(1.0 + 1.0);
 </code></pre>
 <p>Example where only the first number value is cast:</p>
-<pre><code class="language-c">// This is turned into 1 + 1 then turned into 2.
+<pre><code class="language-ksl">// This is turned into 1 + 1 then turned into 2.
 int x = int'1.0 + 1;
 </code></pre>
 <p>A quick note on casting to booleans:</p>
-<p>In some languages casting integers or floats to a boolean may be different.
-In KSL all integers other than <code>0</code> are cast to <code>true</code>. Similarly, all floats
-other than <code>0.0</code> are cast to <code>true</code>:</p>
-<pre><code class="language-c">bool'1;         // true
+<p>In some languages casting integers or floats to a boolean may be different. In
+KSL all integers other than <code>0</code> are cast to <code>true</code>. Similarly, all floats other
+than <code>0.0</code> are cast to <code>true</code>:</p>
+<pre><code class="language-ksl">bool'1;         // true
 bool'0;         // false
 bool'252466642; // true
 bool'-35;       // true
@@ -275,12 +274,12 @@ bool'0.0;       // false
 bool'135.03111; // true
 bool'-135.77;   // true
 </code></pre>
-<div class="mdbook-alerts mdbook-alerts-warning">
+<div class="mdbook-alerts mdbook-alerts-important">
 <p class="mdbook-alerts-title">
   <span class="mdbook-alerts-icon"></span>
-  warning
+  important
 </p>
-<p>Documentation incomplete, pulled from unfinished ksl/ksl_syntax.md file.</p>
+<p>Casting cannot be done on arrays or structs, you'll have to manually cast the elements or fields. Casting is not a custom method you can implement for a type.</p>
 </div>
 
                     </main>
