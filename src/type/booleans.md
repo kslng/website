@@ -23,6 +23,12 @@ Types that bools can be cast to:
 
 There are no methods supported for booleans.
 
+## Examples
+
+```ksl
+bool x = true;
+```
+
 ## Notes
 
 A quick note on casting to booleans:

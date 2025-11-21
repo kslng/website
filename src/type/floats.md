@@ -24,3 +24,10 @@ Types that floats can be cast to:
 ## Method Support
 
 There are no methods supported for floats.
+
+## Examples
+
+```ksl
+float x = 20.5;
+```
+

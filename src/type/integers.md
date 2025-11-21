@@ -24,3 +24,9 @@ Types that integers can be cast to:
 ## Method Support
 
 There are no methods supported for integers.
+
+## Examples
+
+```ksl
+int x = 20;
+```
