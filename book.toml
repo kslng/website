@@ -9,6 +9,10 @@ src = "src"
 build-dir = "bin/docs"
 
 [output.html]
+git-repository-url = "https://github.com/kslng/ksl"
+preferred-dark-theme = "navy"
+sidebar-header-nav = true
+default-theme = "navy"
 site-url = "/docs/"
 
 [output.html.search]

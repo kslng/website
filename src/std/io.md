@@ -56,7 +56,7 @@ Returns: `void`
 
 Example:
 ```ksl
-io.write("Testing); // ->void equivalent
+io.write("Testing"); // ->void equivalent
 ```
 
 C Impl:
