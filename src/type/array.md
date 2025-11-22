@@ -15,7 +15,7 @@ types you'll need to do it manually.
 
 ## Method Support
 
-`<arr>.length()`
+`<arr>.length()`  
 `<arr>.push()`
 
 ## Examples

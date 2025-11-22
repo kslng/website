@@ -5,7 +5,7 @@ keyword with some parenthesis and an expression.
 
 ```ksl
 while (<expression>) {
-	// Do something? Maybe? If you want, I guess?
+    // Do something? Maybe? If you want, I guess?
 }
 ```
 
@@ -15,6 +15,6 @@ a boolean.
 
 ```ksl
 while (bool'127) {
-	// Do something? Probably?
+    // This loop will run forever (127 will always cast to true)
 }
 ```

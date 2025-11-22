@@ -24,11 +24,11 @@ io.writeln(false)->int;
 io.writeln(false); // ->void equivalent
 
 io.writeln("Testing")->int;
-io.writeln("Testing"); // -> void equivalent
+io.writeln("Testing"); // ->void equivalent
 
 int[] x = [1, 2, 3, 4, 5];
 io.writeln(x)->int;
-io.writeln(x); // -> void equivalent
+io.writeln(x); // ->void equivalent
 ```
 
 C Impl:

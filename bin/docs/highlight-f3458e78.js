@@ -23,12 +23,12 @@ hljs.registerLanguage("ksl",function(){"use strict";return function(hljs){
 		aliases:["k","ksl"],
 		contains:[
 			// < ... > documentation comments
-			{className: "comment",begin:/<[^>]+>/},
-			{className: "keyword",begin:/\b(using|struct|return|fn)\b/},
-			{className: "keyword",begin:/\b(if|else)\b/},
-			{className: "keyword",begin:/\b(for|while)\b/},
-			{className: "literal",begin:/\b(true|false)\b/},
-			{className: "number",begin:new RegExp(TYPE_REGEX)},
+			{className:"comment",begin:/<[^>\n]+>/},
+			{className:"keyword",begin:/\b(using|struct|return|fn)\b/},
+			{className:"keyword",begin:/\b(if|else)\b/},
+			{className:"keyword",begin:/\b(for|while)\b/},
+			{className:"literal",begin:/\b(true|false)\b/},
+			{className:"number",begin:new RegExp(TYPE_REGEX)},
 			hljs.C_LINE_COMMENT_MODE,
 			hljs.C_BLOCK_COMMENT_MODE,
 			hljs.QUOTE_STRING_MODE,

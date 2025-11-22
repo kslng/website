@@ -4,7 +4,7 @@
 
 Requirements:
 - KSL Source Code
-- Rust 1.87^: Download [Rust](https://www.rust-lang.org/tools/install)
+- Rust 1.91^: Download [Rust](https://www.rust-lang.org/tools/install)
 - LLVM 18.1.x: Download [LLVM](https://github.com/llvm/llvm-project/releases/tag/llvmorg-18.1.8)
 - The `libxml2` requirement for LLVM seems to be missing on Windows, luckily you can download it with `vcpkg install libxml2:x64-windows`. Once it's downloaded, rename the file from `libxml2` to `libxml2s` and put it in your `llvm/lib` folder.
   - If you need `vcpkg` click [here](https://learn.microsoft.com/en-us/vcpkg/get_started/get-started?pivots=shell-powershell#1---set-up-vcpkg).
@@ -34,7 +34,7 @@ if it takes a while.
 
 Requirements:
 - KSL Source Code
-- Rust 1.87^: Download [Rust](https://www.rust-lang.org/tools/install)
+- Rust 1.91^: Download [Rust](https://www.rust-lang.org/tools/install)
 - LLVM 18.1.x: Download [LLVM](https://github.com/llvm/llvm-project/releases/tag/llvmorg-18.1.8)
 
 ## On MacOS
@@ -44,5 +44,5 @@ Requirements:
 
 Requirements:
 - KSL Source Code
-- Rust 1.87^: Download [Rust](https://www.rust-lang.org/tools/install)
+- Rust 1.91^: Download [Rust](https://www.rust-lang.org/tools/install)
 - LLVM 18.1.x: Download [LLVM](https://github.com/llvm/llvm-project/releases/tag/llvmorg-18.1.8)

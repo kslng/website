@@ -8,5 +8,8 @@ src = "src"
 [build]
 build-dir = "bin/docs"
 
+[output.html]
+site-url = "/docs/"
+
 [output.html.search]
 limit-results = 15

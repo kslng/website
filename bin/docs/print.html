@@ -18,10 +18,10 @@
 		<meta name="og:description" content="KSL Programming Language Documentation; KSL Documentation">
 
 		<link rel="icon" href="favicon-5d7e57f4.svg">
-		<link rel="stylesheet" href="css/variables-8adf115d.css">
-		<link rel="stylesheet" href="css/general-2459343d.css">
-		<link rel="stylesheet" href="css/chrome-ae938929.css">
-		<link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+		<link rel="stylesheet" href="css/variables-f53d1f3b.css">
+		<link rel="stylesheet" href="css/general-26f427df.css">
+		<link rel="stylesheet" href="css/chrome-efc1a725.css">
+		<link rel="stylesheet" href="css/print-12fda3f6.css" media="print">
 
 		<!-- Fonts -->
 		<link rel="stylesheet" href="fonts/fonts-9644e21d.css">
@@ -39,10 +39,10 @@
 			const path_to_root = "";
 			const default_light_theme = "light";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "searchindex-112f14c5.js";
+			window.path_to_searchindex_js = "searchindex-5d54292f.js";
 		</script>
 		<!-- Start loading toc.js asap -->
-		<script src="toc-107ab920.js"></script>
+		<script src="toc-de15a0bb.js"></script>
 	</head>
 	<body>
 	<div id="mdbook-help-container">
@@ -222,7 +222,7 @@ developed in (with that being said I’m very baised.)</li>
 <li><a href="#hello-world-in-ksl">Hello World!</a></li>
 <li><a href="#for-loops">For Loops</a></li>
 <li><a href="#rock-paper-scissors">Rock, Paper, Scissors</a></li>
-<li><a href="tutorial/structs-and-arrays.html">Structs and Arrays</a></li>
+<li><a href="#structs-arrays-and-assignment-shenanigans">Structs and Arrays</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="hello-world-in-ksl"><a class="header" href="#hello-world-in-ksl">Hello World in KSL</a></h1>
@@ -378,6 +378,49 @@ fn main() -&gt; int {
 <p>Technically we have everything you’d need to write it, I just don’t feel like
 doing more documentation work right now.</p>
 <div style="break-before: page; page-break-before: always;"></div>
+<h1 id="structs-arrays-and-assignment-shenanigans"><a class="header" href="#structs-arrays-and-assignment-shenanigans">Structs, Arrays, and Assignment Shenanigans</a></h1>
+<p>The main purpose of this tutorial is to show what’s possible with KSL regarding
+structs and arrays, especially regarding assignment/mutations.</p>
+<p>For example, below is a completely valid KSL file that works!</p>
+<pre><code class="language-ksl">struct Vector2 { int x, int y }
+
+fn main() -&gt; void {
+    Vector2[] positions = [
+        Vector2 { x: 10, y: 20 },
+        Vector2 { x: 30, y: 40 },
+        Vector2 { x: 50, y: 60 },
+        Vector2 { x: 70, y: 80 },
+        Vector2 { x: 90, y: 99 }
+    ];
+    // Lets say you wanted to change the `x` field
+    // of the first item in the positions array.
+    positions[0].x = &lt;new_value&gt;;
+    // Increment and decrement shorthands also work
+    positions[0].x++; // Increment
+    positions[0].x--; // Decrement
+}
+</code></pre>
+<p>If you want to needlessly add complexity, this will also work:</p>
+<pre><code class="language-ksl">using std.io;
+
+struct Vector2 { int x, int y }
+
+fn main() -&gt; void {
+    Vector2[][] positions = [[
+        Vector2 { x: 10, y: 20 }, // Will be at [0][0]
+        Vector2 { x: 30, y: 40 }  // Will be at [0][1]
+    ], [
+        Vector2 { x: 50, y: 60 }, // Will be at [1][0]
+        Vector2 { x: 70, y: 80 }  // Will be at [1][1]
+    ]];
+    // Lets add one to the positions[0][0].y struct field!
+    positions[0][0].y++;
+    // Should we check if it's value was actually changed?
+    // It was originally 20, so it should be 21 now.
+    io.writeln(positions[0][0].y);
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="comments"><a class="header" href="#comments">Comments</a></h1>
 <p>Comments in KSL are similar to any other modern language. For a single line
 comment you can do <code>//</code> and for a multi-line comment, the usual <code>/*</code> <code>*/</code> syntax.</p>
@@ -518,8 +561,7 @@ operation.</p>
 operator that you can define custom behavior for. If you want to convert array
 types you’ll need to do it manually.</p>
 <h2 id="method-support-3"><a class="header" href="#method-support-3">Method Support</a></h2>
-<p><code>&lt;arr&gt;.length()</code>
-<code>&lt;arr&gt;.push()</code></p>
+<p><code>&lt;arr&gt;.length()</code><br><code>&lt;arr&gt;.push()</code></p>
 <h2 id="examples-3"><a class="header" href="#examples-3">Examples</a></h2>
 <pre><code class="language-ksl">int[] x = [10, 20, 30];
 float[] y = [1.1, 2.2, 3.3];
@@ -550,15 +592,53 @@ types you’ll need to do it manually.</p>
 
 fn main() -&gt; void {
     Vector2 my_position = Vector2 { x: 10, y: 20 };
-    // Alternatively you can define a struct without the field names, but you'll have to do it in the correct order.
+    // Alternatively you can define a struct without the field
+    // names, but you'll have to do it in the correct order.
     Vector2 my_second_position = Vector2 { 10, 20 };
-    // Using the field names, you can change the order and KSL will make sure it still works behind the scenes.
+    // Using the field names, you can change the order and KSL
+    // will make sure it still works behind the scenes.
     Vector2 superimposed_position = Vector2 { y: 20, x: 10 };
 }
 </code></pre>
 <h2 id="notes-2"><a class="header" href="#notes-2">Notes</a></h2>
 <p>Internally, defined structs are treated as new types and added to the type
 system after definition.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="type-casting"><a class="header" href="#type-casting">Type Casting</a></h1>
+<p>KSL has a potentially unintuitive type casting syntax. Just use a type
+identifier followed by an apostrophe:</p>
+<pre><code class="language-ksl">float x = 10.0;
+int y = int'x;
+</code></pre>
+<p>There are some type casts that will result in errors, for example, casting to
+null or void. But why do that anyway? It should be noted that casting only works
+for the term immediately right to the cast, see below:</p>
+<p>Example where the entire expression is calcuated <em>then</em> cast:</p>
+<pre><code class="language-ksl">// This turns into 2.0 and is then turned into 2.
+int x = int'(1.0 + 1.0);
+</code></pre>
+<p>Example where only the first number value is cast:</p>
+<pre><code class="language-ksl">// This is turned into 1 + 1 then turned into 2.
+int x = int'1.0 + 1;
+</code></pre>
+<p>A quick note on casting to booleans:</p>
+<p>In some languages casting integers or floats to a boolean may be different. In
+KSL all integers other than <code>0</code> are cast to <code>true</code>. Similarly, all floats other
+than <code>0.0</code> are cast to <code>true</code>:</p>
+<pre><code class="language-ksl">bool'1;         // true
+bool'0;         // false
+bool'252466642; // true
+bool'-35;       // true
+
+bool'0.0;       // false
+bool'135.03111; // true
+bool'-135.77;   // true
+</code></pre>
+<p>For more information on the boolean type in KSL check out <a href="#booleans">this page</a>.</p>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p>Casting cannot be done on arrays or structs, you’ll have to manually cast the elements or fields. Casting is not a custom method you can implement for a type.</p>
+</blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="variables"><a class="header" href="#variables">Variables</a></h1>
 <p>Variable declarations are extremely simple. Simply pick a variable type and
@@ -752,10 +832,23 @@ expression to check if the <code>for</code> loop should continue, and finally an
 expression (which is run at the end of every iteration.)</p>
 <pre><code class="language-ksl">//       +------------------ Initial Statement
 //       |        +--------- Check/Continue(?) Expression
+//       |        |             +-- (Must Result in a Boolean)
 //       |        |      +-- Iterative Expression
 //       |        |      |
 for (int i = 0; i &lt; 30; i++) {
-	io.writeln(i);
+    io.writeln(i);
+}
+</code></pre>
+<p>The output of the above code will be the numbers 0 through 29, each on a new
+line in the console.</p>
+<p>Let’s say you want to iterate over elements in an array though, what then?<br>Combine the for loop with your array and the <code>length()</code> array method!</p>
+<pre><code class="language-ksl">using std.io;
+
+fn main() -&gt; void {
+    int[] my_arr = [35, 62, 84, 44, 27, 46, 85];
+    for (int i = 0; i &lt; my_arr.length(); i++) {
+        io.writeln(my_arr[i]);
+    }
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
@@ -763,113 +856,16 @@ for (int i = 0; i &lt; 30; i++) {
 <p>The syntax for <code>while</code> loops is absurdly easy. All you need is the <code>while</code>
 keyword with some parenthesis and an expression.</p>
 <pre><code class="language-ksl">while (&lt;expression&gt;) {
-	// Do something? Maybe? If you want, I guess?
+    // Do something? Maybe? If you want, I guess?
 }
 </code></pre>
 <p>The only real requirement is that the expression type is a boolean. KSL will
 give you a nice error if you don’t. If this is a problem, you can always cast to
 a boolean.</p>
 <pre><code class="language-ksl">while (bool'127) {
-	// Do something? Probably?
+    // This loop will run forever (127 will always cast to true)
 }
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="type-casting"><a class="header" href="#type-casting">Type Casting</a></h1>
-<p>KSL has a potentially unintuitive type casting syntax. Just use a type
-identifier followed by an apostrophe:</p>
-<pre><code class="language-ksl">float x = 10.0;
-int y = int'x;
-</code></pre>
-<p>There are some type casts that will result in errors, for example, casting to
-null or void. But why do that anyway? It should be noted that casting only works
-for the term immediately right to the cast, see below:</p>
-<p>Example where the entire expression is calcuated <em>then</em> cast:</p>
-<pre><code class="language-ksl">// This turns into 2.0 and is then turned into 2.
-int x = int'(1.0 + 1.0);
-</code></pre>
-<p>Example where only the first number value is cast:</p>
-<pre><code class="language-ksl">// This is turned into 1 + 1 then turned into 2.
-int x = int'1.0 + 1;
-</code></pre>
-<p>A quick note on casting to booleans:</p>
-<p>In some languages casting integers or floats to a boolean may be different. In
-KSL all integers other than <code>0</code> are cast to <code>true</code>. Similarly, all floats other
-than <code>0.0</code> are cast to <code>true</code>:</p>
-<pre><code class="language-ksl">bool'1;         // true
-bool'0;         // false
-bool'252466642; // true
-bool'-35;       // true
-
-bool'0.0;       // false
-bool'135.03111; // true
-bool'-135.77;   // true
-</code></pre>
-<p>For more information on the boolean type in KSL check out <a href="#booleans">this page</a>.</p>
-<blockquote class="blockquote-tag blockquote-tag-important">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
-<p>Casting cannot be done on arrays or structs, you’ll have to manually cast the elements or fields. Casting is not a custom method you can implement for a type.</p>
-</blockquote>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="function-attributes"><a class="header" href="#function-attributes">Function Attributes</a></h1>
-<ul>
-<li><a href="#entry">Entry</a></li>
-<li><a href="attribute/inline.html">Inline</a></li>
-<li><a href="#no-fail">No Fail</a></li>
-<li><a href="#no-mangle">No Mangle</a></li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="entry"><a class="header" href="#entry">Entry</a></h1>
-<h2 id="usage"><a class="header" href="#usage">Usage:</a></h2>
-<pre><code class="language-ksl">@entry
-fn new_main_function() -&gt; void {}
-
-fn main() -&gt; void {}
-</code></pre>
-<h2 id="purpose"><a class="header" href="#purpose">Purpose</a></h2>
-<p>The purpose of the <code>@entry</code> function attribute is to override the binary entry
-point. The primary usage for this would be customization of the code base,
-however, in the future there are likely going to be “groups,” where you can
-define a custom entry point from the command line via compiler arguments. This
-would be helpful for setting a custom entry point for testing vs. debug/release.</p>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="no-fail"><a class="header" href="#no-fail">No Fail</a></h1>
-<h2 id="usage-1"><a class="header" href="#usage-1">Usage:</a></h2>
-<pre><code class="language-ksl">@no_fail
-fn function_that_cannot_fail() -&gt; int {
-	return 20 / 0;
-}
-</code></pre>
-<p>In the example above, the function will throw a “cannot divide by 0” error,
-however, because we have the <code>@no_fail</code> attribute it will catch the error and
-return a default constant based on the defined return type of the function. For
-integers the default constant is <code>0</code> so this function will return <code>0</code>, even
-though technically it failed.</p>
-<p>You can also define custom return values via <code>@no_fail=&lt;value&gt;</code>, for example:</p>
-<pre><code class="language-ksl">@no_fail=-1
-fn function_that_cannot_fail() -&gt; int {
-	return 40 / 0;
-}
-</code></pre>
-<p>In this new example the <code>@no_fail</code> function attribute has a value assigned to it
-(<code>-1</code>), so when this function fails due to the aforementioned “divide by 0”
-error, it will instead return <code>-1</code>.</p>
-<h2 id="purpose-1"><a class="header" href="#purpose-1">Purpose:</a></h2>
-<p>The purpose of the <code>@no_fail</code> function attribute is to provide a better error
-catching system that doesn’t rely on large code blocks. Additionally, by using
-the <code>@no_fail</code> function you can prevent potentially fatal crashes while
-minimizing undefined behavior.</p>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="no-mangle"><a class="header" href="#no-mangle">No Mangle</a></h1>
-<h2 id="usage-2"><a class="header" href="#usage-2">Usage:</a></h2>
-<pre><code class="language-ksl">@no_mangle
-fn non_mangled_function() -&gt; void {}
-
-fn mangled_function() -&gt; void {}
-</code></pre>
-<h2 id="purpose-2"><a class="header" href="#purpose-2">Purpose:</a></h2>
-<p>The purpose of the <code>@no_mangle</code> function attribute is to prevent function names
-from becoming mangled in a binary/object file outputted by KSL. This supports
-better cross-language development efforts.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="libraries"><a class="header" href="#libraries">Libraries</a></h1>
 <p>The syntax for this is strange so pay attention. Both libraries and
@@ -907,6 +903,81 @@ fn tacos() -&gt; void {}
 <code>food.sauce</code>, etc.) If you’re working within the namespace then the <code>food.</code> part
 is not required.</p>
 <div style="break-before: page; page-break-before: always;"></div>
+<h1 id="function-attributes"><a class="header" href="#function-attributes">Function Attributes</a></h1>
+<ul>
+<li><a href="#entry">Entry</a></li>
+<li><a href="#entry-1">Inline</a></li>
+<li><a href="#no-fail">No Fail</a></li>
+<li><a href="#no-mangle">No Mangle</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="entry"><a class="header" href="#entry">Entry</a></h1>
+<h2 id="usage"><a class="header" href="#usage">Usage</a></h2>
+<pre><code class="language-ksl">@entry
+fn new_main_function() -&gt; void {}
+
+fn main() -&gt; void {}
+</code></pre>
+<h2 id="purpose"><a class="header" href="#purpose">Purpose</a></h2>
+<p>The purpose of the <code>@entry</code> function attribute is to override the binary entry
+point. The primary usage for this would be customization of the code base,
+however, in the future there are likely going to be “groups,” where you can
+define a custom entry point from the command line via compiler arguments. This
+would be helpful for setting a custom entry point for testing vs. debug/release.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="entry-1"><a class="header" href="#entry-1">Entry</a></h1>
+<h2 id="usage-1"><a class="header" href="#usage-1">Usage</a></h2>
+<pre><code class="language-ksl">@inline
+fn small_function() -&gt; bool {}
+
+fn main() -&gt; void {}
+</code></pre>
+<h2 id="purpose-1"><a class="header" href="#purpose-1">Purpose</a></h2>
+<p>The purpose of the <code>@inline</code> function attribute is to hint to the compiler that
+you want this function inlined. Using the inline function attribute does not
+guarantee that your function will be inlined. Typically this would be used for
+performance reasons. Occasionally the compiler will decide to inline a function
+that does not explicitly have the inline function attribute.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="no-fail"><a class="header" href="#no-fail">No Fail</a></h1>
+<h2 id="usage-2"><a class="header" href="#usage-2">Usage</a></h2>
+<pre><code class="language-ksl">@no_fail
+fn function_that_cannot_fail() -&gt; int {
+	return 20 / 0;
+}
+</code></pre>
+<p>In the example above, the function will throw a “cannot divide by 0” error,
+however, because we have the <code>@no_fail</code> attribute it will catch the error and
+return a default constant based on the defined return type of the function. For
+integers the default constant is <code>0</code> so this function will return <code>0</code>, even
+though technically it failed.</p>
+<p>You can also define custom return values via <code>@no_fail=&lt;value&gt;</code>, for example:</p>
+<pre><code class="language-ksl">@no_fail=-1
+fn function_that_cannot_fail() -&gt; int {
+	return 40 / 0;
+}
+</code></pre>
+<p>In this new example the <code>@no_fail</code> function attribute has a value assigned to it
+(<code>-1</code>), so when this function fails due to the aforementioned “divide by 0”
+error, it will instead return <code>-1</code>.</p>
+<h2 id="purpose-2"><a class="header" href="#purpose-2">Purpose</a></h2>
+<p>The purpose of the <code>@no_fail</code> function attribute is to provide a better error
+catching system that doesn’t rely on large code blocks. Additionally, by using
+the <code>@no_fail</code> function you can prevent potentially fatal crashes while
+minimizing undefined behavior.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="no-mangle"><a class="header" href="#no-mangle">No Mangle</a></h1>
+<h2 id="usage-3"><a class="header" href="#usage-3">Usage</a></h2>
+<pre><code class="language-ksl">@no_mangle
+fn non_mangled_function() -&gt; void {}
+
+fn mangled_function() -&gt; void {}
+</code></pre>
+<h2 id="purpose-3"><a class="header" href="#purpose-3">Purpose</a></h2>
+<p>The purpose of the <code>@no_mangle</code> function attribute is to prevent function names
+from becoming mangled in a binary/object file outputted by KSL. This supports
+better cross-language development efforts.</p>
+<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="ffi-concepts"><a class="header" href="#ffi-concepts">FFI Concepts</a></h1>
 <p>Currently we’re discussing adding a <code>@no_mangle</code> <a href="attribute">attribute</a>.
 This would do exactly what it sounds like, it would maintain it’s function name
@@ -937,7 +1008,7 @@ an optional block inside.</p>
 <li><a href="#env">std.env</a></li>
 <li><a href="#math">std.math</a></li>
 <li><a href="#random">std.random</a></li>
-<li><a href="std/time.html">std.time</a></li>
+<li><a href="#time">std.time</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="io"><a class="header" href="#io">IO</a></h1>
@@ -960,11 +1031,11 @@ io.writeln(false)-&gt;int;
 io.writeln(false); // -&gt;void equivalent
 
 io.writeln("Testing")-&gt;int;
-io.writeln("Testing"); // -&gt; void equivalent
+io.writeln("Testing"); // -&gt;void equivalent
 
 int[] x = [1, 2, 3, 4, 5];
 io.writeln(x)-&gt;int;
-io.writeln(x); // -&gt; void equivalent
+io.writeln(x); // -&gt;void equivalent
 </code></pre>
 <p>C Impl:</p>
 <pre><code class="language-c">int64_t io__writeln____i64_i64(int64_t a);
@@ -1099,6 +1170,22 @@ double random__rand_____f64();
 </code></pre>
 <p>C Impl:</p>
 <pre><code class="language-c">int64_t random__randint____i64_i64_i64(int64_t min, int64_t max);
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="time"><a class="header" href="#time">Time</a></h1>
+<blockquote class="blockquote-tag blockquote-tag-warning">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
+<p>The std.time module is not stable and/or partially implemented.</p>
+</blockquote>
+<pre><code class="language-ksl">using std.time;
+</code></pre>
+<h3 id="timeget_ns"><a class="header" href="#timeget_ns">time.get_ns</a></h3>
+<p>Parameters: <em>N|A</em><br>Returns: <code>i64</code></p>
+<p>Example:</p>
+<pre><code class="language-ksl">int nanoseconds = time.get_ns();
+</code></pre>
+<p>C Impl:</p>
+<pre><code class="language-c">int64_t time__get_ns_____i64();
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="the-ksl-standard"><a class="header" href="#the-ksl-standard">The KSL Standard</a></h1>
@@ -1252,7 +1339,7 @@ then you probably don’t want to worry about anything here.</p>
 <p>Requirements:</p>
 <ul>
 <li>KSL Source Code</li>
-<li>Rust 1.87^: Download <a href="https://www.rust-lang.org/tools/install">Rust</a></li>
+<li>Rust 1.91^: Download <a href="https://www.rust-lang.org/tools/install">Rust</a></li>
 <li>LLVM 18.1.x: Download <a href="https://github.com/llvm/llvm-project/releases/tag/llvmorg-18.1.8">LLVM</a></li>
 <li>The <code>libxml2</code> requirement for LLVM seems to be missing on Windows, luckily you can download it with <code>vcpkg install libxml2:x64-windows</code>. Once it’s downloaded, rename the file from <code>libxml2</code> to <code>libxml2s</code> and put it in your <code>llvm/lib</code> folder.
 <ul>
@@ -1289,7 +1376,7 @@ if it takes a while.</p>
 <p>Requirements:</p>
 <ul>
 <li>KSL Source Code</li>
-<li>Rust 1.87^: Download <a href="https://www.rust-lang.org/tools/install">Rust</a></li>
+<li>Rust 1.91^: Download <a href="https://www.rust-lang.org/tools/install">Rust</a></li>
 <li>LLVM 18.1.x: Download <a href="https://github.com/llvm/llvm-project/releases/tag/llvmorg-18.1.8">LLVM</a></li>
 </ul>
 <h2 id="on-macos"><a class="header" href="#on-macos">On MacOS</a></h2>
@@ -1300,7 +1387,7 @@ if it takes a while.</p>
 <p>Requirements:</p>
 <ul>
 <li>KSL Source Code</li>
-<li>Rust 1.87^: Download <a href="https://www.rust-lang.org/tools/install">Rust</a></li>
+<li>Rust 1.91^: Download <a href="https://www.rust-lang.org/tools/install">Rust</a></li>
 <li>LLVM 18.1.x: Download <a href="https://github.com/llvm/llvm-project/releases/tag/llvmorg-18.1.8">LLVM</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
@@ -1526,8 +1613,8 @@ triggered, etc. In the future this list will include examples and remediations.<
 		<script src="searcher-c2a407aa.js"></script>
 
 		<script src="clipboard-1626706a.min.js"></script>
-		<script src="highlight-116e8b29.js"></script>
-		<script src="book-a0b12cfe.js"></script>
+		<script src="highlight-f3458e78.js"></script>
+		<script src="book-553ae1f8.js"></script>
 
 		<!-- Custom JS scripts -->
 

@@ -12,6 +12,7 @@
   - [Hello World in KSL](tutorial/hello-world.md)
   - [For Loops in KSL](tutorial/for-loop.md)
   - [Rock, Paper, Scissors in KSL](tutorial/rock-paper-scissors.md)
+  - [Structs and Arrays](tutorial/structs-and-arrays.md)
 
 ---
 
@@ -23,6 +24,7 @@
   - [Strings](type/string.md)
   - [Arrays](type/array.md)
   - [Struct](type/struct.md)
+- [Type Casting](type/casting.md)
 - [Variables](variable/readme.md)
 - [Expressions](expression/readme.md)
 - [Functions](function/readme.md)
@@ -33,23 +35,24 @@
 - [Loops](loop/readme.md)
   - [For](loop/for.md)
   - [While](loop/while.md)
-- [Type Casting](type/casting.md)
-- [Function Attributes](attribute/readme.md)
-  - [Entry](attribute/entry.md)
-  - [No Fail](attribute/no-fail.md)
-  - [No Mangle](attribute/no-mangle.md)
 - [Libraries](using/readme.md)
 - [Namespaces](namespace/readme.md)
+- [Function Attributes](attribute/readme.md)
+  - [Entry](attribute/entry.md)
+  - [Inline](attribute/inline.md)
+  - [No Fail](attribute/no-fail.md)
+  - [No Mangle](attribute/no-mangle.md)
 - [FFI Concepts](ffi/readme.md)
 
 ---
 
 - [Standard Library](std/readme.md)
-  - [IO](std/io.md)
-  - [FS](std/fs.md)
-  - [ENV](std/env.md)
-  - [MATH](std/math.md)
-  - [RANDOM](std/random.md)
+  - [std.io](std/io.md)
+  - [std.fs](std/fs.md)
+  - [std.env](std/env.md)
+  - [std.math](std/math.md)
+  - [std.random](std/random.md)
+  - [std.time](std/time.md)
 
 ---
 
