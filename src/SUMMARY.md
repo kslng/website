@@ -43,6 +43,7 @@
   - [No Fail](attribute/no-fail.md)
   - [No Mangle](attribute/no-mangle.md)
 - [FFI Concepts](ffi/readme.md)
+- [Error Codes](compiler/error-codes.md)
 
 ---
 
@@ -67,9 +68,14 @@
 
 ---
 
+- [Miscillanious](misc/readme.md)
+  - [Quick Syntax Guide](misc/quick-syntax.md)
+
+---
+
 - [Compiler Internals](compiler/readme.md)
   - [Compiling the Compiler](compiler/compiling.md)
   - [Compiling the Standard Library](compiler/compile-stdlib.md)
   - [Name Mangling Convention](compiler/name-mangling.md)
   - [Expression Semantics](compiler/expr-semantics.md)
-  - [KSL Compiler Error Codes](compiler/error-codes.md)
+  - [Comiler Flags](compiler/compiler-flags.md)

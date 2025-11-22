@@ -9,4 +9,3 @@ then you probably don't want to worry about anything here.
 - [Compiling the Standard Library](compile-stdlib.md)
 - [Name Mangling Convention](name-mangling.md)
 - [Expression Type Semantics](expr-semantics.md)
-- [KSL Compiler Error Codes](error-codes.md)

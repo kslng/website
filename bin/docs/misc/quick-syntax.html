@@ -3,19 +3,19 @@
 	<head>
 		<!-- Book generated using mdBook -->
 		<meta charset="UTF-8">
-		<title>std.io - KSL Documentation</title>
+		<title>Quick Syntax Guide - KSL Documentation</title>
 		<meta name="robots" content="index, follow">
 
 
 		<!-- Custom HTML head -->
 
-		<meta name="description" content="KSL Programming Language Documentation; std.io - KSL Documentation">
+		<meta name="description" content="KSL Programming Language Documentation; Quick Syntax Guide - KSL Documentation">
 		<meta name="keywords" content="ksl, programming, language, compiler, kgsensei, documentation">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#17181C">
 		<meta name="og:site_name" content="kslng.org">
 		<meta name="og:title" content="KSL Language Documentation">
-		<meta name="og:description" content="KSL Programming Language Documentation; std.io - KSL Documentation">
+		<meta name="og:description" content="KSL Programming Language Documentation; Quick Syntax Guide - KSL Documentation">
 
 		<link rel="icon" href="../favicon-5d7e57f4.svg">
 		<link rel="stylesheet" href="../css/variables-f53d1f3b.css">
@@ -179,74 +179,167 @@
 
 				<div id="mdbook-content" class="content">
 					<main>
-						<h1 id="io"><a class="header" href="#io">IO</a></h1>
+						<h1 id="quick-syntax-guide"><a class="header" href="#quick-syntax-guide">Quick Syntax Guide</a></h1>
 <blockquote class="blockquote-tag blockquote-tag-warning">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
-<p>The std.io module is not stable and/or partially implemented.</p>
+<p>If you do not have a background in programming it is highly recommended to
+return to the normal documentation, this is a syntax guide for users who
+already understand programming fundamentals.</p>
 </blockquote>
+<h2 id="valid-types"><a class="header" href="#valid-types">Valid Types</a></h2>
+<p>Int Types:</p>
+<ul>
+<li><code>i8</code></li>
+<li><code>i16</code></li>
+<li><code>i32</code></li>
+<li><code>i64</code> (has <code>int</code> alias)</li>
+</ul>
+<p>Float Types:</p>
+<ul>
+<li><code>f32</code></li>
+<li><code>f64</code> (has <code>float</code> alias)</li>
+</ul>
+<p>Other Types:</p>
+<ul>
+<li><code>str</code></li>
+<li><code>bool</code></li>
+<li><code>void</code></li>
+</ul>
+<h2 id="creating-functions"><a class="header" href="#creating-functions">Creating Functions</a></h2>
+<p><code>fn</code> = Function Keyword<br><code>-&gt;</code> = Declare Return Type</p>
+<p>The entry function will need to be called <code>main</code>.<br>Function bodies are denoted by the braces <code>{</code> and <code>}</code>.</p>
+<p>Example:</p>
+<pre><code class="language-ksl">fn main() -&gt; void {}
+</code></pre>
+<p>Functions should return with the <code>return</code> keyword, if you don’t include one KSL
+will insert one for you automatically (with a default value) for any function
+that returns a primitive type.</p>
+<h2 id="creating-variables"><a class="header" href="#creating-variables">Creating Variables</a></h2>
+<p><code>=</code> = Assignment Operator</p>
+<p>Variable names must follow: <code>[a-zA-Z][a-zA-Z0-9_]+</code>.<br>Variable names cannot be the same as a type name.</p>
+<p>Example:</p>
+<pre><code class="language-ksl">int my_int = 20;
+f32 my_float = 20.5;
+</code></pre>
+<h2 id="creating-complex-types-arrays--structs"><a class="header" href="#creating-complex-types-arrays--structs">Creating Complex Types (Arrays &amp; Structs)</a></h2>
+<p>Create structs with the <code>struct</code> keyword and braces (<code>{</code> and <code>}</code>), struct fields
+are <code>&lt;type&gt; &lt;field_name&gt;</code> and comma separated. Examples:</p>
+<pre><code class="language-ksl">struct Vector2 { int x, int y }
+struct Vector3 {
+	int x,
+	int y,
+	int z
+}
+</code></pre>
+<p>Arrays can be created by adding <code>[]</code> to any type when defining a new variable:</p>
+<pre><code class="language-ksl">int[] my_int_arr = [];
+Vector2[] my_custom_struct_arr = [];
+bool[] my_bool_arr = [];
+</code></pre>
+<p>n’dimensional arrays can be created by adding more <code>[]</code> to the type definition:</p>
+<pre><code class="language-ksl">int[][] my_2d_int_arr = [[]];
+Vector2[][] my_2d_Vector2_arr = [[]];
+bool[][] my_2d_bool_arr = [[]];
+</code></pre>
+<h2 id="using-other-files--modules"><a class="header" href="#using-other-files--modules">Using Other Files &amp; Modules</a></h2>
+<p>The <code>using</code> keyword makes it easy to include other source files and link modules
+against your project.</p>
+<p>The using keyword followed by a string will search for other source files:</p>
+<pre><code class="language-ksl">using "my_second_file.k";
+using "my_third_file.k";
+</code></pre>
+<p>The using keyword followed by a qualified identifier will search for object
+files to link your project against:</p>
 <pre><code class="language-ksl">using std.io;
+using std.fs;
 </code></pre>
-<h3 id="iowriteln"><a class="header" href="#iowriteln">io.writeln</a></h3>
-<p>Parameters (one of): { <code>i64</code> | <code>f64</code> | <code>bool</code> | <code>string</code> | <code>int[]</code> }<br>Returns (one of): { <code>i64</code> | <code>void</code> }</p>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>Standard Library reference can be found <a href="../std/">here</a></p>
+</blockquote>
+<h2 id="getting-and-setting-things"><a class="header" href="#getting-and-setting-things">Getting and Setting Things</a></h2>
+<p>In KSL pretty much everything is mutable and you can do some pretty cool things
+when attempting to get or set values, for example:</p>
+<pre><code class="language-ksl">using std.io;
+
+struct Vec2 { int x, int y }
+
+Vec2[][] my_2d_Vec2_arr = [[ Vec2 { x: 10, y: 20 } ]];
+my_2d_Vec2_arr[0][0].y++; // Increment the y value in the 2d struct array
+my_2d_Vec2_arr[0][0].y = 40; // Overwrite the y value in the 2d struct array
+
+io.writeln(my_2d_Vec_arr[0][0].y); // Get the y value in the 2d struct array
+</code></pre>
+<h2 id="loops"><a class="header" href="#loops">Loops</a></h2>
+<p>The two loops in KSL are the <code>for</code> and <code>while</code> loops.</p>
+<p>While example:</p>
+<pre><code class="language-ksl">while (true) {
+	// Do something
+}
+</code></pre>
+<p>For example:</p>
+<pre><code class="language-ksl">for (int i = 0; i &lt; 100; i++) {
+	// Do something
+}
+</code></pre>
+<h2 id="conditionals"><a class="header" href="#conditionals">Conditionals</a></h2>
+<p><code>if</code>, <code>else if</code>, and <code>else</code> are all supported in KSL, see example:</p>
+<pre><code class="language-ksl">if (&lt;condition_1&gt;) {
+	// Do something (1)
+} else if (&lt;condition_2&gt;) {
+	// Do something (2)
+} else {
+	// Do something (3)
+}
+</code></pre>
+<p>You can chain as many <code>else if</code> statements as you want.</p>
+<h2 id="casting"><a class="header" href="#casting">Casting</a></h2>
+<p>Casting in KSL may be confusing for newcomers. All you need is the type name, an
+apostrophe, and the primary part of your expression you want to cast. Example:</p>
+<pre><code class="language-ksl">float'20; // will cast this int to a float
+
+int x = 2000;
+bool'x; // will cast the int variable to a bool
+
+/*
+The next example will add 20 + 30 then cast the result
+to a float. Notice the parenthesis? Casting will only
+work for the symbol directly after the apostrophe, so
+in order to cast the *result* of the expression they
+must be wrapped in parenthesis.
+*/
+float y = float'(20 + 30);
+</code></pre>
+<p>Casting will not work for complex types like arrays or structs.</p>
+<h2 id="namespaces"><a class="header" href="#namespaces">Namespaces</a></h2>
+<p>Namespaces in KSL are typically defined on a per-file basis.<br>They do not use braces.</p>
 <p>Example:</p>
-<pre><code class="language-ksl">io.writeln(10)-&gt;int;
-io.writeln(10); // -&gt;void equivalent
-
-io.writeln(2.5)-&gt;int;
-io.writeln(2.5); // -&gt;void equivalent
-
-io.writeln(false)-&gt;int;
-io.writeln(false); // -&gt;void equivalent
-
-io.writeln("Testing")-&gt;int;
-io.writeln("Testing"); // -&gt;void equivalent
-
-int[] x = [1, 2, 3, 4, 5];
-io.writeln(x)-&gt;int;
-io.writeln(x); // -&gt;void equivalent
+<pre><code class="language-ksl">namespace "my_namespace";
 </code></pre>
-<p>C Impl:</p>
-<pre><code class="language-c">int64_t io__writeln____i64_i64(int64_t a);
-void io__writeln____i64_null(int64_t a);
-
-int64_t io__writeln____f64_i64(double a);
-void io__writeln____f64_null(double a);
-
-int64_t io__writeln____bool_i64(bool a);
-void io__writeln____bool_null(bool a);
-
-int64_t io__writeln____str_i64(generic_array* arr);
-void io__writeln____str_null(generic_array* arr);
-
-int64_t io__writeln____i64arr_i64(generic_array* arr);
-void io__writeln____i64arr_null(generic_array* arr);
-</code></pre>
-<h3 id="iowrite"><a class="header" href="#iowrite">io.write</a></h3>
-<p>Parameters: <code>str</code><br>Returns: <code>void</code></p>
+<p>Functions defined after the namespace <code>my_namespace</code> can then be accessed by
+other parts of the program at <code>my_namespace.my_function()</code>.</p>
+<h2 id="function-attributes"><a class="header" href="#function-attributes">Function Attributes</a></h2>
+<p>Function attributes modify the behavior of functions in KSL, for example, the
+<code>@inline</code> attribute will tell the compiler to inline the following funciton if
+possible.</p>
 <p>Example:</p>
-<pre><code class="language-ksl">io.write("Testing"); // -&gt;void equivalent
+<pre><code class="language-ksl">@inline
+fn my_func() -&gt; void {};
 </code></pre>
-<p>C Impl:</p>
-<pre><code class="language-c">void io__write____str_null(generic_array* arr);
-</code></pre>
-<h3 id="iogetln"><a class="header" href="#iogetln">io.getln</a></h3>
-<p>Parameters: <em>N|A</em><br>Returns: <code>str</code></p>
-<p>Example:</p>
-<pre><code class="language-ksl">str input = io.getln();
-</code></pre>
-<p>C Impl:</p>
-<pre><code class="language-c">generic_array* io__getln_____str();
-</code></pre>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>Function Attribute reference can be found <a href="../attribute/">here</a></p>
+</blockquote>
 
 					</main>
 
 					<nav class="nav-wrapper" aria-label="Page navigation">
 						<!-- Mobile navigation buttons -->
-							<a rel="prev" href="../std/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+							<a rel="prev" href="../misc/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
 								<span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
 							</a>
 
-							<a rel="next prefetch" href="../std/fs.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+							<a rel="next prefetch" href="../compiler/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
 								<span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
 							</a>
 
@@ -256,11 +349,11 @@ void io__writeln____i64arr_null(generic_array* arr);
 			</div>
 
 			<nav class="nav-wide-wrapper" aria-label="Page navigation">
-					<a rel="prev" href="../std/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+					<a rel="prev" href="../misc/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
 						<span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
 					</a>
 
-					<a rel="next prefetch" href="../std/fs.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+					<a rel="next prefetch" href="../compiler/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
 						<span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
 					</a>
 			</nav>

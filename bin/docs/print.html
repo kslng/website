@@ -39,10 +39,10 @@
 			const path_to_root = "";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "searchindex-8536306e.js";
+			window.path_to_searchindex_js = "searchindex-4fa77bd7.js";
 		</script>
 		<!-- Start loading toc.js asap -->
-		<script src="toc-de15a0bb.js"></script>
+		<script src="toc-d6863df9.js"></script>
 	</head>
 	<body>
 	<div id="mdbook-help-container">
@@ -215,10 +215,18 @@ developed in (with that being said I’m very baised.)</li>
 <li><a href="loop">Loops!</a></li>
 <li><a href="function">Functions!</a></li>
 </ul>
+<p>If you run into any problems check out the error codes documentation:</p>
+<ul>
+<li><a href="#error-codes">Error Codes</a></li>
+</ul>
+<p>Finally, if you already have a background in programming and just want to learn
+the KSL syntax, check out the <a href="#quick-syntax-guide">quick syntax guide</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="installing-ksl"><a class="header" href="#installing-ksl">Installing KSL</a></h1>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="configuring-ksl"><a class="header" href="#configuring-ksl">Configuring KSL</a></h1>
+<p>It is highly recommended to familiarize yourself with the compiler flags,
+viewable at any time with <code>KSL -h</code>. There’s also an in-depth breakdown <a href="#comiler-flags">here</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="tutorials"><a class="header" href="#tutorials">Tutorials</a></h1>
 <ul>
@@ -640,7 +648,9 @@ bool'-135.77;   // true
 <p>For more information on the boolean type in KSL check out <a href="#booleans">this page</a>.</p>
 <blockquote class="blockquote-tag blockquote-tag-important">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
-<p>Casting cannot be done on arrays or structs, you’ll have to manually cast the elements or fields. Casting is not a custom method you can implement for a type.</p>
+<p>Casting cannot be done on arrays or structs, you’ll have to manually cast the
+elements or fields. Casting is not a custom method you can implement for a
+type.</p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="variables"><a class="header" href="#variables">Variables</a></h1>
@@ -648,9 +658,11 @@ bool'-135.77;   // true
 identifier, then set it to a value.</p>
 <pre><code class="language-ksl">int x = 20;
 </code></pre>
-<blockquote class="blockquote-tag blockquote-tag-important">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
-<p>You cannot defined a variable with no value, for example: <code>int x;</code> is not valid syntax. However, variables are treated as mutable, so to achieve the same effect just initialize the variable with dummy data.</p>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>You cannot defined a variable with no value, for example: <code>int x;</code> is not
+valid syntax. However, variables are treated as mutable, so to achieve the
+same effect just initialize the variable with dummy data.</p>
 </blockquote>
 <p>Currently the supported types in KSL are:</p>
 <div class="table-wrapper">
@@ -673,15 +685,23 @@ identifier, then set it to a value.</p>
 </div>
 <blockquote class="blockquote-tag blockquote-tag-note">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<p>KSL is designed for programmers of all skill levels. Some programmers might not care (or know) about int’s of different sizes, so <code>int</code> and <code>float</code> are aliases for the largest supported int and float types. It makes it easier for beginners to understand and it’s more readable for simple projects that don’t need to worry about tight memory constraints.</p>
+<p>KSL is designed for programmers of all skill levels. Some programmers might
+not care (or know) about int’s of different sizes, so <code>int</code> and <code>float</code> are
+aliases for the largest supported int and float types. It makes it easier for
+beginners to understand and it’s more readable for simple projects that don’t
+need to worry about tight memory constraints.</p>
 </blockquote>
 <blockquote class="blockquote-tag blockquote-tag-note">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<p>You can make virtually any type an array by adding <code>[]</code> to the initialization type (e.g. <code>int[]</code> will create an int array.)</p>
+<p>You can make virtually any type an array by adding <code>[]</code> to the initialization
+type (e.g. <code>int[]</code> will create an int array.)</p>
 </blockquote>
 <blockquote class="blockquote-tag blockquote-tag-note">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<p>Defining structs via the <code>struct</code> keyword will register an entierly new type to the type system, it can be treated like most other types, which means you can also make an array of structs using the struct name (e.g. <code>my_struct[]</code> will create an array of <code>my_struct</code> structs.)</p>
+<p>Defining structs via the <code>struct</code> keyword will register an entierly new type
+to the type system, it can be treated like most other types, which means you
+can also make an array of structs using the struct name (e.g. <code>my_struct[]</code>
+will create an array of <code>my_struct</code> structs.)</p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="expressions"><a class="header" href="#expressions">Expressions</a></h1>
@@ -789,11 +809,15 @@ function:</p>
 </code></pre>
 <blockquote class="blockquote-tag blockquote-tag-important">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
-<p>You cannot use this syntax to change the function return type. If you wish to use a different type (post-return) then look into type casting. This is only to hint to the compiler what the expected return type is.</p>
+<p>You cannot use this syntax to change the function return type. If you wish to
+use a different type (post-return) then look into type casting. This is only
+to hint to the compiler what the expected return type is.</p>
 </blockquote>
 <blockquote class="blockquote-tag blockquote-tag-important">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
-<p>Using this syntax to claim a function returns <code>void</code> for a function that returns an <code>int</code> will result in an unresolved symbol. The same applies for other type differences as well.</p>
+<p>Using this syntax to claim a function returns <code>void</code> for a function that
+returns an <code>int</code> will result in an unresolved symbol. The same applies for
+other type differences as well.</p>
 </blockquote>
 <p>Similarly, if a function call doesn’t appear to have any context then KSL might
 assume it returns nothing (<code>void</code>.) This might cause an error so you can use the
@@ -889,7 +913,13 @@ using std.env; // Links the standard environment library.
 </code></pre>
 <blockquote class="blockquote-tag blockquote-tag-note">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<p>The biggest difference is that imports (using “”) are .k or .ksl files, most likely part of your own codebase. Links, on the other hand (using &lt;iden&gt;) link object files to your final executable. These object files are expected to be in the same directory as the compiler itself, but project-specific support may be added in the future. Each period represents a directory. So <code>std.io</code> would link the <code>std/io.o</code> object file into the final executable.</p>
+<p>The biggest difference is that imports (using “”) are .k or .ksl files, most
+likely part of your own codebase. Links, on the other hand (using
+&lt;iden&gt;) link object files to your final executable. These object files
+are expected to be in the same directory as the compiler itself, but
+project-specific support may be added in the future. Each period represents a
+directory. So <code>std.io</code> would link the <code>std/io.o</code> object file into the final
+executable.</p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="namespaces"><a class="header" href="#namespaces">Namespaces</a></h1>
@@ -1002,6 +1032,257 @@ an optional block inside.</p>
 	fn func_in_another_lang_two(int) -&gt; float;
 }
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="error-codes"><a class="header" href="#error-codes">Error Codes</a></h1>
+<p>First, let’s learn to understand error messages. They’re comprised of three
+parts:</p>
+<p>The first letter (message type):</p>
+<ul>
+<li>E = Error</li>
+<li>W = Warning</li>
+</ul>
+<p>The second letter (error compiler location):</p>
+<ul>
+<li>L = Lexer Stage</li>
+<li>P = Parser Stage</li>
+<li>S = Semantic Analysis</li>
+<li>T = Symbol Table</li>
+<li>N = Linking Stage</li>
+<li>C = Command Line</li>
+</ul>
+<p>The third part, the error number. This denotes the actual message inside of the
+message type and compiler location. Occasionally in <code>alpha</code> or <code>debug</code> builds an
+error number might show up as <code>xxxx</code>, this means that it hasn’t been assigned an
+official number yet.</p>
+<pre><code>[EL0000]
+ ^^^
+ |||
+ ||+-- Message Number
+ |+--- Compiler Location
+ +---- Message Type
+</code></pre>
+<blockquote class="blockquote-tag blockquote-tag-warning">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
+<p>The current error code list is incomplete, a more comprehensive list will be
+made when the compiler is closer to a stable release.</p>
+</blockquote>
+<h2 id="el0000"><a class="header" href="#el0000">EL0000</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File Immediately After Comment Opening</p>
+<p><strong>Meaning:</strong><br>The compiler expected a message after the opening of a comment but the file
+ended instead.</p>
+<h2 id="el0001"><a class="header" href="#el0001">EL0001</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File While Lexing Comment</p>
+<p><strong>Meaning:</strong><br>The lexer expected a comment to extend to a newline character but the file ended
+instead</p>
+<h2 id="el0002"><a class="header" href="#el0002">EL0002</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File Immediately After Comment Opening</p>
+<p><strong>Meaning:</strong><br>The compiler ran into the end of the file while parsing a block comment</p>
+<h2 id="el0003"><a class="header" href="#el0003">EL0003</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File In Closing of Multi-Line Comment</p>
+<p><strong>Meaning:</strong><br>The compiler was in the process of closing a block comment when it ran into the
+end of the file</p>
+<h2 id="el0004-duplicate-flag"><a class="header" href="#el0004-duplicate-flag">EL0004 [DUPLICATE] [FLAG]</a></h2>
+<h2 id="el0005"><a class="header" href="#el0005">EL0005</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File Immediately After Identifier Opening</p>
+<p><strong>Meaning:</strong><br>The compiler started processing an identifier and ran into the end of the file
+unexpectedly</p>
+<h2 id="el0006"><a class="header" href="#el0006">EL0006</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File While Lexing Identifier</p>
+<p><strong>Meaning:</strong><br>The compiler ran into the end of the file while still in the process of lexing
+an identifier</p>
+<h2 id="el0007"><a class="header" href="#el0007">EL0007</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File Immediately After Number Opening</p>
+<p><strong>Meaning:</strong><br>The compiler ran into the end of the file while still in the process of lexing
+a number</p>
+<h2 id="el0008"><a class="header" href="#el0008">EL0008</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File While Lexing Number</p>
+<p><strong>Meaning:</strong><br>The compiler ran into the end of the file while still in the process of lexing
+a number</p>
+<h2 id="el0009"><a class="header" href="#el0009">EL0009</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File Immediately After String Opening</p>
+<p><strong>Meaning:</strong><br>The compiler ran into the end of the file while still in the process of lexing
+a string</p>
+<h2 id="el0010"><a class="header" href="#el0010">EL0010</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File While Lexing String</p>
+<p><strong>Meaning:</strong><br>The compiler ran into the end of the file while still in the process of lexing
+a string</p>
+<h2 id="ep0000"><a class="header" href="#ep0000">EP0000</a></h2>
+<p><strong>Message:</strong><br>Expected &lt;token&gt; but got &lt;token&gt;</p>
+<p><strong>Meaning:</strong><br>The parser was expecting a specific token, but a different one was in the spot</p>
+<h2 id="ep0001"><a class="header" href="#ep0001">EP0001</a></h2>
+<p><strong>Message:</strong><br>Expected identifier, found &lt;token&gt;</p>
+<p><strong>Meaning:</strong><br>The parser was expecting an identifier but found a different token in the spot</p>
+<h2 id="ep0002-duplicate-flag"><a class="header" href="#ep0002-duplicate-flag">EP0002 [DUPLICATE] [FLAG]</a></h2>
+<h2 id="ep0003-flag"><a class="header" href="#ep0003-flag">EP0003 [FLAG]</a></h2>
+<p><strong>Message:</strong><br>Unexpected end-of-file while parsing block</p>
+<p><strong>Meaning:</strong><br>The compiler ran into the end of the file while parsing a block of statements</p>
+<h2 id="ep0004"><a class="header" href="#ep0004">EP0004</a></h2>
+<p><strong>Message:</strong><br>Function &lt;name&gt; parameter &lt;param name&gt; must be a valid type,
+currently &lt;invalid type name&gt;</p>
+<p><strong>Meaning:</strong><br>One of a functions parameters isn’t a valid type</p>
+<h2 id="ep0005"><a class="header" href="#ep0005">EP0005</a></h2>
+<p><strong>Message:</strong><br>Function &lt;name&gt; must derive valid type, currently &lt;invalid
+type name&gt;</p>
+<p><strong>Meaning:</strong><br>The provided function doesn’t have a valid return type</p>
+<h2 id="ep0006"><a class="header" href="#ep0006">EP0006</a></h2>
+<p><strong>Message:</strong><br>Invalid statement used to initialize for loop</p>
+<p><strong>Meaning:</strong><br>The provided for loop initialization statement is not valid</p>
+<h2 id="ep0007-flag"><a class="header" href="#ep0007-flag">EP0007 [FLAG]</a></h2>
+<p><strong>Message:</strong><br>Invalid statement used in for loop</p>
+<p><strong>Meaning:</strong><br>A provided statement in the body of a for loop is invalid</p>
+<h2 id="ep0008"><a class="header" href="#ep0008">EP0008</a></h2>
+<p><strong>Message:</strong><br>Namespace Declaration without a Name</p>
+<p><strong>Meaning:</strong><br>A namespace was declared without a valid name afterwards</p>
+<h2 id="ep0009"><a class="header" href="#ep0009">EP0009</a></h2>
+<p><strong>Message:</strong><br>Expected identifier or string after <code>using</code> but got &lt;token&gt;</p>
+<p><strong>Meaning:</strong><br>An invalid token sequence was provided after the <code>using</code> keyword</p>
+<h2 id="ep0010"><a class="header" href="#ep0010">EP0010</a></h2>
+<p><strong>Message:</strong><br>Unexpected Token in Expression, Found &lt;token&gt;</p>
+<p><strong>Meaning:</strong><br>When parsing an expression the parser ran into a token that isn’t supported in
+expressions</p>
+<h2 id="ep0011"><a class="header" href="#ep0011">EP0011</a></h2>
+<p><strong>Message:</strong><br>Expected Literal in Expression, Found &lt;token&gt;</p>
+<p><strong>Meaning:</strong><br>When parsing an expression the parser expected a literal but found a different
+token in the spot</p>
+<h2 id="es0000"><a class="header" href="#es0000">ES0000</a></h2>
+<p><strong>Message:</strong><br>Expected variable &lt;name&gt; to be &lt;type&gt; but it’s &lt;type&gt;, maybe
+cast?</p>
+<p><strong>Meaning:</strong><br>When using a variable in a specific type context, the variable had an
+incompatible type</p>
+<h2 id="es0001"><a class="header" href="#es0001">ES0001</a></h2>
+<p><strong>Message:</strong><br>Reference to undefined variable &lt;name&gt;</p>
+<p><strong>Meaning:</strong><br>An undefined variable was used somewhere in an expression</p>
+<h2 id="es0002"><a class="header" href="#es0002">ES0002</a></h2>
+<p><strong>Message:</strong><br>Invalid Binary Operation Types, Cannot use &lt;type&gt; With &lt;type&gt;,
+Consider Casting</p>
+<p><strong>Meaning:</strong><br>Two types used in a binary operation are not compatible with each other</p>
+<h2 id="es0003"><a class="header" href="#es0003">ES0003</a></h2>
+<p><strong>Message:</strong><br>Inline Function Call with Type Hint Doesn’t Match Function Return Type (Hint:
+&lt;type&gt;, Returns &lt;type&gt;)</p>
+<p><strong>Meaning:</strong><br>A function call used a type hint but the type hint doesn’t match a possible
+return type of the function</p>
+<h2 id="es0004"><a class="header" href="#es0004">ES0004</a></h2>
+<p><strong>Message:</strong><br>Unexpected Number of Parameters to Function &lt;name&gt;, Expected &lt;value&gt;
+but got &lt;value&gt;</p>
+<p><strong>Meaning:</strong><br>The number of parameters passed in a function call and the number of parameters
+in the function definition are different</p>
+<p>Example:</p>
+<pre><code class="language-ksl">// Function Definition (3 Parameters)
+fn testing(int a, int b, int c) -&gt; void;
+
+// Function Call (2 Parameters)
+testing(10, 20);
+</code></pre>
+<h2 id="es0005"><a class="header" href="#es0005">ES0005</a></h2>
+<p><strong>Message:</strong><br>Type mismatch passed to function &lt;name&gt; in arg slot &lt;value&gt;,
+expected &lt;type&gt; but got &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>One of the parameters passed to a function doesn’t match the expected type based
+on the function definition</p>
+<p>Example:</p>
+<pre><code class="language-ksl">// Function Definition (bool, int)
+fn testing(bool a, int b) -&gt; void;
+
+// Function Call (float, int)
+testing(10.0, 10);
+</code></pre>
+<h2 id="es0006-flag"><a class="header" href="#es0006-flag">ES0006 [FLAG]</a></h2>
+<p><strong>Message:</strong><br>Different types passed to forward declared function &lt;name&gt; in arg slot
+&lt;value&gt;, previously used &lt;type&gt; but &lt;type&gt; was passed, verify
+this is correct</p>
+<p><strong>Meaning:</strong><br>Two different calls to the same forward declared function have different types
+in the same parameter position</p>
+<h2 id="es0007-flag"><a class="header" href="#es0007-flag">ES0007 [FLAG]</a></h2>
+<p><strong>Message:</strong><br>Empty array literal, verify this is correct</p>
+<p><strong>Meaning:</strong><br>There is an empty array literal.</p>
+<h2 id="es0008"><a class="header" href="#es0008">ES0008</a></h2>
+<p><strong>Message:</strong><br>Array literal initialized with type &lt;type&gt; was passed a &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>An array created with one type contains an element of an incompatible type</p>
+<h2 id="es0009"><a class="header" href="#es0009">ES0009</a></h2>
+<p><strong>Message:</strong><br>Missing type hint for array literal declaration</p>
+<p><strong>Meaning:</strong><br>A required type hint for array literal declarations is missing</p>
+<h2 id="es0010"><a class="header" href="#es0010">ES0010</a></h2>
+<p><strong>Message:</strong><br>Invalid array index type, must be in the integer family, got &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>Attempted to use a non-integer type to index into an array, this obviously will
+not work</p>
+<h2 id="es0011"><a class="header" href="#es0011">ES0011</a></h2>
+<p><strong>Message:</strong><br>Expected &lt;literal&gt; to be Parsed as an Integer</p>
+<p><strong>Meaning:</strong><br>The compiler expected a literal to be parsed as an integer but it was not</p>
+<h2 id="es0012"><a class="header" href="#es0012">ES0012</a></h2>
+<p><strong>Message:</strong><br>Expected &lt;literal&gt; to be Parsed as a Float</p>
+<p><strong>Meaning:</strong><br>The compiler expected a literal to be parsed as a float but it was not</p>
+<h2 id="es0013"><a class="header" href="#es0013">ES0013</a></h2>
+<p><strong>Message:</strong><br>Cannot use &lt;type&gt; in the context of &lt;type&lt; (attempted literal
+upcast)</p>
+<p><strong>Meaning:</strong><br>The type of a literal cannot be used in the context of a different incompatible
+type</p>
+<h2 id="es0014"><a class="header" href="#es0014">ES0014</a></h2>
+<p><strong>Message:</strong><br>Cannot use &lt;type&gt; in the context of &lt;type&gt; (attempted type
+conversion)</p>
+<p><strong>Meaning:</strong><br>A type cannot be used in the context of a different incompatible type</p>
+<h2 id="es0015"><a class="header" href="#es0015">ES0015</a></h2>
+<p><strong>Message:</strong><br>Cannot implicitly convert &lt;type&gt; to &lt;type&gt; (would lose fractional
+data)</p>
+<p><strong>Meaning:</strong><br>The compiler has detected that it needs to change types in order to work in an
+expression but will not implicitly convert it due to data loss, a cast is
+required in this situation</p>
+<h2 id="es0016"><a class="header" href="#es0016">ES0016</a></h2>
+<p><strong>Message:</strong><br>Cannot implicity convert &lt;type&gt; to &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>The compiler has detected that it needs to change types in order to work in an
+expression but will not implicitly convert it for some reason</p>
+<h2 id="es0017"><a class="header" href="#es0017">ES0017</a></h2>
+<p><strong>Message:</strong><br>Type mismatch in variable declaration &lt;name&gt;, expected &lt;type&gt; but
+got &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>A variable was defined with a specific type but the assignment expression
+resulted in a different type</p>
+<h2 id="es0018"><a class="header" href="#es0018">ES0018</a></h2>
+<p><strong>Message:</strong><br>Type mismatch in variable reassignment &lt;name&gt;, expected &lt;type&gt; but
+got &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>A variable was defined with a specific type but the re-assignment expression
+resulted in a different type</p>
+<h2 id="es0019"><a class="header" href="#es0019">ES0019</a></h2>
+<p><strong>Message:</strong><br>Attempted to reassign variable that does not exist &lt;name&gt;</p>
+<p><strong>Meaning:</strong><br>Really?</p>
+<h2 id="es0020"><a class="header" href="#es0020">ES0020</a></h2>
+<p><strong>Message:</strong><br>Type mismatch in function return, expected &lt;type&gt; but got &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>The return type of a function was expecting a specific type but got a different
+incompatible type</p>
+<h2 id="es0021"><a class="header" href="#es0021">ES0021</a></h2>
+<p><strong>Message:</strong><br>Type mismatch in function return, expected &lt;type&gt; but got none</p>
+<p><strong>Meaning:</strong><br>The return type of a function was expected to be a specific type but wasn’t
+anything</p>
+<h2 id="es0022"><a class="header" href="#es0022">ES0022</a></h2>
+<p><strong>Message:</strong><br>Condition in if statement must be of type Boolean, got &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>The conditional expression inside of an if statement was expecting to result in
+a boolean type but instead resulted in a different incompatible type</p>
+<h2 id="es0023"><a class="header" href="#es0023">ES0023</a></h2>
+<p><strong>Message:</strong><br>Condition in while statement must be of type Boolean, got &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>The conditional expression inside of a while statement was expecting to result
+in a boolean type but instead resulted in a different incompatible type</p>
+<h2 id="es0024"><a class="header" href="#es0024">ES0024</a></h2>
+<p><strong>Message:</strong><br>Condition in for statement must be of type Boolean, got &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>The conditional expression inside of a for statement was expected to result in a
+boolean type but instead resulted in a different incompatible type</p>
+<h2 id="et0000"><a class="header" href="#et0000">ET0000</a></h2>
+<p><strong>Message:</strong><br>Scope &lt;scope_name&gt; not found in path</p>
+<h2 id="et0001"><a class="header" href="#et0001">ET0001</a></h2>
+<p><strong>Message:</strong><br>Symbol &lt;name&gt; already exists in current scope</p>
+<h2 id="et0002"><a class="header" href="#et0002">ET0002</a></h2>
+<p><strong>Message:</strong><br>Symbol &lt;name&gt; exists and is not a scope</p>
+<h2 id="et0003"><a class="header" href="#et0003">ET0003</a></h2>
+<p><strong>Message:</strong><br>Symbol &lt;name&gt; already exists in specified scope</p>
+<h2 id="et0004"><a class="header" href="#et0004">ET0004</a></h2>
+<p><strong>Message:</strong><br>Invalid scope in path &lt;scope_name&gt;</p>
+<h2 id="et0005"><a class="header" href="#et0005">ET0005</a></h2>
+<p><strong>Message:</strong><br>Cannot enter scope &lt;scope_name&gt; because it’s occupied by a
+non-scope-containing symbol</p>
+<h2 id="en0000"><a class="header" href="#en0000">EN0000</a></h2>
+<p><strong>Message:</strong><br>KSL requires &lt;os_linker&gt; for linking, install it or add it to path</p>
+<h2 id="en0001"><a class="header" href="#en0001">EN0001</a></h2>
+<p><strong>Message:</strong><br>Failed to run linker: &lt;linker_error&gt;</p>
+<p><strong>Meaning:</strong><br>The linker failed to run for some reason unknown to KSL</p>
+<h2 id="en0002"><a class="header" href="#en0002">EN0002</a></h2>
+<p><strong>Message:</strong><br>Linker failed with status code &lt;linker_status&gt;&lt;linker_error&gt;</p>
+<p><strong>Meaning:</strong><br>The linker failed to run for some reason unknown to KSL</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="standard-library"><a class="header" href="#standard-library">Standard Library</a></h1>
 <p>Standard Library Modules:</p>
@@ -1208,33 +1489,34 @@ to the standard before being included in the compiler.</p>
 <h1 id="the-using-keyword"><a class="header" href="#the-using-keyword">The <code>using</code> Keyword</a></h1>
 <p>04 / 09 / 25</p>
 <h2 id="objective"><a class="header" href="#objective">Objective</a></h2>
-<p>The objective of the using keyword is to enable multi-file projects to be compiled
-without manually defining all included files from the command line, it also serves
-as a way to disclose which existing object files should be linked after codegen.</p>
+<p>The objective of the using keyword is to enable multi-file projects to be
+compiled without manually defining all included files from the command line, it
+also serves as a way to disclose which existing object files should be linked
+after codegen.</p>
 <h2 id="dictionary"><a class="header" href="#dictionary">Dictionary</a></h2>
 <p><code>using</code> - The using keyword</p>
 <h2 id="examples-5"><a class="header" href="#examples-5">Examples</a></h2>
 <p>The using keyword can change it’s meaning depending on the syntax that follows.
-Following a using keyword with a string will tell the compiler to include another
-source file at the path provided, relative paths are preferred, example:</p>
+Following a using keyword with a string will tell the compiler to include
+another source file at the path provided, relative paths are preferred, example:</p>
 <pre><code class="language-cpp">/* file: main.k */
 using "./api/weather.k";
 </code></pre>
 <p>This syntax will include the source of <code>./api/weather.k</code> in the compiler. It’s
-worth noting that each source file is compiled individually using a shared symbol
-table. The resulting object files for each individual source file are then linked
-together to produce the final executable.</p>
-<p>The second way to use the using keyword is with identifiers. This syntax will tell
-the compiler to link an object file following the path of the identifier. For
-example:</p>
+worth noting that each source file is compiled individually using a shared
+symbol table. The resulting object files for each individual source file are
+then linked together to produce the final executable.</p>
+<p>The second way to use the using keyword is with identifiers. This syntax will
+tell the compiler to link an object file following the path of the identifier.
+For example:</p>
 <pre><code class="language-cpp">/* file: main.k */
 using std.io;
 </code></pre>
 <p>This example will tell the compiler to link <code>std/io.o</code> with the resulting object
 files at the end of compilation. By default the compiler will search it’s own
 working directory for object files to link, however if it does not find any then
-it will switch to the project working directory. Periods in the syntax will denote
-folders, for example:</p>
+it will switch to the project working directory. Periods in the syntax will
+denote folders, for example:</p>
 <pre><code class="language-cpp">/* file: main.k */
 using os.api.platform;
 </code></pre>
@@ -1259,9 +1541,9 @@ for each unique call.</p>
 <h2 id="dictionary-1"><a class="header" href="#dictionary-1">Dictionary</a></h2>
 <p><code>template</code> - A keyword denoting the definition of a template function.<br><code>$[a-zA-Z]</code> - Syntax denoting the use of an unknown type, single letters only.</p>
 <h2 id="examples-6"><a class="header" href="#examples-6">Examples</a></h2>
-<p>In the example below you can see a template add function, it takes two parameters
-of unknown types. The parameter names are <code>x</code> and <code>y</code> with types <code>$A</code> and <code>$B</code>,
-respectively. Templates must return/derive a single type.</p>
+<p>In the example below you can see a template add function, it takes two
+parameters of unknown types. The parameter names are <code>x</code> and <code>y</code> with types <code>$A</code>
+and <code>$B</code>, respectively. Templates must return/derive a single type.</p>
 <pre><code class="language-cpp">template add($A x, $B y) -&gt; int {
 	return int'(x + y);
 }
@@ -1273,9 +1555,9 @@ respectively. Templates must return/derive a single type.</p>
 
 add(10.0, 5);
 </code></pre>
-<p>Notice how in this example the template call (<code>add(10.0, 5)</code>) uses a float and an
-integer? This will dictate how to template generates the function. A template can
-also be used for multiple function calls with multiple dynamic types, ex:</p>
+<p>Notice how in this example the template call (<code>add(10.0, 5)</code>) uses a float and
+an integer? This will dictate how to template generates the function. A template
+can also be used for multiple function calls with multiple dynamic types, ex:</p>
 <pre><code class="language-cpp">fn add(float x, int y) -&gt; int {
 	return int'(x + y);
 }
@@ -1296,8 +1578,8 @@ body as long as the result/derivitive of the function remains constant, ex:</p>
 <h1 id="the-fn----return-keywords"><a class="header" href="#the-fn----return-keywords">The <code>fn</code>, <code>-&gt;</code>, &amp; <code>return</code> Keywords</a></h1>
 <p>04 / 09 / 25</p>
 <h2 id="objective-2"><a class="header" href="#objective-2">Objective</a></h2>
-<p>The objectives of the fn, -&gt;, and return keywords are to add rich function support
-to KSL.</p>
+<p>The objectives of the fn, -&gt;, and return keywords are to add rich function
+support to KSL.</p>
 <h2 id="dictionary-2"><a class="header" href="#dictionary-2">Dictionary</a></h2>
 <p><code>fn</code> - Keyword used to denote the start of a function.<br><code>-&gt;</code> - Keyword used to denote the return type/derivative of a function.<br><code>return</code> - Keyword used to return a value from a function.</p>
 <h2 id="examples-7"><a class="header" href="#examples-7">Examples</a></h2>
@@ -1305,8 +1587,9 @@ to KSL.</p>
 function. Functions also need a defined return type, which can be set using the
 derive keyword (<code>-&gt;</code>.) Once you’re done in your function body you can include
 a <code>return</code> keyword to return a value. It’s expected that the returned value
-matches the type defined after <code>derive</code>. Technically speaking, the return keyword
-is optional, KSL will insert one for you automatically if it doesn’t see one.</p>
+matches the type defined after <code>derive</code>. Technically speaking, the return
+keyword is optional, KSL will insert one for you automatically if it doesn’t see
+one.</p>
 <pre><code class="language-cpp">fn main(int a) -&gt; float {
 	return 10.0;
 }
@@ -1324,6 +1607,160 @@ multiple return types though.</p>
 <h1 id="casting"><a class="header" href="#casting">Casting</a></h1>
 <p>Proposal unfinished.</p>
 <div style="break-before: page; page-break-before: always;"></div>
+<h1 id="miscillanious"><a class="header" href="#miscillanious">Miscillanious</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="quick-syntax-guide"><a class="header" href="#quick-syntax-guide">Quick Syntax Guide</a></h1>
+<blockquote class="blockquote-tag blockquote-tag-warning">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
+<p>If you do not have a background in programming it is highly recommended to
+return to the normal documentation, this is a syntax guide for users who
+already understand programming fundamentals.</p>
+</blockquote>
+<h2 id="valid-types"><a class="header" href="#valid-types">Valid Types</a></h2>
+<p>Int Types:</p>
+<ul>
+<li><code>i8</code></li>
+<li><code>i16</code></li>
+<li><code>i32</code></li>
+<li><code>i64</code> (has <code>int</code> alias)</li>
+</ul>
+<p>Float Types:</p>
+<ul>
+<li><code>f32</code></li>
+<li><code>f64</code> (has <code>float</code> alias)</li>
+</ul>
+<p>Other Types:</p>
+<ul>
+<li><code>str</code></li>
+<li><code>bool</code></li>
+<li><code>void</code></li>
+</ul>
+<h2 id="creating-functions"><a class="header" href="#creating-functions">Creating Functions</a></h2>
+<p><code>fn</code> = Function Keyword<br><code>-&gt;</code> = Declare Return Type</p>
+<p>The entry function will need to be called <code>main</code>.<br>Function bodies are denoted by the braces <code>{</code> and <code>}</code>.</p>
+<p>Example:</p>
+<pre><code class="language-ksl">fn main() -&gt; void {}
+</code></pre>
+<p>Functions should return with the <code>return</code> keyword, if you don’t include one KSL
+will insert one for you automatically (with a default value) for any function
+that returns a primitive type.</p>
+<h2 id="creating-variables"><a class="header" href="#creating-variables">Creating Variables</a></h2>
+<p><code>=</code> = Assignment Operator</p>
+<p>Variable names must follow: <code>[a-zA-Z][a-zA-Z0-9_]+</code>.<br>Variable names cannot be the same as a type name.</p>
+<p>Example:</p>
+<pre><code class="language-ksl">int my_int = 20;
+f32 my_float = 20.5;
+</code></pre>
+<h2 id="creating-complex-types-arrays--structs"><a class="header" href="#creating-complex-types-arrays--structs">Creating Complex Types (Arrays &amp; Structs)</a></h2>
+<p>Create structs with the <code>struct</code> keyword and braces (<code>{</code> and <code>}</code>), struct fields
+are <code>&lt;type&gt; &lt;field_name&gt;</code> and comma separated. Examples:</p>
+<pre><code class="language-ksl">struct Vector2 { int x, int y }
+struct Vector3 {
+	int x,
+	int y,
+	int z
+}
+</code></pre>
+<p>Arrays can be created by adding <code>[]</code> to any type when defining a new variable:</p>
+<pre><code class="language-ksl">int[] my_int_arr = [];
+Vector2[] my_custom_struct_arr = [];
+bool[] my_bool_arr = [];
+</code></pre>
+<p>n’dimensional arrays can be created by adding more <code>[]</code> to the type definition:</p>
+<pre><code class="language-ksl">int[][] my_2d_int_arr = [[]];
+Vector2[][] my_2d_Vector2_arr = [[]];
+bool[][] my_2d_bool_arr = [[]];
+</code></pre>
+<h2 id="using-other-files--modules"><a class="header" href="#using-other-files--modules">Using Other Files &amp; Modules</a></h2>
+<p>The <code>using</code> keyword makes it easy to include other source files and link modules
+against your project.</p>
+<p>The using keyword followed by a string will search for other source files:</p>
+<pre><code class="language-ksl">using "my_second_file.k";
+using "my_third_file.k";
+</code></pre>
+<p>The using keyword followed by a qualified identifier will search for object
+files to link your project against:</p>
+<pre><code class="language-ksl">using std.io;
+using std.fs;
+</code></pre>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>Standard Library reference can be found <a href="std">here</a></p>
+</blockquote>
+<h2 id="getting-and-setting-things"><a class="header" href="#getting-and-setting-things">Getting and Setting Things</a></h2>
+<p>In KSL pretty much everything is mutable and you can do some pretty cool things
+when attempting to get or set values, for example:</p>
+<pre><code class="language-ksl">using std.io;
+
+struct Vec2 { int x, int y }
+
+Vec2[][] my_2d_Vec2_arr = [[ Vec2 { x: 10, y: 20 } ]];
+my_2d_Vec2_arr[0][0].y++; // Increment the y value in the 2d struct array
+my_2d_Vec2_arr[0][0].y = 40; // Overwrite the y value in the 2d struct array
+
+io.writeln(my_2d_Vec_arr[0][0].y); // Get the y value in the 2d struct array
+</code></pre>
+<h2 id="loops-1"><a class="header" href="#loops-1">Loops</a></h2>
+<p>The two loops in KSL are the <code>for</code> and <code>while</code> loops.</p>
+<p>While example:</p>
+<pre><code class="language-ksl">while (true) {
+	// Do something
+}
+</code></pre>
+<p>For example:</p>
+<pre><code class="language-ksl">for (int i = 0; i &lt; 100; i++) {
+	// Do something
+}
+</code></pre>
+<h2 id="conditionals-2"><a class="header" href="#conditionals-2">Conditionals</a></h2>
+<p><code>if</code>, <code>else if</code>, and <code>else</code> are all supported in KSL, see example:</p>
+<pre><code class="language-ksl">if (&lt;condition_1&gt;) {
+	// Do something (1)
+} else if (&lt;condition_2&gt;) {
+	// Do something (2)
+} else {
+	// Do something (3)
+}
+</code></pre>
+<p>You can chain as many <code>else if</code> statements as you want.</p>
+<h2 id="casting-1"><a class="header" href="#casting-1">Casting</a></h2>
+<p>Casting in KSL may be confusing for newcomers. All you need is the type name, an
+apostrophe, and the primary part of your expression you want to cast. Example:</p>
+<pre><code class="language-ksl">float'20; // will cast this int to a float
+
+int x = 2000;
+bool'x; // will cast the int variable to a bool
+
+/*
+The next example will add 20 + 30 then cast the result
+to a float. Notice the parenthesis? Casting will only
+work for the symbol directly after the apostrophe, so
+in order to cast the *result* of the expression they
+must be wrapped in parenthesis.
+*/
+float y = float'(20 + 30);
+</code></pre>
+<p>Casting will not work for complex types like arrays or structs.</p>
+<h2 id="namespaces-1"><a class="header" href="#namespaces-1">Namespaces</a></h2>
+<p>Namespaces in KSL are typically defined on a per-file basis.<br>They do not use braces.</p>
+<p>Example:</p>
+<pre><code class="language-ksl">namespace "my_namespace";
+</code></pre>
+<p>Functions defined after the namespace <code>my_namespace</code> can then be accessed by
+other parts of the program at <code>my_namespace.my_function()</code>.</p>
+<h2 id="function-attributes-1"><a class="header" href="#function-attributes-1">Function Attributes</a></h2>
+<p>Function attributes modify the behavior of functions in KSL, for example, the
+<code>@inline</code> attribute will tell the compiler to inline the following funciton if
+possible.</p>
+<p>Example:</p>
+<pre><code class="language-ksl">@inline
+fn my_func() -&gt; void {};
+</code></pre>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>Function Attribute reference can be found <a href="attribute">here</a></p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="compiler-internals"><a class="header" href="#compiler-internals">Compiler Internals</a></h1>
 <p>This series of documentation pages is entierly dedicated to
 explaining how the compiler works internally. If you’re not
@@ -1334,7 +1771,6 @@ then you probably don’t want to worry about anything here.</p>
 <li><a href="#compiling-ksl-stdlib">Compiling the Standard Library</a></li>
 <li><a href="#name-mangling-convention">Name Mangling Convention</a></li>
 <li><a href="#expression-semantics">Expression Type Semantics</a></li>
-<li><a href="#error-codes">KSL Compiler Error Codes</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="compiling-the-compiler"><a class="header" href="#compiling-the-compiler">Compiling the Compiler</a></h1>
@@ -1374,7 +1810,8 @@ if it takes a while.</p>
 <h2 id="on-linux"><a class="header" href="#on-linux">On Linux</a></h2>
 <blockquote class="blockquote-tag blockquote-tag-note">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<p>Documentation help wanted! The Linux build instructions are not finalized and may depend on distro, any contributions would be great!</p>
+<p>Documentation help wanted! The Linux build instructions are not finalized and
+may depend on distro, any contributions would be great!</p>
 </blockquote>
 <p>Requirements:</p>
 <ul>
@@ -1385,7 +1822,8 @@ if it takes a while.</p>
 <h2 id="on-macos"><a class="header" href="#on-macos">On MacOS</a></h2>
 <blockquote class="blockquote-tag blockquote-tag-note">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<p>Documentation help wanted! The MacOS build instructions are not finalized. Any contributions toward this section would be super helpful!</p>
+<p>Documentation help wanted! The MacOS build instructions are not finalized. Any
+contributions toward this section would be super helpful!</p>
 </blockquote>
 <p>Requirements:</p>
 <ul>
@@ -1497,7 +1935,8 @@ b.push(30);         // Becomes: tarr_method_push____i64
 <h1 id="expression-semantics"><a class="header" href="#expression-semantics">Expression Semantics</a></h1>
 <blockquote class="blockquote-tag blockquote-tag-warning">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
-<p>The methodology explained below is technically accurate but fails to mention all the details.</p>
+<p>The methodology explained below is technically accurate but fails to mention
+all the details.</p>
 </blockquote>
 <p>This page will go over how semantic analysis handles expressions. It will cover
 the technical details behind return type prediction in <a href="#inline-function-calls">inline calls</a>
@@ -1511,75 +1950,94 @@ implicitly changed, it will throw a warning or error to the programmer
 explaining that in order to “do this operation” they must cast to an acceptable
 type.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="error-codes"><a class="header" href="#error-codes">Error Codes</a></h1>
-<p>A list of error codes in the KSL compiler, where the originate, why they were
-triggered, etc. In the future this list will include examples and remediations.</p>
-<blockquote class="blockquote-tag blockquote-tag-warning">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
-<p>The current error code list is incomplete, a more comprehensive list will be made when the compiler is closer to a stable release.</p>
-</blockquote>
-<hr>
-<p>EL0000 = Error [Lexer]: Unexpected End-of-File Immediately After Comment Opening</p>
-<p>EL0001 = Error [Lexer]: Unexpected End-of-File While Lexing Comment</p>
-<p>EL0002 = Error [Lexer]: Unexpected End-of-File Immediately After Comment Opening</p>
-<p>EL0003 = Error [Lexer]: Unexpected End-of-File In Closing of Multi-Line Comment</p>
-<p>EL0004 = Error [Lexer]: Unexpected End-of-File While Lexing Comment</p>
-<p>EL0005 = Error [Lexer]: Unexpected End-of-File Immediately After Identifier Opening</p>
-<p>EL0006 = Error [Lexer]: Unexpected End-of-File While Lexing Identifier</p>
-<p>EL0007 = Error [Lexer]: Unexpected End-of-File Immediately After Number Opening</p>
-<p>EL0008 = Error [Lexer]: Unexpected End-of-File While Lexing Number</p>
-<p>EL0009 = Error [Lexer]: Unexpected End-of-File Immediately After String Opening</p>
-<p>EL0010 = Error [Lexer]: Unexpected End-of-File While Lexing String</p>
-<hr>
-<p>EP0000 = Error [Parser]: Expected &lt;token&gt; but got &lt;token&gt;</p>
-<p>EP0001 = Error [Parser [Iden]]: Expected identifier, found &lt;token&gt;</p>
-<p>EP0002 = Error [Parser [Qden]]: Expected identifier, found &lt;token&gt;</p>
-<p>EP0003 = Error [Parser]: Unexpected end-of-file while parsing block</p>
-<p>EP0004 = Error [Parser]: Function &lt;name&gt; parameter &lt;param name&gt; must be a valid type, currently &lt;invalid type name&gt;</p>
-<p>EP0005 = Error [Parser]: Function &lt;name&gt; must derive valid type, currently &lt;invalid type name&gt;</p>
-<p>EP0006 = Error [Parser]: Invalid statement used to initialize for loop</p>
-<p>EP0007 = Error [Parser]: Invalid statement used in for loop</p>
-<p>EP0008 = Error [Parser]: Namespace Declaration without a Name</p>
-<p>EP0009 = Error [Parser]: Expected identifier or string after using but got &lt;token&gt;</p>
-<p>EP0010 = Error [Parser]: Unexpected Token in Expression, Found &lt;token&gt;</p>
-<p>EP0011 = Error [Parser]: Expected Literal in Expression, Found &lt;token&gt;</p>
-<hr>
-<p>ES0000 = Error [Semantics]: Expected variable &lt;name&gt; to be &lt;type&gt; but it’s &lt;type&gt;, maybe cast?</p>
-<p>ES0001 = Error [Semantics]: Reference to undefined variable &lt;name&gt;</p>
-<p>ES0002 = Error [Semantics]: Invalid Binary Operation Types, Cannot use &lt;type&gt; With &lt;type&gt;, Consider Casting</p>
-<p>ES0003 = Error [Semantics]: Inline Function Call with Type Hint Doesn’t Match Function Return Type (Hint: &lt;type&gt;, Returns &lt;type&gt;)</p>
-<p>ES0004 = Error [Semantics]: Unexpected Number of Parameters to Function &lt;name&gt;, Expected &lt;value&gt; but got &lt;value&gt;</p>
-<p>ES0005 = Error [Semantics]: Type mismatch passed to function &lt;name&gt; in arg slot &lt;value&gt;, expected &lt;type&gt; but got &lt;type&gt;</p>
-<p>ES0006 = Error [Semantics]: Different types passed to forward declared function &lt;name&gt; in arg slot &lt;value&gt;, previously used &lt;type&gt; but &lt;type&gt; was passed, verify this is correct</p>
-<p>ES0007 = Error [Semantics]: Empty array literal, verify this is correct</p>
-<p>ES0008 = Error [Semantics]: Array literal initialized with type &lt;type&gt; was passed a &lt;type&gt;</p>
-<p>ES0009 = Error [Semantics]: Missing type hint for array literal declaration</p>
-<p>ES0010 = Error [Semantics]: Invalid array index type, must be in the integer family, got &lt;type&gt;</p>
-<p>ES0011 = Error [Semantics]: Expected &lt;literal&gt; to be Parsed as an Integer</p>
-<p>ES0012 = Error [Semantics]: Expected &lt;literal&gt; to be Parsed as a Float</p>
-<p>ES0013 = Error [Semantics]: Cannot use &lt;type&gt; in the context of &lt;type&lt; (attempted literal upcast)</p>
-<p>ES0014 = Error [Semantics]: Cannot use &lt;type&gt; in the context of &lt;type&gt; (attempted type conversion)</p>
-<p>ES0015 = Error [Semantics]: Cannot implicitly convert &lt;type&gt; to &lt;type&gt; (would lose fractional data)</p>
-<p>ES0016 = Error [Semantics]: Cannot implicity convert &lt;type&gt; to &lt;type&gt;</p>
-<p>ES0017 = Error [Semantics]: Type mismatch in variable declaration &lt;name&gt;, expected &lt;type&gt; but got &lt;type&gt;</p>
-<p>ES0018 = Error [Semantics]: Type mismatch in variable reassignment &lt;name&gt;, expected &lt;type&gt; but got &lt;type&gt;</p>
-<p>ES0019 = Error [Semantics]: Attempted to reassign variable that does not exist &lt;name&gt;</p>
-<p>ES0020 = Error [Semantics]: Type mismatch in function return, expected &lt;type&gt; but got &lt;type&gt;</p>
-<p>ES0021 = Error [Semantics]: Type mismatch in function return, expected &lt;type&gt; but got none</p>
-<p>ES0022 = Error [Semantics]: Condition in if statement must be of type Boolean, got &lt;type&gt;</p>
-<p>ES0023 = Error [Semantics]: Condition in while statement must be of type Boolean, got &lt;type&gt;</p>
-<p>ES0024 = Error [Semantics]: Condition in for statement must be of type Boolean, got &lt;type&gt;</p>
-<hr>
-<p>ET0000 = Error [Symbols]: Scope &lt;scope_name&gt; not found in path</p>
-<p>ET0001 = Error [Symbols]: Symbol &lt;name&gt; already exists in current scope</p>
-<p>ET0002 = Error [Symbols]: Symbol &lt;name&gt; exists and is not a scope</p>
-<p>ET0003 = Error [Symbols]: Symbol &lt;name&gt; already exists in specified scope</p>
-<p>ET0004 = Error [Symbols]: Invalid scope in path &lt;scope_name&gt;</p>
-<p>ET0005 = Error [Symbols]: Cannot enter scope &lt;scope_name&gt; because it’s occupied by a non-scope-containing symbol</p>
-<hr>
-<p>EN0000 = Error [Linker]: KSL requires &lt;os_linker&gt; for linking, install it or add it to path</p>
-<p>EN0001 = Error [Linker]: Failed to run linker: &lt;linker_error&gt;</p>
-<p>EN0002 = Error [Linker]: Linker failed with status code &lt;linker_status&gt;&lt;linker_error&gt;</p>
+<h1 id="comiler-flags"><a class="header" href="#comiler-flags">Comiler Flags</a></h1>
+<p>Full list of compiler flags and overview of meaning, full list with more details
+is shown below.</p>
+<pre><code>building:
+  --output &lt;name&gt;       -o &lt;name&gt;       Set Name of Output Binary
+  --optimize            -op             Run Optimization Passes
+  --write               -wr             Write Code to Object File
+  --link                -lk             Link and Produce an Executable
+  --pipeline            -owl            Optimize, Write, and Link
+miscillanious:
+  --help                -h              Display This List of Arguments
+  --dump                -d              Display Version and Environment Information
+  --suppress-warns      -sw             Prevent Warnings from Displaying
+debugging:
+  --tokens              -tk             Display Token Stream(s)
+  --llvm-ir             -ir             Display LLVM IR After Codegen
+  --assembly            -as             Display Native Assembly After Codegen
+  --type-trace          -tt             Track Custom Type Creations (Like Structs)
+  --symbol-trace        -st             Track Symbol Lookups as They Occur
+  --codegen-trace       -gt             Trace Codegen During AST Walk
+  --compiler-trace      -ct             Trace Compiler Operations
+  --ast &lt;a,p,s&gt;         -at &lt;a,p,s&gt;     Display Abstract Syntax Tree
+         a                                  All Stages [Default]
+         p                                  Parsing Stage
+         s                                  Semantics Stage
+  --symbols &lt;a,p,s,c&gt;   -sm &lt;a,p,s,c&gt;   Display Symbol Table
+         a                                  All Stages [Default]
+         p                                  Parsing Stage
+         s                                  Semantics Stage
+         c                                  Code Generation Stage
+</code></pre>
+<h2 id="building"><a class="header" href="#building">Building</a></h2>
+<p><strong><code>--output &lt;name&gt;</code></strong> (shorthand <code>-o &lt;name&gt;</code>): Set the name of the output
+binary, by default this value is <code>ksl_child</code> (with or without <code>.exe</code> depending
+on your OS.)</p>
+<p><strong><code>--optimize</code></strong> (shorthand <code>-op</code>): Run optimization passes on the generated
+code before writing it to a binary or object file.</p>
+<p><strong><code>--write</code></strong> (shorthand <code>-wr</code>): Write the resulting code to an object file, by
+default this should be enabled, it’s mostly for development currently.</p>
+<p><strong><code>--link</code></strong> (shorthand <code>-lk</code>): Link the resulting object file(s) and product an
+executable binary, by default this should be enabled, it’s mostly for
+development currently.</p>
+<p><strong><code>--pipeline</code></strong> (shorthand <code>-owl</code>, stands for Optimize, Write, Link): this
+tells the compiler to optimize generated code, write it to an object file(s),
+and link the object file(s) to a binary in this order.</p>
+<h2 id="miscillanious-1"><a class="header" href="#miscillanious-1">Miscillanious</a></h2>
+<p><strong><code>--help</code></strong> (shorthand <code>-h</code>): Displays the list of flags and overview shown
+above.</p>
+<p><strong><code>--dump</code></strong> (shorthand <code>-d</code>): Displays environment information to the console,
+includes version, branch, and operating system; useful for debugging.</p>
+<p><strong><code>--suppress-warns</code></strong> (shorthand <code>-sw</code>): Suppresses all warnings raised by the
+compiler, this will prevent them from being displayed during and after the
+compiler runs.</p>
+<h2 id="debugging"><a class="header" href="#debugging">Debugging</a></h2>
+<p><strong><code>--tokens</code></strong> (shorthand <code>-tk</code>): Displays the token stream to the console for
+KSL source code files after they’ve been processed by the lexer.</p>
+<p><strong><code>--llvm-ir</code></strong> (shorthand <code>-ir</code>): Displays the LLVM IR to the console for KSL
+binary files after they’ve been processed by the semantics and codegen stages.
+Combining this with the <code>-op</code> flag will result in displaying both unoptimized
+and optimized IR to the console.</p>
+<p><strong><code>--assembly</code></strong> (shorthand <code>-as</code>): Displays the native assembly to the console
+for KSL binary files after they’ve been processed by the codegen stage.</p>
+<p><strong><code>--type-trace</code></strong> (shorthand <code>-tt</code>): Track custom type creations, like structs,
+as they’re added to the type registration system.</p>
+<p><strong><code>--symbol-trace</code></strong> (shorthand <code>-st</code>): Track symbol lookups as they occur
+throughout the parser, semantic analysis, and codegen stages.</p>
+<p><strong><code>--codegen-trace</code></strong> (shorthand <code>-gt</code>): Trace the code generation stage as it
+travels the Abstract Syntax Tree.</p>
+<p><strong><code>--compiler-trace</code></strong> (shorthand <code>-ct</code>): Trace the abstract compiler operations
+as they occur (e.g. “Starting Semantic Analysis”, “Semantic Analysis Finished”,
+“Starting Code Generation”, etc.)</p>
+<p><strong><code>--ast &lt;stages&gt;</code></strong> (shorthand <code>-at &lt;stages&gt;</code>): Displays the Abstract Syntax
+Tree to the console after specified stages. If <code>&lt;stages&gt;</code> is left blank it
+will default to all stages. Valid <code>&lt;stages&gt;</code> options are:</p>
+<ul>
+<li><code>a</code>: All stages (Default)</li>
+<li><code>p</code>: Parsing stage</li>
+<li><code>s</code>: Semantic analysis stage</li>
+</ul>
+<p><strong><code>--symbols &lt;stages&gt;</code></strong> (shorthand <code>-sm &lt;stages&gt;</code>): Displays the Symbol Table
+to the console after specified stages. If <code>&lt;stages&gt;</code> is left blank it will
+default to all stages. Valid <code>&lt;stages&gt;</code> options are:</p>
+<ul>
+<li><code>a</code>: All stages (Default)</li>
+<li><code>p</code>: Parsing stage</li>
+<li><code>s</code>: Semantic analysis stage</li>
+<li><code>c</code>: Code generation stage</li>
+</ul>
 
 					</main>
 

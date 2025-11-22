@@ -3,19 +3,19 @@
 	<head>
 		<!-- Book generated using mdBook -->
 		<meta charset="UTF-8">
-		<title>KSL Compiler Error Codes - KSL Documentation</title>
+		<title>Error Codes - KSL Documentation</title>
 		<meta name="robots" content="index, follow">
 
 
 		<!-- Custom HTML head -->
 
-		<meta name="description" content="KSL Programming Language Documentation; KSL Compiler Error Codes - KSL Documentation">
+		<meta name="description" content="KSL Programming Language Documentation; Error Codes - KSL Documentation">
 		<meta name="keywords" content="ksl, programming, language, compiler, kgsensei, documentation">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#17181C">
 		<meta name="og:site_name" content="kslng.org">
 		<meta name="og:title" content="KSL Language Documentation">
-		<meta name="og:description" content="KSL Programming Language Documentation; KSL Compiler Error Codes - KSL Documentation">
+		<meta name="og:description" content="KSL Programming Language Documentation; Error Codes - KSL Documentation">
 
 		<link rel="icon" href="../favicon-5d7e57f4.svg">
 		<link rel="stylesheet" href="../css/variables-f53d1f3b.css">
@@ -39,10 +39,10 @@
 			const path_to_root = "../";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "../searchindex-8536306e.js";
+			window.path_to_searchindex_js = "../searchindex-4fa77bd7.js";
 		</script>
 		<!-- Start loading toc.js asap -->
-		<script src="../toc-de15a0bb.js"></script>
+		<script src="../toc-d6863df9.js"></script>
 	</head>
 	<body>
 	<div id="mdbook-help-container">
@@ -180,83 +180,267 @@
 				<div id="mdbook-content" class="content">
 					<main>
 						<h1 id="error-codes"><a class="header" href="#error-codes">Error Codes</a></h1>
-<p>A list of error codes in the KSL compiler, where the originate, why they were
-triggered, etc. In the future this list will include examples and remediations.</p>
+<p>First, let’s learn to understand error messages. They’re comprised of three
+parts:</p>
+<p>The first letter (message type):</p>
+<ul>
+<li>E = Error</li>
+<li>W = Warning</li>
+</ul>
+<p>The second letter (error compiler location):</p>
+<ul>
+<li>L = Lexer Stage</li>
+<li>P = Parser Stage</li>
+<li>S = Semantic Analysis</li>
+<li>T = Symbol Table</li>
+<li>N = Linking Stage</li>
+<li>C = Command Line</li>
+</ul>
+<p>The third part, the error number. This denotes the actual message inside of the
+message type and compiler location. Occasionally in <code>alpha</code> or <code>debug</code> builds an
+error number might show up as <code>xxxx</code>, this means that it hasn’t been assigned an
+official number yet.</p>
+<pre><code>[EL0000]
+ ^^^
+ |||
+ ||+-- Message Number
+ |+--- Compiler Location
+ +---- Message Type
+</code></pre>
 <blockquote class="blockquote-tag blockquote-tag-warning">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
-<p>The current error code list is incomplete, a more comprehensive list will be made when the compiler is closer to a stable release.</p>
+<p>The current error code list is incomplete, a more comprehensive list will be
+made when the compiler is closer to a stable release.</p>
 </blockquote>
-<hr>
-<p>EL0000 = Error [Lexer]: Unexpected End-of-File Immediately After Comment Opening</p>
-<p>EL0001 = Error [Lexer]: Unexpected End-of-File While Lexing Comment</p>
-<p>EL0002 = Error [Lexer]: Unexpected End-of-File Immediately After Comment Opening</p>
-<p>EL0003 = Error [Lexer]: Unexpected End-of-File In Closing of Multi-Line Comment</p>
-<p>EL0004 = Error [Lexer]: Unexpected End-of-File While Lexing Comment</p>
-<p>EL0005 = Error [Lexer]: Unexpected End-of-File Immediately After Identifier Opening</p>
-<p>EL0006 = Error [Lexer]: Unexpected End-of-File While Lexing Identifier</p>
-<p>EL0007 = Error [Lexer]: Unexpected End-of-File Immediately After Number Opening</p>
-<p>EL0008 = Error [Lexer]: Unexpected End-of-File While Lexing Number</p>
-<p>EL0009 = Error [Lexer]: Unexpected End-of-File Immediately After String Opening</p>
-<p>EL0010 = Error [Lexer]: Unexpected End-of-File While Lexing String</p>
-<hr>
-<p>EP0000 = Error [Parser]: Expected &lt;token&gt; but got &lt;token&gt;</p>
-<p>EP0001 = Error [Parser [Iden]]: Expected identifier, found &lt;token&gt;</p>
-<p>EP0002 = Error [Parser [Qden]]: Expected identifier, found &lt;token&gt;</p>
-<p>EP0003 = Error [Parser]: Unexpected end-of-file while parsing block</p>
-<p>EP0004 = Error [Parser]: Function &lt;name&gt; parameter &lt;param name&gt; must be a valid type, currently &lt;invalid type name&gt;</p>
-<p>EP0005 = Error [Parser]: Function &lt;name&gt; must derive valid type, currently &lt;invalid type name&gt;</p>
-<p>EP0006 = Error [Parser]: Invalid statement used to initialize for loop</p>
-<p>EP0007 = Error [Parser]: Invalid statement used in for loop</p>
-<p>EP0008 = Error [Parser]: Namespace Declaration without a Name</p>
-<p>EP0009 = Error [Parser]: Expected identifier or string after using but got &lt;token&gt;</p>
-<p>EP0010 = Error [Parser]: Unexpected Token in Expression, Found &lt;token&gt;</p>
-<p>EP0011 = Error [Parser]: Expected Literal in Expression, Found &lt;token&gt;</p>
-<hr>
-<p>ES0000 = Error [Semantics]: Expected variable &lt;name&gt; to be &lt;type&gt; but it’s &lt;type&gt;, maybe cast?</p>
-<p>ES0001 = Error [Semantics]: Reference to undefined variable &lt;name&gt;</p>
-<p>ES0002 = Error [Semantics]: Invalid Binary Operation Types, Cannot use &lt;type&gt; With &lt;type&gt;, Consider Casting</p>
-<p>ES0003 = Error [Semantics]: Inline Function Call with Type Hint Doesn’t Match Function Return Type (Hint: &lt;type&gt;, Returns &lt;type&gt;)</p>
-<p>ES0004 = Error [Semantics]: Unexpected Number of Parameters to Function &lt;name&gt;, Expected &lt;value&gt; but got &lt;value&gt;</p>
-<p>ES0005 = Error [Semantics]: Type mismatch passed to function &lt;name&gt; in arg slot &lt;value&gt;, expected &lt;type&gt; but got &lt;type&gt;</p>
-<p>ES0006 = Error [Semantics]: Different types passed to forward declared function &lt;name&gt; in arg slot &lt;value&gt;, previously used &lt;type&gt; but &lt;type&gt; was passed, verify this is correct</p>
-<p>ES0007 = Error [Semantics]: Empty array literal, verify this is correct</p>
-<p>ES0008 = Error [Semantics]: Array literal initialized with type &lt;type&gt; was passed a &lt;type&gt;</p>
-<p>ES0009 = Error [Semantics]: Missing type hint for array literal declaration</p>
-<p>ES0010 = Error [Semantics]: Invalid array index type, must be in the integer family, got &lt;type&gt;</p>
-<p>ES0011 = Error [Semantics]: Expected &lt;literal&gt; to be Parsed as an Integer</p>
-<p>ES0012 = Error [Semantics]: Expected &lt;literal&gt; to be Parsed as a Float</p>
-<p>ES0013 = Error [Semantics]: Cannot use &lt;type&gt; in the context of &lt;type&lt; (attempted literal upcast)</p>
-<p>ES0014 = Error [Semantics]: Cannot use &lt;type&gt; in the context of &lt;type&gt; (attempted type conversion)</p>
-<p>ES0015 = Error [Semantics]: Cannot implicitly convert &lt;type&gt; to &lt;type&gt; (would lose fractional data)</p>
-<p>ES0016 = Error [Semantics]: Cannot implicity convert &lt;type&gt; to &lt;type&gt;</p>
-<p>ES0017 = Error [Semantics]: Type mismatch in variable declaration &lt;name&gt;, expected &lt;type&gt; but got &lt;type&gt;</p>
-<p>ES0018 = Error [Semantics]: Type mismatch in variable reassignment &lt;name&gt;, expected &lt;type&gt; but got &lt;type&gt;</p>
-<p>ES0019 = Error [Semantics]: Attempted to reassign variable that does not exist &lt;name&gt;</p>
-<p>ES0020 = Error [Semantics]: Type mismatch in function return, expected &lt;type&gt; but got &lt;type&gt;</p>
-<p>ES0021 = Error [Semantics]: Type mismatch in function return, expected &lt;type&gt; but got none</p>
-<p>ES0022 = Error [Semantics]: Condition in if statement must be of type Boolean, got &lt;type&gt;</p>
-<p>ES0023 = Error [Semantics]: Condition in while statement must be of type Boolean, got &lt;type&gt;</p>
-<p>ES0024 = Error [Semantics]: Condition in for statement must be of type Boolean, got &lt;type&gt;</p>
-<hr>
-<p>ET0000 = Error [Symbols]: Scope &lt;scope_name&gt; not found in path</p>
-<p>ET0001 = Error [Symbols]: Symbol &lt;name&gt; already exists in current scope</p>
-<p>ET0002 = Error [Symbols]: Symbol &lt;name&gt; exists and is not a scope</p>
-<p>ET0003 = Error [Symbols]: Symbol &lt;name&gt; already exists in specified scope</p>
-<p>ET0004 = Error [Symbols]: Invalid scope in path &lt;scope_name&gt;</p>
-<p>ET0005 = Error [Symbols]: Cannot enter scope &lt;scope_name&gt; because it’s occupied by a non-scope-containing symbol</p>
-<hr>
-<p>EN0000 = Error [Linker]: KSL requires &lt;os_linker&gt; for linking, install it or add it to path</p>
-<p>EN0001 = Error [Linker]: Failed to run linker: &lt;linker_error&gt;</p>
-<p>EN0002 = Error [Linker]: Linker failed with status code &lt;linker_status&gt;&lt;linker_error&gt;</p>
+<h2 id="el0000"><a class="header" href="#el0000">EL0000</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File Immediately After Comment Opening</p>
+<p><strong>Meaning:</strong><br>The compiler expected a message after the opening of a comment but the file
+ended instead.</p>
+<h2 id="el0001"><a class="header" href="#el0001">EL0001</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File While Lexing Comment</p>
+<p><strong>Meaning:</strong><br>The lexer expected a comment to extend to a newline character but the file ended
+instead</p>
+<h2 id="el0002"><a class="header" href="#el0002">EL0002</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File Immediately After Comment Opening</p>
+<p><strong>Meaning:</strong><br>The compiler ran into the end of the file while parsing a block comment</p>
+<h2 id="el0003"><a class="header" href="#el0003">EL0003</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File In Closing of Multi-Line Comment</p>
+<p><strong>Meaning:</strong><br>The compiler was in the process of closing a block comment when it ran into the
+end of the file</p>
+<h2 id="el0004-duplicate-flag"><a class="header" href="#el0004-duplicate-flag">EL0004 [DUPLICATE] [FLAG]</a></h2>
+<h2 id="el0005"><a class="header" href="#el0005">EL0005</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File Immediately After Identifier Opening</p>
+<p><strong>Meaning:</strong><br>The compiler started processing an identifier and ran into the end of the file
+unexpectedly</p>
+<h2 id="el0006"><a class="header" href="#el0006">EL0006</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File While Lexing Identifier</p>
+<p><strong>Meaning:</strong><br>The compiler ran into the end of the file while still in the process of lexing
+an identifier</p>
+<h2 id="el0007"><a class="header" href="#el0007">EL0007</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File Immediately After Number Opening</p>
+<p><strong>Meaning:</strong><br>The compiler ran into the end of the file while still in the process of lexing
+a number</p>
+<h2 id="el0008"><a class="header" href="#el0008">EL0008</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File While Lexing Number</p>
+<p><strong>Meaning:</strong><br>The compiler ran into the end of the file while still in the process of lexing
+a number</p>
+<h2 id="el0009"><a class="header" href="#el0009">EL0009</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File Immediately After String Opening</p>
+<p><strong>Meaning:</strong><br>The compiler ran into the end of the file while still in the process of lexing
+a string</p>
+<h2 id="el0010"><a class="header" href="#el0010">EL0010</a></h2>
+<p><strong>Message:</strong><br>Unexpected End-of-File While Lexing String</p>
+<p><strong>Meaning:</strong><br>The compiler ran into the end of the file while still in the process of lexing
+a string</p>
+<h2 id="ep0000"><a class="header" href="#ep0000">EP0000</a></h2>
+<p><strong>Message:</strong><br>Expected &lt;token&gt; but got &lt;token&gt;</p>
+<p><strong>Meaning:</strong><br>The parser was expecting a specific token, but a different one was in the spot</p>
+<h2 id="ep0001"><a class="header" href="#ep0001">EP0001</a></h2>
+<p><strong>Message:</strong><br>Expected identifier, found &lt;token&gt;</p>
+<p><strong>Meaning:</strong><br>The parser was expecting an identifier but found a different token in the spot</p>
+<h2 id="ep0002-duplicate-flag"><a class="header" href="#ep0002-duplicate-flag">EP0002 [DUPLICATE] [FLAG]</a></h2>
+<h2 id="ep0003-flag"><a class="header" href="#ep0003-flag">EP0003 [FLAG]</a></h2>
+<p><strong>Message:</strong><br>Unexpected end-of-file while parsing block</p>
+<p><strong>Meaning:</strong><br>The compiler ran into the end of the file while parsing a block of statements</p>
+<h2 id="ep0004"><a class="header" href="#ep0004">EP0004</a></h2>
+<p><strong>Message:</strong><br>Function &lt;name&gt; parameter &lt;param name&gt; must be a valid type,
+currently &lt;invalid type name&gt;</p>
+<p><strong>Meaning:</strong><br>One of a functions parameters isn’t a valid type</p>
+<h2 id="ep0005"><a class="header" href="#ep0005">EP0005</a></h2>
+<p><strong>Message:</strong><br>Function &lt;name&gt; must derive valid type, currently &lt;invalid
+type name&gt;</p>
+<p><strong>Meaning:</strong><br>The provided function doesn’t have a valid return type</p>
+<h2 id="ep0006"><a class="header" href="#ep0006">EP0006</a></h2>
+<p><strong>Message:</strong><br>Invalid statement used to initialize for loop</p>
+<p><strong>Meaning:</strong><br>The provided for loop initialization statement is not valid</p>
+<h2 id="ep0007-flag"><a class="header" href="#ep0007-flag">EP0007 [FLAG]</a></h2>
+<p><strong>Message:</strong><br>Invalid statement used in for loop</p>
+<p><strong>Meaning:</strong><br>A provided statement in the body of a for loop is invalid</p>
+<h2 id="ep0008"><a class="header" href="#ep0008">EP0008</a></h2>
+<p><strong>Message:</strong><br>Namespace Declaration without a Name</p>
+<p><strong>Meaning:</strong><br>A namespace was declared without a valid name afterwards</p>
+<h2 id="ep0009"><a class="header" href="#ep0009">EP0009</a></h2>
+<p><strong>Message:</strong><br>Expected identifier or string after <code>using</code> but got &lt;token&gt;</p>
+<p><strong>Meaning:</strong><br>An invalid token sequence was provided after the <code>using</code> keyword</p>
+<h2 id="ep0010"><a class="header" href="#ep0010">EP0010</a></h2>
+<p><strong>Message:</strong><br>Unexpected Token in Expression, Found &lt;token&gt;</p>
+<p><strong>Meaning:</strong><br>When parsing an expression the parser ran into a token that isn’t supported in
+expressions</p>
+<h2 id="ep0011"><a class="header" href="#ep0011">EP0011</a></h2>
+<p><strong>Message:</strong><br>Expected Literal in Expression, Found &lt;token&gt;</p>
+<p><strong>Meaning:</strong><br>When parsing an expression the parser expected a literal but found a different
+token in the spot</p>
+<h2 id="es0000"><a class="header" href="#es0000">ES0000</a></h2>
+<p><strong>Message:</strong><br>Expected variable &lt;name&gt; to be &lt;type&gt; but it’s &lt;type&gt;, maybe
+cast?</p>
+<p><strong>Meaning:</strong><br>When using a variable in a specific type context, the variable had an
+incompatible type</p>
+<h2 id="es0001"><a class="header" href="#es0001">ES0001</a></h2>
+<p><strong>Message:</strong><br>Reference to undefined variable &lt;name&gt;</p>
+<p><strong>Meaning:</strong><br>An undefined variable was used somewhere in an expression</p>
+<h2 id="es0002"><a class="header" href="#es0002">ES0002</a></h2>
+<p><strong>Message:</strong><br>Invalid Binary Operation Types, Cannot use &lt;type&gt; With &lt;type&gt;,
+Consider Casting</p>
+<p><strong>Meaning:</strong><br>Two types used in a binary operation are not compatible with each other</p>
+<h2 id="es0003"><a class="header" href="#es0003">ES0003</a></h2>
+<p><strong>Message:</strong><br>Inline Function Call with Type Hint Doesn’t Match Function Return Type (Hint:
+&lt;type&gt;, Returns &lt;type&gt;)</p>
+<p><strong>Meaning:</strong><br>A function call used a type hint but the type hint doesn’t match a possible
+return type of the function</p>
+<h2 id="es0004"><a class="header" href="#es0004">ES0004</a></h2>
+<p><strong>Message:</strong><br>Unexpected Number of Parameters to Function &lt;name&gt;, Expected &lt;value&gt;
+but got &lt;value&gt;</p>
+<p><strong>Meaning:</strong><br>The number of parameters passed in a function call and the number of parameters
+in the function definition are different</p>
+<p>Example:</p>
+<pre><code class="language-ksl">// Function Definition (3 Parameters)
+fn testing(int a, int b, int c) -&gt; void;
+
+// Function Call (2 Parameters)
+testing(10, 20);
+</code></pre>
+<h2 id="es0005"><a class="header" href="#es0005">ES0005</a></h2>
+<p><strong>Message:</strong><br>Type mismatch passed to function &lt;name&gt; in arg slot &lt;value&gt;,
+expected &lt;type&gt; but got &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>One of the parameters passed to a function doesn’t match the expected type based
+on the function definition</p>
+<p>Example:</p>
+<pre><code class="language-ksl">// Function Definition (bool, int)
+fn testing(bool a, int b) -&gt; void;
+
+// Function Call (float, int)
+testing(10.0, 10);
+</code></pre>
+<h2 id="es0006-flag"><a class="header" href="#es0006-flag">ES0006 [FLAG]</a></h2>
+<p><strong>Message:</strong><br>Different types passed to forward declared function &lt;name&gt; in arg slot
+&lt;value&gt;, previously used &lt;type&gt; but &lt;type&gt; was passed, verify
+this is correct</p>
+<p><strong>Meaning:</strong><br>Two different calls to the same forward declared function have different types
+in the same parameter position</p>
+<h2 id="es0007-flag"><a class="header" href="#es0007-flag">ES0007 [FLAG]</a></h2>
+<p><strong>Message:</strong><br>Empty array literal, verify this is correct</p>
+<p><strong>Meaning:</strong><br>There is an empty array literal.</p>
+<h2 id="es0008"><a class="header" href="#es0008">ES0008</a></h2>
+<p><strong>Message:</strong><br>Array literal initialized with type &lt;type&gt; was passed a &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>An array created with one type contains an element of an incompatible type</p>
+<h2 id="es0009"><a class="header" href="#es0009">ES0009</a></h2>
+<p><strong>Message:</strong><br>Missing type hint for array literal declaration</p>
+<p><strong>Meaning:</strong><br>A required type hint for array literal declarations is missing</p>
+<h2 id="es0010"><a class="header" href="#es0010">ES0010</a></h2>
+<p><strong>Message:</strong><br>Invalid array index type, must be in the integer family, got &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>Attempted to use a non-integer type to index into an array, this obviously will
+not work</p>
+<h2 id="es0011"><a class="header" href="#es0011">ES0011</a></h2>
+<p><strong>Message:</strong><br>Expected &lt;literal&gt; to be Parsed as an Integer</p>
+<p><strong>Meaning:</strong><br>The compiler expected a literal to be parsed as an integer but it was not</p>
+<h2 id="es0012"><a class="header" href="#es0012">ES0012</a></h2>
+<p><strong>Message:</strong><br>Expected &lt;literal&gt; to be Parsed as a Float</p>
+<p><strong>Meaning:</strong><br>The compiler expected a literal to be parsed as a float but it was not</p>
+<h2 id="es0013"><a class="header" href="#es0013">ES0013</a></h2>
+<p><strong>Message:</strong><br>Cannot use &lt;type&gt; in the context of &lt;type&lt; (attempted literal
+upcast)</p>
+<p><strong>Meaning:</strong><br>The type of a literal cannot be used in the context of a different incompatible
+type</p>
+<h2 id="es0014"><a class="header" href="#es0014">ES0014</a></h2>
+<p><strong>Message:</strong><br>Cannot use &lt;type&gt; in the context of &lt;type&gt; (attempted type
+conversion)</p>
+<p><strong>Meaning:</strong><br>A type cannot be used in the context of a different incompatible type</p>
+<h2 id="es0015"><a class="header" href="#es0015">ES0015</a></h2>
+<p><strong>Message:</strong><br>Cannot implicitly convert &lt;type&gt; to &lt;type&gt; (would lose fractional
+data)</p>
+<p><strong>Meaning:</strong><br>The compiler has detected that it needs to change types in order to work in an
+expression but will not implicitly convert it due to data loss, a cast is
+required in this situation</p>
+<h2 id="es0016"><a class="header" href="#es0016">ES0016</a></h2>
+<p><strong>Message:</strong><br>Cannot implicity convert &lt;type&gt; to &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>The compiler has detected that it needs to change types in order to work in an
+expression but will not implicitly convert it for some reason</p>
+<h2 id="es0017"><a class="header" href="#es0017">ES0017</a></h2>
+<p><strong>Message:</strong><br>Type mismatch in variable declaration &lt;name&gt;, expected &lt;type&gt; but
+got &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>A variable was defined with a specific type but the assignment expression
+resulted in a different type</p>
+<h2 id="es0018"><a class="header" href="#es0018">ES0018</a></h2>
+<p><strong>Message:</strong><br>Type mismatch in variable reassignment &lt;name&gt;, expected &lt;type&gt; but
+got &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>A variable was defined with a specific type but the re-assignment expression
+resulted in a different type</p>
+<h2 id="es0019"><a class="header" href="#es0019">ES0019</a></h2>
+<p><strong>Message:</strong><br>Attempted to reassign variable that does not exist &lt;name&gt;</p>
+<p><strong>Meaning:</strong><br>Really?</p>
+<h2 id="es0020"><a class="header" href="#es0020">ES0020</a></h2>
+<p><strong>Message:</strong><br>Type mismatch in function return, expected &lt;type&gt; but got &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>The return type of a function was expecting a specific type but got a different
+incompatible type</p>
+<h2 id="es0021"><a class="header" href="#es0021">ES0021</a></h2>
+<p><strong>Message:</strong><br>Type mismatch in function return, expected &lt;type&gt; but got none</p>
+<p><strong>Meaning:</strong><br>The return type of a function was expected to be a specific type but wasn’t
+anything</p>
+<h2 id="es0022"><a class="header" href="#es0022">ES0022</a></h2>
+<p><strong>Message:</strong><br>Condition in if statement must be of type Boolean, got &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>The conditional expression inside of an if statement was expecting to result in
+a boolean type but instead resulted in a different incompatible type</p>
+<h2 id="es0023"><a class="header" href="#es0023">ES0023</a></h2>
+<p><strong>Message:</strong><br>Condition in while statement must be of type Boolean, got &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>The conditional expression inside of a while statement was expecting to result
+in a boolean type but instead resulted in a different incompatible type</p>
+<h2 id="es0024"><a class="header" href="#es0024">ES0024</a></h2>
+<p><strong>Message:</strong><br>Condition in for statement must be of type Boolean, got &lt;type&gt;</p>
+<p><strong>Meaning:</strong><br>The conditional expression inside of a for statement was expected to result in a
+boolean type but instead resulted in a different incompatible type</p>
+<h2 id="et0000"><a class="header" href="#et0000">ET0000</a></h2>
+<p><strong>Message:</strong><br>Scope &lt;scope_name&gt; not found in path</p>
+<h2 id="et0001"><a class="header" href="#et0001">ET0001</a></h2>
+<p><strong>Message:</strong><br>Symbol &lt;name&gt; already exists in current scope</p>
+<h2 id="et0002"><a class="header" href="#et0002">ET0002</a></h2>
+<p><strong>Message:</strong><br>Symbol &lt;name&gt; exists and is not a scope</p>
+<h2 id="et0003"><a class="header" href="#et0003">ET0003</a></h2>
+<p><strong>Message:</strong><br>Symbol &lt;name&gt; already exists in specified scope</p>
+<h2 id="et0004"><a class="header" href="#et0004">ET0004</a></h2>
+<p><strong>Message:</strong><br>Invalid scope in path &lt;scope_name&gt;</p>
+<h2 id="et0005"><a class="header" href="#et0005">ET0005</a></h2>
+<p><strong>Message:</strong><br>Cannot enter scope &lt;scope_name&gt; because it’s occupied by a
+non-scope-containing symbol</p>
+<h2 id="en0000"><a class="header" href="#en0000">EN0000</a></h2>
+<p><strong>Message:</strong><br>KSL requires &lt;os_linker&gt; for linking, install it or add it to path</p>
+<h2 id="en0001"><a class="header" href="#en0001">EN0001</a></h2>
+<p><strong>Message:</strong><br>Failed to run linker: &lt;linker_error&gt;</p>
+<p><strong>Meaning:</strong><br>The linker failed to run for some reason unknown to KSL</p>
+<h2 id="en0002"><a class="header" href="#en0002">EN0002</a></h2>
+<p><strong>Message:</strong><br>Linker failed with status code &lt;linker_status&gt;&lt;linker_error&gt;</p>
+<p><strong>Meaning:</strong><br>The linker failed to run for some reason unknown to KSL</p>
 
 					</main>
 
 					<nav class="nav-wrapper" aria-label="Page navigation">
 						<!-- Mobile navigation buttons -->
-							<a rel="prev" href="../compiler/expr-semantics.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+							<a rel="prev" href="../ffi/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
 								<span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
 							</a>
 
+							<a rel="next prefetch" href="../std/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+								<span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+							</a>
 
 						<div style="clear: both"></div>
 					</nav>
@@ -264,10 +448,13 @@ triggered, etc. In the future this list will include examples and remediations.<
 			</div>
 
 			<nav class="nav-wide-wrapper" aria-label="Page navigation">
-					<a rel="prev" href="../compiler/expr-semantics.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+					<a rel="prev" href="../ffi/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
 						<span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
 					</a>
 
+					<a rel="next prefetch" href="../std/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+						<span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+					</a>
 			</nav>
 
 		</div>

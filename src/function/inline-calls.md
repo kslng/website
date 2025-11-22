@@ -25,10 +25,14 @@ int x = add(1, 3)->int + 5;
 ```
 
 > [!IMPORTANT]
-> You cannot use this syntax to change the function return type. If you wish to use a different type (post-return) then look into type casting. This is only to hint to the compiler what the expected return type is.
+> You cannot use this syntax to change the function return type. If you wish to
+> use a different type (post-return) then look into type casting. This is only
+> to hint to the compiler what the expected return type is.
 
 > [!IMPORTANT]
-> Using this syntax to claim a function returns `void` for a function that returns an `int` will result in an unresolved symbol. The same applies for other type differences as well.
+> Using this syntax to claim a function returns `void` for a function that
+> returns an `int` will result in an unresolved symbol. The same applies for
+> other type differences as well.
 
 Similarly, if a function call doesn't appear to have any context then KSL might
 assume it returns nothing (`void`.) This might cause an error so you can use the

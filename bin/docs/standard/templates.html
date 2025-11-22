@@ -39,10 +39,10 @@
 			const path_to_root = "../";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "../searchindex-8536306e.js";
+			window.path_to_searchindex_js = "../searchindex-4fa77bd7.js";
 		</script>
 		<!-- Start loading toc.js asap -->
-		<script src="../toc-de15a0bb.js"></script>
+		<script src="../toc-d6863df9.js"></script>
 	</head>
 	<body>
 	<div id="mdbook-help-container">
@@ -189,9 +189,9 @@ for each unique call.</p>
 <h2 id="dictionary"><a class="header" href="#dictionary">Dictionary</a></h2>
 <p><code>template</code> - A keyword denoting the definition of a template function.<br><code>$[a-zA-Z]</code> - Syntax denoting the use of an unknown type, single letters only.</p>
 <h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
-<p>In the example below you can see a template add function, it takes two parameters
-of unknown types. The parameter names are <code>x</code> and <code>y</code> with types <code>$A</code> and <code>$B</code>,
-respectively. Templates must return/derive a single type.</p>
+<p>In the example below you can see a template add function, it takes two
+parameters of unknown types. The parameter names are <code>x</code> and <code>y</code> with types <code>$A</code>
+and <code>$B</code>, respectively. Templates must return/derive a single type.</p>
 <pre><code class="language-cpp">template add($A x, $B y) -&gt; int {
 	return int'(x + y);
 }
@@ -203,9 +203,9 @@ respectively. Templates must return/derive a single type.</p>
 
 add(10.0, 5);
 </code></pre>
-<p>Notice how in this example the template call (<code>add(10.0, 5)</code>) uses a float and an
-integer? This will dictate how to template generates the function. A template can
-also be used for multiple function calls with multiple dynamic types, ex:</p>
+<p>Notice how in this example the template call (<code>add(10.0, 5)</code>) uses a float and
+an integer? This will dictate how to template generates the function. A template
+can also be used for multiple function calls with multiple dynamic types, ex:</p>
 <pre><code class="language-cpp">fn add(float x, int y) -&gt; int {
 	return int'(x + y);
 }

@@ -39,10 +39,10 @@
 			const path_to_root = "../";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "../searchindex-8536306e.js";
+			window.path_to_searchindex_js = "../searchindex-4fa77bd7.js";
 		</script>
 		<!-- Start loading toc.js asap -->
-		<script src="../toc-de15a0bb.js"></script>
+		<script src="../toc-d6863df9.js"></script>
 	</head>
 	<body>
 	<div id="mdbook-help-container">
@@ -199,11 +199,15 @@ function:</p>
 </code></pre>
 <blockquote class="blockquote-tag blockquote-tag-important">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
-<p>You cannot use this syntax to change the function return type. If you wish to use a different type (post-return) then look into type casting. This is only to hint to the compiler what the expected return type is.</p>
+<p>You cannot use this syntax to change the function return type. If you wish to
+use a different type (post-return) then look into type casting. This is only
+to hint to the compiler what the expected return type is.</p>
 </blockquote>
 <blockquote class="blockquote-tag blockquote-tag-important">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
-<p>Using this syntax to claim a function returns <code>void</code> for a function that returns an <code>int</code> will result in an unresolved symbol. The same applies for other type differences as well.</p>
+<p>Using this syntax to claim a function returns <code>void</code> for a function that
+returns an <code>int</code> will result in an unresolved symbol. The same applies for
+other type differences as well.</p>
 </blockquote>
 <p>Similarly, if a function call doesn’t appear to have any context then KSL might
 assume it returns nothing (<code>void</code>.) This might cause an error so you can use the

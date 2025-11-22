@@ -4,8 +4,8 @@
 
 ## Objective
 
-The objectives of the fn, ->, and return keywords are to add rich function support
-to KSL.
+The objectives of the fn, ->, and return keywords are to add rich function
+support to KSL.
 
 ## Dictionary
 
@@ -19,8 +19,9 @@ The fn keyword followed by a single identifier and parenthesis defines a basic
 function. Functions also need a defined return type, which can be set using the
 derive keyword (`->`.) Once you're done in your function body you can include
 a `return` keyword to return a value. It's expected that the returned value
-matches the type defined after `derive`. Technically speaking, the return keyword
-is optional, KSL will insert one for you automatically if it doesn't see one.
+matches the type defined after `derive`. Technically speaking, the return
+keyword is optional, KSL will insert one for you automatically if it doesn't see
+one.
 
 ```cpp
 fn main(int a) -> float {

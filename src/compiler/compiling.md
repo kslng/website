@@ -30,7 +30,8 @@ if it takes a while.
 ## On Linux
 
 > [!NOTE]
-> Documentation help wanted! The Linux build instructions are not finalized and may depend on distro, any contributions would be great!
+> Documentation help wanted! The Linux build instructions are not finalized and
+> may depend on distro, any contributions would be great!
 
 Requirements:
 - KSL Source Code
@@ -40,7 +41,8 @@ Requirements:
 ## On MacOS
 
 > [!NOTE]
-> Documentation help wanted! The MacOS build instructions are not finalized. Any contributions toward this section would be super helpful!
+> Documentation help wanted! The MacOS build instructions are not finalized. Any
+> contributions toward this section would be super helpful!
 
 Requirements:
 - KSL Source Code

@@ -1,7 +1,8 @@
 # Expression Semantics
 
 > [!WARNING]
-> The methodology explained below is technically accurate but fails to mention all the details.
+> The methodology explained below is technically accurate but fails to mention
+> all the details.
 
 This page will go over how semantic analysis handles expressions. It will cover
 the technical details behind return type prediction in [inline calls](../function/inline-calls.md)

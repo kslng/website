@@ -39,10 +39,10 @@
 			const path_to_root = "../";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "../searchindex-8536306e.js";
+			window.path_to_searchindex_js = "../searchindex-4fa77bd7.js";
 		</script>
 		<!-- Start loading toc.js asap -->
-		<script src="../toc-de15a0bb.js"></script>
+		<script src="../toc-d6863df9.js"></script>
 	</head>
 	<body>
 	<div id="mdbook-help-container">
@@ -182,8 +182,8 @@
 						<h1 id="the-fn----return-keywords"><a class="header" href="#the-fn----return-keywords">The <code>fn</code>, <code>-&gt;</code>, &amp; <code>return</code> Keywords</a></h1>
 <p>04 / 09 / 25</p>
 <h2 id="objective"><a class="header" href="#objective">Objective</a></h2>
-<p>The objectives of the fn, -&gt;, and return keywords are to add rich function support
-to KSL.</p>
+<p>The objectives of the fn, -&gt;, and return keywords are to add rich function
+support to KSL.</p>
 <h2 id="dictionary"><a class="header" href="#dictionary">Dictionary</a></h2>
 <p><code>fn</code> - Keyword used to denote the start of a function.<br><code>-&gt;</code> - Keyword used to denote the return type/derivative of a function.<br><code>return</code> - Keyword used to return a value from a function.</p>
 <h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
@@ -191,8 +191,9 @@ to KSL.</p>
 function. Functions also need a defined return type, which can be set using the
 derive keyword (<code>-&gt;</code>.) Once you’re done in your function body you can include
 a <code>return</code> keyword to return a value. It’s expected that the returned value
-matches the type defined after <code>derive</code>. Technically speaking, the return keyword
-is optional, KSL will insert one for you automatically if it doesn’t see one.</p>
+matches the type defined after <code>derive</code>. Technically speaking, the return
+keyword is optional, KSL will insert one for you automatically if it doesn’t see
+one.</p>
 <pre><code class="language-cpp">fn main(int a) -&gt; float {
 	return 10.0;
 }

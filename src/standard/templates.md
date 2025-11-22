@@ -16,9 +16,9 @@ for each unique call.
 
 ## Examples
 
-In the example below you can see a template add function, it takes two parameters
-of unknown types. The parameter names are `x` and `y` with types `$A` and `$B`,
-respectively. Templates must return/derive a single type.
+In the example below you can see a template add function, it takes two
+parameters of unknown types. The parameter names are `x` and `y` with types `$A`
+and `$B`, respectively. Templates must return/derive a single type.
 
 ```cpp
 template add($A x, $B y) -> int {
@@ -36,9 +36,9 @@ fn add(float x, int y) -> int {
 add(10.0, 5);
 ```
 
-Notice how in this example the template call (`add(10.0, 5)`) uses a float and an
-integer? This will dictate how to template generates the function. A template can
-also be used for multiple function calls with multiple dynamic types, ex:
+Notice how in this example the template call (`add(10.0, 5)`) uses a float and
+an integer? This will dictate how to template generates the function. A template
+can also be used for multiple function calls with multiple dynamic types, ex:
 
 ```cpp
 fn add(float x, int y) -> int {

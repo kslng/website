@@ -3,19 +3,19 @@
 	<head>
 		<!-- Book generated using mdBook -->
 		<meta charset="UTF-8">
-		<title>std.io - KSL Documentation</title>
+		<title>Comiler Flags - KSL Documentation</title>
 		<meta name="robots" content="index, follow">
 
 
 		<!-- Custom HTML head -->
 
-		<meta name="description" content="KSL Programming Language Documentation; std.io - KSL Documentation">
+		<meta name="description" content="KSL Programming Language Documentation; Comiler Flags - KSL Documentation">
 		<meta name="keywords" content="ksl, programming, language, compiler, kgsensei, documentation">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#17181C">
 		<meta name="og:site_name" content="kslng.org">
 		<meta name="og:title" content="KSL Language Documentation">
-		<meta name="og:description" content="KSL Programming Language Documentation; std.io - KSL Documentation">
+		<meta name="og:description" content="KSL Programming Language Documentation; Comiler Flags - KSL Documentation">
 
 		<link rel="icon" href="../favicon-5d7e57f4.svg">
 		<link rel="stylesheet" href="../css/variables-f53d1f3b.css">
@@ -179,76 +179,103 @@
 
 				<div id="mdbook-content" class="content">
 					<main>
-						<h1 id="io"><a class="header" href="#io">IO</a></h1>
-<blockquote class="blockquote-tag blockquote-tag-warning">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
-<p>The std.io module is not stable and/or partially implemented.</p>
-</blockquote>
-<pre><code class="language-ksl">using std.io;
+						<h1 id="comiler-flags"><a class="header" href="#comiler-flags">Comiler Flags</a></h1>
+<p>Full list of compiler flags and overview of meaning, full list with more details
+is shown below.</p>
+<pre><code>building:
+  --output &lt;name&gt;       -o &lt;name&gt;       Set Name of Output Binary
+  --optimize            -op             Run Optimization Passes
+  --write               -wr             Write Code to Object File
+  --link                -lk             Link and Produce an Executable
+  --pipeline            -owl            Optimize, Write, and Link
+miscillanious:
+  --help                -h              Display This List of Arguments
+  --dump                -d              Display Version and Environment Information
+  --suppress-warns      -sw             Prevent Warnings from Displaying
+debugging:
+  --tokens              -tk             Display Token Stream(s)
+  --llvm-ir             -ir             Display LLVM IR After Codegen
+  --assembly            -as             Display Native Assembly After Codegen
+  --type-trace          -tt             Track Custom Type Creations (Like Structs)
+  --symbol-trace        -st             Track Symbol Lookups as They Occur
+  --codegen-trace       -gt             Trace Codegen During AST Walk
+  --compiler-trace      -ct             Trace Compiler Operations
+  --ast &lt;a,p,s&gt;         -at &lt;a,p,s&gt;     Display Abstract Syntax Tree
+         a                                  All Stages [Default]
+         p                                  Parsing Stage
+         s                                  Semantics Stage
+  --symbols &lt;a,p,s,c&gt;   -sm &lt;a,p,s,c&gt;   Display Symbol Table
+         a                                  All Stages [Default]
+         p                                  Parsing Stage
+         s                                  Semantics Stage
+         c                                  Code Generation Stage
 </code></pre>
-<h3 id="iowriteln"><a class="header" href="#iowriteln">io.writeln</a></h3>
-<p>Parameters (one of): { <code>i64</code> | <code>f64</code> | <code>bool</code> | <code>string</code> | <code>int[]</code> }<br>Returns (one of): { <code>i64</code> | <code>void</code> }</p>
-<p>Example:</p>
-<pre><code class="language-ksl">io.writeln(10)-&gt;int;
-io.writeln(10); // -&gt;void equivalent
-
-io.writeln(2.5)-&gt;int;
-io.writeln(2.5); // -&gt;void equivalent
-
-io.writeln(false)-&gt;int;
-io.writeln(false); // -&gt;void equivalent
-
-io.writeln("Testing")-&gt;int;
-io.writeln("Testing"); // -&gt;void equivalent
-
-int[] x = [1, 2, 3, 4, 5];
-io.writeln(x)-&gt;int;
-io.writeln(x); // -&gt;void equivalent
-</code></pre>
-<p>C Impl:</p>
-<pre><code class="language-c">int64_t io__writeln____i64_i64(int64_t a);
-void io__writeln____i64_null(int64_t a);
-
-int64_t io__writeln____f64_i64(double a);
-void io__writeln____f64_null(double a);
-
-int64_t io__writeln____bool_i64(bool a);
-void io__writeln____bool_null(bool a);
-
-int64_t io__writeln____str_i64(generic_array* arr);
-void io__writeln____str_null(generic_array* arr);
-
-int64_t io__writeln____i64arr_i64(generic_array* arr);
-void io__writeln____i64arr_null(generic_array* arr);
-</code></pre>
-<h3 id="iowrite"><a class="header" href="#iowrite">io.write</a></h3>
-<p>Parameters: <code>str</code><br>Returns: <code>void</code></p>
-<p>Example:</p>
-<pre><code class="language-ksl">io.write("Testing"); // -&gt;void equivalent
-</code></pre>
-<p>C Impl:</p>
-<pre><code class="language-c">void io__write____str_null(generic_array* arr);
-</code></pre>
-<h3 id="iogetln"><a class="header" href="#iogetln">io.getln</a></h3>
-<p>Parameters: <em>N|A</em><br>Returns: <code>str</code></p>
-<p>Example:</p>
-<pre><code class="language-ksl">str input = io.getln();
-</code></pre>
-<p>C Impl:</p>
-<pre><code class="language-c">generic_array* io__getln_____str();
-</code></pre>
+<h2 id="building"><a class="header" href="#building">Building</a></h2>
+<p><strong><code>--output &lt;name&gt;</code></strong> (shorthand <code>-o &lt;name&gt;</code>): Set the name of the output
+binary, by default this value is <code>ksl_child</code> (with or without <code>.exe</code> depending
+on your OS.)</p>
+<p><strong><code>--optimize</code></strong> (shorthand <code>-op</code>): Run optimization passes on the generated
+code before writing it to a binary or object file.</p>
+<p><strong><code>--write</code></strong> (shorthand <code>-wr</code>): Write the resulting code to an object file, by
+default this should be enabled, it’s mostly for development currently.</p>
+<p><strong><code>--link</code></strong> (shorthand <code>-lk</code>): Link the resulting object file(s) and product an
+executable binary, by default this should be enabled, it’s mostly for
+development currently.</p>
+<p><strong><code>--pipeline</code></strong> (shorthand <code>-owl</code>, stands for Optimize, Write, Link): this
+tells the compiler to optimize generated code, write it to an object file(s),
+and link the object file(s) to a binary in this order.</p>
+<h2 id="miscillanious"><a class="header" href="#miscillanious">Miscillanious</a></h2>
+<p><strong><code>--help</code></strong> (shorthand <code>-h</code>): Displays the list of flags and overview shown
+above.</p>
+<p><strong><code>--dump</code></strong> (shorthand <code>-d</code>): Displays environment information to the console,
+includes version, branch, and operating system; useful for debugging.</p>
+<p><strong><code>--suppress-warns</code></strong> (shorthand <code>-sw</code>): Suppresses all warnings raised by the
+compiler, this will prevent them from being displayed during and after the
+compiler runs.</p>
+<h2 id="debugging"><a class="header" href="#debugging">Debugging</a></h2>
+<p><strong><code>--tokens</code></strong> (shorthand <code>-tk</code>): Displays the token stream to the console for
+KSL source code files after they’ve been processed by the lexer.</p>
+<p><strong><code>--llvm-ir</code></strong> (shorthand <code>-ir</code>): Displays the LLVM IR to the console for KSL
+binary files after they’ve been processed by the semantics and codegen stages.
+Combining this with the <code>-op</code> flag will result in displaying both unoptimized
+and optimized IR to the console.</p>
+<p><strong><code>--assembly</code></strong> (shorthand <code>-as</code>): Displays the native assembly to the console
+for KSL binary files after they’ve been processed by the codegen stage.</p>
+<p><strong><code>--type-trace</code></strong> (shorthand <code>-tt</code>): Track custom type creations, like structs,
+as they’re added to the type registration system.</p>
+<p><strong><code>--symbol-trace</code></strong> (shorthand <code>-st</code>): Track symbol lookups as they occur
+throughout the parser, semantic analysis, and codegen stages.</p>
+<p><strong><code>--codegen-trace</code></strong> (shorthand <code>-gt</code>): Trace the code generation stage as it
+travels the Abstract Syntax Tree.</p>
+<p><strong><code>--compiler-trace</code></strong> (shorthand <code>-ct</code>): Trace the abstract compiler operations
+as they occur (e.g. “Starting Semantic Analysis”, “Semantic Analysis Finished”,
+“Starting Code Generation”, etc.)</p>
+<p><strong><code>--ast &lt;stages&gt;</code></strong> (shorthand <code>-at &lt;stages&gt;</code>): Displays the Abstract Syntax
+Tree to the console after specified stages. If <code>&lt;stages&gt;</code> is left blank it
+will default to all stages. Valid <code>&lt;stages&gt;</code> options are:</p>
+<ul>
+<li><code>a</code>: All stages (Default)</li>
+<li><code>p</code>: Parsing stage</li>
+<li><code>s</code>: Semantic analysis stage</li>
+</ul>
+<p><strong><code>--symbols &lt;stages&gt;</code></strong> (shorthand <code>-sm &lt;stages&gt;</code>): Displays the Symbol Table
+to the console after specified stages. If <code>&lt;stages&gt;</code> is left blank it will
+default to all stages. Valid <code>&lt;stages&gt;</code> options are:</p>
+<ul>
+<li><code>a</code>: All stages (Default)</li>
+<li><code>p</code>: Parsing stage</li>
+<li><code>s</code>: Semantic analysis stage</li>
+<li><code>c</code>: Code generation stage</li>
+</ul>
 
 					</main>
 
 					<nav class="nav-wrapper" aria-label="Page navigation">
 						<!-- Mobile navigation buttons -->
-							<a rel="prev" href="../std/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+							<a rel="prev" href="../compiler/expr-semantics.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
 								<span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
 							</a>
 
-							<a rel="next prefetch" href="../std/fs.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-								<span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
-							</a>
 
 						<div style="clear: both"></div>
 					</nav>
@@ -256,13 +283,10 @@ void io__writeln____i64arr_null(generic_array* arr);
 			</div>
 
 			<nav class="nav-wide-wrapper" aria-label="Page navigation">
-					<a rel="prev" href="../std/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+					<a rel="prev" href="../compiler/expr-semantics.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
 						<span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
 					</a>
 
-					<a rel="next prefetch" href="../std/fs.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-						<span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
-					</a>
 			</nav>
 
 		</div>
