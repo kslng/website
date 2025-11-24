@@ -7,6 +7,23 @@
 using std.random;
 ```
 
+### random.seed
+
+Parameters: { *N|A* | `i64` }  
+Returns: `void`
+
+Example:
+```ksl
+random.seed(); // Pick a seed automatically based on system time
+random.seed(246); // Pick a custom seed
+```
+
+C Impl:
+```c
+void random__seed_____null();
+void random__seed____i64_null(int64_t ss);
+```
+
 ### random.rand
 
 Parameters: *N|A*  
