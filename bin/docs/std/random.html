@@ -39,7 +39,7 @@
 			const path_to_root = "../";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "../searchindex-4fa77bd7.js";
+			window.path_to_searchindex_js = "../searchindex-220ff13d.js";
 		</script>
 		<!-- Start loading toc.js asap -->
 		<script src="../toc-d6863df9.js"></script>
@@ -185,6 +185,16 @@
 <p>The std.random module is not stable and/or partially implemented.</p>
 </blockquote>
 <pre><code class="language-ksl">using std.random;
+</code></pre>
+<h3 id="randomseed"><a class="header" href="#randomseed">random.seed</a></h3>
+<p>Parameters: { <em>N|A</em> | <code>i64</code> }<br>Returns: <code>void</code></p>
+<p>Example:</p>
+<pre><code class="language-ksl">random.seed(); // Pick a seed automatically based on system time
+random.seed(246); // Pick a custom seed
+</code></pre>
+<p>C Impl:</p>
+<pre><code class="language-c">void random__seed_____null();
+void random__seed____i64_null(int64_t ss);
 </code></pre>
 <h3 id="randomrand"><a class="header" href="#randomrand">random.rand</a></h3>
 <p>Parameters: <em>N|A</em><br>Returns: { <code>i64</code> | <code>f64</code> }</p>

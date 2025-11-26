@@ -39,7 +39,7 @@
 			const path_to_root = "";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "searchindex-4fa77bd7.js";
+			window.path_to_searchindex_js = "searchindex-220ff13d.js";
 		</script>
 		<!-- Start loading toc.js asap -->
 		<script src="toc-d6863df9.js"></script>
@@ -559,43 +559,68 @@ bool'-135.77;   // true
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="strings"><a class="header" href="#strings">Strings</a></h1>
-<p><em>Docs Coming Soon</em></p>
+<h2 id="overview-3"><a class="header" href="#overview-3">Overview</a></h2>
+<p>Strings in KSL are dynamically allocable, meaning you don’t have to worry about
+memory management when using them. If you join a string longer than the original
+capacity it will reallocate more space for the string and continue.</p>
+<p>Due to the casting operator being an apostrophe, strings can only be defined
+with double quotes. Currently there is no <code>char</code> support.</p>
+<h2 id="casting-support-3"><a class="header" href="#casting-support-3">Casting Support</a></h2>
+<p>Strings do not support any casting operations. Additionally, casting is not an
+operator that you can define custom behavior for. If you want to convert string
+types you’ll need to do it manually.</p>
+<h2 id="method-support-3"><a class="header" href="#method-support-3">Method Support</a></h2>
+<pre><code class="language-ksl">&lt;str&gt;.length()-&gt;int;
+&lt;str&gt;.is_empty()-&gt;bool;
+</code></pre>
+<h2 id="examples-3"><a class="header" href="#examples-3">Examples</a></h2>
+<pre><code class="language-ksl">str message = "Hello World!";
+</code></pre>
+<h2 id="notes-1"><a class="header" href="#notes-1">Notes</a></h2>
+<p>Internally, strings use the KSL array implementation. This will only be
+important if you’re building an interface for KSL in another language. You can
+find the current definition details in <a href="https://github.com/kslng/ksl/blob/main/std/runtime/generic_array.h">std/runtime/generic_array.h</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="arrays"><a class="header" href="#arrays">Arrays</a></h1>
-<h2 id="overview-3"><a class="header" href="#overview-3">Overview</a></h2>
+<h2 id="overview-4"><a class="header" href="#overview-4">Overview</a></h2>
 <p>Arrays in KSL are dynamically allocable, meaning you don’t have to worry about
 memory management when using them. If you push an item longer than the array
 capacity it will reallocate more space for the array and continue the push
 operation.</p>
-<h2 id="casting-support-3"><a class="header" href="#casting-support-3">Casting Support</a></h2>
+<h2 id="casting-support-4"><a class="header" href="#casting-support-4">Casting Support</a></h2>
 <p>Arrays do not support any casting operations. Additionally, casting is not an
 operator that you can define custom behavior for. If you want to convert array
 types you’ll need to do it manually.</p>
-<h2 id="method-support-3"><a class="header" href="#method-support-3">Method Support</a></h2>
-<p><code>&lt;arr&gt;.length()</code><br><code>&lt;arr&gt;.push()</code></p>
-<h2 id="examples-3"><a class="header" href="#examples-3">Examples</a></h2>
+<h2 id="method-support-4"><a class="header" href="#method-support-4">Method Support</a></h2>
+<pre><code class="language-ksl">&lt;arr&gt;.length()-&gt;int;
+&lt;arr&gt;.is_empty()-&gt;bool;
+&lt;arr&gt;.push(&lt;value&gt;)-&gt;void;
+&lt;arr&gt;.includes(&lt;value&gt;)-&gt;bool;
+&lt;arr&gt;.index_of(&lt;value&gt;)-&gt;int; // (-1 means not in array)
+</code></pre>
+<h2 id="examples-4"><a class="header" href="#examples-4">Examples</a></h2>
 <pre><code class="language-ksl">int[] x = [10, 20, 30];
 float[] y = [1.1, 2.2, 3.3];
 bool[] z = [true, false, true];
 </code></pre>
-<h2 id="notes-1"><a class="header" href="#notes-1">Notes</a></h2>
+<h2 id="notes-2"><a class="header" href="#notes-2">Notes</a></h2>
 <p>Internally, arrays are handled as a struct, this will only be important if
 you’re building an interface for KSL in another language. You can find the
-current definition details in <a href="https://github.com/kslng/ksl/blob/main/std/runtime/rc.h">std/runtime/rc.h</a>.</p>
+current definition details in <a href="https://github.com/kslng/ksl/blob/main/std/runtime/generic_array.h">std/runtime/generic_array.h</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="structs"><a class="header" href="#structs">Structs</a></h1>
-<h2 id="overview-4"><a class="header" href="#overview-4">Overview</a></h2>
+<h2 id="overview-5"><a class="header" href="#overview-5">Overview</a></h2>
 <p>Structs in KSL are defined with the <code>struct</code> keyword. They’re also
 pass-by-value, not by pointer. This means that if you want to mutate an existing
 struct inside a new function you’ll need to return that struct from the function
 or use a reference keyword.</p>
-<h2 id="casting-support-4"><a class="header" href="#casting-support-4">Casting Support</a></h2>
+<h2 id="casting-support-5"><a class="header" href="#casting-support-5">Casting Support</a></h2>
 <p>Structs do not support any casting operations. Additionally, casting is not an
 operator that you can define custom behavior for. If you want to convert struct
 types you’ll need to do it manually.</p>
-<h2 id="method-support-4"><a class="header" href="#method-support-4">Method Support</a></h2>
+<h2 id="method-support-5"><a class="header" href="#method-support-5">Method Support</a></h2>
 <p>There are no methods supported for booleans.</p>
-<h2 id="examples-4"><a class="header" href="#examples-4">Examples</a></h2>
+<h2 id="examples-5"><a class="header" href="#examples-5">Examples</a></h2>
 <pre><code class="language-ksl">struct Vector2 {
     int x,
     int y
@@ -611,7 +636,7 @@ fn main() -&gt; void {
     Vector2 superimposed_position = Vector2 { y: 20, x: 10 };
 }
 </code></pre>
-<h2 id="notes-2"><a class="header" href="#notes-2">Notes</a></h2>
+<h2 id="notes-3"><a class="header" href="#notes-3">Notes</a></h2>
 <p>Internally, defined structs are treated as new types and added to the type
 system after definition.</p>
 <div style="break-before: page; page-break-before: always;"></div>
@@ -1437,6 +1462,16 @@ double math__clamp____f64_f64_f64_f64(double val, double min, double max)
 </blockquote>
 <pre><code class="language-ksl">using std.random;
 </code></pre>
+<h3 id="randomseed"><a class="header" href="#randomseed">random.seed</a></h3>
+<p>Parameters: { <em>N|A</em> | <code>i64</code> }<br>Returns: <code>void</code></p>
+<p>Example:</p>
+<pre><code class="language-ksl">random.seed(); // Pick a seed automatically based on system time
+random.seed(246); // Pick a custom seed
+</code></pre>
+<p>C Impl:</p>
+<pre><code class="language-c">void random__seed_____null();
+void random__seed____i64_null(int64_t ss);
+</code></pre>
 <h3 id="randomrand"><a class="header" href="#randomrand">random.rand</a></h3>
 <p>Parameters: <em>N|A</em><br>Returns: { <code>i64</code> | <code>f64</code> }</p>
 <p>Example:</p>
@@ -1495,7 +1530,7 @@ also serves as a way to disclose which existing object files should be linked
 after codegen.</p>
 <h2 id="dictionary"><a class="header" href="#dictionary">Dictionary</a></h2>
 <p><code>using</code> - The using keyword</p>
-<h2 id="examples-5"><a class="header" href="#examples-5">Examples</a></h2>
+<h2 id="examples-6"><a class="header" href="#examples-6">Examples</a></h2>
 <p>The using keyword can change it’s meaning depending on the syntax that follows.
 Following a using keyword with a string will tell the compiler to include
 another source file at the path provided, relative paths are preferred, example:</p>
@@ -1540,7 +1575,7 @@ during compile time a clone of the template with static types is generated
 for each unique call.</p>
 <h2 id="dictionary-1"><a class="header" href="#dictionary-1">Dictionary</a></h2>
 <p><code>template</code> - A keyword denoting the definition of a template function.<br><code>$[a-zA-Z]</code> - Syntax denoting the use of an unknown type, single letters only.</p>
-<h2 id="examples-6"><a class="header" href="#examples-6">Examples</a></h2>
+<h2 id="examples-7"><a class="header" href="#examples-7">Examples</a></h2>
 <p>In the example below you can see a template add function, it takes two
 parameters of unknown types. The parameter names are <code>x</code> and <code>y</code> with types <code>$A</code>
 and <code>$B</code>, respectively. Templates must return/derive a single type.</p>
@@ -1582,7 +1617,7 @@ body as long as the result/derivitive of the function remains constant, ex:</p>
 support to KSL.</p>
 <h2 id="dictionary-2"><a class="header" href="#dictionary-2">Dictionary</a></h2>
 <p><code>fn</code> - Keyword used to denote the start of a function.<br><code>-&gt;</code> - Keyword used to denote the return type/derivative of a function.<br><code>return</code> - Keyword used to return a value from a function.</p>
-<h2 id="examples-7"><a class="header" href="#examples-7">Examples</a></h2>
+<h2 id="examples-8"><a class="header" href="#examples-8">Examples</a></h2>
 <p>The fn keyword followed by a single identifier and parenthesis defines a basic
 function. Functions also need a defined return type, which can be set using the
 derive keyword (<code>-&gt;</code>.) Once you’re done in your function body you can include

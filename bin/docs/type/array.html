@@ -39,7 +39,7 @@
 			const path_to_root = "../";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "../searchindex-4fa77bd7.js";
+			window.path_to_searchindex_js = "../searchindex-220ff13d.js";
 		</script>
 		<!-- Start loading toc.js asap -->
 		<script src="../toc-d6863df9.js"></script>
@@ -190,7 +190,12 @@ operation.</p>
 operator that you can define custom behavior for. If you want to convert array
 types you’ll need to do it manually.</p>
 <h2 id="method-support"><a class="header" href="#method-support">Method Support</a></h2>
-<p><code>&lt;arr&gt;.length()</code><br><code>&lt;arr&gt;.push()</code></p>
+<pre><code class="language-ksl">&lt;arr&gt;.length()-&gt;int;
+&lt;arr&gt;.is_empty()-&gt;bool;
+&lt;arr&gt;.push(&lt;value&gt;)-&gt;void;
+&lt;arr&gt;.includes(&lt;value&gt;)-&gt;bool;
+&lt;arr&gt;.index_of(&lt;value&gt;)-&gt;int; // (-1 means not in array)
+</code></pre>
 <h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
 <pre><code class="language-ksl">int[] x = [10, 20, 30];
 float[] y = [1.1, 2.2, 3.3];
@@ -199,7 +204,7 @@ bool[] z = [true, false, true];
 <h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
 <p>Internally, arrays are handled as a struct, this will only be important if
 you’re building an interface for KSL in another language. You can find the
-current definition details in <a href="https://github.com/kslng/ksl/blob/main/std/runtime/rc.h">std/runtime/rc.h</a>.</p>
+current definition details in <a href="https://github.com/kslng/ksl/blob/main/std/runtime/generic_array.h">std/runtime/generic_array.h</a>.</p>
 
 					</main>
 

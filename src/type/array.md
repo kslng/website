@@ -15,8 +15,13 @@ types you'll need to do it manually.
 
 ## Method Support
 
-`<arr>.length()`  
-`<arr>.push()`
+```ksl
+<arr>.length()->int;
+<arr>.is_empty()->bool;
+<arr>.push(<value>)->void;
+<arr>.includes(<value>)->bool;
+<arr>.index_of(<value>)->int; // (-1 means not in array)
+```
 
 ## Examples
 
@@ -30,4 +35,4 @@ bool[] z = [true, false, true];
 
 Internally, arrays are handled as a struct, this will only be important if
 you're building an interface for KSL in another language. You can find the
-current definition details in [std/runtime/rc.h](https://github.com/kslng/ksl/blob/main/std/runtime/rc.h).
+current definition details in [std/runtime/generic_array.h](https://github.com/kslng/ksl/blob/main/std/runtime/generic_array.h).

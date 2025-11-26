@@ -39,7 +39,7 @@
 			const path_to_root = "../";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "../searchindex-4fa77bd7.js";
+			window.path_to_searchindex_js = "../searchindex-220ff13d.js";
 		</script>
 		<!-- Start loading toc.js asap -->
 		<script src="../toc-d6863df9.js"></script>
@@ -180,7 +180,27 @@
 				<div id="mdbook-content" class="content">
 					<main>
 						<h1 id="strings"><a class="header" href="#strings">Strings</a></h1>
-<p><em>Docs Coming Soon</em></p>
+<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
+<p>Strings in KSL are dynamically allocable, meaning you don’t have to worry about
+memory management when using them. If you join a string longer than the original
+capacity it will reallocate more space for the string and continue.</p>
+<p>Due to the casting operator being an apostrophe, strings can only be defined
+with double quotes. Currently there is no <code>char</code> support.</p>
+<h2 id="casting-support"><a class="header" href="#casting-support">Casting Support</a></h2>
+<p>Strings do not support any casting operations. Additionally, casting is not an
+operator that you can define custom behavior for. If you want to convert string
+types you’ll need to do it manually.</p>
+<h2 id="method-support"><a class="header" href="#method-support">Method Support</a></h2>
+<pre><code class="language-ksl">&lt;str&gt;.length()-&gt;int;
+&lt;str&gt;.is_empty()-&gt;bool;
+</code></pre>
+<h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
+<pre><code class="language-ksl">str message = "Hello World!";
+</code></pre>
+<h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
+<p>Internally, strings use the KSL array implementation. This will only be
+important if you’re building an interface for KSL in another language. You can
+find the current definition details in <a href="https://github.com/kslng/ksl/blob/main/std/runtime/generic_array.h">std/runtime/generic_array.h</a>.</p>
 
 					</main>
 
