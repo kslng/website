@@ -17,9 +17,30 @@ types you'll need to do it manually.
 
 ## Method Support
 
+**.length()**  
+Will return the length of the string as an integer.
+
 ```ksl
-<str>.length()->int;
-<str>.is_empty()->bool;
+fn main() -> void {
+	str a = "Hello World!";
+	a.length(); // returns 12
+}
+```
+
+**.is_empty()**  
+Will return a boolean telling you if the string is empty or not.
+
+```ksl
+fn main() -> void {
+	str a = "Hello World!";
+	a.is_empty(); // false
+
+	str b = "";
+	b.is_empty(); // true
+
+	str c = "    ";
+	c.is_empty(); // true
+}
 ```
 
 ## Examples

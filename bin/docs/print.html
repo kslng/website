@@ -39,7 +39,7 @@
 			const path_to_root = "";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "searchindex-220ff13d.js";
+			window.path_to_searchindex_js = "searchindex-7d164209.js";
 		</script>
 		<!-- Start loading toc.js asap -->
 		<script src="toc-d6863df9.js"></script>
@@ -570,8 +570,23 @@ with double quotes. Currently there is no <code>char</code> support.</p>
 operator that you can define custom behavior for. If you want to convert string
 types you’ll need to do it manually.</p>
 <h2 id="method-support-3"><a class="header" href="#method-support-3">Method Support</a></h2>
-<pre><code class="language-ksl">&lt;str&gt;.length()-&gt;int;
-&lt;str&gt;.is_empty()-&gt;bool;
+<p><strong>.length()</strong><br>Will return the length of the string as an integer.</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	str a = "Hello World!";
+	a.length(); // returns 12
+}
+</code></pre>
+<p><strong>.is_empty()</strong><br>Will return a boolean telling you if the string is empty or not.</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	str a = "Hello World!";
+	a.is_empty(); // false
+
+	str b = "";
+	b.is_empty(); // true
+
+	str c = "    ";
+	c.is_empty(); // true
+}
 </code></pre>
 <h2 id="examples-3"><a class="header" href="#examples-3">Examples</a></h2>
 <pre><code class="language-ksl">str message = "Hello World!";
@@ -592,11 +607,61 @@ operation.</p>
 operator that you can define custom behavior for. If you want to convert array
 types you’ll need to do it manually.</p>
 <h2 id="method-support-4"><a class="header" href="#method-support-4">Method Support</a></h2>
-<pre><code class="language-ksl">&lt;arr&gt;.length()-&gt;int;
-&lt;arr&gt;.is_empty()-&gt;bool;
-&lt;arr&gt;.push(&lt;value&gt;)-&gt;void;
-&lt;arr&gt;.includes(&lt;value&gt;)-&gt;bool;
-&lt;arr&gt;.index_of(&lt;value&gt;)-&gt;int; // (-1 means not in array)
+<p><strong>.length()</strong><br>Will return the length of the array as an integer.</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	int[] a = [1, 2, 3, 4, 5];
+	a.length(); // Returns 5
+}
+</code></pre>
+<p><strong>.sample()</strong><br>Will return a random element from the array (return type will depend on array.)</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	int[] a = [1, 2, 3, 4, 5];
+	a.sample(); // Will get a random value from the array `a`
+}
+</code></pre>
+<p><strong>.is_empty()</strong><br>Will return a boolean telling you if the array has any elements.</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	int[] a = [1, 2, 3, 4, 5];
+	int[] b = [];
+	a.is_empty(); // false
+	b.is_empty(); // true
+}
+</code></pre>
+<p><strong>.push(&lt;v&gt;)</strong><br>Will push a new element to the end of the array, does not return anything.
+Parameter type must be the same as the array base type.</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	int[] a = [1, 2, 3, 4, 5];
+	a.push(6); // Array will be `[1, 2, 3, 4, 5, 6]` now
+}
+</code></pre>
+<p><strong>.includes(&lt;v&gt;)</strong><br>Checks if the array includes a value. Returns a boolean and passed value must be
+the same as array base type.</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	int[] a = [1, 2, 3, 4, 5];
+	a.includes(3); // true
+	a.includes(6); // false
+}
+</code></pre>
+<p><strong>.index_of(&lt;v&gt;)</strong>
+Gets the index of a value in an array, if the array has multiple instances of a
+value then it will only return the index of the first occurrence. Passed value
+type must be the same as array base type. Will return an integer.</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	int[] a = [1, 2, 3, 4, 5];
+	a.index_of(6); // -1 (`6` doesn't exist in array)
+	a.index_of(2); // 1 (`2` is the second element)
+	a.index_of(1); // 0 (`1` is the first element)
+}
+</code></pre>
+<p><strong>.get_or_default(&lt;i&gt;, &lt;v&gt;)</strong><br>Attempts to get a value at a specific index, if the index doesn’t exist then it
+will return the default value (second parameter) instead. Index must be an
+integer. Default value and return types are must be the same as the array base
+type.</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	int[] a = [1, 2, 3, 4, 5];
+	a.get_or_default(1, 99); // returns `2`
+	a.get_or_default(5, 99); // returns `99` (index `5` doesn't exist)
+}
 </code></pre>
 <h2 id="examples-4"><a class="header" href="#examples-4">Examples</a></h2>
 <pre><code class="language-ksl">int[] x = [10, 20, 30];
@@ -619,7 +684,7 @@ or use a reference keyword.</p>
 operator that you can define custom behavior for. If you want to convert struct
 types you’ll need to do it manually.</p>
 <h2 id="method-support-5"><a class="header" href="#method-support-5">Method Support</a></h2>
-<p>There are no methods supported for booleans.</p>
+<p>There are no methods supported for structs.</p>
 <h2 id="examples-5"><a class="header" href="#examples-5">Examples</a></h2>
 <pre><code class="language-ksl">struct Vector2 {
     int x,

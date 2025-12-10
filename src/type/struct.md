@@ -15,7 +15,7 @@ types you'll need to do it manually.
 
 ## Method Support
 
-There are no methods supported for booleans.
+There are no methods supported for structs.
 
 ## Examples
 
