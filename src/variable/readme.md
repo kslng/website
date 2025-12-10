@@ -25,6 +25,8 @@ float   | `f64` \|\| `float` | 64
 bool    | `bool`             | 1
 null    | `null`             | N\|A
 void    | `void`             | N\|A
+enum    | `enum`             | ??
+struct  | `struct`           | ??
 
 > [!NOTE]
 > KSL is designed for programmers of all skill levels. Some programmers might

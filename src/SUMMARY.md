@@ -21,6 +21,7 @@
   - [Integers](type/integers.md)
   - [Floats](type/floats.md)
   - [Booleans](type/booleans.md)
+  - [Enums](type/enum.md)
   - [Strings](type/string.md)
   - [Arrays](type/array.md)
   - [Struct](type/struct.md)

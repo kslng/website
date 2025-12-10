@@ -39,10 +39,10 @@
 			const path_to_root = "../";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "../searchindex-7d164209.js";
+			window.path_to_searchindex_js = "../searchindex-eb8dc995.js";
 		</script>
 		<!-- Start loading toc.js asap -->
-		<script src="../toc-d6863df9.js"></script>
+		<script src="../toc-86ca882a.js"></script>
 	</head>
 	<body>
 	<div id="mdbook-help-container">
@@ -191,18 +191,21 @@ operator that you can define custom behavior for. If you want to convert array
 types you’ll need to do it manually.</p>
 <h2 id="method-support"><a class="header" href="#method-support">Method Support</a></h2>
 <p><strong>.length()</strong><br>Will return the length of the array as an integer.</p>
+<p>Will not mutate array.</p>
 <pre><code class="language-ksl">fn main() -&gt; void {
 	int[] a = [1, 2, 3, 4, 5];
 	a.length(); // Returns 5
 }
 </code></pre>
 <p><strong>.sample()</strong><br>Will return a random element from the array (return type will depend on array.)</p>
+<p>Will not mutate array.</p>
 <pre><code class="language-ksl">fn main() -&gt; void {
 	int[] a = [1, 2, 3, 4, 5];
 	a.sample(); // Will get a random value from the array `a`
 }
 </code></pre>
 <p><strong>.is_empty()</strong><br>Will return a boolean telling you if the array has any elements.</p>
+<p>Will not mutate array.</p>
 <pre><code class="language-ksl">fn main() -&gt; void {
 	int[] a = [1, 2, 3, 4, 5];
 	int[] b = [];
@@ -212,6 +215,7 @@ types you’ll need to do it manually.</p>
 </code></pre>
 <p><strong>.push(&lt;v&gt;)</strong><br>Will push a new element to the end of the array, does not return anything.
 Parameter type must be the same as the array base type.</p>
+<p>Will mutate array.</p>
 <pre><code class="language-ksl">fn main() -&gt; void {
 	int[] a = [1, 2, 3, 4, 5];
 	a.push(6); // Array will be `[1, 2, 3, 4, 5, 6]` now
@@ -219,6 +223,7 @@ Parameter type must be the same as the array base type.</p>
 </code></pre>
 <p><strong>.includes(&lt;v&gt;)</strong><br>Checks if the array includes a value. Returns a boolean and passed value must be
 the same as array base type.</p>
+<p>Will not mutate array.</p>
 <pre><code class="language-ksl">fn main() -&gt; void {
 	int[] a = [1, 2, 3, 4, 5];
 	a.includes(3); // true
@@ -229,6 +234,7 @@ the same as array base type.</p>
 Gets the index of a value in an array, if the array has multiple instances of a
 value then it will only return the index of the first occurrence. Passed value
 type must be the same as array base type. Will return an integer.</p>
+<p>Will not mutate array.</p>
 <pre><code class="language-ksl">fn main() -&gt; void {
 	int[] a = [1, 2, 3, 4, 5];
 	a.index_of(6); // -1 (`6` doesn't exist in array)
@@ -240,6 +246,7 @@ type must be the same as array base type. Will return an integer.</p>
 will return the default value (second parameter) instead. Index must be an
 integer. Default value and return types are must be the same as the array base
 type.</p>
+<p>Will not mutate array.</p>
 <pre><code class="language-ksl">fn main() -&gt; void {
 	int[] a = [1, 2, 3, 4, 5];
 	a.get_or_default(1, 99); // returns `2`

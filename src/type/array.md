@@ -18,6 +18,8 @@ types you'll need to do it manually.
 **.length()**  
 Will return the length of the array as an integer.
 
+Will not mutate array.
+
 ```ksl
 fn main() -> void {
 	int[] a = [1, 2, 3, 4, 5];
@@ -28,6 +30,8 @@ fn main() -> void {
 **.sample()**  
 Will return a random element from the array (return type will depend on array.)
 
+Will not mutate array.
+
 ```ksl
 fn main() -> void {
 	int[] a = [1, 2, 3, 4, 5];
@@ -37,6 +41,8 @@ fn main() -> void {
 
 **.is_empty()**  
 Will return a boolean telling you if the array has any elements.
+
+Will not mutate array.
 
 ```ksl
 fn main() -> void {
@@ -51,6 +57,8 @@ fn main() -> void {
 Will push a new element to the end of the array, does not return anything.
 Parameter type must be the same as the array base type.
 
+Will mutate array.
+
 ```ksl
 fn main() -> void {
 	int[] a = [1, 2, 3, 4, 5];
@@ -61,6 +69,8 @@ fn main() -> void {
 **.includes(&lt;v&gt;)**  
 Checks if the array includes a value. Returns a boolean and passed value must be
 the same as array base type.
+
+Will not mutate array.
 
 ```ksl
 fn main() -> void {
@@ -74,6 +84,8 @@ fn main() -> void {
 Gets the index of a value in an array, if the array has multiple instances of a
 value then it will only return the index of the first occurrence. Passed value
 type must be the same as array base type. Will return an integer.
+
+Will not mutate array.
 
 ```ksl
 fn main() -> void {
@@ -89,6 +101,8 @@ Attempts to get a value at a specific index, if the index doesn't exist then it
 will return the default value (second parameter) instead. Index must be an
 integer. Default value and return types are must be the same as the array base
 type.
+
+Will not mutate array.
 
 ```ksl
 fn main() -> void {

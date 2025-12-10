@@ -20,6 +20,8 @@ types you'll need to do it manually.
 **.length()**  
 Will return the length of the string as an integer.
 
+Will not mutate string.
+
 ```ksl
 fn main() -> void {
 	str a = "Hello World!";
@@ -29,6 +31,8 @@ fn main() -> void {
 
 **.is_empty()**  
 Will return a boolean telling you if the string is empty or not.
+
+Will not mutate string.
 
 ```ksl
 fn main() -> void {
