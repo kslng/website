@@ -20,20 +20,17 @@ int8    | `i8`               | 8
 int16   | `i16`              | 16
 int32   | `i32`              | 32
 int64   | `i64` \|\| `int`   | 64
+uint8   | `u8`               | 8
+uint16  | `u16`              | 16
+uint32  | `u32`              | 32
+uint64  | `u64` \|\| `uint`  | 64
 float32 | `f32`              | 32
 float   | `f64` \|\| `float` | 64
+char    | `char`             | 8
 bool    | `bool`             | 1
-null    | `null`             | N\|A
 void    | `void`             | N\|A
 enum    | `enum`             | ??
 struct  | `struct`           | ??
-
-> [!NOTE]
-> KSL is designed for programmers of all skill levels. Some programmers might
-> not care (or know) about int's of different sizes, so `int` and `float` are
-> aliases for the largest supported int and float types. It makes it easier for
-> beginners to understand and it's more readable for simple projects that don't
-> need to worry about tight memory constraints.
 
 > [!NOTE]
 > You can make virtually any type an array by adding `[]` to the initialization

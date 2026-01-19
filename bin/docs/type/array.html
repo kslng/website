@@ -39,10 +39,10 @@
 			const path_to_root = "../";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "../searchindex-eb8dc995.js";
+			window.path_to_searchindex_js = "../searchindex-5d0b74d1.js";
 		</script>
 		<!-- Start loading toc.js asap -->
-		<script src="../toc-86ca882a.js"></script>
+		<script src="../toc-2637c312.js"></script>
 	</head>
 	<body>
 	<div id="mdbook-help-container">
@@ -254,9 +254,32 @@ type.</p>
 }
 </code></pre>
 <h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
-<pre><code class="language-ksl">int[] x = [10, 20, 30];
-float[] y = [1.1, 2.2, 3.3];
-bool[] z = [true, false, true];
+<p>For arrays as variable declarations:</p>
+<pre><code class="language-ksl">int[] x = [ 10, 20, 30 ];
+float[] y = [ 1.1, 2.2, 3.3 ];
+bool[] z = [ true, false, true ];
+</code></pre>
+<p>For inline array literals:</p>
+<pre><code class="language-ksl">io.writeln(int'[ 10, 20, 30 ][1]); // will print 20
+</code></pre>
+<p>Inline array literals will be confusing at first, but they’ll make sense pretty
+soon! The syntax is weird, it’s like casting but then it’s an array? Isn’t that
+illegal?</p>
+<p>Since KSL is a strongly typed language with just a tiny bit of inferencing here
+and there, we can’t determine a solid type for array literals. That means KSL
+relies on you to provide it with type information. Since it doesn’t have a var
+declaration to rely on it needs you to “cast” it (provide it a type hint).</p>
+<p>Once you have an array literal you can use it just like a normal array though!
+In the example above we immediately index into the 2nd element (index 1). Here’s
+another example:</p>
+<pre><code class="language-ksl">io.writeln(bool'[ false, true, true, false ]);
+</code></pre>
+<p>This example will print the normal way KSL prints arrays, output below.</p>
+<pre><code class="language-txt">&lt;T&gt;(ARRBOOL) &lt;LENGTH&gt;(4) &lt;CAPACITY&gt;(4)
+[000] false
+[001] true
+[002] true
+[003] false
 </code></pre>
 <h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
 <p>Internally, arrays are handled as a struct, this will only be important if

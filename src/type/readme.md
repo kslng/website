@@ -11,6 +11,8 @@ Type specific details / implementations:
 - [Integers](./integers.md)
 - [Floats](./floats.md)
 - [Booleans](./booleans.md)
+- [Chars](./char.md)
+- [Enums](./enum.md)
 - [Strings](./string.md)
 - [Arrays](./array.md)
 - [Structs](./struct.md)

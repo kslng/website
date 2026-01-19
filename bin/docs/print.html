@@ -39,10 +39,10 @@
 			const path_to_root = "";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "searchindex-eb8dc995.js";
+			window.path_to_searchindex_js = "searchindex-5d0b74d1.js";
 		</script>
 		<!-- Start loading toc.js asap -->
-		<script src="toc-86ca882a.js"></script>
+		<script src="toc-2637c312.js"></script>
 	</head>
 	<body>
 	<div id="mdbook-help-container">
@@ -226,7 +226,7 @@ the KSL syntax, check out the <a href="#quick-syntax-guide">quick syntax guide</
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="configuring-ksl"><a class="header" href="#configuring-ksl">Configuring KSL</a></h1>
 <p>It is highly recommended to familiarize yourself with the compiler flags,
-viewable at any time with <code>KSL -h</code>. There’s also an in-depth breakdown <a href="#comiler-flags">here</a>.</p>
+viewable at any time with <code>KSL -h</code>. There’s also an in-depth breakdown <a href="#compiler-flags">here</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="tutorials"><a class="header" href="#tutorials">Tutorials</a></h1>
 <ul>
@@ -441,9 +441,9 @@ fn main() -&gt; void {
 }
 </code></pre>
 <pre><code class="language-ksl">/*
- Below is a function that returns void,
- and this is a multi-line comment!
-*/
+ * Below is a function that returns void,
+ * and this is a multi-line comment!
+ */
 fn main() -&gt; void {
 	return;
 }
@@ -451,6 +451,53 @@ fn main() -&gt; void {
 <p>You can even use this inline! (If you’re crazy…)</p>
 <pre><code class="language-ksl">fn /* create a function */ main /* call it `main` */ () /* no args */ -&gt; void /* return nothing */ {
 	return /* see, nothing! */;
+}
+</code></pre>
+<h2 id="best-practices"><a class="header" href="#best-practices">Best Practices</a></h2>
+<p>It’s good to keep some consistency when using comments. Here’s a good pattern to
+follow:</p>
+<ul>
+<li><code>//</code> for code or text comments, typically short bits (1-3 lines)
+<ul>
+<li>Quick one-off comments or single line descriptions</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-ksl">// A quick comment telling someone that this will break legacy code
+fn some_random_esoteric_function() -&gt; void {
+	// some function body
+}
+</code></pre>
+<ul>
+<li><code>/* ... */</code> for code, typically large sections of code (5-20 lines)
+<ul>
+<li>Best used for test code or sections of code that are temporarily removed</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-ksl">/*
+fn some_dummy_function_that_needs_to_be_removed_temporarily() -&gt; void {
+	// some function body
+}
+*/
+</code></pre>
+<ul>
+<li><code>/* * * */</code> for text, typically large sections of text (5-20 lines)
+<ul>
+<li>The best example would be a complex function that needs a lot of explaining</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-ksl">/*
+ * Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex
+ * sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis
+ * convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus
+ * fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada
+ * lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti
+ * sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+ */
+fn another_random_esoteric_function() -&gt; void {
+	// seriously who keeps adding these ??
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
@@ -466,6 +513,8 @@ important you understand it.</p>
 <li><a href="#integers">Integers</a></li>
 <li><a href="#floats">Floats</a></li>
 <li><a href="#booleans">Booleans</a></li>
+<li><a href="#chars">Chars</a></li>
+<li><a href="#enums">Enums</a></li>
 <li><a href="#strings">Strings</a></li>
 <li><a href="#arrays">Arrays</a></li>
 <li><a href="#structs">Structs</a></li>
@@ -474,11 +523,11 @@ important you understand it.</p>
 <h1 id="integers"><a class="header" href="#integers">Integers</a></h1>
 <h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
 <p>Integers in KSL are a blanket type. The “real” types of integers are <code>i8</code>,
-<code>i16</code>, <code>i32</code>, and <code>i64</code>. Technically <code>int</code> is also an alias for <code>i64</code>. Unsigned
-integers are not currently supported in KSL. There are no special rules for
-interacting with integers. Their space in memory is equal to the type name, e.g.
-an <code>i32</code> will be stored as an integer 32 in memory during runtime, similarly an
-<code>i8</code> will be stored an an integer 8.</p>
+<code>i16</code>, <code>i32</code>, and <code>i64</code>. Technically <code>int</code> is also an alias for <code>i64</code>. For
+unsigned there is <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, and <code>uint</code> which is an alias for
+<code>u64</code>. There are no special rules for interacting with integers. Their space in
+memory is equal to the type name, e.g. an <code>i32</code> will be stored as an integer 32
+in memory during runtime, similarly an <code>i8</code> will be stored an an integer 8.</p>
 <h2 id="casting-support"><a class="header" href="#casting-support">Casting Support</a></h2>
 <p>Types that can be cast to integers:</p>
 <ul>
@@ -495,6 +544,12 @@ an <code>i32</code> will be stored as an integer 32 in memory during runtime, si
 <h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
 <pre><code class="language-ksl">int x = 20;
 </code></pre>
+<h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
+<p>In some cases there will be an integer literal in your source code without a
+decernable type. In these cases KSL will attempt to give it the smallest
+possible type (e.g. 50 will be given an <code>i8</code>). The main thing to note here is
+that KSL will not give it an unsigned type, always a signed integer. If you wish
+to use an unsigned integer it must be explicitly stated or casted.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="floats"><a class="header" href="#floats">Floats</a></h1>
 <h2 id="overview-1"><a class="header" href="#overview-1">Overview</a></h2>
@@ -543,7 +598,7 @@ are casted into booleans as they may differ from other programming languages.</p
 <h2 id="examples-2"><a class="header" href="#examples-2">Examples</a></h2>
 <pre><code class="language-ksl">bool x = true;
 </code></pre>
-<h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
+<h2 id="notes-1"><a class="header" href="#notes-1">Notes</a></h2>
 <p>A quick note on casting to booleans:</p>
 <p>In some languages casting integers or floats to a boolean may be different. In
 KSL all integers other than <code>0</code> are cast to <code>true</code>. Similarly, all floats other
@@ -558,19 +613,43 @@ bool'135.03111; // true
 bool'-135.77;   // true
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="enums"><a class="header" href="#enums">Enums</a></h1>
+<h1 id="chars"><a class="header" href="#chars">Chars</a></h1>
 <h2 id="overview-3"><a class="header" href="#overview-3">Overview</a></h2>
-<p>Enums in KSL are defined with the <code>enum</code> keyword. Internally they’re replaced
-with the smallest integer size that fits all enum elements before code
-generation or even semantics. That means that enums will be treated the same way
-that integers are.</p>
+<p>Internally the <code>char</code> type is represented as an <code>i8</code>.</p>
 <h2 id="casting-support-3"><a class="header" href="#casting-support-3">Casting Support</a></h2>
-<p>Enums do not directly support any casting operations. However, since they’re
+<p>Chars do not directly support any casting operations. However, since they’re
 treated as integers as soon as the semantic step, you technically can do all
 integer operations on them, including casting.</p>
 <h2 id="method-support-3"><a class="header" href="#method-support-3">Method Support</a></h2>
-<p>There are no methods supported for enums.</p>
+<p>Currently there are no methods supported for chars.</p>
 <h2 id="examples-3"><a class="header" href="#examples-3">Examples</a></h2>
+<pre><code class="language-ksl">using std.io;
+
+fn main() -&gt; void {
+	char a = 'a';
+	io.writeln(int'a); // ascii a
+	io.writeln(a); // will print the character 'a'
+}
+</code></pre>
+<h2 id="notes-2"><a class="header" href="#notes-2">Notes</a></h2>
+<p>In KSL the casting operator is also an apostrophe. So KSL will scan ahead by one
+character (including any escape sequence) and check for another apostrophe to
+classify something as a character. Otherwise if KSL sees an apostrophe without a
+closing apostrophe, it will assume you want to cast.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="enums"><a class="header" href="#enums">Enums</a></h1>
+<h2 id="overview-4"><a class="header" href="#overview-4">Overview</a></h2>
+<p>Enums in KSL are defined with the <code>enum</code> keyword. Internally they’re replaced
+with the smallest unsigned integer size that fits all enum elements before code
+generation or even semantics. That means that enums will be treated the same way
+that integers are.</p>
+<h2 id="casting-support-4"><a class="header" href="#casting-support-4">Casting Support</a></h2>
+<p>Enums do not directly support any casting operations. However, since they’re
+treated as integers as soon as the semantic step, you technically can do all
+integer operations on them, including casting.</p>
+<h2 id="method-support-4"><a class="header" href="#method-support-4">Method Support</a></h2>
+<p>There are no methods supported for enums.</p>
+<h2 id="examples-4"><a class="header" href="#examples-4">Examples</a></h2>
 <pre><code class="language-ksl">using std.io;
 
 enum Status {
@@ -581,24 +660,24 @@ enum Status {
 
 fn main() -&gt; void {
 	Status state = Status.Running;
-	io.writeln(state); // will print 0
+	io.writeln(int'state); // will print 0
 	io.writeln(state == Status.Running); // true
 	io.writeln(state == Status.Failed); // false
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="strings"><a class="header" href="#strings">Strings</a></h1>
-<h2 id="overview-4"><a class="header" href="#overview-4">Overview</a></h2>
-<p>Strings in KSL are dynamically allocable, meaning you don’t have to worry about
-memory management when using them. If you join a string longer than the original
-capacity it will reallocate more space for the string and continue.</p>
-<p>Due to the casting operator being an apostrophe, strings can only be defined
-with double quotes. Currently there is no <code>char</code> support.</p>
-<h2 id="casting-support-4"><a class="header" href="#casting-support-4">Casting Support</a></h2>
+<h2 id="overview-5"><a class="header" href="#overview-5">Overview</a></h2>
+<p>Strings in KSL are pointers to memory locations, meaning they can’t easily be
+modified. Attempting to modify a string in KSL will result in an entirely new
+string being created. To “dynamically” handle strings use a character array
+(<code>char[]</code>) and then turn it into a string with <code>char[].to_string()</code> or similar.</p>
+<p>String literals must be defined with double quotes.</p>
+<h2 id="casting-support-5"><a class="header" href="#casting-support-5">Casting Support</a></h2>
 <p>Strings do not support any casting operations. Additionally, casting is not an
 operator that you can define custom behavior for. If you want to convert string
 types you’ll need to do it manually.</p>
-<h2 id="method-support-4"><a class="header" href="#method-support-4">Method Support</a></h2>
+<h2 id="method-support-5"><a class="header" href="#method-support-5">Method Support</a></h2>
 <p><strong>.length()</strong><br>Will return the length of the string as an integer.</p>
 <p>Will not mutate string.</p>
 <pre><code class="language-ksl">fn main() -&gt; void {
@@ -619,25 +698,27 @@ types you’ll need to do it manually.</p>
 	c.is_empty(); // true
 }
 </code></pre>
-<h2 id="examples-4"><a class="header" href="#examples-4">Examples</a></h2>
+<h2 id="examples-5"><a class="header" href="#examples-5">Examples</a></h2>
 <pre><code class="language-ksl">str message = "Hello World!";
 </code></pre>
-<h2 id="notes-1"><a class="header" href="#notes-1">Notes</a></h2>
-<p>Internally, strings use the KSL array implementation. This will only be
-important if you’re building an interface for KSL in another language. You can
-find the current definition details in <a href="https://github.com/kslng/ksl/blob/main/std/runtime/generic_array.h">std/runtime/generic_array.h</a>.</p>
+<h2 id="notes-3"><a class="header" href="#notes-3">Notes</a></h2>
+<p>Internally, strings can be pointers to different spots in memory. In most cases
+they point to memory within the binary where literals have already been defined.
+In the case of a modified string the pointer may be to a malloc’d memory space.
+Strings should be automatically reference counted by KSL so you don’t need to
+worry about this unless you’re building a KSL translation layer or C library.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="arrays"><a class="header" href="#arrays">Arrays</a></h1>
-<h2 id="overview-5"><a class="header" href="#overview-5">Overview</a></h2>
+<h2 id="overview-6"><a class="header" href="#overview-6">Overview</a></h2>
 <p>Arrays in KSL are dynamically allocable, meaning you don’t have to worry about
 memory management when using them. If you push an item longer than the array
 capacity it will reallocate more space for the array and continue the push
 operation.</p>
-<h2 id="casting-support-5"><a class="header" href="#casting-support-5">Casting Support</a></h2>
+<h2 id="casting-support-6"><a class="header" href="#casting-support-6">Casting Support</a></h2>
 <p>Arrays do not support any casting operations. Additionally, casting is not an
 operator that you can define custom behavior for. If you want to convert array
 types you’ll need to do it manually.</p>
-<h2 id="method-support-5"><a class="header" href="#method-support-5">Method Support</a></h2>
+<h2 id="method-support-6"><a class="header" href="#method-support-6">Method Support</a></h2>
 <p><strong>.length()</strong><br>Will return the length of the array as an integer.</p>
 <p>Will not mutate array.</p>
 <pre><code class="language-ksl">fn main() -&gt; void {
@@ -701,29 +782,52 @@ type.</p>
 	a.get_or_default(5, 99); // returns `99` (index `5` doesn't exist)
 }
 </code></pre>
-<h2 id="examples-5"><a class="header" href="#examples-5">Examples</a></h2>
-<pre><code class="language-ksl">int[] x = [10, 20, 30];
-float[] y = [1.1, 2.2, 3.3];
-bool[] z = [true, false, true];
+<h2 id="examples-6"><a class="header" href="#examples-6">Examples</a></h2>
+<p>For arrays as variable declarations:</p>
+<pre><code class="language-ksl">int[] x = [ 10, 20, 30 ];
+float[] y = [ 1.1, 2.2, 3.3 ];
+bool[] z = [ true, false, true ];
 </code></pre>
-<h2 id="notes-2"><a class="header" href="#notes-2">Notes</a></h2>
+<p>For inline array literals:</p>
+<pre><code class="language-ksl">io.writeln(int'[ 10, 20, 30 ][1]); // will print 20
+</code></pre>
+<p>Inline array literals will be confusing at first, but they’ll make sense pretty
+soon! The syntax is weird, it’s like casting but then it’s an array? Isn’t that
+illegal?</p>
+<p>Since KSL is a strongly typed language with just a tiny bit of inferencing here
+and there, we can’t determine a solid type for array literals. That means KSL
+relies on you to provide it with type information. Since it doesn’t have a var
+declaration to rely on it needs you to “cast” it (provide it a type hint).</p>
+<p>Once you have an array literal you can use it just like a normal array though!
+In the example above we immediately index into the 2nd element (index 1). Here’s
+another example:</p>
+<pre><code class="language-ksl">io.writeln(bool'[ false, true, true, false ]);
+</code></pre>
+<p>This example will print the normal way KSL prints arrays, output below.</p>
+<pre><code class="language-txt">&lt;T&gt;(ARRBOOL) &lt;LENGTH&gt;(4) &lt;CAPACITY&gt;(4)
+[000] false
+[001] true
+[002] true
+[003] false
+</code></pre>
+<h2 id="notes-4"><a class="header" href="#notes-4">Notes</a></h2>
 <p>Internally, arrays are handled as a struct, this will only be important if
 you’re building an interface for KSL in another language. You can find the
 current definition details in <a href="https://github.com/kslng/ksl/blob/main/std/runtime/generic_array.h">std/runtime/generic_array.h</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="structs"><a class="header" href="#structs">Structs</a></h1>
-<h2 id="overview-6"><a class="header" href="#overview-6">Overview</a></h2>
-<p>Structs in KSL are defined with the <code>struct</code> keyword. They’re also
-pass-by-value, not by pointer. This means that if you want to mutate an existing
-struct inside a new function you’ll need to return that struct from the function
-or use a reference keyword.</p>
-<h2 id="casting-support-6"><a class="header" href="#casting-support-6">Casting Support</a></h2>
+<h2 id="overview-7"><a class="header" href="#overview-7">Overview</a></h2>
+<p>Structs in KSL are defined with the <code>struct</code> keyword. Structs are passed by
+pointer by default. This is subject to change with the introduction of the <code>ref</code>
+keyword, although it likely will not. Structs are the only types in KSL that can
+be templated.</p>
+<h2 id="casting-support-7"><a class="header" href="#casting-support-7">Casting Support</a></h2>
 <p>Structs do not support any casting operations. Additionally, casting is not an
 operator that you can define custom behavior for. If you want to convert struct
 types you’ll need to do it manually.</p>
-<h2 id="method-support-6"><a class="header" href="#method-support-6">Method Support</a></h2>
+<h2 id="method-support-7"><a class="header" href="#method-support-7">Method Support</a></h2>
 <p>There are no methods supported for structs.</p>
-<h2 id="examples-6"><a class="header" href="#examples-6">Examples</a></h2>
+<h2 id="examples-7"><a class="header" href="#examples-7">Examples</a></h2>
 <pre><code class="language-ksl">struct Vector2 {
     int x,
     int y
@@ -731,15 +835,17 @@ types you’ll need to do it manually.</p>
 
 fn main() -&gt; void {
     Vector2 my_position = Vector2 { x: 10, y: 20 };
+
     // Alternatively you can define a struct without the field
     // names, but you'll have to do it in the correct order.
     Vector2 my_second_position = Vector2 { 10, 20 };
+
     // Using the field names, you can change the order and KSL
     // will make sure it still works behind the scenes.
     Vector2 superimposed_position = Vector2 { y: 20, x: 10 };
 }
 </code></pre>
-<h2 id="notes-3"><a class="header" href="#notes-3">Notes</a></h2>
+<h2 id="notes-5"><a class="header" href="#notes-5">Notes</a></h2>
 <p>Internally, defined structs are treated as new types and added to the type
 system after definition.</p>
 <div style="break-before: page; page-break-before: always;"></div>
@@ -803,24 +909,20 @@ same effect just initialize the variable with dummy data.</p>
 <tr><td>int16</td><td><code>i16</code></td><td>16</td></tr>
 <tr><td>int32</td><td><code>i32</code></td><td>32</td></tr>
 <tr><td>int64</td><td><code>i64</code> || <code>int</code></td><td>64</td></tr>
+<tr><td>uint8</td><td><code>u8</code></td><td>8</td></tr>
+<tr><td>uint16</td><td><code>u16</code></td><td>16</td></tr>
+<tr><td>uint32</td><td><code>u32</code></td><td>32</td></tr>
+<tr><td>uint64</td><td><code>u64</code> || <code>uint</code></td><td>64</td></tr>
 <tr><td>float32</td><td><code>f32</code></td><td>32</td></tr>
 <tr><td>float</td><td><code>f64</code> || <code>float</code></td><td>64</td></tr>
+<tr><td>char</td><td><code>char</code></td><td>8</td></tr>
 <tr><td>bool</td><td><code>bool</code></td><td>1</td></tr>
-<tr><td>null</td><td><code>null</code></td><td>N|A</td></tr>
 <tr><td>void</td><td><code>void</code></td><td>N|A</td></tr>
 <tr><td>enum</td><td><code>enum</code></td><td>??</td></tr>
 <tr><td>struct</td><td><code>struct</code></td><td>??</td></tr>
 </tbody>
 </table>
 </div>
-<blockquote class="blockquote-tag blockquote-tag-note">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<p>KSL is designed for programmers of all skill levels. Some programmers might
-not care (or know) about int’s of different sizes, so <code>int</code> and <code>float</code> are
-aliases for the largest supported int and float types. It makes it easier for
-beginners to understand and it’s more readable for simple projects that don’t
-need to worry about tight memory constraints.</p>
-</blockquote>
 <blockquote class="blockquote-tag blockquote-tag-note">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
 <p>You can make virtually any type an array by adding <code>[]</code> to the initialization
@@ -857,9 +959,10 @@ will create an array of <code>my_struct</code> structs.)</p>
 <tr><td>Greater Than</td><td>&gt;</td><td>50</td></tr>
 <tr><td>Equal</td><td>==</td><td>40</td></tr>
 <tr><td>Not Equal</td><td>!=</td><td>40</td></tr>
-<tr><td>Not (Bool)</td><td>!</td><td>30</td></tr>
-<tr><td>And (Bool)</td><td>&amp;&amp;</td><td>20</td></tr>
-<tr><td>Or (Bool)</td><td>||</td><td>10</td></tr>
+<tr><td>Not</td><td>!</td><td>30</td></tr>
+<tr><td>And</td><td>&amp;&amp;</td><td>20</td></tr>
+<tr><td>Xor</td><td>^</td><td>12</td></tr>
+<tr><td>Or</td><td>||</td><td>10</td></tr>
 </tbody>
 </table>
 </div>
@@ -882,7 +985,6 @@ will create an array of <code>my_struct</code> structs.)</p>
 <li><a href="#function-definition">Define a Function</a></li>
 <li><a href="#function-returns">Return From a Function</a></li>
 <li><a href="#inline-function-calls">Inline Calls to Functions</a></li>
-<li><a href="attribute">Function Attributes</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="function-definition"><a class="header" href="#function-definition">Function Definition</a></h1>
@@ -971,15 +1073,12 @@ surrounded by parenthesis and return a boolean type.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="loops"><a class="header" href="#loops">Loops</a></h1>
 <ul>
-<li><a href="#while">While Loops</a></li>
 <li><a href="#for">For Loops</a></li>
+<li><a href="#while">While Loops</a></li>
 </ul>
 <p>A note on for loops: KSL does not have a <code>for item in array</code> loop, or a
 <code>for i in 0..n</code> loop. Both of these are cool abstractions, but totally
 unnecessary. It’s unlikely that KSL will ever have these.</p>
-<p>Also, for technically minded people. The <code>for</code> loop does have more instructions
-than the while loop (assuming you aren’t using the optimization flag via <code>-op</code>,
-with the optimization flag they’re virtually the same.)</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="for"><a class="header" href="#for">For</a></h1>
 <p>The syntax for <code>for</code> loops is pretty simple. Just like in most languages with a
@@ -1002,7 +1101,8 @@ line in the console.</p>
 <pre><code class="language-ksl">using std.io;
 
 fn main() -&gt; void {
-    int[] my_arr = [35, 62, 84, 44, 27, 46, 85];
+    int[] my_arr = [ 35, 62, 84, 44, 27, 46, 85 ];
+
     for (int i = 0; i &lt; my_arr.length(); i++) {
         io.writeln(my_arr[i]);
     }
@@ -1056,7 +1156,7 @@ executable.</p>
 <p>Namespaces are defined on a per-file basis. Or they should be at least. They do
 not have braces, just define the namespace and put the functions after it, for
 example:</p>
-<pre><code class="language-ksl">namespace "food";
+<pre><code class="language-ksl">namespace food;
 
 fn pizza() -&gt; void {}
 fn sauce() -&gt; void {}
@@ -1065,6 +1165,7 @@ fn tacos() -&gt; void {}
 <p>All of these can then be accessed with <code>food.&lt;function_name&gt;</code> (<code>food.pizza</code>,
 <code>food.sauce</code>, etc.) If you’re working within the namespace then the <code>food.</code> part
 is not required.</p>
+<p>Namespaces cannot be nested.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="function-attributes"><a class="header" href="#function-attributes">Function Attributes</a></h1>
 <ul>
@@ -1141,27 +1242,97 @@ fn mangled_function() -&gt; void {}
 from becoming mangled in a binary/object file outputted by KSL. This supports
 better cross-language development efforts.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="ffi-concepts"><a class="header" href="#ffi-concepts">FFI Concepts</a></h1>
+<h1 id="externffi-concepts"><a class="header" href="#externffi-concepts">Extern/FFI Concepts</a></h1>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
 <p>Currently we’re discussing adding a <code>@no_mangle</code> <a href="attribute">attribute</a>.
-This would do exactly what it sounds like, it would maintain it’s function name
-regardless of the name mangling schema.</p>
-<p>We’re also thinking about adding some kind of syntax that would allow raw/manual
-forward declarations without KSL doing any kind of type predictions.</p>
-<pre><code class="language-ksl">extern fn func_in_another_language(int, float, float) -&gt; void;
+This would do exactly what it sounds like, it would maintain it’s function
+name regardless of the name mangling schema.</p>
+</blockquote>
+<p>The <code>extern</code> keyword allows you to use functions from outside KSL. External
+functions are also the only way to use variadic functions. The <code>extern</code> keyword
+still needs to be followed by the <code>fn</code> keyword as well as a full function
+signature.</p>
+<p>You can define external functions one by one with this syntax:</p>
+<pre><code class="language-ksl">extern fn func_in_another_lang_short(bool) -&gt; void;
 </code></pre>
-<p>This is still pretty close to KSL syntax and it’s relatively intuitive so it’s
-likely.</p>
-<p>This would enable developers to call functions in non-officially supported
-linked object files while maintaining the type and memory safety of KSL
-(assuming they don’t get type translations wrong.)</p>
-<p>Additionally, for declaring multiple external functions at once, there could be
-an optional block inside.</p>
+<p>Or if you need to define a lot of related functions you can use a block syntax
+instead.</p>
 <pre><code class="language-ksl">extern {
 	fn func_in_another_lang_zero(int) -&gt; void;
 	fn func_in_another_lang_one(float) -&gt; int;
 	fn func_in_another_lang_two(int) -&gt; float;
 }
 </code></pre>
+<p>In order to use variadic functions you can add a <code>...</code> to the function argument
+list in the signature. This can only be used for functions defined with
+<code>extern</code>. Additionally, you can mix the <code>...</code> alongside other known parameter
+types. Examples below.</p>
+<pre><code class="language-ksl">/*
+ * This will make an external function definition that can be used in your KSL
+ * source code. The `str` means that it expects a string parameter and the `...`
+ * means that anything after that is totally up to you.
+ *
+ * This is a working example to access printf within your KSL program.
+ */
+extern fn printf(str _, ...) -&gt; void;
+</code></pre>
+<pre><code class="language-ksl">extern {
+	fn printf(str _, ...) -&gt; void;
+	&lt;other_external_function_signatures&gt;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="templates"><a class="header" href="#templates">Templates</a></h1>
+<p>KSL templates are super powerful ways to build generic code fast. It is fully
+covered by semantic analysis as well.</p>
+<p>The basic syntax is as follows:</p>
+<pre><code class="language-ksl">template &lt;$T1, $T2&gt;
+struct ExampleTemplate {
+	$T1 foo,
+	$T2 bar
+}
+</code></pre>
+<p>You may notice some things right away. For example, the dollar sign. The dollar
+sign is used to denote an unknown type that should be figured out by the
+template. Let’s say in the example above, someone uses
+<code>&lt;int, int&gt;ExampleTemplate</code>, this will fill out the entire ExampleTemplate with
+the type information provided.</p>
+<p>You can even attach impl statements to the struct as you normally would!</p>
+<pre><code class="language-ksl">template &lt;$T1, $T2&gt;
+struct Map {
+	$T1[] keys,
+	$T2[] values
+}
+
+impl Map {
+	fn get($T1 key) -&gt; $T2 {
+		for (u64 i = 0; i &lt; this.keys.length(); i++) {
+			if (this.keys[i] == key)
+				return this.values[i];
+		}
+		return this.values[0];
+	}
+}
+</code></pre>
+<p>In the example above you may notice that in the <code>Map</code> struct there’s <code>$T1[]</code>.
+With KSL templates you can even turn unknown types into arrays or references
+like you would with a normal type.</p>
+<p>You might initialize the Map struct we just created like this:</p>
+<pre><code class="language-ksl">using std.io;
+
+fn main() -&gt; void {
+	Map my_map = Map&lt;int, int&gt; { int'[1, 2, 3], int'[4, 5, 6] };
+
+	io.writeln(my_map.get(2)); // will print 5
+}
+</code></pre>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>If the <code>int'[ ... ]</code> syntax is unfamiliar to you, check out the array type.
+This is just a way of defining an inline array literal but you can read more
+about it there.</p>
+</blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="error-codes"><a class="header" href="#error-codes">Error Codes</a></h1>
 <p>First, let’s learn to understand error messages. They’re comprised of three
@@ -1621,7 +1792,7 @@ to the standard before being included in the compiler.</p>
 <li><a href="#conditionals-1">if/else if/else</a></li>
 <li><a href="#the-while-keyword">while</a></li>
 <li><a href="#the-for-keyword">for</a></li>
-<li><a href="#templates">templates</a></li>
+<li><a href="#templates-1">templates</a></li>
 <li><a href="#the-fn----return-keywords">function</a></li>
 <li><a href="#casting">casting</a></li>
 </ul>
@@ -1635,7 +1806,7 @@ also serves as a way to disclose which existing object files should be linked
 after codegen.</p>
 <h2 id="dictionary"><a class="header" href="#dictionary">Dictionary</a></h2>
 <p><code>using</code> - The using keyword</p>
-<h2 id="examples-7"><a class="header" href="#examples-7">Examples</a></h2>
+<h2 id="examples-8"><a class="header" href="#examples-8">Examples</a></h2>
 <p>The using keyword can change it’s meaning depending on the syntax that follows.
 Following a using keyword with a string will tell the compiler to include
 another source file at the path provided, relative paths are preferred, example:</p>
@@ -1671,7 +1842,7 @@ using os.api.platform;
 <h1 id="the-for-keyword"><a class="header" href="#the-for-keyword">The <code>for</code> Keyword</a></h1>
 <p>Proposal unfinished.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="templates"><a class="header" href="#templates">Templates</a></h1>
+<h1 id="templates-1"><a class="header" href="#templates-1">Templates</a></h1>
 <p>04 / 09 / 25</p>
 <h2 id="objective-1"><a class="header" href="#objective-1">Objective</a></h2>
 <p>The objective of templates is to achieve an effect similar to polymorphism.
@@ -1680,7 +1851,7 @@ during compile time a clone of the template with static types is generated
 for each unique call.</p>
 <h2 id="dictionary-1"><a class="header" href="#dictionary-1">Dictionary</a></h2>
 <p><code>template</code> - A keyword denoting the definition of a template function.<br><code>$[a-zA-Z]</code> - Syntax denoting the use of an unknown type, single letters only.</p>
-<h2 id="examples-8"><a class="header" href="#examples-8">Examples</a></h2>
+<h2 id="examples-9"><a class="header" href="#examples-9">Examples</a></h2>
 <p>In the example below you can see a template add function, it takes two
 parameters of unknown types. The parameter names are <code>x</code> and <code>y</code> with types <code>$A</code>
 and <code>$B</code>, respectively. Templates must return/derive a single type.</p>
@@ -1722,7 +1893,7 @@ body as long as the result/derivitive of the function remains constant, ex:</p>
 support to KSL.</p>
 <h2 id="dictionary-2"><a class="header" href="#dictionary-2">Dictionary</a></h2>
 <p><code>fn</code> - Keyword used to denote the start of a function.<br><code>-&gt;</code> - Keyword used to denote the return type/derivative of a function.<br><code>return</code> - Keyword used to return a value from a function.</p>
-<h2 id="examples-9"><a class="header" href="#examples-9">Examples</a></h2>
+<h2 id="examples-10"><a class="header" href="#examples-10">Examples</a></h2>
 <p>The fn keyword followed by a single identifier and parenthesis defines a basic
 function. Functions also need a defined return type, which can be set using the
 derive keyword (<code>-&gt;</code>.) Once you’re done in your function body you can include
@@ -1884,13 +2055,13 @@ float y = float'(20 + 30);
 <h2 id="namespaces-1"><a class="header" href="#namespaces-1">Namespaces</a></h2>
 <p>Namespaces in KSL are typically defined on a per-file basis.<br>They do not use braces.</p>
 <p>Example:</p>
-<pre><code class="language-ksl">namespace "my_namespace";
+<pre><code class="language-ksl">namespace my_namespace;
 </code></pre>
 <p>Functions defined after the namespace <code>my_namespace</code> can then be accessed by
 other parts of the program at <code>my_namespace.my_function()</code>.</p>
 <h2 id="function-attributes-1"><a class="header" href="#function-attributes-1">Function Attributes</a></h2>
 <p>Function attributes modify the behavior of functions in KSL, for example, the
-<code>@inline</code> attribute will tell the compiler to inline the following funciton if
+<code>@inline</code> attribute will tell the compiler to inline the following function if
 possible.</p>
 <p>Example:</p>
 <pre><code class="language-ksl">@inline
@@ -1910,10 +2081,15 @@ then you probably don’t want to worry about anything here.</p>
 <li><a href="#compiling-the-compiler">Compiling the Compiler</a></li>
 <li><a href="#compiling-ksl-stdlib">Compiling the Standard Library</a></li>
 <li><a href="#name-mangling-convention">Name Mangling Convention</a></li>
-<li><a href="#expression-semantics">Expression Type Semantics</a></li>
+<li><a href="#compiler-flags">Compiler Flags</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="compiling-the-compiler"><a class="header" href="#compiling-the-compiler">Compiling the Compiler</a></h1>
+<blockquote class="blockquote-tag blockquote-tag-warning">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
+<p>Nearly all the information on this page is now outdated as the compiler is
+being upgraded from Rust to C++ before being able to self host.</p>
+</blockquote>
 <h2 id="on-windows"><a class="header" href="#on-windows">On Windows</a></h2>
 <p>Requirements:</p>
 <ul>
@@ -1959,6 +2135,7 @@ may depend on distro, any contributions would be great!</p>
 <li>Rust 1.91^: Download <a href="https://www.rust-lang.org/tools/install">Rust</a></li>
 <li>LLVM 18.1.x: Download <a href="https://github.com/llvm/llvm-project/releases/tag/llvmorg-18.1.8">LLVM</a></li>
 </ul>
+<p>llvm package on arch and fedora</p>
 <h2 id="on-macos"><a class="header" href="#on-macos">On MacOS</a></h2>
 <blockquote class="blockquote-tag blockquote-tag-note">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
@@ -1990,6 +2167,12 @@ libraries (<code>build.sh debug</code> for linux)</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="name-mangling-convention"><a class="header" href="#name-mangling-convention">Name Mangling Convention</a></h1>
+<blockquote class="blockquote-tag blockquote-tag-warning">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
+<p>The name mangling convention has changed and is slightly more detailed in
+recent versions of the compiler. Documentation will be changed to reflect this
+in the near future.</p>
+</blockquote>
 <p>The KSL name mangling convention is designed to prevent any kind of type
 confusion. That includes the return type.</p>
 <p>This also means that you can provide function overloading in KSL modules and
@@ -2027,11 +2210,11 @@ a <code>_</code></li>
 <p>So:</p>
 <pre><code class="language-ksl">fn main(i64 a, i64 b) -&gt; i64  // Becomes: __main____i64_i64_i64
 
-namespace "api";
+namespace api;
 fn add(f64 a, f64 b) -&gt; f64   // Becomes: api__add____f64_f64_f64
 fn getFloat() -&gt; f64          // Becomes: api__getFloat_____f64
 
-namespace "ipa";
+namespace ipa;
 fn not(bool val) -&gt; bool      // Becomes: ipa__not____bool_bool
 fn testing() -&gt; void          // Becomes: ipa__testing_____null
 </code></pre>
@@ -2072,25 +2255,7 @@ b.push(30);         // Becomes: tarr_method_push____i64
 <p>As of writing, the official conventions for variables have not been decided.</p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="expression-semantics"><a class="header" href="#expression-semantics">Expression Semantics</a></h1>
-<blockquote class="blockquote-tag blockquote-tag-warning">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
-<p>The methodology explained below is technically accurate but fails to mention
-all the details.</p>
-</blockquote>
-<p>This page will go over how semantic analysis handles expressions. It will cover
-the technical details behind return type prediction in <a href="#inline-function-calls">inline calls</a>
-and type promotion.</p>
-<p>Currently, the entire expression recieves a type hint ahead of time. It will
-attempt to convert all literals (and potentially variables) to this type. If the
-expression ends up with a larger type than the hint it will simply throw an
-error.</p>
-<p>Additionally, if there is a type that doesn’t match the rest that cannot be
-implicitly changed, it will throw a warning or error to the programmer
-explaining that in order to “do this operation” they must cast to an acceptable
-type.</p>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="comiler-flags"><a class="header" href="#comiler-flags">Comiler Flags</a></h1>
+<h1 id="compiler-flags"><a class="header" href="#compiler-flags">Compiler Flags</a></h1>
 <p>Full list of compiler flags and overview of meaning, full list with more details
 is shown below.</p>
 <pre><code>building:
@@ -2102,6 +2267,7 @@ is shown below.</p>
 miscillanious:
   --help                -h              Display This List of Arguments
   --dump                -d              Display Version and Environment Information
+  --evasion             -ev             Prevent Warnings Related to KSL Code Safety
   --suppress-warns      -sw             Prevent Warnings from Displaying
 debugging:
   --tokens              -tk             Display Token Stream(s)

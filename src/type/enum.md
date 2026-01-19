@@ -3,7 +3,7 @@
 ## Overview
 
 Enums in KSL are defined with the `enum` keyword. Internally they're replaced
-with the smallest integer size that fits all enum elements before code
+with the smallest unsigned integer size that fits all enum elements before code
 generation or even semantics. That means that enums will be treated the same way
 that integers are.
 
@@ -30,7 +30,7 @@ enum Status {
 
 fn main() -> void {
 	Status state = Status.Running;
-	io.writeln(state); // will print 0
+	io.writeln(int'state); // will print 0
 	io.writeln(state == Status.Running); // true
 	io.writeln(state == Status.Failed); // false
 }

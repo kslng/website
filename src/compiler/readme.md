@@ -8,4 +8,4 @@ then you probably don't want to worry about anything here.
 - [Compiling the Compiler](compiling.md)
 - [Compiling the Standard Library](compile-stdlib.md)
 - [Name Mangling Convention](name-mangling.md)
-- [Expression Type Semantics](expr-semantics.md)
+- [Compiler Flags](compiler-flags.md)

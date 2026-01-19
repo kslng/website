@@ -3,11 +3,11 @@
 ## Overview
 
 Integers in KSL are a blanket type. The "real" types of integers are `i8`,
-`i16`, `i32`, and `i64`. Technically `int` is also an alias for `i64`. Unsigned
-integers are not currently supported in KSL. There are no special rules for
-interacting with integers. Their space in memory is equal to the type name, e.g.
-an `i32` will be stored as an integer 32 in memory during runtime, similarly an
-`i8` will be stored an an integer 8.
+`i16`, `i32`, and `i64`. Technically `int` is also an alias for `i64`. For
+unsigned there is `u8`, `u16`, `u32`, `u64`, and `uint` which is an alias for
+`u64`. There are no special rules for interacting with integers. Their space in
+memory is equal to the type name, e.g. an `i32` will be stored as an integer 32
+in memory during runtime, similarly an `i8` will be stored an an integer 8.
 
 ## Casting Support
 
@@ -30,3 +30,11 @@ There are no methods supported for integers.
 ```ksl
 int x = 20;
 ```
+
+## Notes
+
+In some cases there will be an integer literal in your source code without a
+decernable type. In these cases KSL will attempt to give it the smallest
+possible type (e.g. 50 will be given an `i8`). The main thing to note here is
+that KSL will not give it an unsigned type, always a signed integer. If you wish
+to use an unsigned integer it must be explicitly stated or casted.

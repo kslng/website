@@ -114,10 +114,45 @@ fn main() -> void {
 
 ## Examples
 
+For arrays as variable declarations:
+
 ```ksl
-int[] x = [10, 20, 30];
-float[] y = [1.1, 2.2, 3.3];
-bool[] z = [true, false, true];
+int[] x = [ 10, 20, 30 ];
+float[] y = [ 1.1, 2.2, 3.3 ];
+bool[] z = [ true, false, true ];
+```
+
+For inline array literals:
+
+```ksl
+io.writeln(int'[ 10, 20, 30 ][1]); // will print 20
+```
+
+Inline array literals will be confusing at first, but they'll make sense pretty
+soon! The syntax is weird, it's like casting but then it's an array? Isn't that
+illegal?
+
+Since KSL is a strongly typed language with just a tiny bit of inferencing here
+and there, we can't determine a solid type for array literals. That means KSL
+relies on you to provide it with type information. Since it doesn't have a var
+declaration to rely on it needs you to "cast" it (provide it a type hint).
+
+Once you have an array literal you can use it just like a normal array though!
+In the example above we immediately index into the 2nd element (index 1). Here's
+another example:
+
+```ksl
+io.writeln(bool'[ false, true, true, false ]);
+```
+
+This example will print the normal way KSL prints arrays, output below.
+
+```txt
+<T>(ARRBOOL) <LENGTH>(4) <CAPACITY>(4)
+[000] false
+[001] true
+[002] true
+[003] false
 ```
 
 ## Notes

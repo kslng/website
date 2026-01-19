@@ -28,7 +28,8 @@ Combine the for loop with your array and the `length()` array method!
 using std.io;
 
 fn main() -> void {
-    int[] my_arr = [35, 62, 84, 44, 27, 46, 85];
+    int[] my_arr = [ 35, 62, 84, 44, 27, 46, 85 ];
+
     for (int i = 0; i < my_arr.length(); i++) {
         io.writeln(my_arr[i]);
     }

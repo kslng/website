@@ -1,5 +1,10 @@
 # Name Mangling Convention
 
+> [!WARNING]
+> The name mangling convention has changed and is slightly more detailed in
+> recent versions of the compiler. Documentation will be changed to reflect this
+> in the near future.
+
 The KSL name mangling convention is designed to prevent any kind of type
 confusion. That includes the return type.
 
@@ -44,11 +49,11 @@ So:
 ```ksl
 fn main(i64 a, i64 b) -> i64  // Becomes: __main____i64_i64_i64
 
-namespace "api";
+namespace api;
 fn add(f64 a, f64 b) -> f64   // Becomes: api__add____f64_f64_f64
 fn getFloat() -> f64          // Becomes: api__getFloat_____f64
 
-namespace "ipa";
+namespace ipa;
 fn not(bool val) -> bool      // Becomes: ipa__not____bool_bool
 fn testing() -> void          // Becomes: ipa__testing_____null
 ```

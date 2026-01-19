@@ -39,10 +39,10 @@
 			const path_to_root = "../";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "../searchindex-eb8dc995.js";
+			window.path_to_searchindex_js = "../searchindex-5d0b74d1.js";
 		</script>
 		<!-- Start loading toc.js asap -->
-		<script src="../toc-86ca882a.js"></script>
+		<script src="../toc-2637c312.js"></script>
 	</head>
 	<body>
 	<div id="mdbook-help-container">
@@ -183,7 +183,7 @@
 <p>Namespaces are defined on a per-file basis. Or they should be at least. They do
 not have braces, just define the namespace and put the functions after it, for
 example:</p>
-<pre><code class="language-ksl">namespace "food";
+<pre><code class="language-ksl">namespace food;
 
 fn pizza() -&gt; void {}
 fn sauce() -&gt; void {}
@@ -192,6 +192,7 @@ fn tacos() -&gt; void {}
 <p>All of these can then be accessed with <code>food.&lt;function_name&gt;</code> (<code>food.pizza</code>,
 <code>food.sauce</code>, etc.) If you’re working within the namespace then the <code>food.</code> part
 is not required.</p>
+<p>Namespaces cannot be nested.</p>
 
 					</main>
 

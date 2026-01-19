@@ -39,10 +39,10 @@
 			const path_to_root = "../";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "../searchindex-eb8dc995.js";
+			window.path_to_searchindex_js = "../searchindex-5d0b74d1.js";
 		</script>
 		<!-- Start loading toc.js asap -->
-		<script src="../toc-86ca882a.js"></script>
+		<script src="../toc-2637c312.js"></script>
 	</head>
 	<body>
 	<div id="mdbook-help-container">
@@ -181,11 +181,11 @@
 					<main>
 						<h1 id="strings"><a class="header" href="#strings">Strings</a></h1>
 <h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
-<p>Strings in KSL are dynamically allocable, meaning you don’t have to worry about
-memory management when using them. If you join a string longer than the original
-capacity it will reallocate more space for the string and continue.</p>
-<p>Due to the casting operator being an apostrophe, strings can only be defined
-with double quotes. Currently there is no <code>char</code> support.</p>
+<p>Strings in KSL are pointers to memory locations, meaning they can’t easily be
+modified. Attempting to modify a string in KSL will result in an entirely new
+string being created. To “dynamically” handle strings use a character array
+(<code>char[]</code>) and then turn it into a string with <code>char[].to_string()</code> or similar.</p>
+<p>String literals must be defined with double quotes.</p>
 <h2 id="casting-support"><a class="header" href="#casting-support">Casting Support</a></h2>
 <p>Strings do not support any casting operations. Additionally, casting is not an
 operator that you can define custom behavior for. If you want to convert string
@@ -215,9 +215,11 @@ types you’ll need to do it manually.</p>
 <pre><code class="language-ksl">str message = "Hello World!";
 </code></pre>
 <h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
-<p>Internally, strings use the KSL array implementation. This will only be
-important if you’re building an interface for KSL in another language. You can
-find the current definition details in <a href="https://github.com/kslng/ksl/blob/main/std/runtime/generic_array.h">std/runtime/generic_array.h</a>.</p>
+<p>Internally, strings can be pointers to different spots in memory. In most cases
+they point to memory within the binary where literals have already been defined.
+In the case of a modified string the pointer may be to a malloc’d memory space.
+Strings should be automatically reference counted by KSL so you don’t need to
+worry about this unless you’re building a KSL translation layer or C library.</p>
 
 					</main>
 

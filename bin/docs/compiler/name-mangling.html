@@ -39,10 +39,10 @@
 			const path_to_root = "../";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "../searchindex-eb8dc995.js";
+			window.path_to_searchindex_js = "../searchindex-5d0b74d1.js";
 		</script>
 		<!-- Start loading toc.js asap -->
-		<script src="../toc-86ca882a.js"></script>
+		<script src="../toc-2637c312.js"></script>
 	</head>
 	<body>
 	<div id="mdbook-help-container">
@@ -180,6 +180,12 @@
 				<div id="mdbook-content" class="content">
 					<main>
 						<h1 id="name-mangling-convention"><a class="header" href="#name-mangling-convention">Name Mangling Convention</a></h1>
+<blockquote class="blockquote-tag blockquote-tag-warning">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
+<p>The name mangling convention has changed and is slightly more detailed in
+recent versions of the compiler. Documentation will be changed to reflect this
+in the near future.</p>
+</blockquote>
 <p>The KSL name mangling convention is designed to prevent any kind of type
 confusion. That includes the return type.</p>
 <p>This also means that you can provide function overloading in KSL modules and
@@ -217,11 +223,11 @@ a <code>_</code></li>
 <p>So:</p>
 <pre><code class="language-ksl">fn main(i64 a, i64 b) -&gt; i64  // Becomes: __main____i64_i64_i64
 
-namespace "api";
+namespace api;
 fn add(f64 a, f64 b) -&gt; f64   // Becomes: api__add____f64_f64_f64
 fn getFloat() -&gt; f64          // Becomes: api__getFloat_____f64
 
-namespace "ipa";
+namespace ipa;
 fn not(bool val) -&gt; bool      // Becomes: ipa__not____bool_bool
 fn testing() -&gt; void          // Becomes: ipa__testing_____null
 </code></pre>
@@ -270,7 +276,7 @@ b.push(30);         // Becomes: tarr_method_push____i64
 								<span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
 							</a>
 
-							<a rel="next prefetch" href="../compiler/expr-semantics.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+							<a rel="next prefetch" href="../compiler/compiler-flags.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
 								<span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
 							</a>
 
@@ -284,7 +290,7 @@ b.push(30);         // Becomes: tarr_method_push____i64
 						<span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
 					</a>
 
-					<a rel="next prefetch" href="../compiler/expr-semantics.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+					<a rel="next prefetch" href="../compiler/compiler-flags.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
 						<span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
 					</a>
 			</nav>

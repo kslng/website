@@ -1,4 +1,4 @@
-# Comiler Flags
+# Compiler Flags
 
 Full list of compiler flags and overview of meaning, full list with more details
 is shown below.
@@ -13,6 +13,7 @@ building:
 miscillanious:
   --help                -h              Display This List of Arguments
   --dump                -d              Display Version and Environment Information
+  --evasion             -ev             Prevent Warnings Related to KSL Code Safety
   --suppress-warns      -sw             Prevent Warnings from Displaying
 debugging:
   --tokens              -tk             Display Token Stream(s)

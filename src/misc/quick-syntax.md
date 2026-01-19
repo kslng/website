@@ -183,7 +183,7 @@ They do not use braces.
 
 Example:
 ```ksl
-namespace "my_namespace";
+namespace my_namespace;
 ```
 
 Functions defined after the namespace `my_namespace` can then be accessed by
@@ -192,7 +192,7 @@ other parts of the program at `my_namespace.my_function()`.
 ## Function Attributes
 
 Function attributes modify the behavior of functions in KSL, for example, the
-`@inline` attribute will tell the compiler to inline the following funciton if
+`@inline` attribute will tell the compiler to inline the following function if
 possible.
 
 Example:

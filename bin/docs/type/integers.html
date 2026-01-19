@@ -39,10 +39,10 @@
 			const path_to_root = "../";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "../searchindex-eb8dc995.js";
+			window.path_to_searchindex_js = "../searchindex-5d0b74d1.js";
 		</script>
 		<!-- Start loading toc.js asap -->
-		<script src="../toc-86ca882a.js"></script>
+		<script src="../toc-2637c312.js"></script>
 	</head>
 	<body>
 	<div id="mdbook-help-container">
@@ -182,11 +182,11 @@
 						<h1 id="integers"><a class="header" href="#integers">Integers</a></h1>
 <h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
 <p>Integers in KSL are a blanket type. The “real” types of integers are <code>i8</code>,
-<code>i16</code>, <code>i32</code>, and <code>i64</code>. Technically <code>int</code> is also an alias for <code>i64</code>. Unsigned
-integers are not currently supported in KSL. There are no special rules for
-interacting with integers. Their space in memory is equal to the type name, e.g.
-an <code>i32</code> will be stored as an integer 32 in memory during runtime, similarly an
-<code>i8</code> will be stored an an integer 8.</p>
+<code>i16</code>, <code>i32</code>, and <code>i64</code>. Technically <code>int</code> is also an alias for <code>i64</code>. For
+unsigned there is <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, and <code>uint</code> which is an alias for
+<code>u64</code>. There are no special rules for interacting with integers. Their space in
+memory is equal to the type name, e.g. an <code>i32</code> will be stored as an integer 32
+in memory during runtime, similarly an <code>i8</code> will be stored an an integer 8.</p>
 <h2 id="casting-support"><a class="header" href="#casting-support">Casting Support</a></h2>
 <p>Types that can be cast to integers:</p>
 <ul>
@@ -203,6 +203,12 @@ an <code>i32</code> will be stored as an integer 32 in memory during runtime, si
 <h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
 <pre><code class="language-ksl">int x = 20;
 </code></pre>
+<h2 id="notes"><a class="header" href="#notes">Notes</a></h2>
+<p>In some cases there will be an integer literal in your source code without a
+decernable type. In these cases KSL will attempt to give it the smallest
+possible type (e.g. 50 will be given an <code>i8</code>). The main thing to note here is
+that KSL will not give it an unsigned type, always a signed integer. If you wish
+to use an unsigned integer it must be explicitly stated or casted.</p>
 
 					</main>
 

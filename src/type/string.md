@@ -2,12 +2,12 @@
 
 ## Overview
 
-Strings in KSL are dynamically allocable, meaning you don't have to worry about
-memory management when using them. If you join a string longer than the original
-capacity it will reallocate more space for the string and continue.
+Strings in KSL are pointers to memory locations, meaning they can't easily be
+modified. Attempting to modify a string in KSL will result in an entirely new
+string being created. To "dynamically" handle strings use a character array
+(`char[]`) and then turn it into a string with `char[].to_string()` or similar.
 
-Due to the casting operator being an apostrophe, strings can only be defined
-with double quotes. Currently there is no `char` support.
+String literals must be defined with double quotes.
 
 ## Casting Support
 
@@ -55,6 +55,8 @@ str message = "Hello World!";
 
 ## Notes
 
-Internally, strings use the KSL array implementation. This will only be
-important if you're building an interface for KSL in another language. You can
-find the current definition details in [std/runtime/generic_array.h](https://github.com/kslng/ksl/blob/main/std/runtime/generic_array.h).
+Internally, strings can be pointers to different spots in memory. In most cases
+they point to memory within the binary where literals have already been defined.
+In the case of a modified string the pointer may be to a malloc'd memory space.
+Strings should be automatically reference counted by KSL so you don't need to
+worry about this unless you're building a KSL translation layer or C library.

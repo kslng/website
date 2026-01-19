@@ -1,5 +1,9 @@
 # Compiling the Compiler
 
+> [!WARNING]
+> Nearly all the information on this page is now outdated as the compiler is
+> being upgraded from Rust to C++ before being able to self host.
+
 ## On Windows
 
 Requirements:
@@ -37,6 +41,8 @@ Requirements:
 - KSL Source Code
 - Rust 1.91^: Download [Rust](https://www.rust-lang.org/tools/install)
 - LLVM 18.1.x: Download [LLVM](https://github.com/llvm/llvm-project/releases/tag/llvmorg-18.1.8)
+
+llvm package on arch and fedora
 
 ## On MacOS
 
