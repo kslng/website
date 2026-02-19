@@ -17,6 +17,18 @@ types you'll need to do it manually.
 
 ## Method Support
 
+**.format(...)**  
+Return a new string with various formatters applied.
+
+Will not mutate string.
+
+```ksl
+fn main() -> void {
+	"My integer: {i64}".format(30); // returns "My integer: 30"
+	"Hello {str}!".format("World"); // returns "Hello World!"
+}
+```
+
 **.length()**  
 Will return the length of the string as an integer.
 

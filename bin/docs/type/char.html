@@ -39,7 +39,7 @@
 			const path_to_root = "../";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "../searchindex-5d0b74d1.js";
+			window.path_to_searchindex_js = "../searchindex-4ec9ce84.js";
 		</script>
 		<!-- Start loading toc.js asap -->
 		<script src="../toc-2637c312.js"></script>
@@ -187,7 +187,44 @@
 treated as integers as soon as the semantic step, you technically can do all
 integer operations on them, including casting.</p>
 <h2 id="method-support"><a class="header" href="#method-support">Method Support</a></h2>
-<p>Currently there are no methods supported for chars.</p>
+<p><strong>.is_digit()</strong><br>Will return true if the character is one of <code>0123456789</code>.</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	'a'.is_digit(); // false
+	'4'.is_digit(); // true
+}
+</code></pre>
+<p><strong>.is_alpha()</strong><br>Will return true if the character is one of
+<code>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</code>.</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	'2'.is_alpha(); // false
+	'a'.is_alpha(); // true
+	'Q'.is_alpha(); // true
+}
+</code></pre>
+<p><strong>.is_alnum()</strong><br>Will return true if the character is one of
+<code>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789</code>.</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	'2'.is_alnum(); // true
+	'a'.is_alnum(); // true
+	'Q'.is_alnum(); // true
+	'$'.is_alnum(); // false
+}
+</code></pre>
+<p><strong>.is_whitespace()</strong><br>Will return true if the character is one of: Horizontal Tab (ASCII 9), Line Feed
+(ASCII 10), Vertical Tabulation (ASCII 11), Form Feed (ASCII 12), Carriage
+Return (ASCII 13), File Separator (ASCII 28), Group Separator (ASCII 29), Record
+Separator (ASCII 30), Unit Separator (ASCII 31), Space (ASCII 32), NBSP
+(Non-Breaking Space) (ASCII 160).</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	' '.is_whitespace(); // true
+	'\n'.is_whitespace(); // true
+	'\t'.is_whitespace(); // true
+	'\r'.is_whitespace(); // true
+	'a'.is_whitespace(); // false
+	'2'.is_whitespace(); // false
+	'$'.is_whitespace(); // false
+}
+</code></pre>
 <h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
 <pre><code class="language-ksl">using std.io;
 

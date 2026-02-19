@@ -39,7 +39,7 @@
 			const path_to_root = "";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "searchindex-5d0b74d1.js";
+			window.path_to_searchindex_js = "searchindex-4ec9ce84.js";
 		</script>
 		<!-- Start loading toc.js asap -->
 		<script src="toc-2637c312.js"></script>
@@ -621,7 +621,44 @@ bool'-135.77;   // true
 treated as integers as soon as the semantic step, you technically can do all
 integer operations on them, including casting.</p>
 <h2 id="method-support-3"><a class="header" href="#method-support-3">Method Support</a></h2>
-<p>Currently there are no methods supported for chars.</p>
+<p><strong>.is_digit()</strong><br>Will return true if the character is one of <code>0123456789</code>.</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	'a'.is_digit(); // false
+	'4'.is_digit(); // true
+}
+</code></pre>
+<p><strong>.is_alpha()</strong><br>Will return true if the character is one of
+<code>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</code>.</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	'2'.is_alpha(); // false
+	'a'.is_alpha(); // true
+	'Q'.is_alpha(); // true
+}
+</code></pre>
+<p><strong>.is_alnum()</strong><br>Will return true if the character is one of
+<code>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789</code>.</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	'2'.is_alnum(); // true
+	'a'.is_alnum(); // true
+	'Q'.is_alnum(); // true
+	'$'.is_alnum(); // false
+}
+</code></pre>
+<p><strong>.is_whitespace()</strong><br>Will return true if the character is one of: Horizontal Tab (ASCII 9), Line Feed
+(ASCII 10), Vertical Tabulation (ASCII 11), Form Feed (ASCII 12), Carriage
+Return (ASCII 13), File Separator (ASCII 28), Group Separator (ASCII 29), Record
+Separator (ASCII 30), Unit Separator (ASCII 31), Space (ASCII 32), NBSP
+(Non-Breaking Space) (ASCII 160).</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	' '.is_whitespace(); // true
+	'\n'.is_whitespace(); // true
+	'\t'.is_whitespace(); // true
+	'\r'.is_whitespace(); // true
+	'a'.is_whitespace(); // false
+	'2'.is_whitespace(); // false
+	'$'.is_whitespace(); // false
+}
+</code></pre>
 <h2 id="examples-3"><a class="header" href="#examples-3">Examples</a></h2>
 <pre><code class="language-ksl">using std.io;
 
@@ -678,6 +715,13 @@ string being created. To “dynamically” handle strings use a character array
 operator that you can define custom behavior for. If you want to convert string
 types you’ll need to do it manually.</p>
 <h2 id="method-support-5"><a class="header" href="#method-support-5">Method Support</a></h2>
+<p><strong>.format(…)</strong><br>Return a new string with various formatters applied.</p>
+<p>Will not mutate string.</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	"My integer: {i64}".format(30); // returns "My integer: 30"
+	"Hello {str}!".format("World"); // returns "Hello World!"
+}
+</code></pre>
 <p><strong>.length()</strong><br>Will return the length of the string as an integer.</p>
 <p>Will not mutate string.</p>
 <pre><code class="language-ksl">fn main() -&gt; void {
@@ -902,24 +946,24 @@ same effect just initialize the variable with dummy data.</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Type</th><th>Identifier</th><th>Size (Bits)</th></tr>
+<tr><th>Type</th><th>Identifier</th><th>Size (Bits)</th><th>Size (Bytes)</th></tr>
 </thead>
 <tbody>
-<tr><td>int8</td><td><code>i8</code></td><td>8</td></tr>
-<tr><td>int16</td><td><code>i16</code></td><td>16</td></tr>
-<tr><td>int32</td><td><code>i32</code></td><td>32</td></tr>
-<tr><td>int64</td><td><code>i64</code> || <code>int</code></td><td>64</td></tr>
-<tr><td>uint8</td><td><code>u8</code></td><td>8</td></tr>
-<tr><td>uint16</td><td><code>u16</code></td><td>16</td></tr>
-<tr><td>uint32</td><td><code>u32</code></td><td>32</td></tr>
-<tr><td>uint64</td><td><code>u64</code> || <code>uint</code></td><td>64</td></tr>
-<tr><td>float32</td><td><code>f32</code></td><td>32</td></tr>
-<tr><td>float</td><td><code>f64</code> || <code>float</code></td><td>64</td></tr>
-<tr><td>char</td><td><code>char</code></td><td>8</td></tr>
-<tr><td>bool</td><td><code>bool</code></td><td>1</td></tr>
-<tr><td>void</td><td><code>void</code></td><td>N|A</td></tr>
-<tr><td>enum</td><td><code>enum</code></td><td>??</td></tr>
-<tr><td>struct</td><td><code>struct</code></td><td>??</td></tr>
+<tr><td>int8</td><td><code>i8</code></td><td>8</td><td>1</td></tr>
+<tr><td>int16</td><td><code>i16</code></td><td>16</td><td>2</td></tr>
+<tr><td>int32</td><td><code>i32</code></td><td>32</td><td>4</td></tr>
+<tr><td>int64</td><td><code>i64</code> || <code>int</code></td><td>64</td><td>8</td></tr>
+<tr><td>uint8</td><td><code>u8</code></td><td>8</td><td>1</td></tr>
+<tr><td>uint16</td><td><code>u16</code></td><td>16</td><td>2</td></tr>
+<tr><td>uint32</td><td><code>u32</code></td><td>32</td><td>4</td></tr>
+<tr><td>uint64</td><td><code>u64</code> || <code>uint</code></td><td>64</td><td>8</td></tr>
+<tr><td>float32</td><td><code>f32</code></td><td>32</td><td>4</td></tr>
+<tr><td>float</td><td><code>f64</code> || <code>float</code></td><td>64</td><td>8</td></tr>
+<tr><td>char</td><td><code>char</code></td><td>8</td><td>1</td></tr>
+<tr><td>bool</td><td><code>bool</code></td><td>1</td><td>1</td></tr>
+<tr><td>void</td><td><code>void</code></td><td>N|A</td><td>N|A</td></tr>
+<tr><td>enum</td><td><code>enum</code></td><td>??</td><td>??</td></tr>
+<tr><td>struct</td><td><code>struct</code></td><td>??</td><td>??</td></tr>
 </tbody>
 </table>
 </div>
@@ -935,6 +979,21 @@ to the type system, it can be treated like most other types, which means you
 can also make an array of structs using the struct name (e.g. <code>my_struct[]</code>
 will create an array of <code>my_struct</code> structs.)</p>
 </blockquote>
+<p>KSL supports variable shadowing, so you can use multiple variables with the same
+name as long as they don’t cross scopes. For example:</p>
+<pre><code class="language-ksl">using std.io;
+
+fn main() -&gt; void {
+	int i = 400;
+
+	if (true) {
+		int i = 30;
+		io.writeln(i); // will write 30 to console
+	}
+
+	io.writeln(i); // will write 400 to console
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="expressions"><a class="header" href="#expressions">Expressions</a></h1>
 <h2 id="operations-binary-and-unary"><a class="header" href="#operations-binary-and-unary">Operations (Binary and Unary)</a></h2>
@@ -946,23 +1005,25 @@ will create an array of <code>my_struct</code> structs.)</p>
 <tr><th>Operation</th><th>Symbol</th><th>Precedence</th></tr>
 </thead>
 <tbody>
-<tr><td>Modulus</td><td>%</td><td>100</td></tr>
-<tr><td>Multiply</td><td>*</td><td>90</td></tr>
-<tr><td>Divide</td><td>/</td><td>90</td></tr>
-<tr><td>Add</td><td>+</td><td>80</td></tr>
-<tr><td>Subtract</td><td>-</td><td>80</td></tr>
-<tr><td>Left Shift</td><td>&lt;&lt;</td><td>70</td></tr>
-<tr><td>Right Shift</td><td>&gt;&gt;</td><td>70</td></tr>
-<tr><td>Less or Equal</td><td>&lt;=</td><td>60</td></tr>
-<tr><td>Greater or Equal</td><td>&gt;=</td><td>60</td></tr>
-<tr><td>Less Than</td><td>&lt;</td><td>50</td></tr>
-<tr><td>Greater Than</td><td>&gt;</td><td>50</td></tr>
-<tr><td>Equal</td><td>==</td><td>40</td></tr>
-<tr><td>Not Equal</td><td>!=</td><td>40</td></tr>
-<tr><td>Not</td><td>!</td><td>30</td></tr>
-<tr><td>And</td><td>&amp;&amp;</td><td>20</td></tr>
-<tr><td>Xor</td><td>^</td><td>12</td></tr>
-<tr><td>Or</td><td>||</td><td>10</td></tr>
+<tr><td>Not</td><td>!</td><td>130</td></tr>
+<tr><td>Modulus</td><td>%</td><td>120</td></tr>
+<tr><td>Multiply</td><td>*</td><td>110</td></tr>
+<tr><td>Divide</td><td>/</td><td>110</td></tr>
+<tr><td>Add</td><td>+</td><td>100</td></tr>
+<tr><td>Subtract</td><td>-</td><td>100</td></tr>
+<tr><td>Left Shift</td><td>&lt;&lt;</td><td>90</td></tr>
+<tr><td>Right Shift</td><td>&gt;&gt;</td><td>90</td></tr>
+<tr><td>Less or Equal</td><td>&lt;=</td><td>80</td></tr>
+<tr><td>Greater or Equal</td><td>&gt;=</td><td>80</td></tr>
+<tr><td>Less Than</td><td>&lt;</td><td>70</td></tr>
+<tr><td>Greater Than</td><td>&gt;</td><td>70</td></tr>
+<tr><td>Equal</td><td>==</td><td>60</td></tr>
+<tr><td>Not Equal</td><td>!=</td><td>60</td></tr>
+<tr><td>Bitwise And</td><td>&amp;</td><td>50</td></tr>
+<tr><td>Bitwise Xor</td><td>^</td><td>40</td></tr>
+<tr><td>Bitwise Or</td><td></td><td></td></tr>
+<tr><td>Logical And</td><td>&amp;&amp;</td><td>20</td></tr>
+<tr><td>Logical Or</td><td>||</td><td>10</td></tr>
 </tbody>
 </table>
 </div>

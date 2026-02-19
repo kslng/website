@@ -39,7 +39,7 @@
 			const path_to_root = "../";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "../searchindex-5d0b74d1.js";
+			window.path_to_searchindex_js = "../searchindex-4ec9ce84.js";
 		</script>
 		<!-- Start loading toc.js asap -->
 		<script src="../toc-2637c312.js"></script>
@@ -191,6 +191,13 @@ string being created. To “dynamically” handle strings use a character array
 operator that you can define custom behavior for. If you want to convert string
 types you’ll need to do it manually.</p>
 <h2 id="method-support"><a class="header" href="#method-support">Method Support</a></h2>
+<p><strong>.format(…)</strong><br>Return a new string with various formatters applied.</p>
+<p>Will not mutate string.</p>
+<pre><code class="language-ksl">fn main() -&gt; void {
+	"My integer: {i64}".format(30); // returns "My integer: 30"
+	"Hello {str}!".format("World"); // returns "Hello World!"
+}
+</code></pre>
 <p><strong>.length()</strong><br>Will return the length of the string as an integer.</p>
 <p>Will not mutate string.</p>
 <pre><code class="language-ksl">fn main() -&gt; void {

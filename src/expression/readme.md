@@ -7,23 +7,25 @@ Higher precedences are executed first.
 Supported Binary Operations (and Precedence):
 | Operation        | Symbol   | Precedence |
 | ---------------- | -------- | ---------- |
-| Modulus          | %        | 100        |
-| Multiply         | *        | 90         |
-| Divide           | /        | 90         |
-| Add              | +        | 80         |
-| Subtract         | -        | 80         |
-| Left Shift       | &lt;&lt; | 70         |
-| Right Shift      | &gt;&gt; | 70         |
-| Less or Equal    | &lt;=    | 60         |
-| Greater or Equal | &gt;=    | 60         |
-| Less Than        | &lt;     | 50         |
-| Greater Than     | &gt;     | 50         |
-| Equal            | ==       | 40         |
-| Not Equal        | !=       | 40         |
-| Not              | !        | 30         |
-| And              | &&       | 20         |
-| Xor              | ^        | 12         |
-| Or               | \|\|     | 10         |
+| Not              | !        | 130        |
+| Modulus          | %        | 120        |
+| Multiply         | *        | 110        |
+| Divide           | /        | 110        |
+| Add              | +        | 100        |
+| Subtract         | -        | 100        |
+| Left Shift       | &lt;&lt; | 90         |
+| Right Shift      | &gt;&gt; | 90         |
+| Less or Equal    | &lt;=    | 80         |
+| Greater or Equal | &gt;=    | 80         |
+| Less Than        | &lt;     | 70         |
+| Greater Than     | &gt;     | 70         |
+| Equal            | ==       | 60         |
+| Not Equal        | !=       | 60         |
+| Bitwise And      | &        | 50         |
+| Bitwise Xor      | ^        | 40         |
+| Bitwise Or       | |        | 30         |
+| Logical And      | &&       | 20         |
+| Logical Or       | \|\|     | 10         |
 
 Supported Unary Operations:
 | Operation        | Symbol                             |

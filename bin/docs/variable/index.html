@@ -39,7 +39,7 @@
 			const path_to_root = "../";
 			const default_light_theme = "navy";
 			const default_dark_theme = "navy";
-			window.path_to_searchindex_js = "../searchindex-5d0b74d1.js";
+			window.path_to_searchindex_js = "../searchindex-4ec9ce84.js";
 		</script>
 		<!-- Start loading toc.js asap -->
 		<script src="../toc-2637c312.js"></script>
@@ -194,24 +194,24 @@ same effect just initialize the variable with dummy data.</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Type</th><th>Identifier</th><th>Size (Bits)</th></tr>
+<tr><th>Type</th><th>Identifier</th><th>Size (Bits)</th><th>Size (Bytes)</th></tr>
 </thead>
 <tbody>
-<tr><td>int8</td><td><code>i8</code></td><td>8</td></tr>
-<tr><td>int16</td><td><code>i16</code></td><td>16</td></tr>
-<tr><td>int32</td><td><code>i32</code></td><td>32</td></tr>
-<tr><td>int64</td><td><code>i64</code> || <code>int</code></td><td>64</td></tr>
-<tr><td>uint8</td><td><code>u8</code></td><td>8</td></tr>
-<tr><td>uint16</td><td><code>u16</code></td><td>16</td></tr>
-<tr><td>uint32</td><td><code>u32</code></td><td>32</td></tr>
-<tr><td>uint64</td><td><code>u64</code> || <code>uint</code></td><td>64</td></tr>
-<tr><td>float32</td><td><code>f32</code></td><td>32</td></tr>
-<tr><td>float</td><td><code>f64</code> || <code>float</code></td><td>64</td></tr>
-<tr><td>char</td><td><code>char</code></td><td>8</td></tr>
-<tr><td>bool</td><td><code>bool</code></td><td>1</td></tr>
-<tr><td>void</td><td><code>void</code></td><td>N|A</td></tr>
-<tr><td>enum</td><td><code>enum</code></td><td>??</td></tr>
-<tr><td>struct</td><td><code>struct</code></td><td>??</td></tr>
+<tr><td>int8</td><td><code>i8</code></td><td>8</td><td>1</td></tr>
+<tr><td>int16</td><td><code>i16</code></td><td>16</td><td>2</td></tr>
+<tr><td>int32</td><td><code>i32</code></td><td>32</td><td>4</td></tr>
+<tr><td>int64</td><td><code>i64</code> || <code>int</code></td><td>64</td><td>8</td></tr>
+<tr><td>uint8</td><td><code>u8</code></td><td>8</td><td>1</td></tr>
+<tr><td>uint16</td><td><code>u16</code></td><td>16</td><td>2</td></tr>
+<tr><td>uint32</td><td><code>u32</code></td><td>32</td><td>4</td></tr>
+<tr><td>uint64</td><td><code>u64</code> || <code>uint</code></td><td>64</td><td>8</td></tr>
+<tr><td>float32</td><td><code>f32</code></td><td>32</td><td>4</td></tr>
+<tr><td>float</td><td><code>f64</code> || <code>float</code></td><td>64</td><td>8</td></tr>
+<tr><td>char</td><td><code>char</code></td><td>8</td><td>1</td></tr>
+<tr><td>bool</td><td><code>bool</code></td><td>1</td><td>1</td></tr>
+<tr><td>void</td><td><code>void</code></td><td>N|A</td><td>N|A</td></tr>
+<tr><td>enum</td><td><code>enum</code></td><td>??</td><td>??</td></tr>
+<tr><td>struct</td><td><code>struct</code></td><td>??</td><td>??</td></tr>
 </tbody>
 </table>
 </div>
@@ -227,6 +227,21 @@ to the type system, it can be treated like most other types, which means you
 can also make an array of structs using the struct name (e.g. <code>my_struct[]</code>
 will create an array of <code>my_struct</code> structs.)</p>
 </blockquote>
+<p>KSL supports variable shadowing, so you can use multiple variables with the same
+name as long as they don’t cross scopes. For example:</p>
+<pre><code class="language-ksl">using std.io;
+
+fn main() -&gt; void {
+	int i = 400;
+
+	if (true) {
+		int i = 30;
+		io.writeln(i); // will write 30 to console
+	}
+
+	io.writeln(i); // will write 400 to console
+}
+</code></pre>
 
 					</main>
 
